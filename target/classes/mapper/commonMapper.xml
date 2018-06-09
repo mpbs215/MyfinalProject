@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="commonMapper">
+	<select id="selectFAQ" resultType="fAQDTO">
+		select*from faq
+	</select>
+	
+	<select id="selectTerms" resultType="termsDTO">
+		select*from terms
+	</select>
+	
+	<select id="selectNotice" resultType="noticeDTO" parameterType="int">
+		select*from notice
+		<where>
+		<if test="_parameter!=null">
+			noticeNo = #{_parameter}
+		</if>
+		</where>
+	</select>
+</mapper>

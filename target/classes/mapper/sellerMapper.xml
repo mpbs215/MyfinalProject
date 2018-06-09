@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="sellerMapper">
+	<resultMap type="parkReserveDTO" id="parkAndReserve">
+		<id column="reserveno" property="reserveNo"/>
+		<result column="reserveStart" property="reserveStart"/>
+		<result column="reserveEnd" property="reserveEnd"/>
+		<result column="userId" property="userId"/>
+		<association property="park">
+		<result column="price" property="price"/>
+		<result column="parkName" property="parkName"/>
+		</association>
+	</resultMap>
+	<!-- sellerParkRegist서비스 시작 -->
+	<select id="sellerParkByUserId" resultType="sellerDTO" parameterType="string">
+		select * from Park where userId=#(userId)
+	</select>
+
+	<insert id="insertParkRegi" parameterType="parkRegiDTO">
+		insert into parkRegist values(#{parkNo},#{regiStart},#{regiEnd})
+	</insert>
+
+	<insert id="insertCarType" parameterType="carTypeDTO">
+		insert into carType values(#{parkNo},#{carType})
+	</insert>
+
+	
+	<insert id="insertImg" parameterType="parkImgDTO">
+		insert into parkImage values(img_seq.nextval,#{parkNo},#{imgPath})
+	</insert>
+	
+	<!-- sellerParkRegist 끝 -->
+	
+	<select id="selectReserveById" parameterType="string" resultMap="parkAndReserve">
+		select reserveno,parkname,reservestart,reserveend,r.userid,price*(reserveend-reservestart)*24 price from park p join parkreserve r using(parkno) 
+		where p.userid=#{value} and reserveend<![CDATA[<]]>sysdate
+	</select>
+			
+	<select id="selectReserveLoadById" parameterType="string" resultMap="parkAndReserve">
+		select reserveno,parkname,reservestart,reserveend,r.userid,price*(reserveend-reservestart)*24 price from park p join parkreserve r using(parkno) 
+		where p.userid=#{value} and reserveend<![CDATA[>]]>sysdate
+	</select>
+	
+	<delete id="deleteReserve" parameterType="int">
+		delete from parkreserve where reserveNo=#{value}
+	</delete>
+	
+	<delete id="deletePark" parameterType="int">
+		delete from park where parkNo=#{value}
+	</delete>
+	
+	
+</mapper>

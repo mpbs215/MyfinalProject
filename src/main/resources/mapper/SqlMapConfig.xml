@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!-- MayBatis에 대한 전반적인 설정을 하는 파일 -->
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- #{}를 사용했을 때 null을 허용하도록 설정 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/> <!-- name값과 value값은 둘 다 예약어이다. null 소문자로 안 됨 -->
+	</settings>
+	
+</configuration>
