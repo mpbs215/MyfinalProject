@@ -34,6 +34,10 @@ public class ParkReserveDAO {
 	public List<ParkReserveDTO> sellerReserveListLoad(String userId) {
 		return session.selectList("sellerMapper.selectReserveLoadById",userId);
 	}
+
+	public List<ParkReserveDTO> selectparkReserve(int parkNo) {
+		return session.selectList("",parkNo);
+	}
 	
 	
 }

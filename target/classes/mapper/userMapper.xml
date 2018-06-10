@@ -7,4 +7,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="loginCheck" parameterType="userDTO" resultType="userDTO">
 	select user_id as userId , pwd , name from member2 where user_id=#{userId} and pwd=#{pwd}
 	</select>
+	<select id="selectReviewByStar" parameterType="reviewDTO" resultType="reviewDTO">
+			select*from review
+			<where>
+				<if test="parkNo!=null">
+					parkNo=#{parkNo}	and
+				</if>
+				<if test= "rating!=null">
+					and rating=#{rating}
+				</if>
+			</where>
+	</select>
+	
+	<select id="selectOnePark" parameterType="int">
+			select*from park
+			where parkNo=#{value}
+	</select>
+	
+	<select id="selectOneParkRegi" parameterType="int">
+			select*from parkRegi
+			where parkNo=#{value}
+	</select>
+	
+	
 </mapper>

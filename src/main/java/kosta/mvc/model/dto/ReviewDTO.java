@@ -14,6 +14,11 @@ public class ReviewDTO {
 		this.reviewContent = reviewContent;
 	}
 	
+	public ReviewDTO(int parkNo,int rating) {
+		this.parkNo=parkNo;
+		this.rating=rating;
+	}
+	
 	public ReviewDTO() {
 		super();
 	}

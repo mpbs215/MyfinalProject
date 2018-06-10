@@ -24,4 +24,8 @@ public class ParkDAO {
 	public int sellerParkDelete(int parkNo) {
 		return session.delete("sellerMapper.deletePark", parkNo);
 	}
+
+	public ParkDTO selectOnePark(int parkNo) {
+		return session.selectOne("userMapper.selectOnePark",parkNo);
+	}
 }

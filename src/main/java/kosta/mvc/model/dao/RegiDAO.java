@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kosta.mvc.model.dto.ParkDTO;
+import kosta.mvc.model.dto.ParkRegiDTO;
 
 @Repository
 public class RegiDAO {
@@ -18,6 +19,10 @@ public class RegiDAO {
 
 	public int insertParkRegi(ParkDTO parkDto) {
 		return session.insert("sellerMapper.insertParkRegi",parkDto);
+	}
+
+	public ParkRegiDTO selectOneParkRegi(int parkNo) {
+		return session.selectOne("userMapper.selectOneParkRegi",parkNo);
 	}
 	
 }
