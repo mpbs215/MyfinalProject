@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet"
@@ -34,13 +35,13 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="">Home</a></li>
-          <li><a href="">서비스 안내</a></li>
-          <li><a href="">주차장 예약</a></li>
-          <li><a href="">주차장 등록</a></li>
+          <li class="menu-active"><a href="${pageContext.request.contextPath}/">Home</a></li>
+          <li><a href="${pageContext.request.contextPath}/common/introduce">서비스 안내</a></li>
+          <li><a href="${pageContext.request.contextPath}/User/userReserve">주차장 예약</a></li>
+          <li><a href="${pageContext.request.contextPath}/Seller/sellerParkRegistForm">주차장 등록</a></li>
           
-          <li><a href="">로그인</a></li>
-          <li><a href="">회원 가입</a></li>
+          <li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
+          <li><a href="${pageContext.request.contextPath}/signUpForm">회원 가입</a></li>
           
 <!--           <li class="menu-has-children"><a href="">Drop Down</a>
             <ul>
