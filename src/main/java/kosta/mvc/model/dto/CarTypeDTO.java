@@ -5,13 +5,15 @@ import java.util.List;
 public class CarTypeDTO {
 	private int parkNo;
 	private String carType;
+	private int maxCar;
 	private List<String> carTypes;
 	
 	
-	public CarTypeDTO(int parkNo, String carType) {
+	public CarTypeDTO(int parkNo, String carType,int maxCar) {
 		super();
 		this.parkNo = parkNo;
 		this.carType = carType;
+		this.maxCar = maxCar;
 	}
 	public CarTypeDTO(int parkNo, List<String> carTypes) {
 		super();
@@ -33,5 +35,18 @@ public class CarTypeDTO {
 	public void setCarTypes(List<String> carTypes) {
 		this.carTypes = carTypes;
 	}
+	public String getCarType() {
+		return carType;
+	}
+	public void setCarType(String carType) {
+		this.carType = carType;
+	}
+	public int getMaxCar() {
+		return maxCar;
+	}
+	public void setMaxCar(int maxCar) {
+		this.maxCar = maxCar;
+	}
+	
 	
 }

@@ -8,7 +8,14 @@ public class ParkReserveDTO {
 	private int parkNo;
 	private String reserveStart;
 	private String reserveEnd;
+	private String carType;
 	
+	public String getCarType() {
+		return carType;
+	}
+	public void setCarType(String carType) {
+		this.carType = carType;
+	}
 	private List<ParkDTO> park;
 	
 	public List<ParkDTO> getPark() {
@@ -17,13 +24,27 @@ public class ParkReserveDTO {
 	public void setPark(List<ParkDTO> park) {
 		this.park = park;
 	}
-	public ParkReserveDTO(int reserveNo, String userId, int parkNo, String reserveStart, String reserveEnd) {
+	
+	public ParkReserveDTO(int reserveNo, String userId, int parkNo, String reserveStart, String reserveEnd,
+			String carType) {
 		super();
 		this.reserveNo = reserveNo;
 		this.userId = userId;
 		this.parkNo = parkNo;
 		this.reserveStart = reserveStart;
 		this.reserveEnd = reserveEnd;
+		this.carType = carType;
+	}
+	public ParkReserveDTO(int reserveNo, String userId, int parkNo, String reserveStart, String reserveEnd,
+			String carType, List<ParkDTO> park) {
+		super();
+		this.reserveNo = reserveNo;
+		this.userId = userId;
+		this.parkNo = parkNo;
+		this.reserveStart = reserveStart;
+		this.reserveEnd = reserveEnd;
+		this.carType = carType;
+		this.park = park;
 	}
 	public ParkReserveDTO() {
 		super();

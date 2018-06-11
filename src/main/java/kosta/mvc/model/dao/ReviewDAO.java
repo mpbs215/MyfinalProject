@@ -18,7 +18,6 @@ public class ReviewDAO {
 	}
 
 	public List<ReviewDTO> selectReview(int parkNo) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

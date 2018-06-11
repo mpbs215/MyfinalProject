@@ -12,6 +12,6 @@ public class CarTypeDAO {
 	private SqlSession session;
 
 	public int insertCarType(String carType,int parkNo) {
-		return session.insert("sellerMapper.insertCarType",new CarTypeDTO(parkNo, carType));
+		return session.insert("sellerMapper.insertCarType",null);
 	}
 }

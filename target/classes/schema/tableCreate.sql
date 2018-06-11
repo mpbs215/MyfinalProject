@@ -42,7 +42,6 @@ create table Park
 		parkSize			long 		   NOT NULL,
 		parkContent 		varchar2(2000) NOT NULL,
 		price				number 		   NOT NULL,
-		maxCunsumer 		number		   NOT NULL,
 		latitude			varchar2(100)  NOT NULL,
 		longtitude			varchar2(100)  NOT NULL
 );
@@ -74,7 +73,8 @@ create table parkReserve
 		userId			varchar2(100)	NOT NULL constraint reserve_userId_fk references userinfo(userId),
 		parkNo 			number 			NOT NULL constraint reserve_parkno_fk 	references parkRegist(parkNo),
 		reserveStart	Timestamp		NOT NULL,
-		reserveEnd		Timestamp  		NOT NULL
+		reserveEnd		Timestamp  		NOT NULL,
+		carType			varchar2(100)	NOT NULL
 );
 
 create table review
@@ -98,6 +98,7 @@ create table carType
 (		
 		parkNo	number			constraint	carType_parkno_fk	references parkRegist(parkNo),
 		carType varchar2(100) ,
+		maxCar  number not null,
 		CONSTRAINT carType_pk PRIMARY KEY (parkNo,carType)
 );
 

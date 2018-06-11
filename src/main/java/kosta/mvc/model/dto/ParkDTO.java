@@ -10,7 +10,6 @@ public class ParkDTO {
 	private String parkSize;
 	private String parkContent;
 	private int price;
-	private int maxCunsumer;
 	private String latitude;
 	private String longitude;
 
@@ -61,12 +60,6 @@ public class ParkDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getMaxCunsumer() {
-		return maxCunsumer;
-	}
-	public void setMaxCunsumer(int maxCunsumer) {
-		this.maxCunsumer = maxCunsumer;
-	}
 	public String getLatitude() {
 		return latitude;
 	}
@@ -98,7 +91,7 @@ public class ParkDTO {
 		this.parkReserve = parkReserve;
 	}
 	public ParkDTO(int parkNo, String parkName, String userId, String parkAddr, String parkSize, String parkContent,
-			int price, int maxCunsumer, String latitude, String longitude, List<ParkImgDTO> parkImg,
+			int price, String latitude, String longitude, List<ParkImgDTO> parkImg,
 			List<ParkRegiDTO> parkRegi, List<ParkReserveDTO> parkReserve) {
 		super();
 		this.parkNo = parkNo;
@@ -108,7 +101,6 @@ public class ParkDTO {
 		this.parkSize = parkSize;
 		this.parkContent = parkContent;
 		this.price = price;
-		this.maxCunsumer = maxCunsumer;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.parkImg = parkImg;
