@@ -116,5 +116,7 @@
 	
 		<!-- spring transaction annotaion설정 --> 
 	 <tx:annotation-driven transaction-manager="transactionManager"/> 
+	 
+	 <context:component-scan base-package="kosta.mvc.model"/>
 
 </beans:beans>
