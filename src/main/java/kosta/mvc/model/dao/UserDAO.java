@@ -16,4 +16,8 @@ public class UserDAO {
 	public List<UserDTO> manageUserList() {
 		return session.selectList("");
 	}
+
+	public UserDTO selectMemberById(String id) {
+		return null;
+	}
 }

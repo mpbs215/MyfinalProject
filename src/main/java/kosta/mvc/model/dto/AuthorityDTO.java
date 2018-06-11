@@ -1,6 +1,6 @@
 package kosta.mvc.model.dto;
 
-public class AuthorizationDTO {
+public class AuthorityDTO {
 
 	private String userId;
 	private String role;
@@ -16,10 +16,10 @@ public class AuthorizationDTO {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public AuthorizationDTO() {
+	public AuthorityDTO() {
 		super();
 	}
-	public AuthorizationDTO(String userId, String role) {
+	public AuthorityDTO(String userId, String role) {
 		super();
 		this.userId = userId;
 		this.role = role;

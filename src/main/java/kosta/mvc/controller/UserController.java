@@ -57,8 +57,8 @@ public class UserController {
 	@RequestMapping("/userReserveForm")
 	public ModelAndView userReserveForm(int parkNo) {
 		ModelAndView mv = new ModelAndView();
-		ParkDTO parkDto = service.selectOnePark(parkNo);
-		ParkRegiDTO parkRegiDto = service.selectOneParkRegi(parkNo);
+		ParkDTO parkDTO = service.selectOnePark(parkNo);
+		ParkRegiDTO parkRegiDTO = service.selectOneParkRegi(parkNo);
 		List<ParkReserveDTO> parkReserveList = service.selectparkReserve(parkNo);
 		List<ReviewDTO> reviewList = service.selectReview(parkNo);
 		return null;
