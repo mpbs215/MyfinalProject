@@ -30,7 +30,7 @@
 	</listener>
 	
 	<!-- 스프링 시큐리티 필터 등록 -->
- 	<filter>
+	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>

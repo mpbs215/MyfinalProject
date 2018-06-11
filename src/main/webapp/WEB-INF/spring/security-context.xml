@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -10,16 +11,20 @@
 
 	<!-- Spring Security 인증처리로직를 정의한 클래스 -->
 	<sec:http use-expressions="true" auto-config="true">
-		<sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
-		<sec:intercept-url pattern="/member/**" access="isAuthenticated()" />
-		<!-- <sec:intercept-url pattern="/**" access="permitAll"/> -->
+		<sec:intercept-url pattern="/admin/**"
+			access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/member/**"
+			access="isAuthenticated()" />
+		<sec:intercept-url pattern="/**" access="permitAll" />
 		<sec:form-login login-page="/loginForm"
-			login-processing-url="/j_spring_security_check" username-parameter="id"
-			password-parameter="password" default-target-url="/"
+			login-processing-url="/j_spring_security_check"
+			username-parameter="id" password-parameter="password"
+			default-target-url="/"
 			authentication-failure-handler-ref="memberAuthenticationFailureHandler" />
 
-		<sec:logout invalidate-session="true" delete-cookies="JSESSIONID"
-			logout-url="/member/logout" logout-success-url="/" />
+		<sec:logout invalidate-session="true"
+			delete-cookies="JSESSIONID" logout-url="/member/logout"
+			logout-success-url="/" />
 
 		<!-- 중복 로그인 방지 설정 error-if-maximum-exceeded="true" 이후에 로그인 시도하는 사용자의 접속을 
 			막는다 -->
@@ -30,8 +35,10 @@
 	</sec:http>
 
 	<sec:authentication-manager>
-		<sec:authentication-provider ref="memberAuthenticationProvider" />
+		<sec:authentication-provider
+			ref="memberAuthenticationProvider" />
 	</sec:authentication-manager>
 
-	<context:component-scan base-package="com.kosta.spring.security" />
+	<context:component-scan
+		base-package="com.kosta.spring.security" />
 </beans>

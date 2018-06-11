@@ -1,6 +1,5 @@
 package kosta.mvc.security;
 
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -14,11 +13,10 @@ import org.springframework.stereotype.Component;
 /**
  * 스프링시큐리에서 로그인 실패시 호출되는 EventHandler임.
  * 
- *  springBean설정문서에서 <security:form-login태그에
- *  authentication-failure-handler-ref 추가하면
- *  로그인 실패시 onAuthenticationFailure 메소드가 자동 호출된다.
- * */
-@Component //id="memberAuthenticationFailureHandler"
+ * springBean설정문서에서 <security:form-login태그에 authentication-failure-handler-ref
+ * 추가하면 로그인 실패시 onAuthenticationFailure 메소드가 자동 호출된다.
+ */
+@Component // id="memberAuthenticationFailureHandler"
 public class MemberAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
 	@Override
@@ -26,11 +24,5 @@ public class MemberAuthenticationFailureHandler implements AuthenticationFailure
 			throws IOException, ServletException {
 		req.setAttribute("errorMessage", auth.getMessage());
 		req.getRequestDispatcher("/WEB-INF/views/member/loginForm.jsp").forward(req, res);
-
 	}
 }
-
-
-
-
-
