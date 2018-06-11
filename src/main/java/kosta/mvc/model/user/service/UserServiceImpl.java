@@ -18,20 +18,20 @@ import kosta.mvc.model.dto.ReviewDTO;
 public class UserServiceImpl {
 	
 	@Autowired
-	private ReviewDAO reviewDao;
+	private ReviewDAO reviewDAO;
 	@Autowired
-	private ParkDAO parkDao;
+	private ParkDAO parkDAO;
 	@Autowired
-	private RegiDAO regiDao;
+	private RegiDAO regiDAO;
 	@Autowired
-	private ParkReserveDAO parkReserveDao;
+	private ParkReserveDAO parkReserveDAO;
 
 	public List<ReviewDTO> userClickReviewStar(int parkNo, int starNo) {
-		return reviewDao.userClickReviewStar(parkNo,starNo);
+		return reviewDAO.userClickReviewStar(parkNo,starNo);
 	}
 
 	public ParkDTO selectOnePark(int parkNo) {
-		return parkDao.selectOnePark(parkNo);
+		return parkDAO.selectOnePark(parkNo);
 	}
 
 	public List<ReviewDTO> selectReview(int parkNo) {
@@ -40,11 +40,11 @@ public class UserServiceImpl {
 	}
 
 	public ParkRegiDTO selectOneParkRegi(int parkNo) {
-		return regiDao.selectOneParkRegi(parkNo);
+		return regiDAO.selectOneParkRegi(parkNo);
 	}
 
 	public List<ParkReserveDTO> selectparkReserve(int parkNo) {
-		return parkReserveDao.selectparkReserve(parkNo);
+		return parkReserveDAO.selectparkReserve(parkNo);
 	}
 
 }

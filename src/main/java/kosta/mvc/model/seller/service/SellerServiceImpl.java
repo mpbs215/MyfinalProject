@@ -23,64 +23,64 @@ import kosta.mvc.model.dto.ParkReserveDTO;
 public class SellerServiceImpl {
 
 	@Autowired
-	private RegiDAO regiDao;
+	private RegiDAO regiDAO;
 	@Autowired
-	private ParkDAO parkDao;
+	private ParkDAO parkDAO;
 	@Autowired
-	private ParkImgDAO parkImgDao;
+	private ParkImgDAO parkImgDAO;
 	@Autowired
-	private CarTypeDAO carTypeDao;
+	private CarTypeDAO carTypeDAO;
 	@Autowired
-	private ParkReserveDAO parkReserveDao;
+	private ParkReserveDAO parkReserveDAO;
 
 	public List<ParkReserveDTO> sellerReserveList(String userId) {
-		return parkReserveDao.sellerReserveList(userId);
+		return parkReserveDAO.sellerReserveList(userId);
 	}
 
 	public void sellerReserveDelete(int parkNo) {
-		int re = parkReserveDao.sellerReserveDelete(parkNo);
+		int re = parkReserveDAO.sellerReserveDelete(parkNo);
 		if(re==0) {
 			throw new RuntimeException();
 		}
 	}
 
 	public List<ParkReserveDTO> sellerReserveListLoad(String userId) {
-		return parkReserveDao.sellerReserveListLoad(userId);
+		return parkReserveDAO.sellerReserveListLoad(userId);
 	}
 
 	public List<ParkDTO> sellerParkList(String id) {
-		return parkDao.sellerParkList(id);
+		return parkDAO.sellerParkList(id);
 	}
 
 	public void sellerParkRegist(ParkDTO parkDto, CarTypeDTO carTypeDto, ParkImgDTO parkImg, ParkRegiDTO parkRegi) {
-		int resultPark = parkDao.insertPark(parkDto);
+		int resultPark = parkDAO.insertPark(parkDto);
 		if (resultPark == 0) {
 			throw new RuntimeException();
 		}
-		int resultParkRegi = regiDao.insertParkRegi(parkDto);
+		int resultParkRegi = regiDAO.insertParkRegi(parkDto);
 		if (resultParkRegi == 0) {
 			throw new RuntimeException();
 		}
 		for (String carType : carTypeDto.getCarTypes()) {
-			if (carTypeDao.insertCarType(carType, parkDto.getParkNo()) == 0) {
+			if (carTypeDAO.insertCarType(carType, parkDto.getParkNo()) == 0) {
 				throw new RuntimeException();
 			}
 		}
 		for (MultipartFile file : parkImg.getFiles()) {
-			if (parkImgDao.insertImg(file.getOriginalFilename(), parkDto.getParkNo()) == 0) {
+			if (parkImgDAO.insertImg(file.getOriginalFilename(), parkDto.getParkNo()) == 0) {
 				throw new RuntimeException();
 			}
 		}
 	}
 
 	public int sellerParkDelete(int parkNo) {
-		return parkDao.sellerParkDelete(parkNo);
+		return parkDAO.sellerParkDelete(parkNo);
 	}
 
 	public int sellerParksDelete(int[] parkNos) {
 		int count=0;
 		for(int parkNo:parkNos) {
-			int re=parkDao.sellerParkDelete(parkNo);
+			int re=parkDAO.sellerParkDelete(parkNo);
 			if(re==0) {
 				throw new RuntimeException();
 			}else {

@@ -16,28 +16,28 @@ import kosta.mvc.model.dto.TermsDTO;
 public class CommonServiceImpl {
 	
 	@Autowired
-	private FAQDAO faqDao;
+	private FAQDAO faqDAO;
 	
 	@Autowired
-	private TermsDAO termsDao;
+	private TermsDAO termsDAO;
 	
 	@Autowired
-	private NoticeDAO noticeDao;
+	private NoticeDAO noticeDAO;
 
 	public List<FAQDTO> selectFAQ() {
-		return faqDao.selectFAQ();
+		return faqDAO.selectFAQ();
 	}
 
 	public List<TermsDTO> selectTerms() {
-		return termsDao.selectTerms();
+		return termsDAO.selectTerms();
 	}
 
 	public List<NoticeDTO> selectNotice() {
-		return noticeDao.selectNotice();
+		return noticeDAO.selectNotice();
 	}
 
 	public NoticeDTO selectOneNotice(int noticeNo) {
-		return noticeDao.selectOneNotice(noticeNo);
+		return noticeDAO.selectOneNotice(noticeNo);
 	}
 
 }

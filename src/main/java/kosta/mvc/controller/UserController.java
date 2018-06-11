@@ -13,6 +13,7 @@ import kosta.mvc.model.dto.ParkRegiDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
 import kosta.mvc.model.dto.ReviewDTO;
 import kosta.mvc.model.dto.SearchFilterDTO;
+import kosta.mvc.model.dto.UserDTO;
 import kosta.mvc.model.user.service.UserServiceImpl;
 
 @RequestMapping("/user")
@@ -65,7 +66,27 @@ public class UserController {
 	public List<ReviewDTO> userClickReviewStar(int parkNo, int starNo) {
 		return service. userClickReviewStar(parkNo,starNo);
 	}
-
-	//////////////
+	
+	/**
+	 * 마이페이지 회원정보 수정 폼으로 이동했을때 시행
+	 * request:userId
+	 * @return ModelAndView에 유저아이디에 해당하는 DTO 정보세팅
+	 */
+	@RequestMapping("/userModifyUserForm")
+	public ModelAndView userModifyUserForm(String userId) {
+		return null;
+	}
+	
+	/**
+	 * 실제 회원정보 수정 페이지에서 수정버튼 클릭시 작업
+	 * @param userDto
+	 * @return userModifyUserForm호출
+	 */
+	@RequestMapping("/userModifyUser")
+	public ModelAndView userModifyUser(UserDTO userDTO) {
+		
+		return null;
+	}
+	
 
 }
