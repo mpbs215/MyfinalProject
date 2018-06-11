@@ -10,10 +10,12 @@ import kosta.mvc.model.dao.ParkDAO;
 import kosta.mvc.model.dao.ParkReserveDAO;
 import kosta.mvc.model.dao.RegiDAO;
 import kosta.mvc.model.dao.ReviewDAO;
+import kosta.mvc.model.dao.UserDAO;
 import kosta.mvc.model.dto.ParkDTO;
 import kosta.mvc.model.dto.ParkRegiDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
 import kosta.mvc.model.dto.ReviewDTO;
+import kosta.mvc.model.dto.UserDTO;
 
 @Service
 public class UserServiceImpl {
@@ -26,6 +28,8 @@ public class UserServiceImpl {
 	private RegiDAO regiDAO;
 	@Autowired
 	private ParkReserveDAO parkReserveDAO;
+	@Autowired
+	private UserDAO userDAO;
 
 	public List<ReviewDTO> userClickReviewStar(int parkNo, int starNo) {
 		return reviewDAO.userClickReviewStar(parkNo,starNo);
@@ -58,6 +62,19 @@ public class UserServiceImpl {
 		List<ParkReserveDTO> parkReserveList = parkReserveDAO.selectparkReserve(parkNo);
 		List<ReviewDTO> reviewList = reviewDAO.selectReview(parkNo);
 		return null;
+	}
+	
+	/**
+	 * 회원정보 확인 및 수정
+	 */
+	
+	public UserDTO selectUserInfo(String userId) {
+		
+		return null;
+	}
+	
+	public void updateUserInfo(UserDTO userDTO) {
+		userDAO.updateUserInfo(userDTO);
 	}
 
 }

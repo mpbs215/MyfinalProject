@@ -20,4 +20,18 @@ public class UserDAO {
 	public UserDTO selectMemberById(String id) {
 		return null;
 	}
+	
+	/**
+	 *사용자의 정보를 보여주는 메소드
+	 */
+	public UserDTO viewUserInfo(String userId) {
+		return session.selectOne("userMapper.selectUserInfo",userId);
+	}
+	
+	/**
+	 * 사용자 정보를 수정하는 메소드
+	 */
+	public void updateUserInfo(UserDTO userDTO) {
+		session.update("userMapper.updateUserInfo", userDTO);
+	}
 }

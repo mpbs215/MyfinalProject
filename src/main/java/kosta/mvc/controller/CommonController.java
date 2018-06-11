@@ -32,39 +32,6 @@ public class CommonController {
 		return mv;
 	}
 	
-	/**
-	 * 파인드IDForm페이지로 이동
-	 * @return 
-	 */
-	@RequestMapping("/findIdForm")
-	public void findIdForm() {}
-	
-	/**
-	 * request: 이름과 이메일
-	 * @return 아이디
-	 */
-	@RequestMapping("/findId")
-	public ModelAndView findId() {
-		
-		return null;
-	}
-	
-	/**
-	 * 파인드Pwd페이지로 이동
-	 * @return 
-	 */
-	@RequestMapping("/findPwdForm")
-	public void findPwdForm() {}
-	
-	/**
-	 * request: 이름 아이디 비밀번호
-	 * @return 비밀번호
-	 */
-	@RequestMapping("/findPwd")
-	public ModelAndView findPwd() {
-		
-		return null;
-	}
 	
 	/**
 	 * 서비스안내 메인페이지로 이동
@@ -77,43 +44,6 @@ public class CommonController {
 	 */
 	@RequestMapping("/serviceInfo")
 	public void serviceInfo() {}
-	
-	/**
-	 * 로그인 페이지로 이동
-	 */
-	@RequestMapping("/loginForm")
-	public void loginForm() {}
-	
-	/**
-	 * Request : ID, PWD
-	 */
-	@RequestMapping("/login")
-	public ModelAndView login(String userId,String password) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/");
-		return mv;
-	}
-	
-	/**
-	 * 메인 페이지 이동
-	 */
-	@RequestMapping("/")
-	public void mainView() {}
-	
-	/**
-	 * 회원가입 페이지 이동
-	 */
-	@RequestMapping("/signUpForm")
-	public void signUpForm() {}
-	
-	/**
-	 * request : UserDTO
-	 * @return
-	 */
-	@RequestMapping("/signUp")
-	public ModelAndView signUp(UserDTO dto) {
-		return null;
-	}
 	
 	/**
 	 * 이용약관 페이지 이동

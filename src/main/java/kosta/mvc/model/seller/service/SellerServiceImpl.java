@@ -61,11 +61,6 @@ public class SellerServiceImpl {
 		if (resultParkRegi == 0) {
 			throw new RuntimeException();
 		}
-		for (String carType : carTypeDto.getCarTypes()) {
-			if (carTypeDAO.insertCarType(carType, parkDto.getParkNo()) == 0) {
-				throw new RuntimeException();
-			}
-		}
 		for (MultipartFile file : parkImg.getFiles()) {
 			if (parkImgDAO.insertImg(file.getOriginalFilename(), parkDto.getParkNo()) == 0) {
 				throw new RuntimeException();

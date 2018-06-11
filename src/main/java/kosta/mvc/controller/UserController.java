@@ -3,7 +3,11 @@ package kosta.mvc.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +28,8 @@ public class UserController {
 	@Autowired
 	private UserServiceImpl service;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	/**
 	 * 주차장 예약 초기페이지
 	 */
@@ -75,14 +81,23 @@ public class UserController {
 		return service.userClickReviewStar(parkNo, starNo);
 	}
 
+
 	/**
 	 * 마이페이지 회원정보 수정 폼으로 이동했을때 시행 request:userId
 	 * 
 	 * @return ModelAndView에 유저아이디에 해당하는 DTO 정보세팅
 	 */
+
+	/*
+	 * UserDTO
+	 * userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().
+	 * getPrincipal(); 이거 써주시고 DTO에서 id를 가져오면 됩니다.
+	 */
 	@RequestMapping("/userModifyUserForm")
-	public ModelAndView userModifyUserForm(String userId) {
-		return null;
+	public ModelAndView userModifyUserForm(HttpServletRequest request) {
+		String id = request.getParameter("userId");
+		UserDTO userDTO = service.selectUserInfo(id);
+		return new ModelAndView("User/userModifyUserForm", "userDTO", userDTO);
 	}
 
 	/**
@@ -92,9 +107,27 @@ public class UserController {
 	 * @return userModifyUserForm호출
 	 */
 	@RequestMapping("/userModifyUser")
-	public ModelAndView userModifyUser(UserDTO userDTO) {
+	public ModelAndView userModifyUser(HttpServletRequest request, UserDTO userDTO) {
+		// System.out.println("1. UserDTO :: "+userDTO);
+		// 회원정보 수정위해 Spring Security 세션 회원정보를 반환받는다
+		UserDTO uDTO = (UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		return null;
+		// System.out.println("2. Spring Security 세션 수정 전 회원정보:" + uDTO);
+
+		// 변경할 비밀번호를 암호화한다
+		String encodePassword = passwordEncoder.encode(userDTO.getPassword());
+		userDTO.setPassword(encodePassword);
+		service.updateUserInfo(userDTO);
+
+		// 수정버튼 클릭 처리
+		
+		// 수정한 회원정보로 Spring Security 세션 회원정보를 업데이트한다
+		uDTO.setPassword(encodePassword);
+		uDTO.setUserName(userDTO.getUserName());
+		uDTO.setAddress(userDTO.getAddress());
+		//System.out.println("3. Spring Security 세션 수정 후 회원정보:" + pvo);
+
+		return new ModelAndView("User/userModifyUserForm");
 	}
 
 }

@@ -29,5 +29,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			where parkNo=#{value}
 	</select>
 	
+	<select id="selectUserInfo" parameterType="string"> select * from UserInfo where user_id=#{userId} </select>
+
+	<update id="updateUserInfo" parameterType="userDTO">
+	UPDATE UserInfo SET password=#{userPwd}, user_name=#{userName}, email=#{userEmail}, hp=#{userPhone}, address=#{userAddr} WHERE user_id=#{userId} 
+	</update>
+	
 	
 </mapper>
