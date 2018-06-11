@@ -1,6 +1,7 @@
 package kosta.mvc.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,6 +58,7 @@ public class UserController {
 	@RequestMapping("/userReserveForm")
 	public ModelAndView userReserveForm(int parkNo) {
 		ModelAndView mv = new ModelAndView();
+		Map<String, Object> dataMap = service.userReserveForm(parkNo);
 		ParkDTO parkDTO = service.selectOnePark(parkNo);
 		ParkRegiDTO parkRegiDTO = service.selectOneParkRegi(parkNo);
 		List<ParkReserveDTO> parkReserveList = service.selectparkReserve(parkNo);

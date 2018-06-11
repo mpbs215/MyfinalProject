@@ -1,6 +1,7 @@
 package kosta.mvc.model.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +50,14 @@ public class UserServiceImpl {
 
 	public List<ParkDTO> userReserve() {
 		return parkDAO.selectParkList(null);
+	}
+
+	public Map<String, Object> userReserveForm(int parkNo) {
+		ParkDTO parkDTO=parkDAO.selectOnePark(parkNo);
+		ParkRegiDTO parkRegiDTO = regiDAO.selectOneParkRegi(parkNo);
+		List<ParkReserveDTO> parkReserveList = parkReserveDAO.selectparkReserve(parkNo);
+		List<ReviewDTO> reviewList = reviewDAO.selectReview(parkNo);
+		return null;
 	}
 
 }

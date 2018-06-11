@@ -16,4 +16,9 @@ public class ReviewDAO {
 	public List<ReviewDTO> userClickReviewStar(int parkNo, int starNo) {
 		return session.selectList("userMapper.selectReviewByStar",new ReviewDTO(parkNo,starNo) );
 	}
+
+	public List<ReviewDTO> selectReview(int parkNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
