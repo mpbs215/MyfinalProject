@@ -9,6 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	메인페이지입니다.
 </body>
 </html>

@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
-	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+   "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="layout"
-		template="/WEB-INF/views/tiles/layout.jsp">
-		<put-attribute name="header"
-			value="/WEB-INF/views/tiles/header.jsp" />
-		<put-attribute name="footer"
-			value="/WEB-INF/views/tiles/footer.jsp" />
-		<put-attribute name="sidebar"
-			value="/WEB-INF/views/tiles/sidebar.jsp" />
-	</definition>
 
-	<definition extends="layout" name="*">
-		<put-attribute name="content"
-			value="/WEB-INF/views/{1}.jsp" />
-	</definition>
+<definition name="mainLayout"
+      template="/WEB-INF/views/tiles/mainLayout.jsp">
+      <put-attribute name="header"
+         value="/WEB-INF/views/tiles/header.jsp" />
+      <put-attribute name="footer"
+         value="/WEB-INF/views/tiles/footer.jsp" />
+   </definition>
+
+   <definition extends="mainLayout" name="*">
+      <put-attribute name="content"
+         value="/WEB-INF/views/{1}.jsp" />
+   </definition>
+
+
+
+   <definition name="ServiceInfoLayout"
+      template="/WEB-INF/views/tiles/layout.jsp">
+      <put-attribute name="header"
+         value="/WEB-INF/views/tiles/header.jsp" />
+      <put-attribute name="footer"
+         value="/WEB-INF/views/tiles/footer.jsp" />
+      <put-attribute name="sidebar"
+         value="/WEB-INF/views/tiles/ServiceInfoSidebar.jsp" />
+   </definition>
+
+   <definition extends="ServiceInfoLayout" name="common/*">
+      <put-attribute name="content"
+         value="/WEB-INF/views/Common/{1}.jsp" />
+   </definition>
 </tiles-definitions>
