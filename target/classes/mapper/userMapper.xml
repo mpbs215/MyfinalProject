@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectUserInfo" parameterType="string"> select * from UserInfo where user_id=#{userId} </select>
 
 	<update id="updateUserInfo" parameterType="userDTO">
-	UPDATE UserInfo SET password=#{userPwd}, user_name=#{userName}, email=#{userEmail}, hp=#{userPhone}, address=#{userAddr} WHERE user_id=#{userId} 
+	UPDATE UserInfo SET password=#{password}, username=#{userName}, email=#{email}, hp=#{hp}, address=#{address} WHERE user_id=#{userId} 
 	</update>
 	
 	

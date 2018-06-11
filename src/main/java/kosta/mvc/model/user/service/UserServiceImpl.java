@@ -70,7 +70,7 @@ public class UserServiceImpl {
 	
 	public UserDTO selectUserInfo(String userId) {
 		
-		return null;
+		return userDAO.selectMemberById(userId);
 	}
 	
 	public void updateUserInfo(UserDTO userDTO) {
