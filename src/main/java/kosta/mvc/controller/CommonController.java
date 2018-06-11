@@ -60,7 +60,7 @@ public class CommonController {
 	 * request: 이름 아이디 비밀번호
 	 * @return 비밀번호
 	 */
-	@RequestMapping("/findId")
+	@RequestMapping("/findPwd")
 	public ModelAndView findPwd() {
 		
 		return null;
@@ -88,7 +88,7 @@ public class CommonController {
 	 * Request : ID, PWD
 	 */
 	@RequestMapping("/login")
-	public ModelAndView login() {
+	public ModelAndView login(String userId,String password) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/");
 		return mv;
@@ -127,6 +127,10 @@ public class CommonController {
 		return mv;
 	}
 	
+	/**
+	 * 공지사항 페이지로 이동
+	 * @return 공지사항 List
+	 */
 	@RequestMapping("/notice")
 	public ModelAndView notice() {
 		ModelAndView mv = new ModelAndView();
@@ -136,11 +140,17 @@ public class CommonController {
 		return mv;
 	}
 	
+	/**
+	 * 공지사항 페이지의 게시물 클릭시 이동
+	 * @param noticeNo
+	 * @return noticeDTO
+	 */
 	@RequestMapping("/noticeDetail")
 	public ModelAndView noticeDetail(int noticeNo) {
 		ModelAndView mv = new ModelAndView();
 		NoticeDTO noticeDTO = service.selectOneNotice(noticeNo);
-		
+		mv.setViewName("/Common/noticeDetail");
+		mv.addObject("dto",noticeDTO);
 		return mv;
 	}
 	

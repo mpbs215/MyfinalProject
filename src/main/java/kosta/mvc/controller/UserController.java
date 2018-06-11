@@ -22,9 +22,15 @@ public class UserController {
 
 	@Autowired
 	private UserServiceImpl service;
-
+	
+	/**
+	 * 주차장 예약 초기페이지
+	 */
 	@RequestMapping("/userReserve")
-	public void userReserve() {
+	public ModelAndView userReserve() {
+		ModelAndView mv = new ModelAndView();
+		List<ParkDTO> list=service.userReserve();
+		return mv;
 	}
 
 	/*
@@ -52,7 +58,7 @@ public class UserController {
 	public ModelAndView userReserveForm(int parkNo) {
 		ModelAndView mv = new ModelAndView();
 		ParkDTO parkDto = service.selectOnePark(parkNo);
-		ParkRegiDTO  parkRegiDto= service.selectOneParkRegi(parkNo);
+		ParkRegiDTO parkRegiDto = service.selectOneParkRegi(parkNo);
 		List<ParkReserveDTO> parkReserveList = service.selectparkReserve(parkNo);
 		List<ReviewDTO> reviewList = service.selectReview(parkNo);
 		return null;
@@ -64,29 +70,29 @@ public class UserController {
 	@RequestMapping("/userClickReviewStar")
 	@ResponseBody
 	public List<ReviewDTO> userClickReviewStar(int parkNo, int starNo) {
-		return service. userClickReviewStar(parkNo,starNo);
+		return service.userClickReviewStar(parkNo, starNo);
 	}
-	
+
 	/**
-	 * 마이페이지 회원정보 수정 폼으로 이동했을때 시행
-	 * request:userId
+	 * 마이페이지 회원정보 수정 폼으로 이동했을때 시행 request:userId
+	 * 
 	 * @return ModelAndView에 유저아이디에 해당하는 DTO 정보세팅
 	 */
 	@RequestMapping("/userModifyUserForm")
 	public ModelAndView userModifyUserForm(String userId) {
 		return null;
 	}
-	
+
 	/**
 	 * 실제 회원정보 수정 페이지에서 수정버튼 클릭시 작업
+	 * 
 	 * @param userDto
 	 * @return userModifyUserForm호출
 	 */
 	@RequestMapping("/userModifyUser")
 	public ModelAndView userModifyUser(UserDTO userDTO) {
-		
+
 		return null;
 	}
-	
 
 }

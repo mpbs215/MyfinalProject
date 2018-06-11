@@ -49,7 +49,7 @@ public class SellerServiceImpl {
 	}
 
 	public List<ParkDTO> sellerParkList(String id) {
-		return parkDAO.sellerParkList(id);
+		return parkDAO.selectParkList(id);
 	}
 
 	public void sellerParkRegist(ParkDTO parkDto, CarTypeDTO carTypeDto, ParkImgDTO parkImg, ParkRegiDTO parkRegi) {

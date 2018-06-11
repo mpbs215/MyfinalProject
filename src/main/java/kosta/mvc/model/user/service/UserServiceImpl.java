@@ -47,4 +47,8 @@ public class UserServiceImpl {
 		return parkReserveDAO.selectparkReserve(parkNo);
 	}
 
+	public List<ParkDTO> userReserve() {
+		return parkDAO.selectParkList(null);
+	}
+
 }

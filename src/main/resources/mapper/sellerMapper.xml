@@ -16,8 +16,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</association>
 	</resultMap>
 	<!-- sellerParkRegist서비스 시작 -->
-	<select id="sellerParkByUserId" resultType="sellerDTO" parameterType="string">
-		select * from Park where userId=#(userId)
+	<select id="selectPark" resultType="parkDTO" parameterType="string">
+		select * from Park
+		<where>
+			<if test="_parameter!=null">
+				userId=#(_parameter)
+			</if>
+		</where>
 	</select>
 
 	<insert id="insertParkRegi" parameterType="parkRegiDTO">

@@ -7,9 +7,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<security:http auto-config="true" use-expressions="true">
-		<security:intercept-url access="hasRole('ROLE_USER')" pattern="/user/**"/>
-		<security:intercept-url access="hasRole('ROLE_MEMBER')" pattern="/member/**"/>
-		<security:intercept-url access="hasRole('ROLE_ADMIN')" pattern="/admin/**"/>
+
 	</security:http>
 	
 	

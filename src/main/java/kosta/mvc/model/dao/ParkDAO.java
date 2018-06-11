@@ -13,12 +13,12 @@ public class ParkDAO {
 	@Autowired
 	private SqlSession session;
 
-	public int insertPark(ParkDTO parkDto) {
-		return session.insert("",parkDto);
+	public int insertPark(ParkDTO parkDTO) {
+		return session.insert("",parkDTO);
 	}
 
-	public List<ParkDTO> sellerParkList(String id) {
-		return session.selectList("sellerMapper.sellerParkByUserId",id);
+	public List<ParkDTO> selectParkList(String userId) {
+		return session.selectList("sellerMapper.selectPark",userId);
 	}
 
 	public int sellerParkDelete(int parkNo) {

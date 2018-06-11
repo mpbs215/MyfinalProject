@@ -3,6 +3,7 @@ package kosta.mvc.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,6 +14,7 @@ import kosta.mvc.model.dto.ParkDTO;
 import kosta.mvc.model.dto.ParkImgDTO;
 import kosta.mvc.model.dto.ParkRegiDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
+import kosta.mvc.model.dto.UserDTO;
 import kosta.mvc.model.seller.service.SellerServiceImpl;
 
 @RequestMapping("/seller")
@@ -27,14 +29,15 @@ public class SellerController {
 	 * @return 자신의 주차장 레코드리스트
 	 */
 	@RequestMapping("/sellerParkList")
-	public String sellerParkList(String id) {		
+	public String sellerParkList() {
 		return "Seller/sellerParkList";
 	}
 	
 	@ResponseBody
 	@RequestMapping
-	public List<ParkDTO> sellerParkListLoad(String id){
-		List<ParkDTO> list=service.sellerParkList(id);
+	public List<ParkDTO> sellerParkListLoad(){
+		UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<ParkDTO> list=service.sellerParkList(userDTO.getUserId());
 		return list;
 	}
 	
@@ -50,6 +53,9 @@ public class SellerController {
 		return service.sellerParksDelete(parkNos);
 	}
 	
+	/**
+	 * 주차장 등록 폼으로 이동
+	 */
 	@RequestMapping("/sellerParkRegistForm")
 	public void sellerParkRegistForm() {}
 	
@@ -75,7 +81,9 @@ public class SellerController {
 	@RequestMapping("/sellerReserveList")
 	public ModelAndView sellerReserveList(String userId) {
 		ModelAndView mv = new ModelAndView();
-		List<ParkReserveDTO> list=service.sellerReserveList(userId);
+		UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<ParkReserveDTO> list=service.sellerReserveList(userDTO.getUserId());
+		mv.addObject("list",list);
 		return mv;
 	}
 	
@@ -84,8 +92,9 @@ public class SellerController {
 	 */
 	@ResponseBody
 	@RequestMapping("/sellerReserveListLoad")
-	public List<ParkReserveDTO> sellerReserveListLoad(String userId) {
-		List<ParkReserveDTO> list=service.sellerReserveListLoad(userId);
+	public List<ParkReserveDTO> sellerReserveListLoad() {
+		UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<ParkReserveDTO> list=service.sellerReserveListLoad(userDTO.getUserId());
 		return list;
 	}
 
