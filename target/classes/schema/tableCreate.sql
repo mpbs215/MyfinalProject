@@ -26,6 +26,8 @@ create table USER_INFO_TB
 		regidate		timestamp NOT NULL,
 		seller			char(1)
 );
+commit
+insert into user_info_tb values('kim','2656','±èµ·È²','daum','010','¼­¿ï',sysdate,0)
 create table PARK_TB
 (
 		park_No				number 		   primary key,
