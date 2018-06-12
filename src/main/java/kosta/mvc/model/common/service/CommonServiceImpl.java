@@ -13,7 +13,7 @@ import kosta.mvc.model.dto.NoticeDTO;
 import kosta.mvc.model.dto.TermsDTO;
 
 @Service
-public class CommonServiceImpl {
+public class CommonServiceImpl implements CommonService{
 	
 	@Autowired
 	private FAQDAO faqDAO;

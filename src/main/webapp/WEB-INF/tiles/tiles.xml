@@ -4,33 +4,59 @@
 
 <tiles-definitions>
 
-<definition name="mainLayout"
-      template="/WEB-INF/views/tiles/mainLayout.jsp">
-      <put-attribute name="header"
-         value="/WEB-INF/views/tiles/header.jsp" />
-      <put-attribute name="footer"
-         value="/WEB-INF/views/tiles/footer.jsp" />
-   </definition>
+	<definition name="mainLayout"
+		template="/WEB-INF/views/tiles/mainLayout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/tiles/header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/tiles/footer.jsp" />
+	</definition>
 
-   <definition extends="mainLayout" name="*">
-      <put-attribute name="content"
-         value="/WEB-INF/views/{1}.jsp" />
-   </definition>
+	<definition extends="mainLayout" name="*">
+		<put-attribute name="content"
+			value="/WEB-INF/views/{1}.jsp" />
+	</definition>
 
+	<definition name="signLayout"
+		template="/WEB-INF/views/tiles/signLayout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/tiles/header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/tiles/footer.jsp" />
+	</definition>
 
+	<definition extends="signLayout" name="sign/*">
+		<put-attribute name="content"
+			value="/WEB-INF/views/Sign/{1}.jsp" />
+	</definition>
 
-   <definition name="ServiceInfoLayout"
-      template="/WEB-INF/views/tiles/layout.jsp">
-      <put-attribute name="header"
-         value="/WEB-INF/views/tiles/header.jsp" />
-      <put-attribute name="footer"
-         value="/WEB-INF/views/tiles/footer.jsp" />
-      <put-attribute name="sidebar"
-         value="/WEB-INF/views/tiles/ServiceInfoSidebar.jsp" />
-   </definition>
+	<definition name="ServiceInfoLayout"
+		template="/WEB-INF/views/tiles/layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/tiles/header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/tiles/footer.jsp" />
+		<put-attribute name="sidebar"
+			value="/WEB-INF/views/tiles/ServiceInfoSidebar.jsp" />
+	</definition>
 
-   <definition extends="ServiceInfoLayout" name="common/*">
-      <put-attribute name="content"
-         value="/WEB-INF/views/Common/{1}.jsp" />
-   </definition>
+	<definition extends="ServiceInfoLayout" name="common/*">
+		<put-attribute name="content"
+			value="/WEB-INF/views/Common/{1}.jsp" />
+	</definition>
+
+	<definition name="reserveRegistLayout"
+		template="/WEB-INF/views/tiles/layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/tiles/header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/tiles/footer.jsp" />
+		<put-attribute name="sidebar"
+			value="/WEB-INF/views/tiles/reserveRegistSidebar.jsp" />
+	</definition>
+
+	<definition extends="reserveRegistLayout" name="seller/*">
+		<put-attribute name="content"
+			value="/WEB-INF/views/Seller/{1}.jsp" />
+	</definition>
 </tiles-definitions>
