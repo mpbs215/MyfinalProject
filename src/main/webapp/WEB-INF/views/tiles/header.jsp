@@ -37,11 +37,11 @@
         <ul class="nav-menu">
           <li class="menu-active"><a href="${pageContext.request.contextPath}/">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/common/introduce">서비스 안내</a></li>
-          <li><a href="${pageContext.request.contextPath}/User/userReserve">주차장 예약</a></li>
-          <li><a href="${pageContext.request.contextPath}/Seller/sellerParkRegistForm">주차장 등록</a></li>
+          <li><a href="${pageContext.request.contextPath}/user/userReserve">주차장 예약</a></li>
+          <li><a href="${pageContext.request.contextPath}/seller/sellerParkRegistForm">주차장 등록</a></li>
           
-          <li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
-          <li><a href="${pageContext.request.contextPath}/signUpForm">회원 가입</a></li>
+          <li><a href="${pageContext.request.contextPath}/sign/loginForm">로그인</a></li>
+          <li><a href="${pageContext.request.contextPath}/sign/signUpForm">회원 가입</a></li>
           
 <!--           <li class="menu-has-children"><a href="">Drop Down</a>
             <ul>
