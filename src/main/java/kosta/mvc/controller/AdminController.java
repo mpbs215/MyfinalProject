@@ -19,74 +19,78 @@ import kosta.mvc.model.dto.UserDTO;
 @RequestMapping("/admin")
 @Controller
 public class AdminController {
-	
+
 	@Autowired
 	private FaqService faqService;
-	
+
 	@Autowired
 	private ManageUserService manageUserService;
-	
+
 	@Autowired
 	private NoticeService noticeService;
-	
+
 	@Autowired
 	private QnaReviewService qnaReviewService;
-	
+
 	@Autowired
 	private QnaService qnaService;
-	
+
 	@Autowired
 	private TermsService termsService;
-	
+
 	@RequestMapping("/manageUser")
-	public void manageUser() {}
-	
+	public void manageUser() {
+	}
+
 	/**
 	 * Ajax로 유저리스트 호출
+	 * 
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("/manageUserList")
-	public List<UserDTO> manageUserList(){
+	public List<UserDTO> manageUserList() {
 		return manageUserService.manageUserList();
 	}
-	
+
 	/**
-	 * 유저 한명 강퇴
-	 * request: 유저번호
+	 * 유저 한명 강퇴 request: 유저번호
+	 * 
 	 * @return 삭제결과
 	 */
 	@ResponseBody
 	@RequestMapping("/manageUserDelete")
-	public int manageUserDelete(int userNo){
+	public int manageUserDelete(int userNo) {
 		return 00;
 	}
-	
+
 	/**
 	 * 유저 여러명 동시 강퇴
+	 * 
 	 * @param userNo
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("/manageUserMultiDelete")
-	public int manageUserMultiDelete(int userNo[]){
+	public int manageUserMultiDelete(int userNo[]) {
 		return 0;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/manageUserSearch")
-	public List<UserDTO> manageUserSearch(String keyword){
+	public List<UserDTO> manageUserSearch(String keyword) {
 		return null;
 	}
-	
+
 	/**
-	 * @param userId 유저 아이디
+	 * @param userId
+	 *            유저 아이디
 	 * @return 회원 한명 DTO 정보
 	 */
 	@RequestMapping("/manageUserDetail")
 	public ModelAndView manageUserDetail(String userId) {
-		//이용내역보기, 판매정보보기 추가예정
+		// 이용내역보기, 판매정보보기 추가예정
 		return null;
 	}
-	
+
 }

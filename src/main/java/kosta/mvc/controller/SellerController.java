@@ -20,88 +20,92 @@ import kosta.mvc.model.seller.service.SellerServiceImpl;
 @RequestMapping("/Seller")
 @Controller
 public class SellerController {
-	
+
 	@Autowired
 	private SellerServiceImpl service;
-	
+
 	/**
 	 * request : 세션 아이디
+	 * 
 	 * @return 자신의 주차장 레코드리스트
 	 */
 	@RequestMapping("/sellerParkList")
 	public String sellerParkList() {
 		return "Seller/sellerParkList";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping
-	public List<ParkDTO> sellerParkListLoad(){
-		UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		List<ParkDTO> list=service.sellerParkList(userDTO.getUserId());
+	public List<ParkDTO> sellerParkListLoad() {
+		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<ParkDTO> list = service.sellerParkList(userDTO.getUserId());
 		return list;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/sellerParkDelete")
 	public int sellerParkDelete(int parkNo) {
 		return service.sellerParkDelete(parkNo);
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/sellerParksDelete")
 	public int sellerParksDelete(int[] parkNos) {
 		return service.sellerParksDelete(parkNos);
 	}
-	
+
 	/**
 	 * 주차장 등록 폼으로 이동
 	 */
 	@RequestMapping("/sellerParkRegistForm")
-	public void sellerParkRegistForm() {}
-	
+	public void sellerParkRegistForm() {
+	}
+
 	/**
 	 * 주차장 등록하기
-	 * @param parkDto 주차장정보
+	 * 
+	 * @param parkDto
+	 *            주차장정보
 	 * @return
 	 */
 	@RequestMapping("/sellerParkRegist")
-	public ModelAndView sellerParkRegist(ParkDTO parkDto,CarTypeDTO carTypeDto,ParkImgDTO parkImg,ParkRegiDTO parkRegi) {
+	public ModelAndView sellerParkRegist(ParkDTO parkDto, CarTypeDTO carTypeDto, ParkImgDTO parkImg,
+			ParkRegiDTO parkRegi) {
 		ModelAndView mv = new ModelAndView();
-		
-		service.sellerParkRegist(parkDto,carTypeDto,parkImg,parkRegi);
-		
+
+		service.sellerParkRegist(parkDto, carTypeDto, parkImg, parkRegi);
+
 		mv.setViewName("redirect:/seller/sellerParkList");
 		return mv;
 	}
-	
+
 	/**
 	 * request : 세션 id
+	 * 
 	 * @return 지난예약상황 리스트
 	 */
 	@RequestMapping("/sellerReserveList")
 	public ModelAndView sellerReserveList(String userId) {
 		ModelAndView mv = new ModelAndView();
-		UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		List<ParkReserveDTO> list=service.sellerReserveList(userDTO.getUserId());
-		mv.addObject("list",list);
+		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<ParkReserveDTO> list = service.sellerReserveList(userDTO.getUserId());
+		mv.addObject("list", list);
 		return mv;
 	}
-	
+
 	/**
 	 * 예약상황 페이지에서 현재 예약상황 테이블 레코드 호출
 	 */
 	@ResponseBody
 	@RequestMapping("/sellerReserveListLoad")
 	public List<ParkReserveDTO> sellerReserveListLoad() {
-		UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		List<ParkReserveDTO> list=service.sellerReserveListLoad(userDTO.getUserId());
+		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<ParkReserveDTO> list = service.sellerReserveListLoad(userDTO.getUserId());
 		return list;
 	}
 
 	/**
-	 * request: parkNo
-	 * result: 0-실패, 1-성공
-	 * 예약상황 페이지에서 취소 버튼클릭시
+	 * request: parkNo result: 0-실패, 1-성공 예약상황 페이지에서 취소 버튼클릭시
 	 */
 	@ResponseBody
 	@RequestMapping("/sellerReserveDelete")

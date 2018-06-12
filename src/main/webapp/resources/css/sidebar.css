@@ -19,11 +19,12 @@ border-radius: 5px;
 color: #666;
 cursor: pointer;
 display:block;
-height:25px;
+height:40px;
 line-height: 25px;
-text-indent: 10px;
+text-indent: 0px;
 text-decoration:none;
 width:100%;
+text-align: center;
 }
 #navigation a:hover{
 text-decoration:none;

@@ -15,11 +15,11 @@ drop table UserInfo;
 select reserveno,parkname,reservestart,reserveend,r.userid,price*(reserveend-reservestart)*24 price from park p join parkreserve r using(parkno) 
 where p.userid=0 and reserveend<sysdate
 
-create table UserInfo
+create table USER_INFO_TB
 (
-		userId			varchar2(100)	primary key,
+		USER_ID			varchar2(100)	primary key,
 		password	varchar2(100) NOT NULL,
-		userName   varchar2(100) NOT NULL,
+		USER_NAME   varchar2(100) NOT NULL,
 		email			varchar2(100) NOT NULL,
 		hp				varchar2(100) NOT NULL,
 		address		varchar2(100) NOT NULL,
@@ -33,17 +33,17 @@ insert into userinfo values('LeeJ','2345','이재문','LeeJaeDoor@naver.com','010-9
 insert into userinfo values('JeeM','1234','지문경','moonkyong@naver.com','010-9324-9482','수원',sysdate,0);
 insert into userinfo values('KonE','3456','공은비','silverRain@naver.com','010-9324-9482','북한',sysdate,0);
 
-create table Park
+create table PARK_TB
 (
-		parkNo				number 		   primary key,
-		parkName			varchar2(100)  NOT NULL,
-		userId   			varchar2(100)  NOT NULL constraint park_userId_fk references userinfo(userId),
-		parkAddr			varchar2(200)  NOT NULL,
-		parkSize			long 		   NOT NULL,
-		parkContent 		varchar2(2000) NOT NULL,
+		park_No				number 		   primary key,
+		user_Id   			varchar2(100)  NOT NULL constraint park_userId_fk references userinfo(userId),
+		park_Name			varchar2(100)  NOT NULL,
+		park_Addr			varchar2(200)  NOT NULL,
+		park_Size			long 		   NOT NULL,
+		park_Content 		varchar2(2000) NOT NULL,
 		price				number 		   NOT NULL,
 		latitude			varchar2(100)  NOT NULL,
-		longtitude			varchar2(100)  NOT NULL
+		longitude			varchar2(100)  NOT NULL
 );
 
 insert into park values
@@ -60,95 +60,96 @@ insert into park values
 
 
 
-create table parkRegist
+create table park_Regist_TB
 (
-		parkNo			number	  primary key constraint regist_parkno_fk references park(parkNo),
-		regiStart		Timestamp NOT NULL,
-		regiEnd			Timestamp NOT NULL
+		park_No			number	  primary key constraint regist_parkno_fk references park(parkNo),
+		regi_Start		Timestamp NOT NULL,
+		regi_End			Timestamp NOT NULL
 );
 
-create table parkReserve
+create table park_Reserve_TB
 (
-		reserveNo		number 			primary key,
-		userId			varchar2(100)	NOT NULL constraint reserve_userId_fk references userinfo(userId),
-		parkNo 			number 			NOT NULL constraint reserve_parkno_fk 	references parkRegist(parkNo),
-		reserveStart	Timestamp		NOT NULL,
-		reserveEnd		Timestamp  		NOT NULL,
-		carType			varchar2(100)	NOT NULL
+		reserve_No		number 			primary key,
+		park_No 			number 			NOT NULL constraint reserve_parkno_fk 	references parkRegist(parkNo),
+		user_Id			varchar2(100)	NOT NULL constraint reserve_userId_fk references userinfo(userId),
+		reserve_Start	Timestamp		NOT NULL,
+		reserve_End		Timestamp  		NOT NULL,
+		car_Type			varchar2(100)	NOT NULL
 );
 
-create table review
+create table review_TB
 (
-		userId			varchar2(100)	constraint	review_userId_fk references userinfo(userId),
-		parkNo			number		 	constraint	review_parkno_fk references parkRegist(parkno),
+		user_Id			varchar2(100)	constraint	review_userId_fk references userinfo(userId),
+		park_No			number		 	constraint	review_parkno_fk references parkRegist(parkno),
 		rating			number			NOT NULL,			
-		reviewContent	varchar2(500)	NOT NULL,
+		review_Content	varchar2(500)	NOT NULL,
 		
 		CONSTRAINT review_pk PRIMARY KEY (userId, parkNo)
 );
 
-create table parkImage
+create table park_Image_TB
 (
-		imgNo		number 		  primary key,
-		parkNo		number		  NOT NULL constraint	img_parkno_fk	references parkRegist(parkNo),
-		imgPath		varchar2(100) NOT NULL
+		img_No		number 		  primary key,
+		park_No		number		  NOT NULL constraint	img_parkno_fk	references parkRegist(parkNo),
+		img_Path		varchar2(100) NOT NULL
 );
 
-create table carType
+create table car_Type_TB
 (		
-		parkNo	number			constraint	carType_parkno_fk	references parkRegist(parkNo),
-		carType varchar2(100) ,
-		maxCar  number not null,
+		park_No	number			constraint	carType_parkno_fk	references parkRegist(parkNo),
+		car_Type varchar2(100) ,
+		max_Car  number not null,
 		CONSTRAINT carType_pk PRIMARY KEY (parkNo,carType)
 );
 
-create table seller
+create table seller_TB
 (
-		userId		varchar2(100) primary key constraint	seller_userId_fk references userinfo(userId),
+		user_Id		varchar2(100) primary key constraint	seller_userId_fk references userinfo(userId),
 		account		varchar2(200) NOT NULL,
-		realname	varchar2(200) NOT NULL
+		real_name	varchar2(200) NOT NULL
 );
 
-create table authority
+create table authority_TB
 (
-		userId	varchar2(100) constraint authority_userId_fk references userinfo(userId),
+		user_Id	varchar2(100) constraint authority_userId_fk references userinfo(userId),
 		role	varchar2(100),
 		CONSTRAINT authority_pk PRIMARY KEY (userId,role)
 );
 
-create table qna
+create table qna_TB
 (
-		qnaNo		number primary key,
-		userId		varchar2(100) constraint qna_userId_fk references userinfo(userId),
-		QNASubject  varchar2(200) NOT NULL,
-		QNAContent  varchar2(2000) NOT NULL,
-		QNARegidate TIMESTAMP NOT NULL,
-		QNAReview	varchar2(2000),
-		QNAReviewRegidate timestamp,
-		QNAHIT		number NOT NULL,
-		QNAPWD		number
+		qna_No		number primary key,
+		user_Id		varchar2(100) constraint qna_userId_fk references userinfo(userId),
+		QNA_Sub  varchar2(200) NOT NULL,
+		QNA_Content  varchar2(2000) NOT NULL,
+		QNA_DT TIMESTAMP NOT NULL,
+		QNA_Review	varchar2(2000),
+		QNA_Review_DT timestamp,
+		QNA_HIT		number NOT NULL,
+		QNA_PWD		number,
+		QNA_IMAGE varchar2(100)
 );
 
-create table faq(
-		faqNo	number	primary key,
-		faqSubject varchar2(200) not null,
-		faqContent varchar2(2000) not null
+create table faq_TB(
+		faq_No	number	primary key,
+		faq_Sub varchar2(200) not null,
+		faq_Content varchar2(2000) not null
 );
 
-create table terms(
-		termsno	number primary key,
-		termsSubject varchar2(200) not null,
-		termsContent varchar2(2000) not null
+create table terms_TB(
+		terms_no	number primary key,
+		terms_Sub varchar2(200) not null,
+		terms_Content varchar2(2000) not null
 );
 
 
-create table notice(
-		noticeNo	number primary key,
-		noticesubject varchar2(200) NOT NULL,
-		noticeRegidate timestamp NOT NULL,
-		noticeContent varchar2(2000) NOT NULL,
-		noticeHit	  number NOT NULL,
-		noticeImage	  varchar2(100)
+create table notice_TB(
+		notice_No	number primary key,
+		notice_sub varchar2(200) NOT NULL,
+		notice_DT timestamp NOT NULL,
+		notice_Content varchar2(2000) NOT NULL,
+		notice_Hit	  number NOT NULL,
+		notice_Image	  varchar2(100)
 );
 
 
