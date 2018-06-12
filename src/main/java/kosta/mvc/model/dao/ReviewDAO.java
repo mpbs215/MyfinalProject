@@ -18,6 +18,10 @@ public class ReviewDAO {
 	}
 
 	public List<ReviewDTO> selectReview(int parkNo) {
-		return null;
+		return session.selectList("userMapper.selectReview",parkNo);
+	}
+
+	public int insertReview(ReviewDTO dto) {
+		return session.insert("userMapper.insertReview",dto);
 	}
 }

@@ -19,6 +19,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</where>
 	</select>
 	
+	<select id="selectReview" parameterType="int" resultType="reviewDTO">
+		select*from review where parkNo=#{_parameter}
+	</select>
+	
+	<insert id="insertReview" parameterType="reviewDTO">
+		insert into review values(#{userId},#{parkNo},#{rating},#{reviewContent})
+	</insert>
+	
 	<select id="selectOnePark" parameterType="int">
 			select*from park
 			where parkNo=#{value}
@@ -35,5 +43,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	UPDATE UserInfo SET password=#{password}, username=#{userName}, email=#{email}, hp=#{hp}, address=#{address} WHERE user_id=#{userId} 
 	</update>
 	
+	<select id="selectImage" parameterType="int" resultType="parkImgDTO">
+		select*from park_image_tb where parkNo=#{_parameter}
+	</select>
 	
 </mapper>

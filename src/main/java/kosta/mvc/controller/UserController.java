@@ -65,11 +65,18 @@ public class UserController {
 	public ModelAndView userReserveForm(int parkNo) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> dataMap = service.userReserveForm(parkNo);
-		ParkDTO parkDTO = service.selectOnePark(parkNo);
-		ParkRegiDTO parkRegiDTO = service.selectOneParkRegi(parkNo);
-		List<ParkReserveDTO> parkReserveList = service.selectparkReserve(parkNo);
-		List<ReviewDTO> reviewList = service.selectReview(parkNo);
-		return null;
+		mv.addObject("parkDTO",dataMap.get("parkDTO"));
+		mv.addObject("parkRegiDTO",dataMap.get("parkRegiDTO"));
+		mv.addObject("parkReserveList",dataMap.get("parkReserveList"));
+		mv.addObject("reviewList",dataMap.get("reviewList"));
+		mv.setViewName("user/userReserveForm");
+		return mv;
+	}
+	
+	@RequestMapping("/insert")
+	public String insertReview(ReviewDTO dto) {
+		service.insertReview(dto);
+		return "redirect:/user/userReserveForm";
 	}
 
 	/*
