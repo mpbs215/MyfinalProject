@@ -8,8 +8,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select*from faq
 	</select>
 	
+	<resultMap type="termsDTO" id="selectTerms">
+		<id column="terms_no" property="termsNo"/>
+		<result column="terms_sub" property="termsSubject"/>
+		<result column="terms_content" property="termsContent"/>
+	</resultMap>
+		
 	<select id="selectTerms" resultType="termsDTO">
-		select*from terms
+		select * from terms_tb
 	</select>
 	
 	<select id="selectNotice" resultType="noticeDTO" parameterType="int">

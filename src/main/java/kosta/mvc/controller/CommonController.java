@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.mvc.model.common.service.CommonService;
-import kosta.mvc.model.common.service.CommonServiceImpl;
 import kosta.mvc.model.dto.FAQDTO;
 import kosta.mvc.model.dto.NoticeDTO;
 import kosta.mvc.model.dto.TermsDTO;
-import kosta.mvc.model.dto.UserDTO;
 
 @RequestMapping("/common")
 @Controller
@@ -54,7 +52,6 @@ public class CommonController {
 	public ModelAndView terms() {
 		ModelAndView mv = new ModelAndView();
 		List<TermsDTO> list = commonService.selectTerms();
-
 		mv.addObject("list", list);
 		mv.setViewName("/Common/terms");
 		return mv;

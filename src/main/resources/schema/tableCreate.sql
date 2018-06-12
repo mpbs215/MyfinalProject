@@ -1,16 +1,16 @@
-drop table notice;
-drop table terms;
-drop table faq;
-drop table review;
-drop table parkImage;
-drop table carType;
-drop table authority;
-drop table seller;
-drop table qna;
-drop table parkReserve;
-drop table parkRegist;
-drop table Park;
-drop table UserInfo;
+drop table notice_TB;
+drop table terms_TB;
+drop table faq_TB;
+drop table review_TB;
+drop table parkImage_TB;
+drop table carType_TB;
+drop table authority_TB;
+drop table seller_TB;
+drop table qna_TB;
+drop table parkReserve_TB;
+drop table parkRegist_TB;
+drop table Park_TB;
+drop table UserInfo_TB;
 
 select reserveno,parkname,reservestart,reserveend,r.userid,price*(reserveend-reservestart)*24 price from park p join parkreserve r using(parkno) 
 where p.userid=0 and reserveend<sysdate
