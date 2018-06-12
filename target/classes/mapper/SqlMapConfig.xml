@@ -7,6 +7,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- #{}를 사용했을 때 null을 허용하도록 설정 -->
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL"/> <!-- name값과 value값은 둘 다 예약어이다. null 소문자로 안 됨 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
 </configuration>

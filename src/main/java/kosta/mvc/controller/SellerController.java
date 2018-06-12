@@ -17,7 +17,7 @@ import kosta.mvc.model.dto.ParkReserveDTO;
 import kosta.mvc.model.dto.UserDTO;
 import kosta.mvc.model.seller.service.SellerServiceImpl;
 
-@RequestMapping("/seller")
+@RequestMapping("/Seller")
 @Controller
 public class SellerController {
 
