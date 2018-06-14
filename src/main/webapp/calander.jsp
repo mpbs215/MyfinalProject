@@ -19,11 +19,11 @@
         margin : 0 auto;
     }
 </style>
-<link href="${pageContext.request.contextPath}/fullcalendar-3.9.0/fullcalendar.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/fullcalendar-3.9.0/fullcalendar.print.css" rel="stylesheet" media="print"/>
-<script type="text/javascript" src="${pageContext.request.contextPath}/fullcalendar-3.9.0/lib/moment.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/fullcalendar-3.9.0/lib/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/fullcalendar-3.9.0/fullcalendar.js"></script>
+<link href="${pageContext.request.contextPath}/resources/fullcalendar-3.9.0/fullcalendar.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/resources/fullcalendar-3.9.0/fullcalendar.print.css" rel="stylesheet" media="print"/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/fullcalendar-3.9.0/lib/moment.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/fullcalendar-3.9.0/lib/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/fullcalendar-3.9.0/fullcalendar.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         jQuery("#calendar").fullCalendar({
