@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-<filter>
+  <filter>
    <filter-name>charaterEncoding</filter-name>
    <filter-class>
      org.springframework.web.filter.CharacterEncodingFilter
@@ -43,6 +43,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>

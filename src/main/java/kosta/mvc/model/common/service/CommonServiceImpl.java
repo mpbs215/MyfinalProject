@@ -24,8 +24,9 @@ public class CommonServiceImpl implements CommonService{
 	@Autowired
 	private NoticeDAO noticeDAO;
 
-	public List<FAQDTO> selectFAQ() {
-		return faqDAO.selectFAQ();
+	public List<FAQDTO> selectFAQAll() {
+		List<FAQDTO> list = faqDAO.selectFAQAll();
+		return list;
 	}
 
 	public List<TermsDTO> selectTerms() {

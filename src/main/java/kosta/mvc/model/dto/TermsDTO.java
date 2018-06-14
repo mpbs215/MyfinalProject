@@ -5,6 +5,8 @@ public class TermsDTO {
 	private int termsNo;
 	private String termsSub;
 	private String termsContent;
+	
+	
 	public int getTermsNo() {
 		return termsNo;
 	}

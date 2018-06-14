@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,9 +26,9 @@ public class CommonController {
 	@RequestMapping("/faq")
 	public ModelAndView faq() {
 		ModelAndView mv = new ModelAndView();
-		List<FAQDTO> list = commonService.selectFAQ();
+		List<FAQDTO> list = commonService.selectFAQAll();
 		mv.addObject("list", list);
-		mv.setViewName("Common/faq");
+		mv.setViewName("common/faq");
 		return mv;
 	}
 
@@ -53,7 +54,7 @@ public class CommonController {
 		ModelAndView mv = new ModelAndView();
 		List<TermsDTO> list = commonService.selectTerms();
 		mv.addObject("list", list);
-		mv.setViewName("/Common/terms");
+		mv.setViewName("common/terms");
 		return mv;
 	}
 
@@ -67,7 +68,7 @@ public class CommonController {
 		ModelAndView mv = new ModelAndView();
 		List<NoticeDTO> list = commonService.selectNotice();
 		mv.addObject("list", list);
-		mv.setViewName("/Common/notice");
+		mv.setViewName("common/notice");
 		return mv;
 	}
 
@@ -77,12 +78,12 @@ public class CommonController {
 	 * @param noticeNo
 	 * @return noticeDTO
 	 */
-	@RequestMapping("/noticeDetail")
-	public ModelAndView noticeDetail(int noticeNo) {
+	@RequestMapping("/noticeDetail/{noticeNo}")
+	public ModelAndView noticeDetail(@PathVariable int noticeNo) {
 		ModelAndView mv = new ModelAndView();
 		NoticeDTO noticeDTO = commonService.selectOneNotice(noticeNo);
-		mv.setViewName("/Common/noticeDetail");
-		mv.addObject("dto", noticeDTO);
+		mv.setViewName("common/noticeDetail");
+		mv.addObject("noticeDTO", noticeDTO);
 		return mv;
 	}
 

@@ -18,8 +18,12 @@ public class NoticeDAO {
 	}
 
 	public NoticeDTO selectOneNotice(int noticeNo) {
-		return session.selectOne("commonMapper.selectNotice",noticeNo);
+		return session.selectOne("commonMapper.selectNotice", noticeNo);
 	}
-	
-	
+
+	public int insertNotice(NoticeDTO noticeDTO) {
+		int result = session.insert("noticeMapper.insertNotice", noticeDTO);
+		return result;
+	}
+
 }

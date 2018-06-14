@@ -4,5 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="noticeMapper">
-	
+	<insert id="insertNotice" parameterType="noticeDTO">
+		insert into notice_tb values(notice_seq.nextval,#{noticeSub},sysdate,#{noticeContent},0, );
+	</insert>
 </mapper>

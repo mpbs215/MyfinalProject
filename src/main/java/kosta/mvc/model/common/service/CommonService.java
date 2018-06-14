@@ -8,7 +8,7 @@ import kosta.mvc.model.dto.TermsDTO;
 
 public interface CommonService {
 
-	public List<FAQDTO> selectFAQ();
+	public List<FAQDTO> selectFAQAll();
 
 	public List<TermsDTO> selectTerms();
 
