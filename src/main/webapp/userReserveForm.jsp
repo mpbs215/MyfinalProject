@@ -101,7 +101,37 @@ body {
 							}
 					);
 					
-			});
+			}
+		$('#star').click(function(){
+			var data="";
+			var star="";
+			switch ($(this).attr("name")) {
+			  case 1: star="★☆☆☆☆"; break;
+			  case 2: star="★★☆☆☆"; break;
+			  case 3: star="★★★☆☆"; break;
+			  case 4: star="★★★★☆"; break;
+			  case 5: star="★★★★★"; break;
+			}
+			$.ajax({
+				url: "${pageContext.request.contextPath}/user/userClickReviewStar",
+				data: "rating="+$(this).attr("name")+"&parkNo="+${parkDTO.parkNo},
+				dataType: "json",
+				sucess: function(result){
+					$("#reviewContent").html("");
+					 $.each(result, function(index, item){
+						data+="<div class='col-sm-2 font-weight-bold'>";
+						data+=star+"</div>";
+						data+="<div class='col-sm-8 font-weight-bold'>";
+						data+=item.reviewContent+"</div>"
+						data+="<div class='col-sm-2 font-weight-bold'>";
+						data+=item.userId+"</div>"
+						data+="<div class='col-sm-12'><hr /></div>";
+						$("#reviewContent").append(data);
+					 })
+				}
+			})
+		})
+	);
 </script>
 </head>
 <body>
@@ -123,11 +153,11 @@ body {
 					<table class="table" style="width: 95%">
 						<tr>
 							<th class="bg-primary text-white">주차장 이름</th>
-							<th>잘생긴 주차장</th>
+							<th>${parkDTO.parkName} 잘생긴 주차장</th>
 						</tr>
 						<tr>
 							<th class="bg-primary text-white">판매자</th>
-							<th>김돈황</th>
+							<th>${parkDTO.userId} 김돈황</th>
 						</tr>
 						<tr>
 							<th class="bg-primary text-white">주차 차종</th>
@@ -160,24 +190,27 @@ body {
 				<div class="row">
 					<div class="col-sm-1"></div>
 					<div class="col-sm-2">
-						<a href="#" style="color: #FFE400;">★★★★★</a>
+						<button type="button" class="btn btn-outline-warning" id="star" name="5">★★★★★</button>
 					</div>
 					<div class="col-sm-2">
-						<a href="#" style="color: #FFE400;">★★★★☆</a>
+						<button type="button" class="btn btn-outline-warning" id="star" name="4">★★★★☆</button>
+
 					</div>
 					<div class="col-sm-2">
-						<a href="#" style="color: #FFE400;">★★★☆☆</a>
+						<button type="button" class="btn btn-outline-warning" id="star" name="3">★★★☆☆</button>
 					</div>
 					<div class="col-sm-2">
-						<a href="#" style="color: #FFE400;">★★☆☆☆</a>
+						<button type="button" class="btn btn-outline-warning" id="star" name="2">★★☆☆☆</button>
 					</div>
 					<div class="col-sm-2">
-						<a href="#" style="color: #FFE400;">★☆☆☆☆</a>
+						<button type="button" class="btn btn-outline-warning" id="star" name="1">★☆☆☆☆</button>
 					</div>
-					<div class="col-sm-1"></div>
+					<div class="col-sm-1">
+						<button type="button" class="btn btn-outline-warning" id="star">&reg;</button>
+					</div>
 				</div>
 				<br />
-				<div class="row justify-content-center">
+				<div class="row justify-content-center" id="reviewContent">
 					<div class="col-sm-2 font-weight-bold">
 					★★★★☆
 					</div>
@@ -208,6 +241,9 @@ body {
 					</div>
 					<div class="col-sm-2 font-weight-bold">김돈황</div>
 					<div class="col-sm-12" style="margin-top: 15px">
+					</div>
+				</div>
+				<form action="#" method="get" class="row justify-content-center"> 
 					<select name="rating" class="text-warning custom-select" style="height: 30px">
 					<option value="5">★★★★★</option>
 					<option value="4">★★★★☆</option>
@@ -217,24 +253,31 @@ body {
 					</select> 
 					<b class="text-primary">평점 및 후기를 남겨주세요.</b>
 					<textarea rows="5" cols="" class="form-control"></textarea>
-					</div>
-				</div>
+					<button type="submit" class="btn btn-primary form-control">리뷰올리기</button>
+				</form> 
 			</div>
 			<div class="col-sm-5">
 				<div id="calendar"></div>
 				<div>
 					<b class="bg-danger">----</b>
 				</div>
-				<div class="text-center">
-					<br />
-					<h6 class="font-weight-bold">예약 날짜 선택하기</h6> 
-					<br />
+				
+				<br />
+				<form action="#" method="post">
+				<div class="text-center border rounded">
+					<h6 class="font-weight-bold form-control bg-success text-white">예약 날짜 선택하기</h6> 
+					<div class="row"><br /></div>
 					<div class="row justify-content-center">
-						<div class="col-sm-5"><input type="text" class='datetimepicker '></div>
+						<div class="col-sm-5"><input type="text" class='datetimepicker' name=""></div>
 						<div class="col-sm-2">~</div>
-						<div class="col-sm-5"><input type="text" class='datetimepicker2'></div>
+						<div class="col-sm-5"><input type="text" class='datetimepicker2' name=""></div>
+					</div>
+					<div>
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+						<button type="submit" class="btn btn-primary">예약하기</button>
 					</div>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -84,8 +84,8 @@ public class UserController {
 	 */
 	@RequestMapping("/userClickReviewStar")
 	@ResponseBody
-	public List<ReviewDTO> userClickReviewStar(int parkNo, int starNo) {
-		return service.userClickReviewStar(parkNo, starNo);
+	public List<ReviewDTO> userClickReviewStar(int parkNo, int rating) {
+		return service.userClickReviewStar(parkNo, rating);
 	}
 
 

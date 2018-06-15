@@ -4,20 +4,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="commonMapper">
-	<select id="selectFAQ" resultType="fAQDTO">
-		select*from faq
-	</select>
-	
-	<select id="selectTerms" resultType="termsDTO">
-		select*from terms
-	</select>
-	
-	<select id="selectNotice" resultType="noticeDTO" parameterType="int">
-		select*from notice
+	<resultMap type="termsDTO" id="selectTerms">
+		<id column="terms_no" property="termsNo" />
+		<result column="terms_sub" property="termsSubject" />
+		<result column="terms_content" property="termsContent" />
+	</resultMap>
+
+
+	<select id="selectNotice" resultType="noticeDTO"
+		parameterType="int">
+		select * from notice_tb
 		<where>
-		<if test="_parameter!=null">
-			noticeNo = #{_parameter}
-		</if>
+			<if test="_parameter!=null">
+				notice_No = #{_parameter}
+			</if>
 		</where>
 	</select>
+
+	<select id="selectTermsAll" resultType="termsDTO">
+		select * from terms_TB
+	</select>
+
+	<select id="selectFAQAll" resultType="fAQDTO">
+		select * from faq_TB
+	</select>
+
+
 </mapper>

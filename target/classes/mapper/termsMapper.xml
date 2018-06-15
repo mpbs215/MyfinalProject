@@ -3,6 +3,25 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="qnaReviewMapper">
-	
+<mapper namespace="termsMapper">
+
+	<select id="updateFormTerms" parameterType="int"
+		resultType="termsDTO">
+		select * from terms_tb where terms_no=#{termsNo}
+	</select>
+
+	<update id="updateTerms" parameterType="termsDTO">
+		update terms_tb set
+		terms_sub=#{termsSub}, terms_content=#{termsContent} where
+		terms_no=#{termsNo}
+	</update>
+
+	<insert id="insertTerms" parameterType="termsDTO">
+		insert into terms_tb
+		values(terms_seq.nextval,#{termsSub},#{termsContent})
+	</insert>
+
+	<delete id="deleteTerms" parameterType="int">
+		delete from terms_tb where terms_no=#{termsNo}
+	</delete>
 </mapper>
