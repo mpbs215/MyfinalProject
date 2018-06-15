@@ -36,7 +36,7 @@ public class ParkReserveDAO {
 	}
 
 	public List<ParkReserveDTO> selectparkReserve(int parkNo) {
-		return session.selectList("",parkNo);
+		return session.selectList("userMapper.selectparkReserve",parkNo);
 	}
 	
 	

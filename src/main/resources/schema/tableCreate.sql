@@ -27,7 +27,6 @@ create table USER_INFO_TB
 		seller			char(1)
 );
 commit
-insert into user_info_tb values('kim','2656','±èµ·È²','daum','010','¼­¿ï',sysdate,0)
 create table PARK_TB
 (
 		park_No				number 		   primary key,
@@ -40,6 +39,15 @@ create table PARK_TB
 		latitude			varchar2(100)  NOT NULL,
 		longitude			varchar2(100)  NOT NULL
 );
+
+insert into user_info_tb values('kim','2656','±èµ·È²','daum','010','¼­¿ï',sysdate,0)
+insert into user_info_tb values('customer','2656','±èµ·Èñ','naver','010','¼­¿ï',sysdate,0)
+insert into park_tb values(1,'kim','µ·È²ÁÖÂ÷Àå','ÀºÆò±¸ ºÒ±¤µ¿',5000,'µµ³­µµ³­±èµµ³­ÁÖÂ÷ÀÚÀå',2000,10,10)
+insert into park_regist_tb values(1,'2018-06-16','2018-06-17')
+insert into park_Reserve_TB values(1,1,'customer','2018-06-16 05:00','2018-06-16 12:00','¼ÒÇü')
+insert into review_TB values('customer',1,5,'¸®ºä¸®ºäÇÑ³»¿ë')
+insert into car_type_tb values(1,'¼ÒÇü',2)
+insert into car_type_tb values(1,'ÁßÇü',2)
 
 create table park_Regist_TB
 (

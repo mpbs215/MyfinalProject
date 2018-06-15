@@ -4,25 +4,23 @@ public class ReviewDTO {
 	private String userId;
 	private int parkNo;
 	private int rating;
-	private int reviewContent;
+	private String reviewContent;
 	
-	public ReviewDTO(String userId, int parkNo, int rating, int reviewContent) {
+	public ReviewDTO(int parkNo, int rating) {
+		super();
+		this.parkNo = parkNo;
+		this.rating = rating;
+	}
+	public ReviewDTO(String userId, int parkNo, int rating, String reviewContent) {
 		super();
 		this.userId = userId;
 		this.parkNo = parkNo;
 		this.rating = rating;
 		this.reviewContent = reviewContent;
 	}
-	
-	public ReviewDTO(int parkNo,int rating) {
-		this.parkNo=parkNo;
-		this.rating=rating;
-	}
-	
 	public ReviewDTO() {
 		super();
 	}
-	
 	public String getUserId() {
 		return userId;
 	}
@@ -41,11 +39,12 @@ public class ReviewDTO {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	public int getReviewContent() {
+	public String getReviewContent() {
 		return reviewContent;
 	}
-	public void setReviewContent(int reviewContent) {
+	public void setReviewContent(String reviewContent) {
 		this.reviewContent = reviewContent;
 	}
+	
 	
 }
