@@ -104,9 +104,10 @@ public class UserController {
 	 */
 	@RequestMapping("/userModifyUserForm")
 	public ModelAndView userModifyUserForm(HttpServletRequest request) {
-		String id = request.getParameter("userId");
-		UserDTO userDTO = service.selectUserInfo(id);
-		return new ModelAndView("User/userModifyUserForm", "userDTO", userDTO);
+		String id = (String)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		//String uid = id.
+		UserDTO dto = service.selectUserInfo(id);
+		return new ModelAndView("User/userModifyUserForm", "dto", dto);
 	}
 
 	/**
@@ -138,5 +139,12 @@ public class UserController {
 
 		return new ModelAndView("User/userModifyUserForm");
 	}
-
+	
+	/**
+	 * 마이페이지 예약목록
+	 */
+	@RequestMapping("/userMypageReserveList")
+	public List<ParkDTO> regiParkLoad(){
+		return null;
+	}
 }
