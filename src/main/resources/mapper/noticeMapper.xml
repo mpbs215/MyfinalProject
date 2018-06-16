@@ -5,6 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="noticeMapper">
 	<insert id="insertNotice" parameterType="noticeDTO">
-		insert into notice_tb values(notice_seq.nextval,#{noticeSub},sysdate,#{noticeContent},0, );
+		insert into notice_tb
+		values(notice_seq.nextval,#{noticeSub},sysdate,#{noticeContent},0,#{noticeImage})
 	</insert>
+
+	<delete id="deleteNotice">
+		delete from notice_tb where notice_no=#{noticeNo}
+	</delete>
+
+	<update id="updateNotice" parameterType="noticeDTO">
+		update notice_tb set
+		notice_sub=#{noticeSub},
+		notice_content=#{noticeContent},
+		notice_Image=#{noticeImage}
+		where
+		notice_no=#{noticeNo}
+	</update>
 </mapper>

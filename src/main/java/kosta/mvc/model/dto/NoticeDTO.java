@@ -9,19 +9,22 @@ public class NoticeDTO {
 	private String noticeDt;
 	private String noticeContent;
 	private int noticeHit;
-	private MultipartFile noticeImage; // form 안의 file의 이름과 같아야 함.
+	private String noticeImage;
+	private MultipartFile noticeImageFile; // form 안의 file의 이름과 같아야 함.
 
 	public NoticeDTO() {
 	}
 
 	public NoticeDTO(int noticeNo, String noticeSub, String noticeDt, String noticeContent, int noticeHit,
-			MultipartFile noticeImage) {
+			String noticeImage, MultipartFile noticeImageFile) {
+		super();
 		this.noticeNo = noticeNo;
 		this.noticeSub = noticeSub;
 		this.noticeDt = noticeDt;
 		this.noticeContent = noticeContent;
 		this.noticeHit = noticeHit;
 		this.noticeImage = noticeImage;
+		this.noticeImageFile = noticeImageFile;
 	}
 
 	public int getNoticeNo() {
@@ -64,13 +67,20 @@ public class NoticeDTO {
 		this.noticeHit = noticeHit;
 	}
 
-	public MultipartFile getNoticeImage() {
+	public String getNoticeImage() {
 		return noticeImage;
 	}
 
-	public void setNoticeImage(MultipartFile noticeImage) {
+	public void setNoticeImage(String noticeImage) {
 		this.noticeImage = noticeImage;
 	}
 
+	public MultipartFile getNoticeImageFile() {
+		return noticeImageFile;
+	}
+
+	public void setNoticeImageFile(MultipartFile noticeImageFile) {
+		this.noticeImageFile = noticeImageFile;
+	}
 
 }

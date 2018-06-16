@@ -11,7 +11,6 @@
 		<th>작성날짜</th>
 		<th>작성내용</th>
 		<th>조회수</th>
-		<th>이미지</th>
 	</tr>
 	<c:forEach items="${list}" var="noticeDTO">
 		<tr>
@@ -21,7 +20,6 @@
 			<th>${noticeDTO.noticeDt}</th>
 			<th>${noticeDTO.noticeContent}</th>
 			<th>${noticeDTO.noticeHit}</th>
-			<th>${noticeDTO.noticeImage}</th>
 		</tr>
 		<tr>
 			<th><a

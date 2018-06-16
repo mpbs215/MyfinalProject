@@ -10,7 +10,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="terms_content" property="termsContent" />
 	</resultMap>
 
-
 	<select id="selectNotice" resultType="noticeDTO"
 		parameterType="int">
 		select * from notice_tb
@@ -29,5 +28,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from faq_TB
 	</select>
 
+	<select id="selectQNAAll" resultType="qNADTO">
+		select * from QNA_TB
+	</select>
 
+	<select id="selectOneQNA" parameterType="int"
+		resultType="qnaDTO">
+		select *
+		from QNA_TB where qna_no=#{QNANo}
+	</select>
+
+	<insert id="insertQNA" parameterType="qnaDTO">
+		insert into qna_tb
+		values(qna_seq.nextval,#{userId},#{QNASub},#{QNAContent},sysdate,null,null,0,#{QNAPwd},#{QNAImage})
+
+	</insert>
+
+	<update id="updateQNA" parameterType="qnaDTO">
+		update qna_tb set qna_sub=#{QNASub},qna_content=#{QNAContent}
+		<if test="QNAImage!=null">
+			,qna_Image=#{QNAImage}
+		</if>
+		where qna_no=#{QNANo}
+	</update>
+
+	<delete id="deleteQNA" parameterType="int">
+		delete from qna_tb where
+		qna_no=#{QNANo}
+	</delete>
 </mapper>

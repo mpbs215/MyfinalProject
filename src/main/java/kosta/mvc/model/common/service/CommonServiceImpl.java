@@ -7,22 +7,27 @@ import org.springframework.stereotype.Service;
 
 import kosta.mvc.model.dao.FAQDAO;
 import kosta.mvc.model.dao.NoticeDAO;
+import kosta.mvc.model.dao.QNADAO;
 import kosta.mvc.model.dao.TermsDAO;
 import kosta.mvc.model.dto.FAQDTO;
 import kosta.mvc.model.dto.NoticeDTO;
+import kosta.mvc.model.dto.QNADTO;
 import kosta.mvc.model.dto.TermsDTO;
 
 @Service
-public class CommonServiceImpl implements CommonService{
-	
+public class CommonServiceImpl implements CommonService {
+
 	@Autowired
 	private FAQDAO faqDAO;
-	
+
 	@Autowired
 	private TermsDAO termsDAO;
-	
+
 	@Autowired
 	private NoticeDAO noticeDAO;
+	
+	@Autowired
+	private QNADAO qnaDAO;
 
 	public List<FAQDTO> selectFAQAll() {
 		List<FAQDTO> list = faqDAO.selectFAQAll();
@@ -39,6 +44,16 @@ public class CommonServiceImpl implements CommonService{
 
 	public NoticeDTO selectOneNotice(int noticeNo) {
 		return noticeDAO.selectOneNotice(noticeNo);
+	}
+
+	@Override
+	public List<QNADTO> selectQNAList() {
+		return qnaDAO.selectQNAList();
+	}
+
+	@Override
+	public QNADTO selectOneQNA(int QNANo) {
+		return qnaDAO.selectOneQNA(QNANo);
 	}
 
 }

@@ -1,6 +1,9 @@
 package kosta.mvc.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -28,7 +31,7 @@ import kosta.mvc.model.dto.UserDTO;
 @Controller
 public class AdminController {
 
-	String savePath="C:\\Users\\minso\\Desktop\\Edu\\SpringWorkSpace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\finalProject\\resources\\images\\notice";
+	String savePath = "";
 	@Autowired
 	private FaqService faqService;
 
@@ -188,18 +191,70 @@ public class AdminController {
 	}
 
 	@RequestMapping("/insertNotice")
-	public String insert(HttpSession session, NoticeDTO noticeDTO) throws Exception {
-		MultipartFile file = noticeDTO.getNoticeImage();
-		// 파일첨부여부체크(electronicsDTO.getFile()==null로 체크할 수 없다. 즉
-		// electronicsDTO.getFile()은 null이 들어오지 않는다.)
-		if (noticeDTO.getNoticeImage().getSize() > 0) {
-			noticeDTO.setNoticeSub(file.getOriginalFilename());
-			
-			file.transferTo(new File(savePath + "/" + file.getOriginalFilename()));
+	public String insertNotice(HttpSession session, NoticeDTO noticeDTO) throws Exception {
+		MultipartFile file = noticeDTO.getNoticeImageFile();
+		String now = new SimpleDateFormat("yyyyMMddHmsS").format(new Date()); // 현재시간
+		String fileOriginalName = file.getOriginalFilename();
+
+		if (file.getSize() > 0) {
+			if (fileOriginalName.substring(fileOriginalName.length() - 3, fileOriginalName.length()).toLowerCase()
+					.equals("jpg")
+					|| fileOriginalName.substring(fileOriginalName.length() - 3, fileOriginalName.length())
+							.toLowerCase().equals("png")
+					|| fileOriginalName.substring(fileOriginalName.length() - 4, fileOriginalName.length())
+							.toLowerCase().equals("jppg")) {
+				savePath = session.getServletContext().getRealPath("/resources/images/notice");
+				file.transferTo(new File(savePath + "/" + now + file.getOriginalFilename()));
+				noticeDTO.setNoticeImage(now + file.getOriginalFilename());
+			}
 		}
 		// insert 호출하기
 		noticeService.insertNotice(noticeDTO);
 		// redirect:list 이동
 		return "redirect:/common/notice";
+	}
+
+	@RequestMapping("/deleteNotice/{noticeNo}")
+	public ModelAndView deleteNotice(@PathVariable int noticeNo) {
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.deleteNotice(noticeNo);
+		mv.setViewName("redirect:/common/notice");
+		return mv;
+	}
+
+	@RequestMapping("/updateNotice/{noticeNo}")
+	public ModelAndView updateNotice(@PathVariable int noticeNo) {
+		ModelAndView mv = new ModelAndView();
+		NoticeDTO noticeDTO = noticeService.noticeUpdateForm(noticeNo);
+		mv.addObject(noticeDTO);
+		mv.setViewName("common/noticeUpdateForm");
+		return mv;
+	}
+
+	@RequestMapping("/updateNotice")
+	public ModelAndView updateNotice(HttpSession session, NoticeDTO noticeDTO)
+			throws IllegalStateException, IOException {
+		ModelAndView mv = new ModelAndView();
+		MultipartFile file = noticeDTO.getNoticeImageFile();
+		String now = new SimpleDateFormat("yyyyMMddHmsS").format(new Date()); // 현재시간
+		String fileOriginalName = file.getOriginalFilename();
+
+		if (file.getSize() > 0) {
+			if (fileOriginalName.substring(fileOriginalName.length() - 3, fileOriginalName.length()).toLowerCase()
+					.equals("jpg")
+					|| fileOriginalName.substring(fileOriginalName.length() - 3, fileOriginalName.length())
+							.toLowerCase().equals("png")
+					|| fileOriginalName.substring(fileOriginalName.length() - 4, fileOriginalName.length())
+							.toLowerCase().equals("jppg")) {
+				savePath = session.getServletContext().getRealPath("/resources/images/notice");
+				file.transferTo(new File(savePath + "/" + now + file.getOriginalFilename()));
+				noticeDTO.setNoticeImage(now + file.getOriginalFilename());
+			}
+		}
+
+		int result = noticeService.noticeUpdate(noticeDTO);
+		mv.setViewName("redirect:/common/notice");
+		return mv;
+
 	}
 }

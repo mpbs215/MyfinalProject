@@ -4,6 +4,7 @@ import java.util.List;
 
 import kosta.mvc.model.dto.FAQDTO;
 import kosta.mvc.model.dto.NoticeDTO;
+import kosta.mvc.model.dto.QNADTO;
 import kosta.mvc.model.dto.TermsDTO;
 
 public interface CommonService {
@@ -15,4 +16,8 @@ public interface CommonService {
 	public List<NoticeDTO> selectNotice();
 
 	public NoticeDTO selectOneNotice(int noticeNo);
+
+	public List<QNADTO> selectQNAList();
+
+	public QNADTO selectOneQNA(int QNANo);
 }

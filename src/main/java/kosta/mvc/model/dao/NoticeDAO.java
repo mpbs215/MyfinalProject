@@ -22,8 +22,22 @@ public class NoticeDAO {
 	}
 
 	public int insertNotice(NoticeDTO noticeDTO) {
+
 		int result = session.insert("noticeMapper.insertNotice", noticeDTO);
 		return result;
+	}
+
+	public int deleteNotice(int noticeNo) {
+		int result = session.delete("noticeMapper.deleteNotice", noticeNo);
+		return result;
+	}
+
+	public NoticeDTO noticeUpdateForm(int noticeNo) {
+		return session.selectOne("commonMapper.selectNotice", noticeNo);
+	}
+
+	public int noticeUpdate(NoticeDTO noticeDTO) {
+		return session.update("noticeMapper.updateNotice", noticeDTO);
 	}
 
 }
