@@ -48,7 +48,7 @@ insert into park_Reserve_TB values(1,1,'customer','2018-06-16 05:00','2018-06-16
 insert into review_TB values('customer',1,5,'리뷰리뷰한내용')
 insert into car_type_tb values(1,'소형',2)
 insert into car_type_tb values(1,'중형',2)
-
+select*from park_Reserve_TB
 create table park_Regist_TB
 (
 		park_No			number	  primary key constraint regist_parkno_fk references park_tb(park_No),

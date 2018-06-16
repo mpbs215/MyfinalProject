@@ -25,6 +25,11 @@ public class ParkReserveDTO {
 		this.park = park;
 	}
 	
+	public ParkReserveDTO(String reserveStart,String carType) {
+		this.reserveStart = reserveStart;
+		this.carType = carType;
+	}
+	
 	public ParkReserveDTO(int reserveNo, String userId, int parkNo, String reserveStart, String reserveEnd,
 			String carType) {
 		super();
@@ -79,4 +84,12 @@ public class ParkReserveDTO {
 	public void setReserveEnd(String reserveEnd) {
 		this.reserveEnd = reserveEnd;
 	}
+	@Override
+	public String toString() {
+		return "ParkReserveDTO [reserveNo=" + reserveNo + ", userId=" + userId + ", parkNo=" + parkNo
+				+ ", reserveStart=" + reserveStart + ", reserveEnd=" + reserveEnd + ", carType=" + carType + ", park="
+				+ park + "]";
+	}
+	
+	
 }

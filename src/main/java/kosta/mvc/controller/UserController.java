@@ -69,6 +69,8 @@ public class UserController {
 		mv.addObject("parkRegiDTO",dataMap.get("parkRegiDTO"));
 		mv.addObject("parkReserveList",dataMap.get("parkReserveList"));
 		mv.addObject("reviewList",dataMap.get("reviewList"));
+		mv.addObject("parkImageList", dataMap.get("parkImageList"));
+		mv.addObject("carTypeList",dataMap.get("carTypeList"));
 		mv.setViewName("User/userReserveForm");
 		return mv;
 	}
@@ -78,7 +80,7 @@ public class UserController {
 		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		dto.setUserId(userDTO.getUserId());
 		service.insertReview(dto);
-		return "redirect:/user/userReserveForm";
+		return "redirect:/user/userReserveForm?parkNo="+dto.getParkNo();
 	}
 
 	/*
@@ -87,7 +89,30 @@ public class UserController {
 	@RequestMapping("/userClickReviewStar")
 	@ResponseBody
 	public List<ReviewDTO> userClickReviewStar(int parkNo, int rating) {
-		return service.userClickReviewStar(parkNo, rating);
+		List<ReviewDTO> list=service.userClickReviewStar(parkNo, rating);
+		for(ReviewDTO dto:list) {
+			System.out.println(dto.getUserId());
+		}
+		return list;
+	}
+	
+
+	@RequestMapping("/reservation")
+	public String reservation(ParkReserveDTO dto) {
+		//UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		//dto.setUserId(userDTO.getUserId());
+		service.insertReserve(dto);
+		return "redirect:/user/userMypageReserveList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/reserveCheck",produces="text/plain;charset=UTF-8")
+	public String reserveCheck(ParkReserveDTO dto) {
+		System.out.println("컨트롤러 호출됨");
+		System.out.println(dto);
+		//UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		//dto.setUserId(userDTO.getUserId());
+		return service.reserveCheck(dto);
 	}
 
 

@@ -38,6 +38,14 @@ public class ParkReserveDAO {
 	public List<ParkReserveDTO> selectparkReserve(int parkNo) {
 		return session.selectList("userMapper.selectparkReserve",parkNo);
 	}
+
+	public int insertReserve(ParkReserveDTO dto) {
+		return session.insert("userMapper.insertReserve",dto);
+	}
+
+	public int confirmReserve(ParkReserveDTO parkReserveDTO) {
+		return session.selectOne("userMapper.confirmReserve",parkReserveDTO);
+	}
 	
 	
 }
