@@ -3,8 +3,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <h1>QNA 수정 폼</h1>
 
-<form action="${pageContext.request.contextPath}/common/updateQNA?${_csrf.parameterName}=${_csrf.token}"
-	method="post">
+<form
+	action="${pageContext.request.contextPath}/common/updateQNA?${_csrf.parameterName}=${_csrf.token}"
+	method="post" enctype="multipart/form-data">
+	<input type="text" value="${qnaDTO.QNANo}" name="QNANo" hidden="hidden" />
 	<table>
 		<tr>
 			<th>질문번호</th>
@@ -22,15 +24,15 @@
 			<th>${qnaDTO.QNANo}</th>
 			<th>${qnaDTO.userId}</th>
 			<th><input type="text" value="${qnaDTO.QNASub}" name="QNASub"></th>
-			<th><input type="text" ${qnaDTO.QNAContent} name="QNAContent"></th>
+			<th><input type="text" value="${qnaDTO.QNAContent}"
+				name="QNAContent"></th>
 			<th>${qnaDTO.QNADT}</th>
 			<th>${qnaDTO.QNAReview}</th>
 			<th>${qnaDTO.QNAReviewDT}</th>
 			<th>${qnaDTO.QNAHit}</th>
 			<th>${qnaDTO.QNAImage}</th>
 		</tr>
-
 	</table>
-	<input type="file" name="QNAImageFile" value="파일 업로드" />
+	<input type="file" name="QNAImageFile" />
 	<button>수정</button>
 </form>

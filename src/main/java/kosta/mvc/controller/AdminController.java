@@ -191,7 +191,7 @@ public class AdminController {
 	}
 
 	@RequestMapping("/insertNotice")
-	public String insert(HttpSession session, NoticeDTO noticeDTO) throws Exception {
+	public String insertNotice(HttpSession session, NoticeDTO noticeDTO) throws Exception {
 		MultipartFile file = noticeDTO.getNoticeImageFile();
 		String now = new SimpleDateFormat("yyyyMMddHmsS").format(new Date()); // 현재시간
 		String fileOriginalName = file.getOriginalFilename();

@@ -27,5 +27,11 @@
 		<th>${qnaDTO.QNAHit}</th>
 		<th>${qnaDTO.QNAImage}</th>
 	</tr>
+	<tr>
+		<th><a
+			href="${pageContext.request.contextPath}/common/updateQNA/${qnaDTO.QNANo}">수정</a></th>
+		<th><a
+			href="${pageContext.request.contextPath}/common/deleteQNA/${qnaDTO.QNANo}">삭제</a></th>
+	</tr>
 
 </table>

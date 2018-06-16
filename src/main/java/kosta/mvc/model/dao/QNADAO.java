@@ -23,4 +23,19 @@ public class QNADAO {
 		QNADTO qnaDTO = session.selectOne("commonMapper.selectOneQNA", QNANo);
 		return qnaDTO;
 	}
+
+	public int insertQNA(QNADTO qnaDTO) {
+		int result = session.insert("commonMapper.insertQNA", qnaDTO);
+		return result;
+	}
+
+	public int updateQNA(QNADTO qnaDTO) {
+		int result = session.update("commonMapper.updateQNA", qnaDTO);
+		return result;
+	}
+
+	public int deleteQNA(int QNANo) {
+		int result = session.update("commonMapper.deleteQNA", QNANo);
+		return result;
+	}
 }
