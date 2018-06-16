@@ -61,4 +61,5 @@
 		</form>
 	</div>
 </body>
+<%@ include file="../tiles/footer.jsp"%>
 </html>
