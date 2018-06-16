@@ -6,43 +6,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="sellerMapper">
 	<resultMap type="parkReserveDTO" id="parkAndReserve">
-		<id column="reserveno" property="reserveNo"/>
-		<result column="reserveStart" property="reserveStart"/>
-		<result column="reserveEnd" property="reserveEnd"/>
-		<result column="userId" property="userId"/>
+		<id column="reserve_no" property="reserveNo"/>
+		<result column="reserve_Start" property="reserveStart"/>
+		<result column="reserve_End" property="reserveEnd"/>
+		<result column="user_Id" property="userId"/>
 		<association property="park">
 		<result column="price" property="price"/>
-		<result column="parkName" property="parkName"/>
+		<result column="park_Name" property="parkName"/>
 		</association>
 	</resultMap>
 	<!-- sellerParkRegist서비스 시작 -->
 	<select id="selectPark" resultType="parkDTO" parameterType="string">
-		select * from Park
+		select * from Park_tb
 		<where>
 			<if test="_parameter!=null">
-				userId=#(_parameter)
+				user_Id=#(_parameter)
 			</if>
 		</where>
 	</select>
 
 	<insert id="insertParkRegi" parameterType="parkRegiDTO">
-		insert into parkRegist values(#{parkNo},#{regiStart},#{regiEnd})
+		insert into park_Regist_tb values(#{parkNo},#{regiStart},#{regiEnd})
 	</insert>
 
 	<insert id="insertCarType" parameterType="carTypeDTO">
-		insert into carType values(#{parkNo},#{carType})
+		insert into car_Type_tb values(#{parkNo},#{carType})
 	</insert>
 
 	
 	<insert id="insertImg" parameterType="parkImgDTO">
-		insert into parkImage values(img_seq.nextval,#{parkNo},#{imgPath})
+		insert into park_Image values(img_seq.nextval,#{parkNo},#{imgPath})
 	</insert>
 	
 	<!-- sellerParkRegist 끝 -->
 	
 	<select id="selectReserveById" parameterType="string" resultMap="parkAndReserve">
-		select reserveno,parkname,reservestart,reserveend,r.userid,price*(reserveend-reservestart)*24 price from park p join parkreserve r using(parkno) 
-		where p.userid=#{value} and reserveend<![CDATA[<]]>sysdate
+		select reserve_no,park_name,reserve_start,reserve_end,r.user_id,price*(reserve_end-reserve_start)*24 price from park_tb p join park_reserve_tb r using(park_no) 
+		where p.user_id=#{value} and reserve_end<![CDATA[<]]>sysdate
 	</select>
 			
 	<select id="selectReserveLoadById" parameterType="string" resultMap="parkAndReserve">

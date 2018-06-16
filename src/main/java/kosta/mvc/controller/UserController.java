@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.mvc.model.dto.ParkDTO;
-import kosta.mvc.model.dto.ParkRegiDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
 import kosta.mvc.model.dto.ReviewDTO;
 import kosta.mvc.model.dto.SearchFilterDTO;
@@ -101,6 +100,8 @@ public class UserController {
 	public String reservation(ParkReserveDTO dto) {
 		//UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		//dto.setUserId(userDTO.getUserId());
+		dto.setUserId("customer");
+		System.out.println(dto);
 		service.insertReserve(dto);
 		return "redirect:/user/userMypageReserveList";
 	}
@@ -171,5 +172,10 @@ public class UserController {
 	@RequestMapping("/userMypageReserveList")
 	public List<ParkDTO> regiParkLoad(){
 		return null;
+	}
+	
+	@RequestMapping("/logout")
+	public String logout() {
+		return "redirect:/";
 	}
 }

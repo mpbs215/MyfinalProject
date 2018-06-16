@@ -19,8 +19,8 @@ public class AuthoritiesDAO{
 		return sqlSession.insert("authoritiesMapper.insertAuthority", authority);
 	}
 
-	public List<AuthorityDTO> selectAuthorityByUserName(String username) {
-		return sqlSession.selectList("authoritiesMapper.selectAuthorityByUserName", username);
+	public List<AuthorityDTO> selectAuthorityByUserId(String userId) {
+		return sqlSession.selectList("authoritiesMapper.selectAuthorityByUserId", userId);
 	}
 
 }

@@ -10,10 +10,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kosta.mvc.model.admin.service.QnaService;
 import kosta.mvc.model.common.service.CommonService;
@@ -22,6 +26,7 @@ import kosta.mvc.model.dto.NoticeDTO;
 import kosta.mvc.model.dto.QNADTO;
 import kosta.mvc.model.dto.TermsDTO;
 import kosta.mvc.model.dto.UserDTO;
+import kosta.mvc.model.user.service.UserServiceImpl;
 
 @RequestMapping("/common")
 @Controller
@@ -35,6 +40,9 @@ public class CommonController {
 
 	@Autowired
 	private QnaService qnaService;
+	
+	@Autowired
+	private UserServiceImpl userService;
 
 	/**
 	 * @return FAQ 테이블의 리스트
@@ -193,6 +201,116 @@ public class CommonController {
 		int result = qnaService.qnaDelte(QNANo);
 		mv.setViewName("redirect:/common/qna");
 		return mv;
+	}
+	
+	/**
+	 * 아이디 찾기 폼으로 이동
+	 * */
+	@RequestMapping("/findId")
+	public String findIdForm() {
+		return "sign/findIdForm";
+	}
+	
+	@RequestMapping(value="/idFind", method = RequestMethod.POST)
+    public ModelAndView find_pass(UserDTO userDTO, RedirectAttributes redirectattr, Errors errors) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		System.out.println("컨트롤러에서 userDTO의 이메일은 : " +userDTO.getEmail());
+        new FindPassValidator().validate(userDTO, errors);
+        
+        if(errors.hasErrors()) {
+        	mv.setViewName("sign/findIdForm");
+        	return mv;
+        } else {
+        
+        try {
+            UserDTO resultDTO = userService.execute(userDTO.getEmail());
+            System.out.println("service에서 resultDTO값 : "+resultDTO);
+            
+            redirectattr.addFlashAttribute("resultDTO",resultDTO); 
+
+            mv.setViewName("redirect:/sendpass");
+            
+            return mv;
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+            
+            mv.setViewName("sign/findIdForm");
+            
+            return mv;
+        	}
+        }
+    }
+	
+	/**
+	 * 비밀번호 찾기 폼으로 이동
+	 * */
+	@RequestMapping("/findPassword")
+	public String findPasswordForm() {
+		return "sign/findPwdForm";
+	}
+	
+	/**
+	 * 	로그인 체크 하기
+	 * */
+	@RequestMapping("/loginCheck")
+	public ModelAndView loginCheck(UserDTO userDTO, HttpSession session) throws Exception {
+		
+		ModelAndView mv = new ModelAndView();
+		UserDTO dto = userService.loginCheck(userDTO, session);
+		System.out.println("session값 = " +session);
+		
+		if (session != null) {
+			session.setAttribute("userName", userDTO.getUserName());
+			session.setAttribute("userId", userDTO.getUserId());
+		}
+
+		mv.addObject("resultDTO", dto);
+		mv.setViewName("redirect:/");
+		
+		return mv;
+	}
+	
+	/**
+	 * 	회원 가입 하기
+	 * */
+	@RequestMapping("/signUp")
+	public String signUp(UserDTO userDTO) {
+		
+		System.out.println("이름" +userDTO.getUserName());
+		
+		userService.signUp(userDTO);	
+		
+		return "redirect:/";
+	}
+	
+	/**
+	 * 	아이디 중복 체크 하기
+	 * */
+	@RequestMapping(value= "/idCheck",  produces="text/html; charset=utf-8")
+	@ResponseBody
+	public String idCheck(String userId) {
+		String message = userService.idcheck(userId); 
+		System.out.println(message);
+		return message;
+	}
+	
+	/**
+	 *  로그인 폼 띄우기
+	 * */
+	@RequestMapping("/loginForm")
+	public String loginForm() {
+		return "sign/loginForm";
+	}
+	
+	/**
+	 * 	회원가입 폼 띄우기
+	 * */
+	@RequestMapping("/signUpForm")
+	public String signUpForm() {
+		return "sign/signUpForm";
 	}
 
 }

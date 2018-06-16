@@ -75,5 +75,29 @@
 	
 	<!-- aop annnotation 설정하기 -->
 	<aop:aspectj-autoproxy/>
+	
+	<!-- 메일 보내기 -->
+    <beans:bean id="mailSender" class = "org.springframework.mail.javamail.JavaMailSenderImpl">
+      <beans:property name="host" value="smtp.gmail.com" />
+      <beans:property name="port" value="587" />
+      <beans:property name="username" value="springteam11@gmail.com" />
+      <beans:property name="password" value="springteam!!" />
+      <beans:property name="javaMailProperties">
+            <beans:props>
+             <beans:prop key="mail.transport.protocol">smtp</beans:prop>
+             <beans:prop key="mail.smtp.auth">true</beans:prop>
+             <beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+             <beans:prop key="mail.debug">true</beans:prop>
+            </beans:props>
+        </beans:property>
+   </beans:bean>
 
+	<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+			<beans:property name="basenames">
+				<beans:list>
+					<beans:value>classpath:/message/label</beans:value>
+				</beans:list>
+			</beans:property>
+		<beans:property name="defaultEncoding" value="UTF-8"/>
+	</beans:bean>
 </beans:beans>

@@ -164,11 +164,11 @@ $(function(){
 								alert(result)
 								if(result=="OK"){
 									$("#reserveBtn").attr("disabled",false);
-									$("#reserveBtn").attr("value","예약하기");
+									$("#reserveBtn").val("예약하기");
 									$("#reserveBtn").attr("class","btn btn-primary");
 								}else if(result=="No"){
 									$("#reserveBtn").attr("disabled",true);
-									$("#reserveBtn").attr("value","예약불가");
+									$("#reserveBtn").val("예약불가");
 									$("#reserveBtn").attr("class","btn btn-danger");
 								}
 							},
@@ -371,9 +371,9 @@ $(function(){
 					<h6 class="font-weight-bold form-control bg-success text-white">예약 날짜 선택하기</h6> 
 					<div class="row"><br /></div>
 					<div class="row justify-content-center">
-						<div class="col-sm-5"><input type="text" name="reserveStart"></div>
+						<div class="col-sm-5"><input type="text" name="reserveStart" readonly="readonly"></div>
 						<div class="col-sm-2">~</div>
-						<div class="col-sm-5"><input type="text" name="reserveEnd"></div>
+						<div class="col-sm-5"><input type="text" name="reserveEnd" readonly="readonly"></div>
 					</div>
 					<div>
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -385,7 +385,7 @@ $(function(){
 						</c:forEach>
 						</select> 
 						<p></p>
-						<button type="submit" class="btn btn-primary" id="reserveBtn">예약하기</button>
+						<input type="submit" class="btn btn-primary" id="reserveBtn" value="예약하기"/>
 					</div>
 				</div>
 				</form>

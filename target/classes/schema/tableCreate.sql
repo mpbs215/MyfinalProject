@@ -44,7 +44,9 @@ insert into user_info_tb values('kim','2656','김돈황','daum','010','서울',sysdat
 insert into user_info_tb values('customer','2656','김돈희','naver','010','서울',sysdate,0)
 insert into park_tb values(1,'kim','돈황주차장','은평구 불광동',5000,'도난도난김도난주차자장',2000,10,10)
 insert into park_regist_tb values(1,'2018-06-16','2018-06-17')
-insert into park_Reserve_TB values(1,1,'customer','2018-06-16 05:00','2018-06-16 12:00','소형')
+insert into park_Reserve_TB values(1,1,'customer','2018-06-16 05:00','2018-06-16 12:00','소형');
+insert into park_Reserve_TB values(3,1,'customer','2018-06-16 21:00','2018-06-16 23:00','중형');
+insert into park_Reserve_TB values(4,1,'customer','2018-06-16 19:00','2018-06-17 01:00','중형');
 insert into review_TB values('customer',1,5,'리뷰리뷰한내용')
 insert into car_type_tb values(1,'소형',2)
 insert into car_type_tb values(1,'중형',2)

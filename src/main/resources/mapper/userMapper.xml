@@ -4,8 +4,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="userMapper"  >
-	<select id="loginCheck" parameterType="userDTO" resultType="userDTO">
-	select user_id as userId , pwd , name from member2 where user_id=#{userId} and pwd=#{pwd}
+	<select id="loginCheck"   parameterType="userDTO" resultType="userDTO">
+		select user_id as userId, password , user_name as userName
+		from user_info_tb
+		 where user_id=#{userId} and password=#{password}
 	</select>
 	<select id="selectReviewByStar" parameterType="reviewDTO" resultType="reviewDTO">
 			select*from review_tb

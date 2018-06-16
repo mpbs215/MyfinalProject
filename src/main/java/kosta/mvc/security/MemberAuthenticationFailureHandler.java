@@ -20,9 +20,9 @@ import org.springframework.stereotype.Component;
 public class MemberAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
 	@Override
-	public void onAuthenticationFailure(HttpServletRequest req, HttpServletResponse res, AuthenticationException auth)
+	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException auth)
 			throws IOException, ServletException {
-		req.setAttribute("errorMessage", auth.getMessage());
-		req.getRequestDispatcher("/WEB-INF/views/member/loginForm.jsp").forward(req, res);
+		request.setAttribute("errorMessage", auth.getMessage());
+		request.getRequestDispatcher("/WEB-INF/views/sign/loginForm.jsp").forward(request, response);
 	}
 }

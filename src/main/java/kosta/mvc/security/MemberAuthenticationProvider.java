@@ -19,7 +19,7 @@ import kosta.mvc.model.dao.UserDAO;
 import kosta.mvc.model.dto.AuthorityDTO;
 import kosta.mvc.model.dto.UserDTO;
 
-@Service
+@Service			// id= memberAuthenticationProvider
 public class MemberAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
@@ -49,28 +49,29 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 
 		// 2. 인증됬다면, 인수로 받는 user정보를 가지고 디비에 존재하는지 체크(id check)
 
-		String id = auth.getName();
-		UserDTO dto = userDAO.selectMemberById(id);
+		String userId = auth.getName();
+		UserDTO userDTO = userDAO.selectMemberById(userId);
 
-		if (dto == null) {// ID가 없는경우
-			throw new UsernameNotFoundException(id + "는 없는 회원입니다.");// spring exception
+		if (userDTO == null) {// ID가 없는경우
+			throw new UsernameNotFoundException(userId + "는 없는 회원입니다.");// spring exception
 		}
-
-		// 3.id가 존재하면 비밀번호 비교
-		String password = (String) auth.getCredentials();// 비밀번호
-
-		if (!passwordEncoder.matches(password, dto.getPassword())) {
+		
+		//3.id가 존재하면 비밀번호 비교
+		String password = 	(String)auth.getCredentials();
+		
+		if (!passwordEncoder.matches(password, userDTO.getPassword())) {
 			throw new BadCredentialsException("패스워드 오류입니다.");
 		}
 
 		//////////// 여기까지 왔다면 인증에 성공함 /////////////////
 		// 4. id, password 모두가 일치하면 Authentication를 만들어서 리턴.
 		// 사용자의 권한을 조회 : 하나의 사용자는 여러개의 권한을 가짐.
-		List<AuthorityDTO> list = authoritiesDAO.selectAuthorityByUserName(id);
+		
+		List<AuthorityDTO> list = authoritiesDAO.selectAuthorityByUserId(userId);
 
 		if (list.isEmpty()) {
 			// 아무 권한이 없는경우....
-			throw new UsernameNotFoundException(id + "는 아무 권한이 없습니다.");
+			throw new UsernameNotFoundException(userId + "는 아무 권한이 없습니다.");
 		}
 
 		// db에서 가지고 온 권한을 GrantedAuthority 로 변환해야함.
@@ -82,7 +83,7 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		// authorities)
 		// UsernamePasswordAuthenticationToken는 Authentication의 자식객체
 		// 인증완료된 결과로 UsernamePasswordAuthenticationToken를 리턴한다.
-		return new UsernamePasswordAuthenticationToken(dto, null, authList);
+		return new UsernamePasswordAuthenticationToken(userDTO, null, authList);
 	}
 
 	/*
