@@ -18,7 +18,9 @@
 		<th>${noticeDTO.noticeDt}</th>
 		<th>${noticeDTO.noticeContent}</th>
 		<th>${noticeDTO.noticeHit}</th>
-		<th>${noticeDTO.noticeImage}</th>
+		<th><img
+			src="${pageContext.request.contextPath}/resources/images/notice/${noticeDTO.noticeImage}" />
+			${noticeDTO.noticeImage}</th>
 	</tr>
 	<tr>
 		<th><a

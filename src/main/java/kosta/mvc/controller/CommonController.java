@@ -11,11 +11,15 @@ import org.springframework.web.servlet.ModelAndView;
 import kosta.mvc.model.common.service.CommonService;
 import kosta.mvc.model.dto.FAQDTO;
 import kosta.mvc.model.dto.NoticeDTO;
+import kosta.mvc.model.dto.QNADTO;
 import kosta.mvc.model.dto.TermsDTO;
+import kosta.mvc.model.dto.UserDTO;
 
 @RequestMapping("/common")
 @Controller
 public class CommonController {
+
+	UserDTO userDTO = new UserDTO();
 
 	@Autowired
 	private CommonService commonService;
@@ -84,6 +88,44 @@ public class CommonController {
 		NoticeDTO noticeDTO = commonService.selectOneNotice(noticeNo);
 		mv.setViewName("common/noticeDetail");
 		mv.addObject("noticeDTO", noticeDTO);
+		return mv;
+	}
+
+	@RequestMapping("/qna")
+	public ModelAndView qna() {
+		ModelAndView mv = new ModelAndView();
+		List<QNADTO> list = commonService.selectQNAList();
+		mv.setViewName("common/qna");
+		mv.addObject("QNAList", list);
+		return mv;
+	}
+
+	@RequestMapping("/qnaDetail/{QNANo}")
+	public ModelAndView qnaDetial(@PathVariable int QNANo) {
+		ModelAndView mv = new ModelAndView();
+		QNADTO qnaDTO = commonService.selectOneQNA(QNANo);
+		mv.addObject("qnaDTO", qnaDTO);
+		mv.setViewName("common/qnaDetail");
+		return mv;
+	}
+
+	@RequestMapping("/insertQNAForm")
+	public String insertQNAForm() {
+		return "common/insertQNAForm";
+	}
+
+	@RequestMapping("/updateQNA/{QNANo}")
+	public ModelAndView qnaUpdateForm(@PathVariable int QNANo) {
+		ModelAndView mv = new ModelAndView();
+		QNADTO qnaDTO = commonService.selectOneQNA(QNANo);
+		mv.addObject("qnaDTO", qnaDTO);
+		mv.setViewName("common/qnaUpdateForm");
+		return mv;
+	}
+
+	@RequestMapping("/updateQNA")
+	public ModelAndView qnaUpdate() {
+		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 

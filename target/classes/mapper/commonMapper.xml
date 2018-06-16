@@ -10,7 +10,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="terms_content" property="termsContent" />
 	</resultMap>
 
-
 	<select id="selectNotice" resultType="noticeDTO"
 		parameterType="int">
 		select * from notice_tb
@@ -29,5 +28,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from faq_TB
 	</select>
 
+	<select id="selectQNAAll" resultType="qNADTO">
+		select * from QNA_TB
+	</select>
 
+	<select id="selectOneQNA" parameterType="int"
+		resultType="qnaDTO">
+		select *
+		from QNA_TB where qna_no=#{QNANO}
+	</select>
 </mapper>

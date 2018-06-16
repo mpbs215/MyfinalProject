@@ -16,4 +16,20 @@ public class NoticeService {
 		int result = noticeDAO.insertNotice(noticeDTO);
 		return result;
 	}
+
+	public int deleteNotice(int noticeNo) {
+		int result = noticeDAO.deleteNotice(noticeNo);
+		return result;
+	}
+	
+	public NoticeDTO noticeUpdateForm(int noticeNo) {
+		NoticeDTO noticeDTO = noticeDAO.noticeUpdateForm(noticeNo);
+		return noticeDTO;
+	}
+	
+	public int noticeUpdate(NoticeDTO noticeDTO) {
+		int result = noticeDAO.noticeUpdate(noticeDTO);
+		return result;
+	}
+
 }
