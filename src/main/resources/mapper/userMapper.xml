@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select user_id as userId , pwd , name from member2 where user_id=#{userId} and pwd=#{pwd}
 	</select>
 	<select id="selectReviewByStar" parameterType="reviewDTO" resultType="reviewDTO">
-			select*from review
+			select*from review_tb
 			<where>
 				<if test="parkNo!=null">
 					parkNo=#{parkNo}	and
@@ -20,31 +20,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectReview" parameterType="int" resultType="reviewDTO">
-		select*from review where parkNo=#{_parameter}
+		select*from review_tb where park_No=#{_parameter}
 	</select>
 	
 	<insert id="insertReview" parameterType="reviewDTO">
-		insert into review values(#{userId},#{parkNo},#{rating},#{reviewContent})
+		insert into review_tb values(#{userId},#{parkNo},#{rating},#{reviewContent})
 	</insert>
 	
-	<select id="selectOnePark" parameterType="int">
-			select*from park
-			where parkNo=#{value}
+	<select id="selectOnePark" parameterType="int" resultType="parkDTO">
+			select*from park_tb
+			where park_No=#{value}
 	</select>
 	
-	<select id="selectOneParkRegi" parameterType="int">
-			select*from parkRegi
-			where parkNo=#{value}
+	<select id="selectOneParkRegi" parameterType="int" resultType="parkRegiDTO">
+			select*from park_Regist_tb
+			where park_No=#{value}
 	</select>
 	
-	<select id="selectUserInfo" parameterType="string"> select * from UserInfo where user_id=#{userId} </select>
+	<select id="selectUserInfo" parameterType="string" resultType="userDTO"> 
+	select * from User_Info_tb where user_id=#{userId} 
+	</select>
 
 	<update id="updateUserInfo" parameterType="userDTO">
-	UPDATE UserInfo SET password=#{password}, username=#{userName}, email=#{email}, hp=#{hp}, address=#{address} WHERE user_id=#{userId} 
+	UPDATE User_Info_tb SET password=#{password}, user_name=#{userName}, email=#{email}, hp=#{hp}, address=#{address} WHERE user_id=#{userId} 
 	</update>
 	
+	<select id="selectparkReserve" parameterType="int" resultType="parkReserveDTO">
+	select*from park_reserve_tb where park_No=${value}
+	</select>
+	
 	<select id="selectImage" parameterType="int" resultType="parkImgDTO">
-		select*from park_image_tb where parkNo=#{_parameter}
+		select*from park_image_tb where park_No=#{_parameter}
 	</select>
 	
 </mapper>

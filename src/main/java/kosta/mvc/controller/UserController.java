@@ -69,12 +69,14 @@ public class UserController {
 		mv.addObject("parkRegiDTO",dataMap.get("parkRegiDTO"));
 		mv.addObject("parkReserveList",dataMap.get("parkReserveList"));
 		mv.addObject("reviewList",dataMap.get("reviewList"));
-		mv.setViewName("user/userReserveForm");
+		mv.setViewName("User/userReserveForm");
 		return mv;
 	}
 	
-	@RequestMapping("/insert")
+	@RequestMapping("/insertReview")
 	public String insertReview(ReviewDTO dto) {
+		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		dto.setUserId(userDTO.getUserId());
 		service.insertReview(dto);
 		return "redirect:/user/userReserveForm";
 	}
@@ -84,8 +86,8 @@ public class UserController {
 	 */
 	@RequestMapping("/userClickReviewStar")
 	@ResponseBody
-	public List<ReviewDTO> userClickReviewStar(int parkNo, int starNo) {
-		return service.userClickReviewStar(parkNo, starNo);
+	public List<ReviewDTO> userClickReviewStar(int parkNo, int rating) {
+		return service.userClickReviewStar(parkNo, rating);
 	}
 
 
