@@ -46,6 +46,10 @@ public class ParkReserveDAO {
 	public int confirmReserve(ParkReserveDTO parkReserveDTO) {
 		return session.selectOne("userMapper.confirmReserve",parkReserveDTO);
 	}
+
+	public List<ParkReserveDTO> userReserveList(String userId) {
+		return session.selectList("userMapper.selectUserReserve",userId);
+	}
 	
 	
 }

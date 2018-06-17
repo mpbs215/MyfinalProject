@@ -133,7 +133,10 @@ public class UserServiceImpl {
 	}
 
 	public void updateUserInfo(UserDTO userDTO) {
-		userDAO.updateUserInfo(userDTO);
+		int result=userDAO.updateUserInfo(userDTO);
+		if(result == 0) {
+			throw new RuntimeException("회원정보 갱신에 실패하였습니다.");
+		}
 	}
 
 	public void insertReview(ReviewDTO dto) {
@@ -211,6 +214,10 @@ public class UserServiceImpl {
 		UserDTO userDTO = userDAO.idcheck(userId);
 		
 		return (userDTO!=null) ? "fail" : "ok"; 	//fail  중복, ok 사용가능
+	}
+
+	public List<ParkReserveDTO> userMypageReserveList(String userId) {
+		return parkReserveDAO.userReserveList(userId);
 	}
 
 }

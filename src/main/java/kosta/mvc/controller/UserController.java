@@ -131,7 +131,6 @@ public class UserController {
 	@RequestMapping("/userModifyUserForm")
 	public ModelAndView userModifyUserForm(HttpServletRequest request) {
 		String id = (String)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-		//String uid = id.
 		UserDTO dto = service.selectUserInfo(id);
 		return new ModelAndView("User/userModifyUserForm", "dto", dto);
 	}
@@ -143,25 +142,18 @@ public class UserController {
 	 * @return userModifyUserForm호출
 	 */
 	@RequestMapping("/userModifyUser")
-	public ModelAndView userModifyUser(HttpServletRequest request, UserDTO userDTO) {
-		// System.out.println("1. UserDTO :: "+userDTO);
+	public ModelAndView userModifyUser(UserDTO userDTO) {
 		// 회원정보 수정위해 Spring Security 세션 회원정보를 반환받는다
 		UserDTO uDTO = (UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		// System.out.println("2. Spring Security 세션 수정 전 회원정보:" + uDTO);
+		userDTO.setUserId(uDTO.getUserId());
 
 		// 변경할 비밀번호를 암호화한다
 		String encodePassword = passwordEncoder.encode(userDTO.getPassword());
 		userDTO.setPassword(encodePassword);
-		service.updateUserInfo(userDTO);
+		
 
 		// 수정버튼 클릭 처리
-		
-		// 수정한 회원정보로 Spring Security 세션 회원정보를 업데이트한다
-		uDTO.setPassword(encodePassword);
-		uDTO.setUserName(userDTO.getUserName());
-		uDTO.setAddress(userDTO.getAddress());
-		//System.out.println("3. Spring Security 세션 수정 후 회원정보:" + pvo);
+		service.updateUserInfo(userDTO);
 
 		return new ModelAndView("User/userModifyUserForm");
 	}
@@ -170,8 +162,13 @@ public class UserController {
 	 * 마이페이지 예약목록
 	 */
 	@RequestMapping("/userMypageReserveList")
-	public List<ParkDTO> regiParkLoad(){
-		return null;
+	public ModelAndView regiParkLoad(){
+		ModelAndView mv = new ModelAndView();
+		UserDTO userDTO = (UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<ParkReserveDTO> list = service.userMypageReserveList(userDTO.getUserId());
+		mv.setViewName("User/userMypageReserveList");
+		mv.addObject("list",list);
+		return mv;
 	}
 	
 	@RequestMapping("/logout")
