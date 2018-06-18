@@ -69,7 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertReserve" parameterType="parkReserveDTO">
-		insert into park_reserve_tb values(reserve_seq.nextval,#{userId},#{parkNo},#{reserveStart},#{reserveEnd},#{carType})
+		insert into park_reserve_tb values(reserve_seq.nextval,#{parkNo},#{userId},#{reserveStart},#{reserveEnd},#{carType})
 	</insert>
 	
 	<select id="confirmReserve" parameterType="string" resultType="int">
