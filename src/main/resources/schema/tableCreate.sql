@@ -156,18 +156,5 @@ create table notice_TB(
 		notice_Image	  varchar2(100)
 );
 
-create table qna_tb(
-	qna_no number primary key,
-	user_Id		varchar2(100) constraint qna_userId_fk references user_info_tb(user_Id),
-	qna_sub varchar2(100) not null,
-	qna_content varchar2(2000) not null,
-	qna_dt timestamp NOT NULL,
-	qna_review varchar2(2000),
-	qna_review_dt timestamp,
-	qna_hit number,
-	qna_pwd number,
-	qna_image varchar2(100)
-	
-);
 
 commit

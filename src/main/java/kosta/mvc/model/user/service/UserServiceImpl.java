@@ -74,7 +74,7 @@ public class UserServiceImpl {
 		 */
 		authoritiesDAO.insertAuthority(new AuthorityDTO(userDTO.getUserId(), "ROLE_USER"));
 		if (userDTO.getSeller() == 1) {
-			authoritiesDAO.insertAuthority(new AuthorityDTO(userDTO.getUserId(), "ROLE_Admin"));
+			authoritiesDAO.insertAuthority(new AuthorityDTO(userDTO.getUserId(), "ROLE_ADMIN"));
 		}
 	}
 
