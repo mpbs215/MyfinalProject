@@ -8,6 +8,9 @@ public class ParkDTO {
 	private String parkSize;
 	private String parkContent;
 	private int price;
+	
+	private ParkImgDTO parkImg;
+	private UserDTO user;
 	public int getParkNo() {
 		return parkNo;
 	}
@@ -50,8 +53,20 @@ public class ParkDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public ParkImgDTO getParkImg() {
+		return parkImg;
+	}
+	public void setParkImg(ParkImgDTO parkImg) {
+		this.parkImg = parkImg;
+	}
+	public UserDTO getUser() {
+		return user;
+	}
+	public void setUser(UserDTO user) {
+		this.user = user;
+	}
 	public ParkDTO(int parkNo, String parkName, String userId, String parkAddr, String parkSize, String parkContent,
-			int price) {
+			int price, ParkImgDTO parkImg, UserDTO user) {
 		super();
 		this.parkNo = parkNo;
 		this.parkName = parkName;
@@ -60,12 +75,12 @@ public class ParkDTO {
 		this.parkSize = parkSize;
 		this.parkContent = parkContent;
 		this.price = price;
+		this.parkImg = parkImg;
+		this.user = user;
 	}
 	public ParkDTO() {
 		super();
 	}
-	
-	
 	
 	
 	
