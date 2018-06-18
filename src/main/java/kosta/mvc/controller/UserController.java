@@ -131,7 +131,7 @@ public class UserController {
 	public ModelAndView userModifyUserForm(HttpServletRequest request) {
 		UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDTO dto = service.selectUserInfo(userDTO.getUserId());
-		return new ModelAndView("user/userModifyUserForm", "dto", dto);
+		return new ModelAndView("mypage/userModifyUserForm", "dto", dto);
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class UserController {
 		// 수정버튼 클릭 처리
 		service.updateUserInfo(userDTO);
 
-		return new ModelAndView("user/userModifyUserForm");
+		return new ModelAndView("mypage/userModifyUserForm");
 	}
 	
 	/**
@@ -165,7 +165,7 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		UserDTO userDTO = (UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		List<ParkDTO> list = service.userMypageReserveList(userDTO.getUserId());
-		mv.setViewName("user/userMypageReserveList");
+		mv.setViewName("mypage/userMypageReserveList");
 		mv.addObject("list",list);
 		return mv;
 	}
