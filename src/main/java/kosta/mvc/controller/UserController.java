@@ -70,7 +70,7 @@ public class UserController {
 		mv.addObject("reviewList",dataMap.get("reviewList"));
 		mv.addObject("parkImageList", dataMap.get("parkImageList"));
 		mv.addObject("carTypeList",dataMap.get("carTypeList"));
-		mv.setViewName("User/userReserveForm");
+		mv.setViewName("user/userReserveForm");
 		return mv;
 	}
 	
@@ -98,9 +98,8 @@ public class UserController {
 
 	@RequestMapping("/reservation")
 	public String reservation(ParkReserveDTO dto) {
-		//UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		//dto.setUserId(userDTO.getUserId());
-		dto.setUserId("customer");
+		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		dto.setUserId(userDTO.getUserId());
 		System.out.println(dto);
 		service.insertReserve(dto);
 		return "redirect:/user/userMypageReserveList";
@@ -132,7 +131,7 @@ public class UserController {
 	public ModelAndView userModifyUserForm(HttpServletRequest request) {
 		String id = (String)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		UserDTO dto = service.selectUserInfo(id);
-		return new ModelAndView("User/userModifyUserForm", "dto", dto);
+		return new ModelAndView("user/userModifyUserForm", "dto", dto);
 	}
 
 	/**
@@ -155,7 +154,7 @@ public class UserController {
 		// 수정버튼 클릭 처리
 		service.updateUserInfo(userDTO);
 
-		return new ModelAndView("User/userModifyUserForm");
+		return new ModelAndView("user/userModifyUserForm");
 	}
 	
 	/**
@@ -165,8 +164,8 @@ public class UserController {
 	public ModelAndView regiParkLoad(){
 		ModelAndView mv = new ModelAndView();
 		UserDTO userDTO = (UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		List<ParkReserveDTO> list = service.userMypageReserveList(userDTO.getUserId());
-		mv.setViewName("User/userMypageReserveList");
+		List<ParkDTO> list = service.userMypageReserveList(userDTO.getUserId());
+		mv.setViewName("user/userMypageReserveList");
 		mv.addObject("list",list);
 		return mv;
 	}

@@ -17,6 +17,7 @@ public class ParkDTO {
 	private List<ParkRegiDTO> parkRegi;
 	private List<ParkReserveDTO> parkReserve;
 	private List<ReviewDTO> review;
+	private List<UserDTO> user;
 	
 	public int getParkNo() {
 		return parkNo;
@@ -89,6 +90,19 @@ public class ParkDTO {
 	}
 	public void setParkReserve(List<ParkReserveDTO> parkReserve) {
 		this.parkReserve = parkReserve;
+	}
+	
+	public List<ReviewDTO> getReview() {
+		return review;
+	}
+	public void setReview(List<ReviewDTO> review) {
+		this.review = review;
+	}
+	public List<UserDTO> getUser() {
+		return user;
+	}
+	public void setUser(List<UserDTO> user) {
+		this.user = user;
 	}
 	public ParkDTO(int parkNo, String parkName, String userId, String parkAddr, String parkSize, String parkContent,
 			int price, String latitude, String longitude, List<ParkImgDTO> parkImg,

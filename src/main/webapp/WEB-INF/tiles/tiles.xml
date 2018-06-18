@@ -27,7 +27,7 @@
 
 	<definition extends="signLayout" name="sign/*">
 		<put-attribute name="content"
-			value="/WEB-INF/views/Sign/{1}.jsp" />
+			value="/WEB-INF/views/sign/{1}.jsp" />
 	</definition>
 
 	<definition name="ServiceInfoLayout"
@@ -40,9 +40,9 @@
 			value="/WEB-INF/views/tiles/ServiceInfoSidebar.jsp" />
 	</definition>
 
-	<definition extends="ServiceInfoLayout" name="common/*">
+	<definition extends="ServiceInfoLayout" name="/common/*">
 		<put-attribute name="content"
-			value="/WEB-INF/views/Common/{1}.jsp" />
+			value="/WEB-INF/views/common/{1}.jsp" />
 	</definition>
 
 	<definition name="reserveRegistLayout"
@@ -57,6 +57,6 @@
 
 	<definition extends="reserveRegistLayout" name="seller/*">
 		<put-attribute name="content"
-			value="/WEB-INF/views/Seller/{1}.jsp" />
+			value="/WEB-INF/views/seller/{1}.jsp" />
 	</definition>
 </tiles-definitions>

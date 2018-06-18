@@ -73,7 +73,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where park_No=#{_parameter}
 	</select>
 	
-	<select id="selectUserReserve" resultType="">
-		select*from park
-	</select>
 </mapper>

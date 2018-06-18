@@ -216,7 +216,7 @@ public class UserServiceImpl {
 		return (userDTO!=null) ? "fail" : "ok"; 	//fail  중복, ok 사용가능
 	}
 
-	public List<ParkReserveDTO> userMypageReserveList(String userId) {
+	public List<ParkDTO> userMypageReserveList(String userId) {
 		return parkReserveDAO.userReserveList(userId);
 	}
 
