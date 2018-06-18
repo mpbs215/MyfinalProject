@@ -18,10 +18,8 @@ public class QnaService {
 		return result;
 	}
 
-	@Transactional
 	public int qnaUpdate(QNADTO qnaDTO) {
-		int result = qnaDAO.updateQNA(qnaDTO);
-		
+		int result = qnaDAO.updateQNA(qnaDTO);		
 		return result;
 	}
 

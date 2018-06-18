@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,7 @@ public class CommonController {
 
 	@Autowired
 	private QnaService qnaService;
-	
+
 	@Autowired
 	private UserServiceImpl userService;
 
@@ -121,9 +123,9 @@ public class CommonController {
 	}
 
 	@RequestMapping("/qnaDetail/{QNANo}")
-	public ModelAndView qnaDetial(@PathVariable int QNANo) {
+	public ModelAndView qnaDetial(HttpServletRequest request, HttpServletResponse response, @PathVariable int QNANo) {
 		ModelAndView mv = new ModelAndView();
-		QNADTO qnaDTO = commonService.selectOneQNA(QNANo);
+		QNADTO qnaDTO = commonService.selectOneQNA(request, response, QNANo);
 		mv.addObject("qnaDTO", qnaDTO);
 		mv.setViewName("common/qnaDetail");
 		return mv;
@@ -164,7 +166,7 @@ public class CommonController {
 	@RequestMapping("/updateQNA/{QNANo}")
 	public ModelAndView qnaUpdateForm(@PathVariable int QNANo) {
 		ModelAndView mv = new ModelAndView();
-		QNADTO qnaDTO = commonService.selectOneQNA(QNANo);
+		QNADTO qnaDTO = commonService.selectOneQNA(null , null ,QNANo);
 		mv.addObject("qnaDTO", qnaDTO);
 		mv.setViewName("common/qnaUpdateForm");
 		return mv;
