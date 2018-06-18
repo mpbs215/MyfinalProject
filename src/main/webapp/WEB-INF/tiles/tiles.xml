@@ -40,7 +40,7 @@
 			value="/WEB-INF/views/tiles/ServiceInfoSidebar.jsp" />
 	</definition>
 
-	<definition extends="ServiceInfoLayout" name="/common/*">
+	<definition extends="ServiceInfoLayout" name="common/*">
 		<put-attribute name="content"
 			value="/WEB-INF/views/common/{1}.jsp" />
 	</definition>
