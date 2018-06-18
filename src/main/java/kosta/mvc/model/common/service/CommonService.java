@@ -2,6 +2,9 @@ package kosta.mvc.model.common.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import kosta.mvc.model.dto.FAQDTO;
 import kosta.mvc.model.dto.NoticeDTO;
 import kosta.mvc.model.dto.QNADTO;
@@ -19,5 +22,5 @@ public interface CommonService {
 
 	public List<QNADTO> selectQNAList();
 
-	public QNADTO selectOneQNA(int QNANo);
+	public QNADTO selectOneQNA(HttpServletRequest request, HttpServletResponse response, int QNANo);
 }
