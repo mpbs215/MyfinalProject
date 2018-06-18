@@ -5,4 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="authoritiesMapper">
 	
+	<resultMap type="AuthorityDTO" id="authorityDTO">
+		<id column="user_id" property="userId"/>
+		<result column="role" property="role"/>	
+	</resultMap>
+	
+	<insert id="insertAuthority"  parameterType="AuthorityDTO">
+		INSERT INTO AUTHORITY_TB
+			VALUES(#{userId}, #{role})
+	</insert>
+	
+	<select id="selectAuthorityByUserId"  parameterType="string" resultMap="authorityDTO">
+		SELECT USER_ID, ROLE
+		  FROM AUTHORITY_TB
+		WHERE USER_ID = #{_parameter}
+	</select>
+	
 </mapper>
