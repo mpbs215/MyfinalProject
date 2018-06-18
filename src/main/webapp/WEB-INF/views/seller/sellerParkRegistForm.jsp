@@ -111,7 +111,7 @@ body {
 	// 주소 검색 팝업창 띄우기
 	function goPopup(){
 		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrCoordUrl.do)를 호출하게 됩니다.
-    	var pop = window.open("${pageContext.request.contextPath}/Seller/addrPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+    	var pop = window.open("${pageContext.request.contextPath}/seller/addrPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	}
 	
 	// 주소 입력
@@ -196,7 +196,7 @@ jQuery(document).ready(
 		<div class="container-fluid">
 
 			<form name="parkRegistForm" method="post"
-				action="${pageContext.request.contextPath}/Seller/sellerParkRegist?${_csrf.parameterName}=${_csrf.token}"
+				action="${pageContext.request.contextPath}/seller/sellerParkRegist?${_csrf.parameterName}=${_csrf.token}"
 				onSubmit='return checkValid()' enctype="multipart/form-data">
 				<div class="col-sm-8">
 					<div class="form-group ">

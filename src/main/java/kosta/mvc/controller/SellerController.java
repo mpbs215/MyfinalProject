@@ -28,7 +28,6 @@ public class SellerController {
 	@Autowired
 	private SellerServiceImpl service;
 	
-	UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
 
 	private String imgPath;
 
@@ -39,7 +38,7 @@ public class SellerController {
 	 */
 	@RequestMapping("/sellerParkList")
 	public String sellerParkList() {
-		return "Seller/sellerParkList";
+		return "seller/sellerParkList";
 	}
 
 	@ResponseBody
@@ -79,9 +78,9 @@ public class SellerController {
 	@RequestMapping("/sellerParkRegist")
 	public ModelAndView sellerParkRegist(HttpSession session, ParkDTO parkDto, CarTypeDTO carTypeDto, ParkImgDTO parkImgDto, ParkRegiDTO parkRegiDto, MultipartHttpServletRequest req) throws Exception{
 		
-		
+		UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
 		ModelAndView mv = new ModelAndView();
-
+		
 		parkDto.setUserId(userDTO.getUserId());
 
 		//멀티 파일 업로드
@@ -90,7 +89,7 @@ public class SellerController {
 
 		service.sellerParkRegist(parkDto, carTypeDto, parkImgDto, parkRegiDto, imgPath, mf);
 	
-		mv.setViewName("redirect:/Seller/sellerParkList");
+		mv.setViewName("redirect:/seller/sellerParkList");
 		return mv;
 	}
 

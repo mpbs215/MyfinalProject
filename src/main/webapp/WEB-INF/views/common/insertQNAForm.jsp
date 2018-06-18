@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<!-- 로그인한 유저 아이디 담아둠 -->
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<sec:authentication var="mvo" property="principal" />
 
 QNA Insert
 <script>
@@ -31,7 +34,7 @@ QNA Insert
 		</tr>
 		<tr>
 			<th><input type="text" name="userId" hidden="hidden"
-				value="${mvo.userName}"> ${mvo.userName}</th>
+				value="${mvo.userName}"/> ${mvo.userName}</th>
 			<th><input type="text" name="QNASub" required="required" /></th>
 			<th><input type="text" name="QNAContent" required="required" /></th>
 			<th><input type="password" name="QNAPwd" id="QNAPwd"
