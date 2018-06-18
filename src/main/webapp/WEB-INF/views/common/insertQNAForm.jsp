@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
 QNA Insert
 <script>
 	function checkNumber() {
@@ -30,14 +31,13 @@ QNA Insert
 		</tr>
 		<tr>
 			<th><input type="text" name="userId" hidden="hidden"
-				value="${userDTO.userId}">${userDTO.userId}</th>
+				value="${mvo.userName}"> ${mvo.userName}</th>
 			<th><input type="text" name="QNASub" required="required" /></th>
 			<th><input type="text" name="QNAContent" required="required" /></th>
 			<th><input type="password" name="QNAPwd" id="QNAPwd"
 				required="required"></th>
 			<th><input type="file" name="QNAImageFile" /></th>
 		</tr>
-
-	</table>
+</table>
 	<button id="insertQNButton">글쓰기</button>
 </form>

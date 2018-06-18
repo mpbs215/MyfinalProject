@@ -25,9 +25,14 @@ function logout(){
 		document.getElementById("logoutForm").submit();		
 	}
 </script>
+
+<!-- 로그인한 유저 아이디 담아둠 -->
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<sec:authentication var="mvo" property="principal" />
+
 </head>
 <body>
-<sec:authorize access="isAnonymous()">
 	<header id="header">
    	 <div class="container">
       <div id="logo" class="pull-left">
@@ -39,33 +44,19 @@ function logout(){
 	          <li><a href="${pageContext.request.contextPath}/common/introduce">서비스 안내</a></li>
 	          <li><a href="${pageContext.request.contextPath}/user/userReserve">주차장 예약</a></li>
 	          <li><a href="${pageContext.request.contextPath}/seller/sellerParkRegistForm">주차장 등록</a></li>
+	        <sec:authorize access="isAnonymous()">
 	          <li><a href="${pageContext.request.contextPath}/sign/loginForm">로그인</a></li>
 	          <li><a href="${pageContext.request.contextPath}/sign/signUpForm">회원 가입</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-</sec:authorize>
-  
-<sec:authorize access="isAuthenticated()">  
-  	<header id="loginHeader">
-   	 <div class="container">
-      <div id="logo2" class="pull-left">
-        <h1><a href="#intro" class="scrollto">Login-HEADER</a></h1>
-      </div>
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-	          <li class="menu-active"><a href="${pageContext.request.contextPath}/">Home</a></li>
-	          <li><a href="${pageContext.request.contextPath}/common/introduce">서비스 안내</a></li>
-	          <li><a href="${pageContext.request.contextPath}/user/userReserve">주차장 예약</a></li>
-	          <li><a href="${pageContext.request.contextPath}/seller/sellerParkRegistForm">주차장 등록</a></li>
-	          <li><a href="javascript:logout();">로그아웃</a></li>
+	        </sec:authorize>
+	          <sec:authorize access="isAuthenticated()">  
+	      	  <li><a href="javascript:logout();">로그아웃</a></li>
 	          <li><a href="${pageContext.request.contextPath}/user/mypage">마이페이지</a></li>
+	        </sec:authorize>   
         </ul>
       </nav>
     </div>
   </header>
- </sec:authorize> 
+  
  
  <form id="logoutForm" action="${pageContext.request.contextPath}/user/logout"  method="post" style="display:none">
  	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">

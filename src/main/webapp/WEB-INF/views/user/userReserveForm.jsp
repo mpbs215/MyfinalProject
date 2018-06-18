@@ -214,15 +214,6 @@ $(function(){
 					      <img class="d-block img-fluid" src="${pageContext.request.contextPath}/resources/images/park/${dto.imgPath}" alt="Slide${status.count}" style="width:95%; margin-left: 2.5%">
 					    </div>
 					  	</c:forEach>
-					    <div class="carousel-item active">
-					      <img class="d-block img-fluid" src="https://img.webnots.com/2017/05/BS_Slide1.jpg" alt="Slide1" style="width:95%; margin-left: 2.5%">
-					    </div>
-					    <div class="carousel-item">
-					      <img class="d-block img-fluid" src="https://img.webnots.com/2017/05/BS_Slide2.jpg" alt="Slide2" style="width:95%; margin-left: 2.5%">
-					    </div>
-					    <div class="carousel-item">
-					      <img class="d-block img-fluid" src="https://img.webnots.com/2017/05/BS_Slide3.jpg" alt="Slide3" style="width:95%; margin-left: 2.5%">
-					    </div>
 					  </div>
 					  <a class="carousel-control-prev" href="#arrowslider" role="button" data-slide="prev">
 					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
