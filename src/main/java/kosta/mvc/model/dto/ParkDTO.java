@@ -10,7 +10,7 @@ public class ParkDTO {
 	private int price;
 	private String latitude;
 	private String longitude;
-
+/*
 	private ParkImgDTO parkImg;
 	private ParkRegiDTO parkRegi;
 	private ParkReserveDTO parkReserve;
@@ -100,7 +100,78 @@ public class ParkDTO {
 	}
 	public void setUser(UserDTO user) {
 		this.user = user;
+	}*/
+	public int getParkNo() {
+		return parkNo;
 	}
+	public void setParkNo(int parkNo) {
+		this.parkNo = parkNo;
+	}
+	public String getParkName() {
+		return parkName;
+	}
+	public void setParkName(String parkName) {
+		this.parkName = parkName;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getParkAddr() {
+		return parkAddr;
+	}
+	public void setParkAddr(String parkAddr) {
+		this.parkAddr = parkAddr;
+	}
+	public String getParkSize() {
+		return parkSize;
+	}
+	public void setParkSize(String parkSize) {
+		this.parkSize = parkSize;
+	}
+	public String getParkContent() {
+		return parkContent;
+	}
+	public void setParkContent(String parkContent) {
+		this.parkContent = parkContent;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public String getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+	public String getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+	public ParkDTO(int parkNo, String parkName, String userId, String parkAddr, String parkSize, String parkContent,
+			int price, String latitude, String longitude) {
+		super();
+		this.parkNo = parkNo;
+		this.parkName = parkName;
+		this.userId = userId;
+		this.parkAddr = parkAddr;
+		this.parkSize = parkSize;
+		this.parkContent = parkContent;
+		this.price = price;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
+	public ParkDTO() {
+		super();
+	}
+	
 	
 	
 	

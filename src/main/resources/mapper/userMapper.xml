@@ -86,7 +86,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where park_No=#{_parameter}
 	</select>
 	
-	<resultMap type="parkDTO" id="reserveMap">
+<!-- 	<resultMap type="parkDTO" id="reserveMap">
 		<result column="user_id" property="userId"/>
 		<result column="park_name" property="parkName"/>
 		<result column="price" property="price"/>
@@ -103,6 +103,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		join park_tb pt using(park_no) 
 		join user_info_tb on pt.user_id =user_info_tb.user_id
 		where park_Reserve_TB.user_id = #{_value}
-	</select>
+	</select> -->
 	
 </mapper>
