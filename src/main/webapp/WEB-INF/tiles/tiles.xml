@@ -59,8 +59,8 @@
 		<put-attribute name="content"
 			value="/WEB-INF/views/seller/{1}.jsp" />
 	</definition>
-	
-	<definition name="mypageLayout"
+
+	<definition name="userLayout"
 		template="/WEB-INF/views/tiles/mainLayout.jsp">
 		<put-attribute name="header"
 			value="/WEB-INF/views/tiles/header.jsp" />
@@ -68,24 +68,24 @@
 			value="/WEB-INF/views/tiles/footer.jsp" />
 	</definition>
 
-	<definition extends="mypageLayout" name="mypage/*">
+	<definition extends="userLayout" name="user/*">
 		<put-attribute name="content"
-			value="/WEB-INF/views/mypage/{1}.jsp" />
+			value="/WEB-INF/views/user/{1}.jsp" />
 	</definition>
-	
-	<definition name="userLayout"
+
+	<definition name="mypageLayout"
 		template="/WEB-INF/views/tiles/layout.jsp">
 		<put-attribute name="header"
 			value="/WEB-INF/views/tiles/header.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/views/tiles/footer.jsp" />
 		<put-attribute name="sidebar"
-			value="/WEB-INF/views/tiles/userSidebar.jsp" />
+			value="/WEB-INF/views/tiles/mypageSidebar.jsp" />
 	</definition>
 
-	<definition extends="userLayout" name="user/*">
+	<definition extends="mypageLayout" name="mypage/*">
 		<put-attribute name="content"
-			value="/WEB-INF/views/user/{1}.jsp" />
+			value="/WEB-INF/views/mypage/{1}.jsp" />
 	</definition>
-	
+
 </tiles-definitions>
