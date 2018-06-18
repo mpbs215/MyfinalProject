@@ -255,6 +255,5 @@ public class AdminController {
 		int result = noticeService.noticeUpdate(noticeDTO);
 		mv.setViewName("redirect:/common/notice");
 		return mv;
-
 	}
 }

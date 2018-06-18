@@ -61,9 +61,7 @@ create table PARK_TB
 		park_Addr			varchar2(200)  NOT NULL,
 		park_Size			long 		   NOT NULL,
 		park_Content 		varchar2(2000) NOT NULL,
-		price				number 		   NOT NULL,
-		latitude			varchar2(100)  NOT NULL,
-		longitude			varchar2(100)  NOT NULL
+		price				number 		   NOT NULL
 );
 
 create table park_Regist_TB
@@ -158,8 +156,5 @@ create table notice_TB(
 		notice_Image	  varchar2(100)
 );
 
-select * from user_info_tb;
-
-select * from authority_tb;
 
 commit
