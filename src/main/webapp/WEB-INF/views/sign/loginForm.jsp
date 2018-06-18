@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,3 +44,10 @@
 	비밀번호를 잊어버리셨습니까?<a href="${pageContext.request.contextPath}/sign/findPassword " >비밀번호 찾기</a><p>
 </body>
 </html>
+=======
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
+
+로그인 페이지입니다.
+>>>>>>> branch 'master' of https://github.com/mpbs215/finalProject

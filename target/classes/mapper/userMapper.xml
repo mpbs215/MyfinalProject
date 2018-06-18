@@ -53,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectUserInfo" parameterType="string" resultType="userDTO"> 
-	select * from User_Info_tb where user_id=#{userId} 
+	select * from User_Info_tb where user_id=#{_parameter} 
 	</select>
 
 	<update id="updateUserInfo" parameterType="userDTO">
@@ -85,4 +85,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select*from car_type_tb 
 		where park_No=#{_parameter}
 	</select>
+	
 </mapper>

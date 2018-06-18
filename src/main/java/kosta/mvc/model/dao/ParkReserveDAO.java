@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kosta.mvc.model.dto.ParkDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
 
 @Repository
@@ -45,6 +46,10 @@ public class ParkReserveDAO {
 
 	public int confirmReserve(ParkReserveDTO parkReserveDTO) {
 		return session.selectOne("userMapper.confirmReserve",parkReserveDTO);
+	}
+
+	public List<ParkDTO> userReserveList(String userId) {
+		return session.selectList("userMapper.selectUserReserve",userId);
 	}
 	
 	

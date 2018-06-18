@@ -27,9 +27,9 @@ public class UserDAO {
 	/**
 	 * 사용자 정보를 수정하는 메소드
 	 */
-//	public void updateUserInfo(UserDTO userDTO) {
-	//	session.update("userMapper.updateUserInfo", userDTO);
-	//}
+	public int updateUserInfo(UserDTO userDTO) {
+		return session.update("userMapper.updateUserInfo", userDTO);
+	}
 	
 		/**
 	 * 회원 가입
@@ -69,10 +69,10 @@ public class UserDAO {
 	
 	/**
 	 * 사용자 정보를 수정하는 메소드
-	 */
+	 *//*
 	public void updateUserInfo(UserDTO userDTO) {
 		session.update("userMapper.updateUserInfo", userDTO);
-	}
+	}*/
 	
 	/**
 	 * 	로그인 체크 하기 (로그인 성공, 로그인 실패 체크)

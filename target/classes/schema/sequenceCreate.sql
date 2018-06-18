@@ -7,7 +7,7 @@ drop sequence reserve_seq;
 drop sequence qna_seq
 
 create sequence park_seq 
-start with 1 
+start with 1
 increment BY 1 
 maxvalue 10000 
 nocache 
