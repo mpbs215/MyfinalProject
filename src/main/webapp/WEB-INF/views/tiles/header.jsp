@@ -50,7 +50,7 @@ function logout(){
 	        </sec:authorize>
 	          <sec:authorize access="isAuthenticated()">  
 	      	  <li><a href="javascript:logout();">로그아웃</a></li>
-	          <li><a href="${pageContext.request.contextPath}/user/mypage">마이페이지</a></li>
+	          <li><a href="${pageContext.request.contextPath}/user/userModifyUserForm">마이페이지</a></li>
 	        </sec:authorize>   
         </ul>
       </nav>

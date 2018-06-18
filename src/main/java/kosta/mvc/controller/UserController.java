@@ -129,8 +129,8 @@ public class UserController {
 	 */
 	@RequestMapping("/userModifyUserForm")
 	public ModelAndView userModifyUserForm(HttpServletRequest request) {
-		String id = (String)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-		UserDTO dto = service.selectUserInfo(id);
+		UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDTO dto = service.selectUserInfo(userDTO.getUserId());
 		return new ModelAndView("user/userModifyUserForm", "dto", dto);
 	}
 
