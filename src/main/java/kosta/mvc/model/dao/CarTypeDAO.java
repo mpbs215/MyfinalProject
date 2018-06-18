@@ -14,8 +14,8 @@ public class CarTypeDAO {
 	@Autowired
 	private SqlSession session;
 
-	public int insertCarType(String carType,int parkNo) {
-		return session.insert("sellerMapper.insertCarType",null);
+	public int insertCarType(CarTypeDTO carTypeDTO) {
+		return session.insert("sellerMapper.insertCarType",carTypeDTO);
 	}
 
 	public int selectMaxCar(ParkReserveDTO dto) {

@@ -13,8 +13,8 @@ public class ParkImgDAO {
 	@Autowired
 	private SqlSession session;
 
-	public int insertImg(String originalFilename, int parkNo) {
-		return session.insert("sellerMapper.insertImg", new ParkImgDTO(parkNo,originalFilename));
+	public int insertImg(ParkImgDTO parkImgDto) {		
+		return session.insert("sellerMapper.insertImg",parkImgDto);
 	}
 
 	public List<ParkImgDTO> selectImage(int parkNo) {

@@ -60,4 +60,3 @@ public class MailController {
         return "sign/loginForm";
       }
 }
-

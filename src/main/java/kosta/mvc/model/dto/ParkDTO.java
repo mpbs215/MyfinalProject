@@ -10,8 +10,6 @@ public class ParkDTO {
 	private String parkSize;
 	private String parkContent;
 	private int price;
-	private String latitude;
-	private String longitude;
 
 	private List<ParkImgDTO> parkImg;
 	private List<ParkRegiDTO> parkRegi;
@@ -61,18 +59,6 @@ public class ParkDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getLatitude() {
-		return latitude;
-	}
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
-	}
-	public String getLongitude() {
-		return longitude;
-	}
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
-	}
 	public List<ParkImgDTO> getParkImg() {
 		return parkImg;
 	}
@@ -105,7 +91,7 @@ public class ParkDTO {
 		this.user = user;
 	}
 	public ParkDTO(int parkNo, String parkName, String userId, String parkAddr, String parkSize, String parkContent,
-			int price, String latitude, String longitude, List<ParkImgDTO> parkImg,
+			int price, List<ParkImgDTO> parkImg,
 			List<ParkRegiDTO> parkRegi, List<ParkReserveDTO> parkReserve) {
 		super();
 		this.parkNo = parkNo;
@@ -115,8 +101,6 @@ public class ParkDTO {
 		this.parkSize = parkSize;
 		this.parkContent = parkContent;
 		this.price = price;
-		this.latitude = latitude;
-		this.longitude = longitude;
 		this.parkImg = parkImg;
 		this.parkRegi = parkRegi;
 		this.parkReserve = parkReserve;

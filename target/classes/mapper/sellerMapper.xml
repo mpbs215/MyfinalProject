@@ -3,8 +3,16 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
+<!-- 
+	주차장 등록, 관리 
+	작성자 : 지문경	
+-->
 <mapper namespace="sellerMapper">
+
+	<sql id="parkColumnName">
+   		parkNo, userId, parkName, parkAddr, parkAddr, parkSize, parkContent, price, latitude, longitude
+	</sql>
+
 	<resultMap type="parkReserveDTO" id="parkAndReserve">
 		<id column="reserve_no" property="reserveNo"/>
 		<result column="reserve_Start" property="reserveStart"/>
@@ -15,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="park_Name" property="parkName"/>
 		</association>
 	</resultMap>
+	
 	<!-- sellerParkRegist서비스 시작 -->
 	<select id="selectPark" resultType="parkDTO" parameterType="string">
 		select * from Park_tb
@@ -24,19 +33,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</select>
-
+	
+	<!-- 주차장 등록	-->	
+	<insert id="insertPark" parameterType="parkDTO">
+		insert into PARK_TB values(#{parkNo},#{userId},#{parkName},#{parkAddr},#{parkSize},#{parkContent},#{price})
+	</insert>
+	
+	<select id="selectParkNo" resultType="int">
+		select park_seq.nextval from dual
+	</select>
+	
 	<insert id="insertParkRegi" parameterType="parkRegiDTO">
-		insert into park_Regist_tb values(#{parkNo},#{regiStart},#{regiEnd})
+		insert into park_Regist_TB values(#{parkNo},#{regiStart},#{regiEnd})		
 	</insert>
 
 	<insert id="insertCarType" parameterType="carTypeDTO">
-		insert into car_Type_tb values(#{parkNo},#{carType})
+		insert into car_Type_TB values(#{parkNo},#{carType},#{maxCar})
 	</insert>
-
 	
 	<insert id="insertImg" parameterType="parkImgDTO">
-		insert into park_Image values(img_seq.nextval,#{parkNo},#{imgPath})
+		insert into park_Image_TB values(img_seq.nextval,#{parkNo},#{imgPath})
 	</insert>
+
 	
 	<!-- sellerParkRegist 끝 -->
 	
