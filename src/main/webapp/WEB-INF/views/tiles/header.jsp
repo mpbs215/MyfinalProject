@@ -51,7 +51,7 @@ function logout(){
   	<header id="loginHeader">
    	 <div class="container">
       <div id="logo2" class="pull-left">
-        <h1><a href="#intro" class="scrollto">Login-HEADER</a></h1>
+        <h1><a href="#intro" class="scrollto">HEADER</a></h1>
       </div>
       <nav id="nav-menu-container">
         <ul class="nav-menu">
