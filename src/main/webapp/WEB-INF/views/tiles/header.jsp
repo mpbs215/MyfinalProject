@@ -39,8 +39,8 @@ function logout(){
 	          <li><a href="${pageContext.request.contextPath}/common/introduce">서비스 안내</a></li>
 	          <li><a href="${pageContext.request.contextPath}/user/userReserve">주차장 예약</a></li>
 	          <li><a href="${pageContext.request.contextPath}/seller/sellerParkRegistForm">주차장 등록</a></li>
-	          <li><a href="${pageContext.request.contextPath}/common/loginForm">로그인</a></li>
-	          <li><a href="${pageContext.request.contextPath}/common/signUpForm">회원 가입</a></li>
+	          <li><a href="${pageContext.request.contextPath}/sign/loginForm">로그인</a></li>
+	          <li><a href="${pageContext.request.contextPath}/sign/signUpForm">회원 가입</a></li>
         </ul>
       </nav>
     </div>

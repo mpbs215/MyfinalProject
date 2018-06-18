@@ -56,6 +56,9 @@ public class UserServiceImpl {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	/**
+	 *	회원가입하기
+	 * */
 	@Transactional
 	public void signUp(UserDTO userDTO) {
 
@@ -182,15 +185,24 @@ public class UserServiceImpl {
 		return result;
 	}
 
+	/**
+	 * 	로그인체크하기
+	 * */
 	public UserDTO loginCheck(UserDTO userDTO, HttpSession session) {
 
 		return userDAO.loginCheck(userDTO);
 	}
 
+	/**
+	 * 아이디로 권한 검색하기 (하나의 아이디에는 여러개의 권한이 있을 수 있다)
+	 * */
 	public List<AuthorityDTO> selectAuthorityByUserId(String userId) {
 		return authoritiesDAO.selectAuthorityByUserId(userId);
 	}
 
+	/**
+	 * 	이메일을 이용하여 아이디, 비밀번호 찾기
+	 * */
 	public UserDTO execute(String email) throws Exception {
 
 		UserDTO resultDTO = userDAO.findByEmail(email);

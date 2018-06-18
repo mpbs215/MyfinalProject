@@ -13,25 +13,25 @@ public class UserDAO {
 	@Autowired
 	private SqlSession session;
 
-	public List<UserDTO> manageUserList() {
-		return session.selectList("");
-	}
+//	public List<UserDTO> manageUserList() {
+	//	return session.selectList("");
+	//}
 	
 	/**
 	 *사용자의 정보를 보여주는 메소드
 	 */
-	public UserDTO viewUserInfo(String userId) {
-		return session.selectOne("userMapper.selectUserInfo",userId);
-	}
+//	public UserDTO viewUserInfo(String userId) {
+	//	return session.selectOne("userMapper.selectUserInfo",userId);
+	//}
 	
 	/**
 	 * 사용자 정보를 수정하는 메소드
 	 */
-	public void updateUserInfo(UserDTO userDTO) {
-		session.update("userMapper.updateUserInfo", userDTO);
-	}
+//	public void updateUserInfo(UserDTO userDTO) {
+	//	session.update("userMapper.updateUserInfo", userDTO);
+	//}
 	
-	/**
+		/**
 	 * 회원 가입
 	 * */
 	public int signUp(UserDTO userDTO) {
@@ -48,12 +48,30 @@ public class UserDAO {
 		UserDTO userDTO = session.selectOne("signMapper.idCheck",userId);
 		return userDTO; 				
 	}
+	
+	public List<UserDTO> manageUserList() {
+		return session.selectList("");
+	}
 
 	/**
 	 * 	id를 pk값으로 하여 정보를 찾는 메소드
 	 * */
 	public UserDTO selectMemberById(String userId) {
 		return session.selectOne("userMapper.selectUserInfo", userId);
+	}
+	
+	/**
+	 *사용자의 정보를 보여주는 메소드
+	 */
+	public UserDTO viewUserInfo(String userId) {
+		return session.selectOne("userMapper.selectUserInfo",userId);
+	}
+	
+	/**
+	 * 사용자 정보를 수정하는 메소드
+	 */
+	public void updateUserInfo(UserDTO userDTO) {
+		session.update("userMapper.updateUserInfo", userDTO);
 	}
 	
 	/**
@@ -78,8 +96,5 @@ public class UserDAO {
 		
 		return dto;
 	}
-	
-	
-	
 	
 }

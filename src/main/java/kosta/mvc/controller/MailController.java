@@ -29,7 +29,7 @@ public class MailController {
         
         System.out.println("널포인트" +userDTO.getEmail());
         System.out.println("널포인트" +userDTO.getUserId());
-        String setfrom = "springteam11@gmail.com";         
+        String setfrom = "jaemoonzzang@naver.com";         
         String tomail  = userDTO.getEmail();     // 받는 사람 이메일
         String title   = userDTO.getUserName() + "님의 아이디와 비밀번호 입니다.";      // 제목
         String content = userDTO.getUserName() + "님의 아이디는 " 
@@ -57,7 +57,7 @@ public class MailController {
         } catch(Exception e){
           System.out.println(e);
         }
-        return "redirect:sendpass";
+        return "sign/loginForm";
       }
 }
 
