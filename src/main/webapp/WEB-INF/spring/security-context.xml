@@ -11,7 +11,7 @@
    <sec:http use-expressions="true" auto-config="true">
       <sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
       <sec:intercept-url pattern="/user/**" access="isAuthenticated()" />
-      <sec:form-login login-page="/common/loginForm"
+      <sec:form-login login-page="/sign/loginForm"
          login-processing-url="/login" 
          username-parameter="userId"
          password-parameter="password" 

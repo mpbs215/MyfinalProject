@@ -158,6 +158,8 @@ create table notice_TB(
 		notice_Image	  varchar2(100)
 );
 
+select * from user_info_tb;
 
+select * from authority_tb;
 
 commit

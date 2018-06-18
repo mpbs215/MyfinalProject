@@ -86,8 +86,9 @@ E-Mail<input type="text" name="email"><br><br>
 HP : <input type="text" name="hp"><br><br>
 ADDRESS : <input type="text" name="address"><br><br>
  <input type="hidden" name="regidate"><br>
-SELLER <input type="radio" value="0" name="seller">ROLE_MEMBER
-		  <input type="radio" value="1" name="seller">ROLE_ADMIN<br><br>
+AUTHORITY TYPE <input type="radio" value="0" name="seller">ROLE_MEMBER
+		 		 					<input type="radio" value="1" name="seller">ROLE_ADMIN<br><br>
+		 		 
 <input type="submit" value="회원가입하기">
 </form>
 </body>
