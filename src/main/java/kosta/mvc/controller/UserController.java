@@ -18,6 +18,7 @@ import kosta.mvc.model.dto.ParkReserveDTO;
 import kosta.mvc.model.dto.ReviewDTO;
 import kosta.mvc.model.dto.SearchFilterDTO;
 import kosta.mvc.model.dto.UserDTO;
+import kosta.mvc.model.user.service.SearchServiceImpl;
 import kosta.mvc.model.user.service.UserServiceImpl;
 
 @RequestMapping("/user")
@@ -28,6 +29,9 @@ public class UserController {
 	private UserServiceImpl service;
 	
 	@Autowired
+	private SearchServiceImpl searchService;
+	
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 	/**
 	 * 주차장 예약 초기페이지
@@ -35,8 +39,16 @@ public class UserController {
 	@RequestMapping("/userReserve")
 	public ModelAndView userReserve() {
 		ModelAndView mv = new ModelAndView();
-		List<ParkDTO> list=service.userReserve();
+		List<String> sidoList=searchService.selectSido();
+		mv.setViewName("/user/userReserve");
+		mv.addObject("sidoList",sidoList);
 		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/renewParkList")
+	public List<ParkDTO> renewParkList(SearchFilterDTO dto){
+		return searchService.renewParkList(dto);
 	}
 
 	/*
@@ -154,7 +166,7 @@ public class UserController {
 		// 수정버튼 클릭 처리
 		service.updateUserInfo(userDTO);
 
-		return new ModelAndView("mypage/userModifyUserForm");
+		return new ModelAndView("redirect:/user/userModifyUserForm");
 	}
 	
 	/**
@@ -170,8 +182,40 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping("/deleteReserve")
+	public String deleteReserve(int reserveNo) {
+		service.deleteReserve(reserveNo);
+		return "redirect:/user/userMypageReserveList";
+	}
+	
 	@RequestMapping("/logout")
 	public String logout() {
 		return "redirect:/";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/selectSido")
+	public List<String> selectSido(){
+		return searchService.selectSido();
+	}
+	
+	@ResponseBody
+	@RequestMapping("/selectGugun")
+	public List<String> selectGugun(String sido){
+		System.out.println(sido);
+		return searchService.selectGugun(sido);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/selectDong")
+	public List<String> selectDong(String gugun){
+		System.out.println(gugun);
+		return searchService.selectDong(gugun);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/selectRi")
+	public List<String> selectRi(String dong){
+		return searchService.selectRi(dong);
 	}
 }

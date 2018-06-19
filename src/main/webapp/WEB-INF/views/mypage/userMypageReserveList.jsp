@@ -15,18 +15,30 @@
 </head>
 <body>
 <div class="container">
-  <h2>Card Image</h2>
-  <p>Image at the top (card-img-top):</p>
-  <div class="card" style="width:350px">
-    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfYd4sPXgvAVg45xPTLvQRz_02LPY6_3jq756m0tKCyXmWaI1s" alt="Card image" style="width:100%">
-    <div class="card-body">
-      <h4 class="card-title">예약 1</h4>
-      <p class="card-text">간단한 정보</p>
-      <div style = "float:right;">
-      <a href="../User/userMypageReserveDetail" class="btn btn-success">Detail</a>
-    </div>
-    </div>
+  <h2>예약 현황</h2>
+  <p>현재 예약 현황 조회 및 수정 취소를 할 수 있습니다.</p>
+  <div class="row">
+  	<c:forEach items="${list}" var="dto">
+	 <div class="col-sm-4" style="margin-bottom: 5%">
+	  <div class="card">
+	    <img class="card-img-top border" src="${pageContext.request.contextPath}/resources/images/park/${dto.parkImg.imgPath}" alt="Card image" style="width:100%; height: 30%">
+	    <div class="card-body">
+	      <h4 class="card-title text-center">${dto.parkName}</h4>
+	      <p class="card-text text-center">
+	      	예약일 : ${dto.parkReserve.reserveStart}<br />
+	      	판매자 : ${dto.userId}<br />
+	      	연락처 : ${dto.user.hp}<br />
+	      	총가격 : ${dto.price}<br />
+	      </p>
+	      <div style = "float:right;">
+	      <a href="${pageContext.request.contextPath}/user/deleteReserve?reserveNo=${dto.parkReserve.reserveNo}" class="btn btn-success">예약취소</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	</c:forEach>
   </div>
+</div>
   <br>
 </body>
 </html>

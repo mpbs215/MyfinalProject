@@ -28,10 +28,7 @@
 				<li><a href="#">회원관리</a></li>
 			</ul></li>
 			
-		<li><a href="#">About us</a></li>
-		<li><a href="#">Contact</a></li>
-		<li><a href="#">Portfolio</a>
-		<li><a href="#">Contact us</a></li>
-		<li><a href="#">Feedback</a></li>
+		<li><a href="${pageContext.request.contextPath}/user/userModifyUserForm">회원정보 수정</a></li>
+		<li><a href="${pageContext.request.contextPath}/user/userMypageReserveList">예약한 주차장</a></li>
 	</ul>
 </div>

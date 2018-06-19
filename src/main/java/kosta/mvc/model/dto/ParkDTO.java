@@ -11,6 +11,7 @@ public class ParkDTO {
 	
 	private ParkImgDTO parkImg;
 	private UserDTO user;
+	private ParkReserveDTO parkReserve;
 	public int getParkNo() {
 		return parkNo;
 	}
@@ -64,6 +65,13 @@ public class ParkDTO {
 	}
 	public void setUser(UserDTO user) {
 		this.user = user;
+	}
+
+	public ParkReserveDTO getParkReserve() {
+		return parkReserve;
+	}
+	public void setParkReserve(ParkReserveDTO parkReserve) {
+		this.parkReserve = parkReserve;
 	}
 	public ParkDTO(int parkNo, String parkName, String userId, String parkAddr, String parkSize, String parkContent,
 			int price, ParkImgDTO parkImg, UserDTO user) {

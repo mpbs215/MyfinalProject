@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMapper">
+	<select id="selectSido" resultType="string">
+		select distinct(sido) from SIDOGUGUNDONGRI
+	</select>
+	<select id="selectGugun" resultType="string">
+		select distinct(gugun) from SIDOGUGUNDONGRI where sido=#{_parameter}
+	</select>
+	<select id="selectDong" resultType="string">
+		select distinct(dong) from SIDOGUGUNDONGRI where gugun=#{_parameter}
+	</select>
+	<select id="selectRi" resultType="string">
+		select distinct(ri) from SIDOGUGUNDONGRI where dong=#{_parameter}
+	</select>
+</mapper>
