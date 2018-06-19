@@ -16,6 +16,19 @@ public class UserDAO {
 //	public List<UserDTO> manageUserList() {
 	//	return session.selectList("");
 	//}
+	/**
+	 * 가입 한 user 목록 출력하는 메소드 (admin이 사용)
+	 */
+	public List<UserDTO> manageUserList() {
+		return session.selectList("manageUserMapper.regiUserList");
+	}
+	
+	/**
+	 * 회원 강제 삭제 (admin이 사용)
+	 */
+	public void deleteUser(String userID) {
+		session.delete("manageUserMapper.manageUser",userID);
+	}
 	
 	/**
 	 *사용자의 정보를 보여주는 메소드
@@ -49,9 +62,6 @@ public class UserDAO {
 		return userDTO; 				
 	}
 	
-	public List<UserDTO> manageUserList() {
-		return session.selectList("");
-	}
 
 	/**
 	 * 	id를 pk값으로 하여 정보를 찾는 메소드
