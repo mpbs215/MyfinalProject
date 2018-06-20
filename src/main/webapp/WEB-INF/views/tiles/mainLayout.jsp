@@ -17,13 +17,10 @@
 						name="header" /></th>
 			</header>
 		</tr>
-		<tr>
-			<content>
-			<th class="layoutContent"><tiles:insertAttribute name="content" /></th>
-			</content>
-		</tr>
+
 
 	</table>
+	<tiles:insertAttribute name="content" />
 	<footer class="layoutFooter">
 		<tiles:insertAttribute name="footer" />
 	</footer>

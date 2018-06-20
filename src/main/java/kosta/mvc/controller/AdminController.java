@@ -61,7 +61,7 @@ public class AdminController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping("/manageUser")
+	@RequestMapping("/manageUsers")
 	public String manageUserList(Model model) {
 		List<UserDTO> list = manageUserService.manageUserList();
 		model.addAttribute("list", list);

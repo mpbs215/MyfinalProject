@@ -35,7 +35,7 @@ public class ParkDAO {
 	}
 
 	public List<ParkDTO> renewParkList(SearchFilterDTO dto) {
-		return session.selectList("", dto);
+		return session.selectList("searchMapper.selectPark", dto);
 	}
 
 }

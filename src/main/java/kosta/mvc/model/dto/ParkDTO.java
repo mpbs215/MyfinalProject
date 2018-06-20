@@ -1,5 +1,7 @@
 package kosta.mvc.model.dto;
 
+import java.util.List;
+
 public class ParkDTO {
 	private int parkNo;
 	private String parkName;
@@ -11,7 +13,9 @@ public class ParkDTO {
 	
 	private ParkImgDTO parkImg;
 	private UserDTO user;
+	private ParkRegiDTO parkRegi;
 	private ParkReserveDTO parkReserve;
+	private List<CarTypeDTO> carTypeList;
 	public int getParkNo() {
 		return parkNo;
 	}
@@ -66,15 +70,27 @@ public class ParkDTO {
 	public void setUser(UserDTO user) {
 		this.user = user;
 	}
-
+	public ParkRegiDTO getParkRegi() {
+		return parkRegi;
+	}
+	public void setParkRegi(ParkRegiDTO parkRegi) {
+		this.parkRegi = parkRegi;
+	}
 	public ParkReserveDTO getParkReserve() {
 		return parkReserve;
 	}
 	public void setParkReserve(ParkReserveDTO parkReserve) {
 		this.parkReserve = parkReserve;
 	}
+	public List<CarTypeDTO> getCarTypeList() {
+		return carTypeList;
+	}
+	public void setCarTypeList(List<CarTypeDTO> carTypeList) {
+		this.carTypeList = carTypeList;
+	}
 	public ParkDTO(int parkNo, String parkName, String userId, String parkAddr, String parkSize, String parkContent,
-			int price, ParkImgDTO parkImg, UserDTO user) {
+			int price, ParkImgDTO parkImg, UserDTO user, ParkRegiDTO parkRegi, ParkReserveDTO parkReserve,
+			List<CarTypeDTO> carTypeList) {
 		super();
 		this.parkNo = parkNo;
 		this.parkName = parkName;
@@ -85,9 +101,19 @@ public class ParkDTO {
 		this.price = price;
 		this.parkImg = parkImg;
 		this.user = user;
+		this.parkRegi = parkRegi;
+		this.parkReserve = parkReserve;
+		this.carTypeList = carTypeList;
 	}
 	public ParkDTO() {
 		super();
+	}
+	@Override
+	public String toString() {
+		return "ParkDTO [parkNo=" + parkNo + ", parkName=" + parkName + ", userId=" + userId + ", parkAddr=" + parkAddr
+				+ ", parkSize=" + parkSize + ", parkContent=" + parkContent + ", price=" + price + ", parkImg="
+				+ parkImg + ", user=" + user + ", parkRegi=" + parkRegi + ", parkReserve=" + parkReserve
+				+ ", carTypeList=" + carTypeList + "]";
 	}
 	
 	
