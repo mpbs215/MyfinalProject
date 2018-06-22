@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import kosta.mvc.model.dto.TempKeyDTO;
 import kosta.mvc.model.dto.UserDTO;
-import kosta.mvc.model.util.TempKey;
 
 @Repository
 public class UserDAO {
@@ -120,5 +119,20 @@ public class UserDAO {
 		return result; 
 	}
 	
+	/**
+	 * 	È¸¿ø Å»Åð ÇÏ±â (SMS Å×ÀÌºí)
+	 * */
+	public int deleteSMS(String userId) {
+		
+		return session.delete("userMapper.deleteSMS", userId);
+	}
+	
+	/**
+	 * 	È¸¿ø Å»Åð ÇÏ±â (USER Å×ÀÌºí)
+	 * */
+	public int deleteUserInfo(String userId) {
+		
+		return session.delete("userMapper.deleteUser",userId);
+	}
 	
 }

@@ -20,7 +20,6 @@ import kosta.mvc.model.dto.TempKeyDTO;
 import kosta.mvc.model.dto.UserDTO;
 import kosta.mvc.model.user.service.UserServiceImpl;
 import kosta.mvc.model.util.Coolsms;
-import kosta.mvc.model.util.TempKey;
 
 @Controller
 @RequestMapping("/sign")

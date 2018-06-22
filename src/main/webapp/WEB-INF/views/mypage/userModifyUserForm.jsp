@@ -12,6 +12,15 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script>
+	$(document).ready(function() {
+		$("#leaveMemberBtn").on("click", function() {
+			var unSign = confirm("정말 탈퇴 하시겠습니까?");
+			alert(unSign);
+		})
+	})
+
+</script>
 <div class="container">
 
 	<h2 class="font-weight-bold">회원정보수정</h2>
@@ -44,7 +53,10 @@
 		</div>
 		<br />
 		<div class="form-group col-md-9">
-		<input type="submit" value="수정하기" class="btn btn-outline-primary btn-block"/>
+			<input type="submit" value="수정하기" class="btn btn-outline-primary btn-block"/>
+		</div>
+		<div class="form-group col-md-9">
+			<input type="button" value="회원탈퇴하기" class="btn btn-outline-primary btn-block" id="leaveMemberBtn"/>
 		</div>
 	</form>
 </div>

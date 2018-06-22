@@ -35,4 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  WHERE key=#{_parameter}
 	</update>
 	
+	<delete id="deleteAuth" parameterType="string">
+		DELETE FROM AUTHORITY_TB
+		 WHERE password = #{_parameter}
+	</delete>
+	
 </mapper>
