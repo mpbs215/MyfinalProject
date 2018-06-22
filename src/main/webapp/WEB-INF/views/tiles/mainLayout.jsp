@@ -18,9 +18,10 @@
 			</header>
 		</tr>
 		<tr>
-			<content>
-			<th class="layoutContent"><tiles:insertAttribute name="content" /></th>
-			</content>
+
+			<th class="layoutContent2"><content>
+				<tiles:insertAttribute name="content" /></content></th>
+
 		</tr>
 
 	</table>

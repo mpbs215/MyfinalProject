@@ -23,4 +23,5 @@ public interface CommonService {
 	public List<QNADTO> selectQNAList();
 
 	public QNADTO selectOneQNA(HttpServletRequest request, HttpServletResponse response, int QNANo);
+
 }

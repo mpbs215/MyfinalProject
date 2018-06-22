@@ -12,18 +12,17 @@
 <body>
 	<table class="layout">
 		<tr>
-			<header>
-				<th colspan="2" class="layoutHeader"><tiles:insertAttribute
-						name="header" /></th>
-			</header>
+			<th colspan="2" class="layoutHeader"><header>
+					<tiles:insertAttribute name="header" />
+				</header></th>
 		</tr>
 		<tr>
-			<sidebar>
-			<th class="layoutSideBar"><tiles:insertAttribute name="sidebar" /></th>
-			</sidebar>
-			<content>
-			<th class="layoutContent"><tiles:insertAttribute name="content" /></th>
-			</content>
+
+			<th class="layoutSideBar"><sidebar> <tiles:insertAttribute
+					name="sidebar" /></sidebar></th>
+
+			<th class="layoutContent"><content> <tiles:insertAttribute
+					name="content" /> </content></th>
 		</tr>
 
 	</table>

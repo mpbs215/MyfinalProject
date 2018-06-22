@@ -34,7 +34,7 @@ QNA Insert
 		</tr>
 		<tr>
 			<th><input type="text" name="userId" hidden="hidden"
-				value="${mvo.userName}"/> ${mvo.userName}</th>
+				value="${mvo.userId}"/> ${mvo.userId}</th>
 			<th><input type="text" name="QNASub" required="required" /></th>
 			<th><input type="text" name="QNAContent" required="required" /></th>
 			<th><input type="password" name="QNAPwd" id="QNAPwd"

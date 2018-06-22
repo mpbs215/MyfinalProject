@@ -222,6 +222,13 @@ public class AdminController {
 		return mv;
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/updateQNAReview/{QNAReview}/{QNANo}", produces = { "text/html;charset=UTF-8" })
+	public String updateQNAReview(@PathVariable String QNAReview, @PathVariable int QNANo) {
+		qnaReviewService.updateQNAReview(QNANo, QNAReview);
+		return QNAReview;
+	}
+	
 	@RequestMapping("/updateNotice/{noticeNo}")
 	public ModelAndView updateNotice(@PathVariable int noticeNo) {
 		ModelAndView mv = new ModelAndView();
