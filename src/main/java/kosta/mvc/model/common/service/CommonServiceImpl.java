@@ -97,4 +97,5 @@ public class CommonServiceImpl implements CommonService {
 		return qnaDTO;
 	}
 
+
 }

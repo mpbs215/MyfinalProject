@@ -12,14 +12,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kosta.mvc.model.admin.service.QnaService;
 import kosta.mvc.model.common.service.CommonService;
@@ -115,10 +112,12 @@ public class CommonController {
 
 	@RequestMapping("/qna")
 	public ModelAndView qna() {
+
 		ModelAndView mv = new ModelAndView();
 		List<QNADTO> list = commonService.selectQNAList();
 		mv.setViewName("common/qna");
 		mv.addObject("QNAList", list);
+
 		return mv;
 	}
 
@@ -166,7 +165,7 @@ public class CommonController {
 	@RequestMapping("/updateQNA/{QNANo}")
 	public ModelAndView qnaUpdateForm(@PathVariable int QNANo) {
 		ModelAndView mv = new ModelAndView();
-		QNADTO qnaDTO = commonService.selectOneQNA(null , null ,QNANo);
+		QNADTO qnaDTO = commonService.selectOneQNA(null, null, QNANo);
 		mv.addObject("qnaDTO", qnaDTO);
 		mv.setViewName("common/qnaUpdateForm");
 		return mv;
