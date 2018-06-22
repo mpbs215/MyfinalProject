@@ -8,15 +8,18 @@
 
 
    <!-- Spring Security 인증처리로직를 정의한 클래스 -->
-   <sec:http use-expressions="true" auto-config="true">
+   
+   <sec:http use-expressions="true" auto-config="true" >
       <sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
       <sec:intercept-url pattern="/user/**" access="isAuthenticated()" />
+      <sec:intercept-url pattern="/seller/**" access="hasRole('ROLE_SELLER')" />
       <sec:form-login login-page="/sign/loginForm"
          login-processing-url="/login" 
          username-parameter="userId"
          password-parameter="password" 
          default-target-url="/"
-         authentication-failure-handler-ref="memberAuthenticationFailureHandler" />
+         authentication-failure-handler-ref="memberAuthenticationFailureHandler"
+         />
 
  	<sec:logout
 			logout-url="/user/logout"
@@ -25,6 +28,7 @@
 			logout-success-url="/" 
 		/>
 		
+	<sec:access-denied-handler ref="accessDecsionHandler"/>	
       <!-- 중복 로그인 방지 설정 error-if-maximum-exceeded="true" 이후에 로그인 시도하는 사용자의 접속을 
          막는다 -->
       <sec:session-management>

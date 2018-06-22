@@ -40,5 +40,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  where email=#{_parameter}
 </select>	
 	
-	
 </mapper>

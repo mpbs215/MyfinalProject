@@ -16,12 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="seller" property="seller" />
 </resultMap>
 
-
 	<select id="loginCheck"   parameterType="userDTO" resultType="userDTO">
 		select user_id as userId, password , user_name as userName
 		from user_info_tb
 		 where user_id=#{userId} and password=#{password}
 	</select>
+	
 	<select id="selectReviewByStar" parameterType="reviewDTO" resultType="reviewDTO">
 			select*from review_tb
 			<where>
@@ -69,7 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertReserve" parameterType="parkReserveDTO">
-		insert into park_reserve_tb values(reserve_seq.nextval,#{userId},#{parkNo},#{reserveStart},#{reserveEnd},#{carType})
+		insert into park_reserve_tb values(reserve_seq.nextval,#{parkNo},#{userId},#{reserveStart},#{reserveEnd},#{carType})
 	</insert>
 	
 	<select id="confirmReserve" parameterType="string" resultType="int">
@@ -81,9 +81,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select max_car from car_type_tb	
 		where park_No=#{parkNo} and car_type=#{carType}
 	</select>
+	
 	<select id="selectCarType" parameterType="int" resultType="carTypeDTO">
 		select*from car_type_tb 
 		where park_No=#{_parameter}
 	</select>
+	
+	<insert id="insertAuth" parameterType="string">
+			insert into AUTHORITY_TB(key)
+			values(#{_parameter})
+	</insert>
+	
+	<insert id="SMS" parameterType="tempKeyDTO" >
+			insert into SMS_TB
+			values(#{userId}, #{hp}, #{key})
+	</insert>
+	
+
 	
 </mapper>

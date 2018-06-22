@@ -6,7 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kosta.mvc.model.dto.TempKeyDTO;
 import kosta.mvc.model.dto.UserDTO;
+import kosta.mvc.model.util.TempKey;
 
 @Repository
 public class UserDAO {
@@ -96,5 +98,17 @@ public class UserDAO {
 		
 		return dto;
 	}
+	
+	/**
+	 * 	SMS로 인증번호 받기
+	 * */
+	public int SMSAuth(TempKeyDTO sms) {
+		
+		int result = session.insert("userMapper.SMS",sms);
+		System.out.println("결과 : " + result);
+		
+		return result; 
+	}
+	
 	
 }

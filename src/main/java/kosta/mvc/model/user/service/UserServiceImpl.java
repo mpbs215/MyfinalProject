@@ -30,7 +30,9 @@ import kosta.mvc.model.dto.ParkImgDTO;
 import kosta.mvc.model.dto.ParkRegiDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
 import kosta.mvc.model.dto.ReviewDTO;
+import kosta.mvc.model.dto.TempKeyDTO;
 import kosta.mvc.model.dto.UserDTO;
+import kosta.mvc.model.util.TempKey;
 
 @Service
 @Transactional
@@ -55,7 +57,13 @@ public class UserServiceImpl {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-
+	
+	@Autowired
+	private TempKeyDTO sms;
+	
+	@Autowired
+	private AuthorityDTO authDTO;
+	
 	/**
 	 *	회원가입하기
 	 * */
@@ -66,16 +74,26 @@ public class UserServiceImpl {
 		String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
 		userDTO.setPassword(encodedPassword);
 		userDAO.signUp(userDTO);
-
+		
+		
 		// 권한등록
 		/*
 		 * AuthorityVO authority=new AuthorityVO(vo.getId(),"ROLE_MEMBER");
 		 * memberDAO.registerRole(authority);
 		 */
-		authoritiesDAO.insertAuthority(new AuthorityDTO(userDTO.getUserId(), "ROLE_USER"));
-		if (userDTO.getSeller() == 1) {
-			authoritiesDAO.insertAuthority(new AuthorityDTO(userDTO.getUserId(), "ROLE_ADMIN"));
-		}
+		
+		authDTO.setUserId(userDTO.getUserId());
+		authDTO.setRole("ROLE_USER");
+		authDTO.setKey("0");
+		authDTO.setHp(userDTO.getHp());
+		
+		if (userDTO.getSeller() == 0 ) {
+			int result = authoritiesDAO.insertAuthority(authDTO);
+			if (result ==0) {
+				throw new RuntimeException("권한 등록에 실패 하였습니다. / 회원가입을 진행해 주세요");
+			}
+		}  
+		
 	}
 
 	public List<ReviewDTO> userClickReviewStar(int parkNo, int rating) {
@@ -231,5 +249,40 @@ public class UserServiceImpl {
 	public List<ParkDTO> userMypageReserveList(String userId) {
 		return parkReserveDAO.userReserveList(userId);
 	}
-
+	
+	/**
+	 * 	SMS이용하여 본인인증하기
+	 * */
+	public void insertAuthCode(String userId, String hp, String key) {
+			authDTO.setKey(key);
+			System.out.println("key : " +key);
+			
+			authDTO.setRole("ROLE_SELLER");
+			authDTO.setUserId(userId);
+			authDTO.setHp(hp);
+			
+			System.out.println("authDTO : " + authDTO.getKey());
+			
+		 	sms.setUserId(userId);
+			sms.setHp(hp);
+		 	sms.setKey(key);
+		 	
+		 	authoritiesDAO.updateKey(authDTO);
+			int result = userDAO.SMSAuth(sms);
+			System.out.println("result 값 : " +result);
+			
+			if (result == 0) {
+				throw new RuntimeException("본인 인증 실패");
+			}
+	}
+	
+	/**
+	 * 	인증 번호가 일치할 경우 권한을 Seller로 바꿔주기
+	 * */
+	public void updateAuth(String authKey) {
+				int result = authoritiesDAO.updateAuth(authKey);
+				
+				if (result ==0) 
+						throw new RuntimeException("인증 번호가 일치하지 않아 인증에 실패하였습니다.");
+	}
 }
