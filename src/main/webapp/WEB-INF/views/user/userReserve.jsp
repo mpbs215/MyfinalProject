@@ -123,7 +123,7 @@
 				data:queryString,
 				dataType: "json",
 				success : function(result){
-					alert("성공")
+					alert(result.length)
  					$.each(result, function(index, item){
 						  var parkList = new Array();
 						  parkList[0] = item.parkName;
@@ -135,6 +135,7 @@
 						  parkList[6] = item.parkImg.imgPath
 						  markerRenew(parkList)
 					})
+					removeMarker()
 				},
 				error:function(request,status,error){
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -168,10 +169,9 @@
 			     		iwdata+="</div>"
 			     		iwdata+="<div style='width:60%; height: 100%; display: inline-block; float: right'>"
 			     		iwdata+="<ul class='list-group list-group-flush border'>"
-			     		iwdata+="<li class='list-group-item' style='display:none'></li>"
-			     		iwdata+="<li class='list-group-item bg-primary text-white font-weight-bold'>"+parkList[0]+"</li>"
-			     		iwdata+="<li class='list-group-item' >"+parkList[1]+"</li>"
-			     		iwdata+="<li class='list-group-item' >"
+			     		iwdata+="<li class='bg-primary text-white font-weight-bold text-center' style='font-size: 20px; padding: 7px'>"+parkList[0]+"</li>"
+			     		iwdata+="<li class='list-group-item'>"+parkList[1]+"</li>"
+			     		iwdata+="<li class='list-group-item'>"
 			     		iwdata+=parkList[2]+"<br />~ "+parkList[3]
 			     		iwdata+="</li>"
 			     		iwdata+="<li class='list-group-item' > 가격: "+parkList[4]+" / "
@@ -193,10 +193,19 @@
 			        // 마커에 클릭이벤트를 등록합니다
 			        daum.maps.event.addListener(marker, 'click', function() {
 			              // 마커 위에 인포윈도우를 표시합니다
-			              infowindow.open(map, marker);  
+			              if(open==1){
+			              	infowindow.open(map, marker);
+			              }
 			        });      
 			    } 
 			});
+		}
+		function removeMarker() {
+			 for ( var i = 0; i < markers.length; i++ ) {
+			 infowindow.close();
+			 markers[i].setMap(null);
+			 } 
+			 markers = [];
 		}
 		parkChange();
 	})
@@ -208,14 +217,14 @@
 			<div class="row">
 				<div class="col-sm-2">
 					<select id="sido" class="custom-select">
-						<option value=""></option>
+						<option value="" disabled selected hidden>시/도</option>
 						<c:forEach items="${sidoList}" var="sido">
 							<option value="${sido}">${sido}</option>
 						</c:forEach>
 					</select>
 				</div>
 				<div class="col-sm-2">
-					<select id="gugun" class="custom-select"></select>
+					<select id="gugun" class="custom-select" ></select>
 				</div>
 				<div class="col-sm-2">
 					<select id="dong" class="custom-select"></select>
@@ -263,14 +272,13 @@
 				</div>
 				<div style='width:60%; height: 100%; display: inline-block; float: right'>
 					<ul class='list-group list-group-flush border'>
-					  <li class='list-group-item bg-primary text-white font-weight-bold'>서울 주차장</li>
+					  <li class='bg-primary text-white font-weight-bold text-center' style="font-size: 20px; padding: 7px">서울 주차장</li>
 					  <li class='list-group-item' >서울 은평구 불광동 8-63번지 201호</li>
 					  <li class='list-group-item' >
-					  item.parkName item.parkAddr item.parkRegi.regiStart item.parkRegi.regiEnd item.price
 					  2018-06-20 18:00:00 <br />
 					  ~ 2018-06-20 19:00:00
 					  </li>
-					  <li class='list-group-item' > 가격: 2000 / 중형1 소형2 대형3</li>
+					  <li class='list-group-item'> 가격: 2000 / 중형1 소형2 대형3</li>
 					</ul>
 				</div>
 			</div>
