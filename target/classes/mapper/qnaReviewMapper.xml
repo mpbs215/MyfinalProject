@@ -4,5 +4,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="qnaReviewMapper">
-	
+	<update id="updateQnaReview" parameterType="map">
+		update qna_tb set
+		qna_Review=#{QNAReview}, QNA_Review_DT=sysdate where qna_no=#{QNANo}
+	</update>
 </mapper>

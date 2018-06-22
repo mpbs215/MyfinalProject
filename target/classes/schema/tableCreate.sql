@@ -189,22 +189,11 @@ create table notice_TB(
       notice_Image     varchar2(100)
 );
 
- create table SMS_TB (
-	     user_id varchar2(100) PRIMARY KEY CONSTRAINT user_id REFERENCES USER_INFO_TB(user_id),
-	     hp varchar2(20) not null,
-	     key varchar2(100) not null
- );
-     
-     select * from user_info_tb;
-     select * from sms_TB;
-     select * from AUTHORITY_TB;
-     
-     drop table sms_TB;
 
 
 insert into user_info_tb values('seller','2656','김돈황','daum','010','서울',sysdate,0);
 insert into user_info_tb values('customer','2656','김돈희','naver','010','서울',sysdate,0);
-insert into park_tb values(park_seq.nextval,'seller','돈황주차장','은평구 불광동',5000,'도난도난김도난주차자장',2000);
+insert into park_tb values(park_seq.nextval,'seller','돈황주차장','은평구 불광동',5000,'도난도난김도난주차자장',2000,10,10);
 insert into park_regist_tb values(1,'2018-06-18','2018-06-20');
 insert into park_Reserve_TB values(reserve_seq.nextval,1,'customer','2018-06-18 05:00','2018-06-18 12:00','소형');
 insert into park_Reserve_TB values(reserve_seq.nextval,1,'customer','2018-06-18 21:00','2018-06-18 23:00','중형');
@@ -214,5 +203,6 @@ insert into car_type_tb values(1,'소형',2);
 insert into car_type_tb values(1,'중형',2);
 insert into park_Image_TB values(img_seq.nextval,1,'https://s-i.huffpost.com/gen/4127522/thumbs/o-THE-570.jpg');
 insert into park_Image_TB values(img_seq.nextval,1,'https://blog.fotolia.com/kr/files/2017/02/Fotolia_110632460_S_copyright-1.jpg');
+
 
 commit

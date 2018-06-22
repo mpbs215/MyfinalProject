@@ -1,31 +1,22 @@
-.boardTable {
-	border-collapse: collapse;
-	text-align: left;
-	line-height: 1.5;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	margin: 20px 10px;
-	margin-left: 8%;
-	width: 90%;
+.termsHead {
+	background-color: #d3d3d3;
 }
 
-.boardTable th {
-	padding: 10px;
-	font-weight: bold;
-	vertical-align: top;
+.termsHead th:first-child {
+	background-color: #d3d3d3;
+	width: 30%;
 }
 
-.boardTable td {
-	width: 350px;
-	padding: 10px;
-	vertical-align: top;
+.termsHead th:last-child {
+	width: 70%;
 }
 
-.boardTable .tbody {
-	background: #efefef;
-	width: 85%;
+.inputTextSub {
+	line-height: 50px;
+	width: 100%;
 }
 
-.boardTable .thead {
-	width: 15%;
+.inputTextContent {
+	width: 100%;
+	line-height:2.3em;
 }

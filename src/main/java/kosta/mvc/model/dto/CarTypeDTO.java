@@ -1,9 +1,14 @@
 package kosta.mvc.model.dto;
 
+import java.util.List;
+
 public class CarTypeDTO {
 	private int parkNo;
 	private String carType;
 	private int maxCar;
+
+	private List<String> carTypeList;
+	private List<Integer> maxCarList;
 	
 	public CarTypeDTO() {
 		super();
@@ -32,7 +37,18 @@ public class CarTypeDTO {
 	public void setMaxCar(int maxCar) {
 		this.maxCar = maxCar;
 	}
-	
-	
-	
+	public List<String> getCarTypeList() {
+		return carTypeList;
+	}
+	public void setCarTypeList(List<String> carTypeList) {
+		this.carTypeList = carTypeList;
+	}
+	public List<Integer> getMaxCarList() {
+		return maxCarList;
+	}
+	public void setMaxCarList(List<Integer> maxCarList) {
+		this.maxCarList = maxCarList;
+	}
+
+
 }

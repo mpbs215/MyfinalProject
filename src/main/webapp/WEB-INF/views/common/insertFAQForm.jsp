@@ -3,20 +3,19 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <h1>자주 묻는 질문</h1>
-
+<br>
 <form action="${pageContext.request.contextPath}/admin/insertFAQ"
 	method="get">
-	<table class="boardTable">
+	<table class="table table-bordered" style="width: 90%">
 		<tr>
-			<th class="thead">질문</th>
-			<th class="tbody"><input type="text" required="required"
-				name="FAQSub" /></th>
+			<th class="termsHead" style="width: 20%">질문</th>
+			<th><input type="text" required="required" name="FAQSub" /></th>
 		</tr>
 		<tr>
-			<th class="thead">답변</th>
-			<th class="tbody"><input type="text" required="required"
-				name="FAQContent" class="tcontent"/></th>
+			<th class="termsHead" style="width: 20%">답변</th>
+			<th><input type="text" required="required" name="FAQContent"
+				class="tcontent" /></th>
 		</tr>
 	</table>
-	<button>글쓰기</button>
+	<button class="btn btn-primary">글쓰기</button>
 </form>

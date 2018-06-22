@@ -13,13 +13,19 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/sidebar.css">
 <link rel="stylesheet"
+<<<<<<< HEAD
 	href="${pageContext.request.contextPath}/resources/css/header2.css">
+=======
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boardTable.css">
+>>>>>>> branch 'master' of https://github.com/mpbs215/finalProject
 
 <!-- header link -->	
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <script>
 function logout(){
 		document.getElementById("logoutForm").submit();		
@@ -45,6 +51,14 @@ function logout(){
 	          <li><a href="${pageContext.request.contextPath}/seller/sellerParkRegistForm">주차장 등록</a></li>
 	          <li><a href="${pageContext.request.contextPath}/sign/loginForm">로그인</a></li>
 	          <li><a href="${pageContext.request.contextPath}/sign/signUpForm">회원 가입</a></li>
+<<<<<<< HEAD
+=======
+	        </sec:authorize>
+	          <sec:authorize access="isAuthenticated()">  
+	      	  <li><a href="javascript:logout();">로그아웃</a></li>
+	          <li><a href="${pageContext.request.contextPath}/user/userModifyUserForm">마이페이지</a></li>
+	        </sec:authorize>   
+>>>>>>> branch 'master' of https://github.com/mpbs215/finalProject
         </ul>
       </nav>
     </div>

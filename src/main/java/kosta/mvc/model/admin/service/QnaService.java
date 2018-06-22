@@ -2,6 +2,7 @@ package kosta.mvc.model.admin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kosta.mvc.model.dao.QNADAO;
 import kosta.mvc.model.dto.QNADTO;
@@ -18,7 +19,7 @@ public class QnaService {
 	}
 
 	public int qnaUpdate(QNADTO qnaDTO) {
-		int result = qnaDAO.updateQNA(qnaDTO);
+		int result = qnaDAO.updateQNA(qnaDTO);		
 		return result;
 	}
 

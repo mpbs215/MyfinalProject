@@ -17,8 +17,8 @@ public class RegiDAO {
 		return session.delete("sellerMapper.deleteSellerReserveByparkNo", parkNo);
 	}
 
-	public int insertParkRegi(ParkDTO parkDto) {
-		return session.insert("sellerMapper.insertParkRegi",parkDto);
+	public int insertParkRegi(ParkRegiDTO parkRegiDto) {		
+		return session.insert("sellerMapper.insertParkRegi",parkRegiDto);
 	}
 
 	public ParkRegiDTO selectOneParkRegi(int parkNo) {

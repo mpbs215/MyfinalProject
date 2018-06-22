@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -209,11 +210,20 @@ $(function(){
 			<div class="col-sm-7">
 				<div id="arrowslider" class="row justify-content-center carousel slide" data-ride="carousel">
 					  <div class="carousel-inner" role="listbox">
-					  	<c:forEach items="${parkImageList}" var="dto" varStatus="status" >
+<%-- 					  	<c:forEach items="${parkImageList}" var="dto" varStatus="status" >
 					  	<div class="carousel-item">
 					      <img class="d-block img-fluid" src="${pageContext.request.contextPath}/resources/images/park/${dto.imgPath}" alt="Slide${status.count}" style="width:95%; margin-left: 2.5%">
 					    </div>
-					  	</c:forEach>
+					  	</c:forEach> --%>
+					  	    <div class="carousel-item active">
+      <img class="d-block img-fluid" src="http://www.stc-corp.co.kr/pages/image/led/led11.jpg" alt="Slide1" style="width:95%; margin-left: 2.5%">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" src="https://img.webnots.com/2017/05/BS_Slide2.jpg" alt="Slide2" style="width:95%; margin-left: 2.5%">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" src="https://img.webnots.com/2017/05/BS_Slide3.jpg" alt="Slide3" style="width:95%; margin-left: 2.5%">
+    </div>
 					  </div>
 					  <a class="carousel-control-prev" href="#arrowslider" role="button" data-slide="prev">
 					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>

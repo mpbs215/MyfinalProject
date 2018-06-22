@@ -1,29 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<sec:authentication var="mvo" property="principal" />
 
-<h1>자주 묻는 질문</h1>
+<h1>FAQ</h1>
 <br>
-<table class="boardTable">
-	<c:forEach items="${list}" var="faqDTO">
+<c:forEach items="${list}" var="faqDTO">
+	<table class="table table-bordered" style="width: 90%">
 		<tr>
-			<th class="thead">질문</th>
-			<th class="tbody">${faqDTO.FAQSub}</th>
+			<th class="termsHead" style="width: 20%">질문</th>
+			<th>${faqDTO.FAQSub}</th>
 		</tr>
 		<tr>
-			<th class="thead">답변</th>
-			<th class="tbody">${faqDTO.FAQContent}</th>
+			<th class="termsHead" style="width: 20%">답변</th>
+			<th>${faqDTO.FAQContent}</th>
 		</tr>
-		<tr>
-			<th><a
-				href="${pageContext.request.contextPath}/admin/updateFAQ/${faqDTO.FAQNo}">수정</a></th>
-			<th><a
-				href="${pageContext.request.contextPath}/admin/deleteFAQ/${faqDTO.FAQNo}">삭제</a></th>
-		<tr>
-	</c:forEach>
-</table>
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<tr>
+				<th><a
+					href="${pageContext.request.contextPath}/admin/updateFAQ/${faqDTO.FAQNo}" class="btn btn-primary">수정</a></th>
+				<th><a
+					href="${pageContext.request.contextPath}/admin/deleteFAQ/${faqDTO.FAQNo}" class="btn btn-danger">삭제</a></th>
+			</tr>
+		</sec:authorize>
+	</table>
+</c:forEach>
 
-<h4>
-	<a href="${pageContext.request.contextPath}/admin/insertFAQForm">
-		자주 묻는 질문 쓰기 </a>
-</h4>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<h4>
+		<a href="${pageContext.request.contextPath}/admin/insertFAQForm" class="btn btn-primary">
+			자주 묻는 질문 쓰기 </a>
+	</h4>
+</sec:authorize>

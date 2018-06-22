@@ -9,7 +9,7 @@
 	method="post" enctype="multipart/form-data">
 	<input type="text" value="${noticeDTO.noticeNo}" name="noticeNo"
 		hidden="hidden" />
-	<table class="boardTable">
+	<table class="table table-bordered" style="width: 90%">
 		<tr>
 			<th>공지사항 제목</th>
 			<th><input type="text" value="${noticeDTO.noticeSub}"
@@ -22,8 +22,10 @@
 		</tr>
 		<tr>
 			<th>파일 선택</th>
-			<th><input type="file" name="noticeImageFile" /></th>
+			<th><input type="file" name="noticeImageFile"/></th>
 		</tr>
 	</table>
-	<button>수정</button>
+	<button class="btn btn-primary">수정</button>
 </form>
+
+	

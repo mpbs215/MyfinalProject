@@ -2,11 +2,15 @@ package kosta.mvc.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.mvc.model.dto.CarTypeDTO;
@@ -23,6 +27,9 @@ public class SellerController {
 
 	@Autowired
 	private SellerServiceImpl service;
+	
+
+	private String imgPath;
 
 	/**
 	 * request : 세션 아이디
@@ -31,7 +38,7 @@ public class SellerController {
 	 */
 	@RequestMapping("/sellerParkList")
 	public String sellerParkList() {
-		return "Seller/sellerParkList";
+		return "seller/sellerParkList";
 	}
 
 	@ResponseBody
@@ -69,16 +76,29 @@ public class SellerController {
 	 * @return
 	 */
 	@RequestMapping("/sellerParkRegist")
-	public ModelAndView sellerParkRegist(ParkDTO parkDto, CarTypeDTO carTypeDto, ParkImgDTO parkImg,
-			ParkRegiDTO parkRegi) {
+	public ModelAndView sellerParkRegist(HttpSession session, ParkDTO parkDto, CarTypeDTO carTypeDto, ParkImgDTO parkImgDto, ParkRegiDTO parkRegiDto, MultipartHttpServletRequest req) throws Exception{
+		
+		UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
 		ModelAndView mv = new ModelAndView();
+		
+		parkDto.setUserId(userDTO.getUserId());
 
-		service.sellerParkRegist(parkDto, carTypeDto, parkImg, parkRegi);
+		//멀티 파일 업로드
+		List<MultipartFile> mf = req.getFiles("files");		
+		imgPath = session.getServletContext().getRealPath("/resources/images/park");// 파일 저장 폴더 경로
 
+		service.sellerParkRegist(parkDto, carTypeDto, parkImgDto, parkRegiDto, imgPath, mf);
+	
 		mv.setViewName("redirect:/seller/sellerParkList");
 		return mv;
 	}
 
+	/**
+	 * 주소 검색창 오픈
+	 */
+	@RequestMapping("/addrPopup")
+	public void addrPopup() {}
+	
 	/**
 	 * request : 세션 id
 	 * 

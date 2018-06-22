@@ -2,6 +2,10 @@ package kosta.mvc.model.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,7 +23,7 @@ public class QNADAO {
 		return list;
 	}
 
-	public QNADTO selectOneQNA(int QNANo) {
+	public QNADTO selectOneQNA(HttpServletRequest request, HttpServletResponse response, int QNANo) {
 		QNADTO qnaDTO = session.selectOne("commonMapper.selectOneQNA", QNANo);
 		return qnaDTO;
 	}
@@ -38,4 +42,11 @@ public class QNADAO {
 		int result = session.update("commonMapper.deleteQNA", QNANo);
 		return result;
 	}
+
+	public void increaserQNA(QNADTO qnaDTO) {
+		session.update("commonMapper.increaseQNAHit", qnaDTO);
+	}
+	
+
+
 }

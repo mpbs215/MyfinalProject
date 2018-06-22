@@ -6,18 +6,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kosta.mvc.model.admin.service.QnaService;
 import kosta.mvc.model.common.service.CommonService;
@@ -40,7 +39,7 @@ public class CommonController {
 
 	@Autowired
 	private QnaService qnaService;
-	
+
 	@Autowired
 	private UserServiceImpl userService;
 
@@ -113,17 +112,19 @@ public class CommonController {
 
 	@RequestMapping("/qna")
 	public ModelAndView qna() {
+
 		ModelAndView mv = new ModelAndView();
 		List<QNADTO> list = commonService.selectQNAList();
 		mv.setViewName("common/qna");
 		mv.addObject("QNAList", list);
+
 		return mv;
 	}
 
 	@RequestMapping("/qnaDetail/{QNANo}")
-	public ModelAndView qnaDetial(@PathVariable int QNANo) {
+	public ModelAndView qnaDetial(HttpServletRequest request, HttpServletResponse response, @PathVariable int QNANo) {
 		ModelAndView mv = new ModelAndView();
-		QNADTO qnaDTO = commonService.selectOneQNA(QNANo);
+		QNADTO qnaDTO = commonService.selectOneQNA(request, response, QNANo);
 		mv.addObject("qnaDTO", qnaDTO);
 		mv.setViewName("common/qnaDetail");
 		return mv;
@@ -164,7 +165,7 @@ public class CommonController {
 	@RequestMapping("/updateQNA/{QNANo}")
 	public ModelAndView qnaUpdateForm(@PathVariable int QNANo) {
 		ModelAndView mv = new ModelAndView();
-		QNADTO qnaDTO = commonService.selectOneQNA(QNANo);
+		QNADTO qnaDTO = commonService.selectOneQNA(null, null, QNANo);
 		mv.addObject("qnaDTO", qnaDTO);
 		mv.setViewName("common/qnaUpdateForm");
 		return mv;
