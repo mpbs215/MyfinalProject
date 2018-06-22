@@ -51,6 +51,10 @@ public class ParkReserveDAO {
 	public List<ParkDTO> userReserveList(String userId) {
 		return session.selectList("userMapper.selectUserReserve",userId);
 	}
+
+	public int deleteReserve(int reserveNo) {
+		return session.delete("userMapper.deleteReserve",reserveNo);
+	}
 	
 	
 }

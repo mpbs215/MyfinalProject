@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,9 +61,11 @@ public class AdminController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping("/manageUserList")
-	public List<UserDTO> manageUserList() {
-		return manageUserService.manageUserList();
+	@RequestMapping("/manageUsers")
+	public String manageUserList(Model model) {
+		List<UserDTO> list = manageUserService.manageUserList();
+		model.addAttribute("list", list);
+		return "manageUserMapper.regiUserList";
 	}
 
 	/**

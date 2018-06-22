@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMapper">
+	<select id="selectSido" resultType="string">
+		select distinct(sido) from SIDOGUGUNDONGRI
+	</select>
+	<select id="selectGugun" resultType="string">
+		select distinct(gugun) from SIDOGUGUNDONGRI where sido=#{_parameter}
+	</select>
+	<select id="selectDong" resultType="string">
+		select distinct(dong) from SIDOGUGUNDONGRI where gugun=#{_parameter}
+	</select>
+	<select id="selectRi" resultType="string">
+		select distinct(ri) from SIDOGUGUNDONGRI where dong=#{_parameter}
+	</select>
+	<resultMap type="parkDTO" id="searchMap">
+		<id column="park_no" property="parkNo"/>
+		<result column="user_id" property="userId"/>
+		<result column="park_name" property="parkName"/>
+		<result column="park_addr" property="parkAddr"/>
+		<result column="park_size" property="parkSize"/>
+		<result column="park_content" property="parkContent"/>
+		<result column="price" property="price"/>
+		<association property="parkImg" javaType="parkImgDTO">
+		  <result column="img_path" property="imgPath"/>
+		</association>
+		<association property="parkRegi" javaType="parkRegiDTO">
+		  <result column="regi_start" property="regiStart"/>
+		  <result column="regi_end" property="regiEnd"/>
+		</association>
+		<collection property="carTypeList" ofType="carTypeDTO">
+		  <id column="car_Type" property="carType"/>
+		  <result column="max_car" property="maxCar"/>
+		</collection>
+	</resultMap>
+	<select id="selectPark" parameterType="searchFilterDTO" resultMap="searchMap">
+		select park_no,user_id,park_name,park_addr,park_size,park_content,price,regi_start,regi_end,img_path,car_type,max_car
+		 from park_tb natural join park_regist_tb natural join (select*from park_image_tb where rownum<![CDATA[<]]>2) natural join car_type_tb
+ 		<where>
+			<!-- regi_end <![CDATA[>]]> sysdate -->
+			<if test="parkAddr!=null and !parkAddr.equals('') and !parkAddr.equals('null')">
+			and park_addr like '%'||#{parkAddr}||'%'
+			</if>
+			<if test="carType!=null and !carType.equals('')">
+			and car_type = #{carType}
+			</if>
+			<if test="reserveDate!=null and !reserveDate.equals('')">
+			and regi_start<![CDATA[<]]>#{reserveDate} and regi_end <![CDATA[>]]> #{reserveDate} and
+			</if>
+			<if test="parkContent!=null and !parkContent.equals('')">
+			and park_content like '%||#{parkContent}||%'
+			</if>
+			<if test="destination!=null and !destination.equals('')">
+			and park_addr like '%'||#{destination}||'%'
+			</if>
+			<if test="parkName!=null and !parkName.equals('')">
+			and park_name like '%'||#{parkName}||'%'
+			</if>
+			<if test="price!=0">
+			and price <![CDATA[<]]> #{price}
+			</if>
+		</where>
+	</select>
+</mapper>

@@ -17,14 +17,19 @@
 						name="header" /></th>
 			</header>
 		</tr>
+<<<<<<< HEAD
 		<tr>
 
 			<th class="layoutContent2"><content>
 				<tiles:insertAttribute name="content" /></content></th>
 
 		</tr>
+=======
+
+>>>>>>> branch 'master' of https://github.com/mpbs215/finalProject.git
 
 	</table>
+	<tiles:insertAttribute name="content" />
 	<footer class="layoutFooter">
 		<tiles:insertAttribute name="footer" />
 	</footer>

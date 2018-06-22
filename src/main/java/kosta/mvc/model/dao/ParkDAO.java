@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kosta.mvc.model.dto.ParkDTO;
+import kosta.mvc.model.dto.SearchFilterDTO;
 
 @Repository
 public class ParkDAO {
@@ -32,4 +33,9 @@ public class ParkDAO {
 	public ParkDTO selectOnePark(int parkNo) {
 		return session.selectOne("userMapper.selectOnePark",parkNo);
 	}
+
+	public List<ParkDTO> renewParkList(SearchFilterDTO dto) {
+		return session.selectList("searchMapper.selectPark", dto);
+	}
+
 }
