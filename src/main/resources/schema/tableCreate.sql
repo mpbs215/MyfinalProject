@@ -6,6 +6,8 @@ maxvalue 10000
 nocache 
 nocycle;
 
+select * from AUTHORITY_TB;
+
 create sequence img_seq 
 start with 1 
 increment BY 1 

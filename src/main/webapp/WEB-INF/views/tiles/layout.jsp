@@ -17,14 +17,12 @@
 				</header></th>
 		</tr>
 		<tr>
-
 			<th class="layoutSideBar"><sidebar> <tiles:insertAttribute
 					name="sidebar" /></sidebar></th>
 
 			<th class="layoutContent"><content> <tiles:insertAttribute
 					name="content" /> </content></th>
 		</tr>
-
 	</table>
 	<footer class="layoutFooter">
 		<tiles:insertAttribute name="footer" />
