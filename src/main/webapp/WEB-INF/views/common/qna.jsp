@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <sec:authentication var="mvo" property="principal" />
@@ -42,8 +45,8 @@
 		</tr>
 	</c:forEach>
 </table>
+	
 <sec:authorize access="isAuthenticated()">  
-
 <h4>
 	<a href="${pageContext.request.contextPath}/common/insertQNAForm"
 		class="btn btn-primary"> QNA 쓰기 </a>
