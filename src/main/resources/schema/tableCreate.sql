@@ -197,16 +197,10 @@ create table notice_TB(
 );
 
 create table SMS_TB (
-<<<<<<< HEAD
         user_id varchar2(100) PRIMARY KEY CONSTRAINT user_id REFERENCES USER_INFO_TB(user_id),
         hp varchar2(20) not null,
         key varchar2(100) not null
-=======
-	     user_id varchar2(100) PRIMARY KEY CONSTRAINT user_id REFERENCES USER_INFO_TB(user_id),
-	     hp varchar2(20) not null,
-	     key varchar2(100) not null
->>>>>>> branch 'master' of https://github.com/mpbs215/finalProject
- );
+);
 
 
 
