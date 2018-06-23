@@ -8,6 +8,7 @@ public class SearchFilterDTO {
 	private String destination;
 	private String parkName;
 	private int price;
+	
 	public String getParkAddr() {
 		return parkAddr;
 	}
