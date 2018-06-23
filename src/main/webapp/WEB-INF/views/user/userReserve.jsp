@@ -16,59 +16,27 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a1af573ee6ab29bacc2369936a8b908&libraries=services"></script>
 <script>
-$(function(){
-	var container = document.getElementById('map');
-	var options = {
-		center: new daum.maps.LatLng(33.450701, 126.570667),
-		level: 3
-	};
-	
-
-	var map = new daum.maps.Map(container, options);
-	
-	// 주소-좌표 변환 객체를 생성합니다
-	var geocoder = new daum.maps.services.Geocoder();
-	
-	$("input[name='reserveDate']").appendDtpicker(
-			{locale : 'ko',
-			 autodateOnStart : false,
-			 todayButton: true,
-			 futureOnly: true,
-			}
-	);
-	
-	function markerRenew(){
-		// 주소로 좌표를 검색합니다
-		geocoder.addressSearch('${dto.parkAddr}', function(result, status) {
-		    // 정상적으로 검색이 완료됐으면 
-		     if (status === daum.maps.services.Status.OK) {
-		        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new daum.maps.Marker({
-		            map: map,
-		            position: coords,
-		            clickable: true          
-		        });
-		     // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-		        var iwContent = '<div style="padding:5px;">Hello World!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-		            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-		        // 인포윈도우를 생성합니다
-		        var infowindow = new daum.maps.InfoWindow({
-		            content : iwContent,
-		            removable : iwRemoveable
-		        });
-		        // 마커에 클릭이벤트를 등록합니다
-		        daum.maps.event.addListener(marker, 'click', function() {
-		              // 마커 위에 인포윈도우를 표시합니다
-		              infowindow.open(map, marker);  
-		        });      
-		    } 
-		});
-	}
-})
-</script>
-<script>
 	$(function(){
+		var markers = [];
+		var container = document.getElementById('map');
+		var options = {
+			center: new daum.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+		
+
+		var map = new daum.maps.Map(container, options);
+		
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new daum.maps.services.Geocoder();
+		
+		$("input[name='reserveDate']").appendDtpicker(
+				{locale : 'ko',
+				 autodateOnStart : false,
+				 todayButton: true,
+				 futureOnly: true,
+				}
+		);
 		$("#sido").change(function(){
 			$("[name='parkAddr']").val($("#sido").val())
 			$("#gugun").html="";
@@ -156,7 +124,7 @@ $(function(){
 				data:queryString,
 				dataType: "json",
 				success : function(result){
-					alert("성공")
+					alert(result.length)
  					$.each(result, function(index, item){
 						  var parkList = new Array();
 						  parkList[0] = item.parkName;
@@ -164,14 +132,82 @@ $(function(){
 						  parkList[2] = item.parkRegi.regiStart;
 						  parkList[3] = item.parkRegi.regiEnd;
 						  parkList[4] = item.price;
-						  console.log(parkList)
+						  parkList[5] = item.carTypeList;
+						  parkList[6] = item.parkImg.imgPath
+						  markerRenew(parkList)
 					})
+					removeMarker()
 				},
 				error:function(request,status,error){
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				}
 				
 			}) 
+		}
+		function markerRenew(parkList){
+/* 			$.each(parkList[5],function(index,item){
+				var a = item2.carType
+				var b = item2.maxCar
+			}) */
+			console.log('마커리뉴호출')
+			console.log(parkList)
+			// 주소로 좌표를 검색합니다
+	 		geocoder.addressSearch(parkList[1], function(result, status) {
+			    // 정상적으로 검색이 완료됐으면 
+			     if (status === daum.maps.services.Status.OK) {
+			        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new daum.maps.Marker({
+			            map: map,
+			            position: coords,
+			            clickable: true          
+			        });
+			        markers.push(marker);
+			     // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+			     	var iwdata=""
+			     		iwdata+="<div style='width: 600px;height: 230px; display: inline-block; border: 1px solid black'>"
+			     		iwdata+="<div style='width:40%; height: 100%; display: inline-block;'>"
+			     		iwdata+="<img src='"+parkList[6]+"' width='100%' height='100%'>"
+			     		iwdata+="</div>"
+			     		iwdata+="<div style='width:60%; height: 100%; display: inline-block; float: right'>"
+			     		iwdata+="<ul class='list-group list-group-flush border'>"
+			     		iwdata+="<li class='bg-primary text-white font-weight-bold text-center' style='font-size: 20px; padding: 7px'>"+parkList[0]+"</li>"
+			     		iwdata+="<li class='list-group-item'>"+parkList[1]+"</li>"
+			     		iwdata+="<li class='list-group-item'>"
+			     		iwdata+=parkList[2]+"<br />~ "+parkList[3]
+			     		iwdata+="</li>"
+			     		iwdata+="<li class='list-group-item' > 가격: "+parkList[4]+" / "
+			     		$.each(parkList[5],function(index,item){
+			     			iwdata+= item.carType
+			     			iwdata+= item.maxCar
+						})
+			     		iwdata+="</li></ul>"
+			     		iwdata+="</div>"
+			     		iwdata+="</div>"
+			        var iwContent = iwdata
+			        	, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+			        // 인포윈도우를 생성합니다
+			        var infowindow = new daum.maps.InfoWindow({
+			            content : iwContent,
+			            removable : iwRemoveable
+			        });
+			        // 마커에 클릭이벤트를 등록합니다
+			        daum.maps.event.addListener(marker, 'click', function() {
+			              // 마커 위에 인포윈도우를 표시합니다
+			              if(open==1){
+			              	infowindow.open(map, marker);
+			              }
+			        });      
+			    } 
+			});
+		}
+		function removeMarker() {
+			 for ( var i = 0; i < markers.length; i++ ) {
+			 infowindow.close();
+			 markers[i].setMap(null);
+			 } 
+			 markers = [];
 		}
 		parkChange();
 	})
@@ -183,14 +219,14 @@ $(function(){
 			<div class="row">
 				<div class="col-sm-2">
 					<select id="sido" class="custom-select">
-						<option value=""></option>
+						<option value="" disabled selected hidden>시/도</option>
 						<c:forEach items="${sidoList}" var="sido">
 							<option value="${sido}">${sido}</option>
 						</c:forEach>
 					</select>
 				</div>
 				<div class="col-sm-2">
-					<select id="gugun" class="custom-select"></select>
+					<select id="gugun" class="custom-select" ></select>
 				</div>
 				<div class="col-sm-2">
 					<select id="dong" class="custom-select"></select>
@@ -238,14 +274,13 @@ $(function(){
 				</div>
 				<div style='width:60%; height: 100%; display: inline-block; float: right'>
 					<ul class='list-group list-group-flush border'>
-					  <li class='list-group-item bg-primary text-white font-weight-bold'>서울 주차장</li>
+					  <li class='bg-primary text-white font-weight-bold text-center' style="font-size: 20px; padding: 7px">서울 주차장</li>
 					  <li class='list-group-item' >서울 은평구 불광동 8-63번지 201호</li>
 					  <li class='list-group-item' >
-					  item.parkName item.parkAddr item.parkRegi.regiStart item.parkRegi.regiEnd item.price
 					  2018-06-20 18:00:00 <br />
 					  ~ 2018-06-20 19:00:00
 					  </li>
-					  <li class='list-group-item' > 가격: 2000 / 중형1 소형2 대형3</li>
+					  <li class='list-group-item'> 가격: 2000 / 중형1 소형2 대형3</li>
 					</ul>
 				</div>
 			</div>

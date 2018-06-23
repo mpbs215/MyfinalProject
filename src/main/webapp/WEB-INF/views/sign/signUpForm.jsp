@@ -7,6 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+ 
+ <style>
+	span{color:white; width:100px; }
+	div{color:white;}
+	.signUp-Form { display:inline-block; text-align:center; width:400px; margin-left:460px; background:rgba(0,0,0,0.5);}
+ </style>
+ 
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -61,7 +68,7 @@ $(document).ready(function(){
 			success:function(message){		
 				console.log(message);
 				if(message == "fail"){
-				$("#idCheckView").html("  "+id+" ID Can't Use!! ").css("background","green");
+				$("#idCheckView").html("  "+id+" ID Can't Use!! ").css("background","orange");
 					checkResultId="";
 				}else{						
 					$("#idCheckView").text("  "+id+" ID Can Use!! ").css("background","yellow");		
@@ -76,24 +83,21 @@ $(document).ready(function(){
 </head>
 
 <body>
+<div class="signUp-Form">
 <h2>User SignUp Form</h2><p>
-<form method="post" action="${pageContext.request.contextPath}/sign/signUp" id="signUpForm">
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-ID <input type="text" name="userId" id="userId"><span id="idCheckView">아이디 중복 확인</span><br><br>
-PASSWORD <input type="password" name="password"><br><br>
-NAME <input type="text" name="userName"><br><br>
-E-Mail<input type="text" name="email"><br><br>
-HP : <input type="text" name="hp"><br><br>
-ADDRESS : <input type="text" name="address"><br><br>
- <input type="hidden" name="regidate"><br>
-AUTHORITY TYPE <input type="radio" value="0" name="seller">ROLE_MEMBER
-		 		 					<input type="radio" value="1" name="seller">ROLE_ADMIN<br><br>
-		 		 
-<input type="submit" value="회원가입하기">
-</form>
+	<form method="post" action="${pageContext.request.contextPath}/sign/signUp" id="signUpForm">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		<div>ID </div><input type="text" name="userId" id="userId"><div id="idCheckView" >아이디 중복 확인</div><br><br>
+		<div>PASSWORD </div><div><input type="password" name="password"><br><br></div>
+		<div>NAME </div><div><input type="text" name="userName"><br><br></div>
+		<div>E-Mail</div><div><input type="text" name="email"><br><br></div>
+		<div>HP : </div><div><input type="text" name="hp"><br><br></div>
+		<div>주차장 등록을 하기 위해서는 핸드폰 본인 인증을 하셔야 합니다.</div>
+		<div>ADDRESS : </div><div><input type="text" name="address"><br><br></div>
+		 <input type="hidden" name="regidate"><br>
+		<div>User_Type</div><input type="hidden" value="0" name="seller"><p>
+		<input type="submit" value="회원가입하기">
+	</form>
+</div>
 </body>
 </html>
-
-
-회원가입페이지입니다.
->>>>>>> branch 'master' of https://github.com/mpbs215/finalProject

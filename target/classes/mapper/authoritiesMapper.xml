@@ -8,17 +8,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="AuthorityDTO" id="authorityDTO">
 		<id column="user_id" property="userId"/>
 		<result column="role" property="role"/>	
+		<result column="key" property="key" />
+		<result column="hp" property="hp" />
 	</resultMap>
 	
-	<insert id="insertAuthority"  parameterType="AuthorityDTO">
+	<insert id="insertAuthority"  parameterType="authorityDTO">
 		INSERT INTO AUTHORITY_TB
-			VALUES(#{userId}, #{role})
+			VALUES(#{userId} , #{role}, #{key}, #{hp})
 	</insert>
 	
 	<select id="selectAuthorityByUserId"  parameterType="string" resultMap="authorityDTO">
-		SELECT USER_ID, ROLE
+		SELECT USER_ID, ROLE, key, hp
 		  FROM AUTHORITY_TB
 		WHERE USER_ID = #{_parameter}
 	</select>
+	
+	<update id="updateKey"  parameterType="authorityDTO">
+			update authority_tb
+			 set key=#{key}
+			 where hp=#{hp}
+	</update>
+	
+	<update id="updateAuth" parameterType="string">
+		UPDATE AUTHORITY_TB
+			     SET role='ROLE_SELLER' 
+		  WHERE key=#{_parameter}
+	</update>
+	
+	<delete id="deleteAuth" parameterType="string">
+		DELETE FROM AUTHORITY_TB
+		 WHERE password = #{_parameter}
+	</delete>
 	
 </mapper>

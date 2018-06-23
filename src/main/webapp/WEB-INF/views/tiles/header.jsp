@@ -7,13 +7,9 @@
 <head>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/layout.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/sidebar.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidebar.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header2.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boardTable.css">
 
 <!-- header link -->	
@@ -29,40 +25,55 @@ function logout(){
 </script>
 
 <!-- 로그인한 유저 아이디 담아둠 -->
-<%@ taglib uri="http://www.springframework.org/security/tags"
-	prefix="sec"%>
 <sec:authentication var="mvo" property="principal" />
-
 </head>
-<body>
-	<header id="header">
+<body id="login-auth">
+	<!-----로그인전 ---->
+ <sec:authorize access="isAnonymous()">
+<header id="header">
    	 <div class="container">
       <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">HEADER</a></h1>
+        <a href="#intro" class="scrollto">HEADER</a>
       </div>
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-	          <li class="menu-active"><a href="${pageContext.request.contextPath}/">Home</a></li>
+	          <li class="menu-active"><a href="${pageContext.request.contextPath}/">HOME</a></li>
 	          <li><a href="${pageContext.request.contextPath}/common/introduce">서비스 안내</a></li>
 	          <li><a href="${pageContext.request.contextPath}/user/userReserve">주차장 예약</a></li>
 	          <li><a href="${pageContext.request.contextPath}/seller/sellerParkRegistForm">주차장 등록</a></li>
-	        <sec:authorize access="isAnonymous()">
 	          <li><a href="${pageContext.request.contextPath}/sign/loginForm">로그인</a></li>
 	          <li><a href="${pageContext.request.contextPath}/sign/signUpForm">회원 가입</a></li>
-	        </sec:authorize>
-	          <sec:authorize access="isAuthenticated()">  
-	      	  <li><a href="javascript:logout();">로그아웃</a></li>
-	          <li><a href="${pageContext.request.contextPath}/user/userModifyUserForm">마이페이지</a></li>
-	        </sec:authorize>   
         </ul>
       </nav>
     </div>
   </header>
-  
+  </sec:authorize>
+	  <!-----로그인전 ---->
+
+  <!-- 로그인후 ---->
+<sec:authorize access="isAuthenticated()">  
+  	<header id="loginHeader">
+   	 <div class="container">
+      <div id="logo" class="pull-left">
+        <a href="#intro" class="scrollto">HEADER</a>
+      </div>
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+	          <li class="menu-active"><a href="${pageContext.request.contextPath}/">HOME</a></li>
+	          <li><a href="${pageContext.request.contextPath}/common/introduce">서비스 안내</a></li>
+	          <li><a href="${pageContext.request.contextPath}/user/userReserve">주차장 예약</a></li>
+	          <li><a href="${pageContext.request.contextPath}/seller/sellerParkRegistForm">주차장 등록</a></li>
+	          <li><a href="javascript:logout();">로그아웃</a></li>
+	          <li><a href="${pageContext.request.contextPath}/user/userModifyUserForm">마이페이지</a></li>
+        </ul>
+      </nav>
+    </div>
+   		 </header>
+     </sec:authorize>  
+ <!-- //로그인후 ---->
  
- <form id="logoutForm" action="${pageContext.request.contextPath}/user/logout"  method="post" style="display:none">
- 	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
- </form>
- 
-</body>
-  
+		 <form id="logoutForm" action="${pageContext.request.contextPath}/user/logout"  method="post" style="display:none">
+		 	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+		 </form>
+	</body>
+ </html>

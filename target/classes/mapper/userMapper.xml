@@ -16,12 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="seller" property="seller" />
 </resultMap>
 
-
 	<select id="loginCheck"   parameterType="userDTO" resultType="userDTO">
 		select user_id as userId, password , user_name as userName
 		from user_info_tb
 		 where user_id=#{userId} and password=#{password}
 	</select>
+	
 	<select id="selectReviewByStar" parameterType="reviewDTO" resultType="reviewDTO">
 			select*from review_tb
 			<where>
@@ -81,10 +81,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select max_car from car_type_tb	
 		where park_No=#{parkNo} and car_type=#{carType}
 	</select>
+	
 	<select id="selectCarType" parameterType="int" resultType="carTypeDTO">
 		select*from car_type_tb 
 		where park_No=#{_parameter}
 	</select>
+	
+	<insert id="insertAuth" parameterType="string">
+			insert into AUTHORITY_TB(key)
+			values(#{_parameter})
+	</insert>
+	
+	<insert id="SMS" parameterType="tempKeyDTO" >
+			insert into SMS_TB
+			values(#{userId}, #{hp}, #{key})
+	</insert>
 	
  	<resultMap type="parkDTO" id="reserveMap">
 		<result column="user_id" property="userId"/>
@@ -101,6 +112,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<result column="reserve_Start" property="reserveStart"/>
 		</association>
 	</resultMap>
+	
 	<select id="selectUserReserve" parameterType="string" resultMap="reserveMap">
 		select reserve_No,reserve_Start,user_info_tb.user_id,img_path,park_name,hp,price*EXTRACT(hour from reserve_end-reserve_start) as price
 		from park_Reserve_TB  left outer join (select* from park_image_tb where rownum<![CDATA[<]]>2)  using(park_no) 
@@ -113,8 +125,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from park_Reserve_TB where reserve_no=#{_parameter}
 	</delete>
 	
-	<select id="">
-		select * from park_tb natural join park_regist_tb natural join (select*from park_image_tb where rownum<![CDATA[<]]>2)
-	</select>
+	<delete	id="deleteSMS" parameterType="string">
+		DELETE FROM SMS_TB
+		 WHERE password = #{_parameter}
+	</delete>
+	
+	<delete id="deleteUser" parameterType="string">
+		DELETE FROM USER_INFO_TB
+		 WHERE password = #{_parameter}
+	</delete>
 	
 </mapper>

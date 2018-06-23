@@ -1,6 +1,7 @@
 package kosta.mvc.model.dto;
 
 public class UserDTO {
+	
 		private String userId;
 		private String password;
 		private String userName;
@@ -108,5 +109,4 @@ public class UserDTO {
 		public void setReview(ReviewDTO review) {
 			this.review = review;
 		}
-		
 }
