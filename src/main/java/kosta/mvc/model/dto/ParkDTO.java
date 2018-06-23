@@ -16,6 +16,7 @@ public class ParkDTO {
 	private ParkRegiDTO parkRegi;
 	private ParkReserveDTO parkReserve;
 	private List<CarTypeDTO> carTypeList;
+	
 	public int getParkNo() {
 		return parkNo;
 	}

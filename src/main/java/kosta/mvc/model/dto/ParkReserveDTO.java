@@ -10,6 +10,9 @@ public class ParkReserveDTO {
 	private String reserveEnd;
 	private String carType;
 	
+	private UserDTO userDto;
+	private ParkDTO parkDto;	
+	
 	public String getCarType() {
 		return carType;
 	}
@@ -83,6 +86,18 @@ public class ParkReserveDTO {
 	}
 	public void setReserveEnd(String reserveEnd) {
 		this.reserveEnd = reserveEnd;
+	}	
+	public UserDTO getUserDto() {
+		return userDto;
+	}
+	public void setUserDto(UserDTO userDto) {
+		this.userDto = userDto;
+	}
+	public ParkDTO getParkDto() {
+		return parkDto;
+	}
+	public void setParkDto(ParkDTO parkDto) {
+		this.parkDto = parkDto;
 	}
 	@Override
 	public String toString() {
