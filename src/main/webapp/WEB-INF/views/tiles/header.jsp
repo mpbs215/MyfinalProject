@@ -64,7 +64,7 @@ function logout(){
 	          <li><a href="${pageContext.request.contextPath}/user/userReserve">주차장 예약</a></li>
 	          <li><a href="${pageContext.request.contextPath}/seller/sellerParkRegistForm">주차장 등록</a></li>
 	          <li><a href="javascript:logout();">로그아웃</a></li>
-	          <li><a href="${pageContext.request.contextPath}/user/mypage">마이페이지</a></li>
+	          <li><a href="${pageContext.request.contextPath}/user/userModifyUserForm">마이페이지</a></li>
         </ul>
       </nav>
     </div>

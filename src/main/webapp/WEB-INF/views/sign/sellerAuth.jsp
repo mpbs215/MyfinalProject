@@ -56,8 +56,10 @@
         </ul>
       </nav>
     </div>
-		<!---- 로그인후 판매자인증 영역 --->
-		<script>
+    
+    
+<!---- 로그인후 판매자인증 영역 --->
+	<script>
  $(document).ready(function() {
 		
 	 $("#authBtn").on("click",function() {
@@ -100,7 +102,9 @@
 		<p class="hp-btn"><input type="submit" value="인증하기" id="hp-btn2"></p>
 	</form>
 	</div>
- <!---- //로그인후 판매자인증 영역 --->
+	
+ <!---- //로그인후 판매자인증 영역 끝--->
+ 
   </header>
   </div>
  </sec:authorize>  

@@ -15,8 +15,8 @@
 	div{color:white; text-align:center; }
 	.member_login{color:yellow;}
 	a{color:white;}
-	.login-bg {  background:rgba(0,0,0,0.5); text-align:center; }
-	.login-form {text-align:center; display:inline-block; margin-bottom:80px; margin-top:80px; margin-right:100px;}
+	.login-bg { background:rgba(0,0,0,0.5); text-align:center; width:800px; display:inline-block; margin-left:280px; margin-bottom:180px; margin-top:80px;}
+	/* .login-form {text-align:center; display:inline-block;  } */
 	.error-message {text-align:center; font-weight:bold; font-size:50px;}
 	.login-btn {text-align:center; display:inline-block; margin-left:90px;}
 	h2 {text-size:300px;}
@@ -36,9 +36,9 @@
 <div class="login-form">
 <form action="${pageContext.request.contextPath}/login" method="post">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<table style="width:350px">
+			<table style="width:200px">
 					<tr>
-						<td width="70px">ID</td>
+						<td>ID</td>
 						<td><input type="text" name="userId" size="30" ></td>
 					</tr>
 					<tr>

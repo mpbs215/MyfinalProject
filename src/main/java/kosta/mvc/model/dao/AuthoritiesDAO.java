@@ -40,4 +40,12 @@ public class AuthoritiesDAO{
 		
 		return result;
 	}
+	
+	/**
+	 * 	사용자의 아이디에 따른 정보 삭제 (Auth 테이블 삭제)
+	 * */
+	public int deleteAuth(String userId) {
+		
+		return sqlSession.delete("authoritiesMapper.deleteAuth",userId);
+	}
 }

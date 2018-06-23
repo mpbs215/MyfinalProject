@@ -11,7 +11,7 @@
  <style>
 	span{color:white; width:100px; }
 	div{color:white;}
-	.signUp-Form { display:inline-block; text-align:center; width:400px; margin-left:220px; background:rgba(0,0,0,0.5);}
+	.signUp-Form { display:inline-block; text-align:center; width:400px; margin-left:460px; background:rgba(0,0,0,0.5);}
  </style>
  
 <script type="text/javascript">
@@ -68,7 +68,7 @@ $(document).ready(function(){
 			success:function(message){		
 				console.log(message);
 				if(message == "fail"){
-				$("#idCheckView").html("  "+id+" ID Can't Use!! ").css("background","green");
+				$("#idCheckView").html("  "+id+" ID Can't Use!! ").css("background","orange");
 					checkResultId="";
 				}else{						
 					$("#idCheckView").text("  "+id+" ID Can Use!! ").css("background","yellow");		
@@ -92,7 +92,7 @@ $(document).ready(function(){
 		<div>NAME </div><div><input type="text" name="userName"><br><br></div>
 		<div>E-Mail</div><div><input type="text" name="email"><br><br></div>
 		<div>HP : </div><div><input type="text" name="hp"><br><br></div>
-		<div>핸드폰 인증을 하시면 판매자 등록을 할 수 있습니다.</div>
+		<div>주차장 등록을 하기 위해서는 핸드폰 본인 인증을 하셔야 합니다.</div>
 		<div>ADDRESS : </div><div><input type="text" name="address"><br><br></div>
 		 <input type="hidden" name="regidate"><br>
 		<div>User_Type</div><input type="hidden" value="0" name="seller"><p>
