@@ -16,6 +16,12 @@
 
 <script type="text/javascript">
 
+// ,찍기
+function comma(str) {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+
 $(function(){	
 	// 삭제 버튼(하나 삭제)
 	$('button[name="deleteOne"]').click(function(){		
@@ -49,16 +55,39 @@ $(function(){
 	// 삭제 (체크된 주차장 모두 삭제)
 	$("#delete").click(function(){
 		
-		var parkIdArr = [];	
+		var parkNos = [];	
 		// 체크된 주차장들의 parkNo 추출해 배열에 넣고 보내기
 		$("input[name=selectPark]:checked").each(function(){
 			alert($(this).val());
 			var parkNo = $(this).val();
-			parkIdArr.push(parkNo);
+			parkNos.push(parkNo);
 		})
+		
+		$.ajax({
+			url:"${pageContext.request.contextPath}/seller/sellerParksDelete",
+			type:"post",
+			data:{"pNos":parkNos},
+			success:function(result){
+				if(result > 0){					
+					alert("삭제되었습니다.");
+					window.location.reload();
+				}else{
+					alert("삭제 실패");
+				}
+			},
+			error:function(error){
+				console.log("에러발생" + error);
+			}			
+		})   
+		
+		
+		
 	})
 	
 	// 주차장 등록 페이지 연결
+	$("#addPark").click(function(){
+		location.href="${pageContext.request.contextPath}/seller/sellerParkRegistForm";
+	})
 	
 	// 수정 페이지 연결
 
@@ -66,9 +95,6 @@ $(function(){
 </script>
 </head>
 <body>
-
-주차장 리스트 - 수정 필요.
-
 
 <div class="container-fluid">
 		<div class="row justify-content-center">
@@ -88,7 +114,7 @@ $(function(){
 						</div>
 						<div class="col-xs-7"></div>
 						<div class="col-xs-2">
-							<button type="button" class="btn btn-success btn-block">주차장 등록</button>
+							<button type="button" class="btn btn-success btn-block" id="addPark">주차장 등록</button>
 						</div>
 					</div>
 				</div>
@@ -118,16 +144,16 @@ $(function(){
 										<img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/park/${parkDto.parkImg.imgPath}">
 									</div>
 									<div class="col-xs-8">								
-										<h4 class="product-name" id="park">
-											<strong>${parkDto.parkName}</strong>
-										</h4>
+										<h4><strong>
+										<a href="${pageContext.request.contextPath}/user/userReserveForm?parkNo=${parkDto.parkNo}">${parkDto.parkName}
+										</a></strong></h4>
 										<h4>
 											<small>${parkDto.parkAddr}</small>
 										</h4>
 										
 										<!-- 확인 필요 -->
 										<h4>
-											<small>${parkDto.parkRegi.regiStart} ~ ${parkDto.parkRegi.regiEnd}</small><small style="color: green; font: bold;">시간당 ${parkDto.price}원</small>
+											<small>${parkDto.parkRegi.regiStart} ~ ${parkDto.parkRegi.regiEnd}</small>&nbsp;&nbsp;&nbsp;&nbsp;<small style="color: green; font: bold;">시간당 ${parkDto.price}원</small>
 										</h4>
 																			
 										<c:forEach items="${parkDto.carTypeList}" var="carTypes">
@@ -138,15 +164,15 @@ $(function(){
 		
 									</div>
 									<div class="col-xs-1">
-										<div class="col-xs-6">
+										<!-- <div class="col-xs-6">
 											<input type="button" value="수정" id="update">
 										</div>
 										<br />
-										<div class="col-xs-6">
+										<div class="col-xs-6"> -->
 											<button type="button" class="btn btn-link btn" name="deleteOne" value="${parkDto.parkNo}">
 												<span class="glyphicon glyphicon-trash"> </span>
 											</button>
-										</div>
+										<!-- </div> -->
 									</div>
 								</div>
 								<hr/>

@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -37,7 +38,6 @@ public class SellerController {
 	/**
 	 * 등록한 주차장 레코드리스트
 	 */
-
 	@RequestMapping("/sellerParkList")
 	public String sellerParkList(Model model) {
 		
@@ -48,19 +48,6 @@ public class SellerController {
 			
 		return "seller/sellerParkList";
 	}
-
-	/**
-	 * 주차장 리스트에서 삭제 버튼 클릭 후 리스트 리로드
-	 * 
-	 * 수정 필요!!!
-	 */
-/*	@ResponseBody
-	@RequestMapping
-	public List<ParkDTO> sellerParkListReload() {
-		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		List<ParkDTO> list = service.sellerParkList(userDTO.getUserId());
-		return list;
-	}*/
 
 	/**
 	 * 주차장 하나 삭제
@@ -77,7 +64,7 @@ public class SellerController {
 	 */
 	@ResponseBody
 	@RequestMapping("/sellerParksDelete")
-	public int sellerParksDelete(List<String> parkNos) {
+	public int sellerParksDelete(@RequestParam(value="pNos[]") List<String> parkNos) {
 		
 		return service.sellerParksDelete(parkNos);
 	}

@@ -48,6 +48,9 @@
 <body>
 
 	<div class="container">
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+		<div class="col-sm-12">
 
 		<ul id="myTab" class="nav nav-tabs" role="tablist">
 			<li role="presentation" class="active"><a
@@ -63,7 +66,7 @@
 			<div role="tabpanel" class="tab-pane fade active in"
 				id="upcomingReserve" aria-labelledby="upcomingReserve-tab">
 				<!-- 첫번째 탭 내용 -->
-				<table class="table table-hover">
+				<table class="table table-hover" style="align-content: center;">
 					<thead>
 						<tr>
 							<th>주차장 이름</th>
@@ -81,7 +84,7 @@
 						<c:choose>
 
 							<c:when test="${empty requestScope.reserveListLoad}">
-								<tr>
+								<tr align="center">
 									<td colspan="12">
 										<p align="center">
 											<b><span style="font-size: 9pt;">현재 등록하신 주차장에 대한 예약 기록이 없습니다.</span></b>
@@ -91,16 +94,13 @@
 							</c:when>
 
 							<c:otherwise>
-								<c:forEach items="${requestScope.reserveListLoad}"
-									var="reserveListLoad">
+								<c:forEach items="${requestScope.reserveListLoad}" var="reserveListLoad">
 
 									<tr>
-										<td><a href="주차장예약상세페이지">${reserveListLoad.parkDto.parkName}</a></td>
+										<td><a href="${pageContext.request.contextPath}/예약상세페이지">${reserveListLoad.parkDto.parkName}</a></td>
 										<td id="regiStart">${reserveListLoad.reserveStart}</td>
 										<td id="regiEnd">${reserveListLoad.reserveEnd}</td>
-										<td id="userId">${reserveListLoad.userId}</td>
-
-										<!-- --------------------------------------------------- -->
+										<td id="userId">${reserveListLoad.userDto.userId}</td>
 										<td id="userName">${reserveListLoad.userDto.userName}</td>
 										<td id="reserveNo">${reserveListLoad.userDto.hp}</td>
 										<td id="price">${reserveListLoad.parkDto.price}</td>
@@ -142,7 +142,7 @@
 							<c:when test="${empty requestScope.reserveList}">
 								<tr>
 									<td colspan="12">
-										<p align="center">ㄴ
+										<p align="center">
 											<b><span style="font-size: 9pt;">등록하신 주차장에 대한 지난 예약 기록이 없습니다.</span></b>
 										</p>
 									</td>
@@ -154,7 +154,7 @@
 									var="reserveList">
 
 									<tr>
-										<td><a href="주차장예약상세페이지">${reserveList.parkDto.parkName}</a></td>
+										<td><a href="${pageContext.request.contextPath}/예약상세페이지">${reserveList.parkDto.parkName}</a></td>
 										<td id="regiStart">${reserveList.reserveStart}</td>
 										<td id="regiEnd">${reserveList.reserveEnd}</td>
 										<td id="userId">${reserveList.userId}</td>
@@ -176,6 +176,9 @@
 
 		</div>
 	</div>
+</div>
+</div>
+</div>
 
 </body>
 </html>

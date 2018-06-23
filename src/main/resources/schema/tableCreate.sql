@@ -219,3 +219,5 @@ insert into park_Image_TB values(img_seq.nextval,1,'https://blog.fotolia.com/kr/
 
 
 commit
+
+

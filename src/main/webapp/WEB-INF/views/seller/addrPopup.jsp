@@ -10,6 +10,7 @@
 <% 
 	request.setCharacterEncoding("UTF-8");  //한글깨지면 주석제거
 	request.setCharacterEncoding("EUC-KR");  //해당시스템의 인코딩타입이 EUC-KR일경우에
+	
 	String inputYn = request.getParameter("inputYn"); 
 	String roadFullAddr = request.getParameter("roadFullAddr"); 
 	String roadAddrPart1 = request.getParameter("roadAddrPart1"); 
@@ -46,6 +47,10 @@ function init(){
 	var confmKey = "U01TX0FVVEgyMDE4MDYxMTE3NDA1ODEwNzkzOTg=";//승인키
 	var resultType = "4"; // 도로명주소 검색결과 화면 출력유형, 1 : 도로명, 2 : 도로명+지번, 3 : 도로명+상세건물명, 4 : 도로명+지번+상세건물명
 	var inputYn= "<%=inputYn%>";
+	
+	var parameterName = document.form.security.name;
+	var token = document.form.security.value;
+	
 	if(inputYn != "Y"){
 		document.form.confmKey.value = confmKey;
 		document.form.returnUrl.value = url;
@@ -56,7 +61,7 @@ function init(){
 		opener.jusoCallBack("<%=roadFullAddr%>","<%=roadAddrPart1%>","<%=addrDetail%>", "<%=roadAddrPart2%>","<%=engAddr%>"
 			, "<%=jibunAddr%>","<%=zipNo%>", "<%=admCd%>", "<%=rnMgtSn%>", "<%=bdMgtSn%>", "<%=detBdNmList%>"
 			, "<%=bdNm%>", "<%=bdKdcd%>", "<%=siNm%>", "<%=sggNm%>", "<%=emdNm%>", "<%=liNm%>", "<%=rn%>", "<%=udrtYn%>"
-			, "<%=buldMnnm%>", "<%=buldSlno%>", "<%=mtYn%>", "<%=lnbrMnnm%>", "<%=lnbrSlno%>", "<%=emdNo%>", "<%=entX%>", "<%=entY%>");
+			, "<%=buldMnnm%>", "<%=buldSlno%>", "<%=mtYn%>", "<%=lnbrMnnm%>", "<%=lnbrSlno%>", "<%=emdNo%>", "<%=entX%>", "<%=entY%>", parameterName, token);
 		window.close();
 	}
 }
@@ -66,11 +71,11 @@ function init(){
 		<input type="hidden" id="confmKey" name="confmKey" value=""/>
 		<input type="hidden" id="returnUrl" name="returnUrl" value=""/>
 		<input type="hidden" id="resultType" name="resultType" value=""/>
-		<!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 START--> 
-		
-		<input type="hidden" id="encodingType" name="encodingType" value="EUC-KR"/>
-		
+		<!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 START--> 		
+		<input type="hidden" id="encodingType" name="encodingType" value="EUC-KR"/>		
 		<!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 END-->
+				
+		<input type="hidden" id="security" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	</form>
 </body>
 </html>

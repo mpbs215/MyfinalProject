@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="parkReserveDTO" id="parkAndReserve">
 		<id column="reserve_no" property="reserveNo"/>
 		<result column="reserve_start" property="reserveStart"/>
-		<result column="reserveEnd" property="reserveEnd"/>
+		<result column="reserve_end" property="reserveEnd"/>
 		<association property="userDto" javaType="UserDTO">
 			<id column="user_id" property="userId"/>
 			<result column="user_name" property="userName"/>
@@ -43,6 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</association>
 		<association property="parkDto" javaType="ParkDTO">
 			<id column="park_no" property="parkNo"/>
+			<result column="park_name" property="parkName"/>
 			<result column="price" property="price"/>
 		</association>
 	</resultMap>
@@ -71,7 +72,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	
 	<!-- 등록한 주차장 리스트 -->
-	<select id="selectPark" parameterType="String" resultMap="sellerParkList">
+	<select id="selectSellerParkList" parameterType="String" resultMap="sellerParkList">
 		select park_no,user_id,park_name,park_addr,park_size,park_content,price,regi_start,regi_end,img_path,car_type,max_car
 		 from park_tb natural join park_regist_tb natural join (select *
 			from (
@@ -120,31 +121,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 등록한 주차장에 대한 예약 리스트 -->
  	<!-- 과거 -->
 	<select id="selectReserveById" parameterType="string" resultMap="parkAndReserve">
-		select r.reserve_no, r.reserve_start, r.reserve_End, u.user_id, u.user_name, u.hp, p.park_no, p.price*EXTRACT(hour from r.reserve_end-r.reserve_start) price
+		select r.reserve_no, r.reserve_start, r.reserve_end, u.user_id, u.user_name, u.hp, p.park_no, p.park_name, p.price*EXTRACT(hour from r.reserve_end-r.reserve_start) price
 		from park_Reserve_TB r
 		join USER_INFO_TB u
 		on r.user_id=u.user_id
 		join PARK_TB p
 		on r.park_no=p.park_no
-		where r.user_id=#{_parameter}
+		where u.user_id=#{_parameter}
 		and r.reserve_End<![CDATA[<]]>sysdate
 	</select>
 
 	<!-- 미래 -->
 	<select id="selectReserveLoadById" parameterType="string" resultMap="parkAndReserve">
-		select r.reserve_no, r.reserve_start, r.reserve_End, u.user_id, u.user_name, u.hp, p.park_no, p.price*EXTRACT(hour from r.reserve_end-r.reserve_start) price
+		select r.reserve_no, r.reserve_start, r.reserve_end, u.user_id, u.user_name, u.hp, p.park_no, p.park_name, p.price*EXTRACT(hour from r.reserve_end-r.reserve_start) price
 		from park_Reserve_TB r
 		join USER_INFO_TB u
 		on r.user_id=u.user_id
 		join PARK_TB p
 		on r.park_no=p.park_no
-		where r.user_id=#{_parameter}
-		and r.reserve_End<![CDATA[=>]]>sysdate
+		where u.user_id=#{_parameter}
+		and r.reserve_End<![CDATA[>=]]>sysdate
 	</select>
 	
 	<!-- 예약 삭제(취소) -->
 	<delete id="deleteReserve" parameterType="int">
-		delete from park_Reserve_TB where reserve_No=#{_parameter}
-	</delete>	
-		
+		delete from park_Reserve_TB where reserve_No=#{_parameter}ㄴ
+	</delete>
+				
 </mapper>

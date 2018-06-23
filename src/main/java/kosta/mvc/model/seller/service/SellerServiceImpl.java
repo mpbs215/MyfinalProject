@@ -131,8 +131,7 @@ public class SellerServiceImpl {
 			file.transferTo(new File(imgPath+ "/" + fileName));// 이미지 저장
 		}		
 	}
-	
-	
+		
 	/**
 	 * 등록한 주차장 리스트
 	 */	
