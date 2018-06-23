@@ -17,6 +17,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a1af573ee6ab29bacc2369936a8b908&libraries=services"></script>
 <script>
 	$(function(){
+		var markers = [];
 		var container = document.getElementById('map');
 		var options = {
 			center: new daum.maps.LatLng(33.450701, 126.570667),
@@ -161,6 +162,7 @@
 			            position: coords,
 			            clickable: true          
 			        });
+			        markers.push(marker);
 			     // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
 			     	var iwdata=""
 			     		iwdata+="<div style='width: 600px;height: 230px; display: inline-block; border: 1px solid black'>"

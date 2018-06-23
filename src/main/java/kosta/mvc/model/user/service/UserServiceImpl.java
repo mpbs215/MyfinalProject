@@ -34,7 +34,6 @@ import kosta.mvc.model.dto.ReviewDTO;
 import kosta.mvc.model.dto.TempKeyDTO;
 import kosta.mvc.model.dto.SidogugundongriDTO;
 import kosta.mvc.model.dto.UserDTO;
-import kosta.mvc.model.util.TempKey;
 
 @Service
 @Transactional
@@ -288,6 +287,41 @@ public class UserServiceImpl {
 						throw new RuntimeException("인증 번호가 일치하지 않아 인증에 실패하였습니다.");
 	}
 
+	
+	/**
+	 * 	회원 탈퇴하기 (Auth 테이블)
+	 * */
+	public void deleteAuth(String userId) {
+		int result = authoritiesDAO.deleteAuth(userId);
+		
+		if (result == 0 ) {
+			throw new RuntimeException(userId+ "에 대한 정보를 Auth테이블에서 삭제하지 못 하였습니다.");
+		}
+	}
+	
+	/**
+	 *  회원 탈퇴하기 (SMS 테이블)
+	 * */
+	public void deleteSMS(String userId) {
+		int result = userDAO.deleteSMS(userId);
+		
+		if (result == 0 ) { 
+			throw new RuntimeException(userId+ "에 대한 정보를 SMS 테이블에서 삭제하지 못 하였습니다.");
+		}
+	}
+	
+	/**
+	 * 회원 탈퇴하기 (UserInfo 테이블)
+	 * */
+	public void deleteUserInfo(String userId) {
+		int result = userDAO.deleteUserInfo(userId);
+		
+		if (result == 0 ) { 
+			throw new RuntimeException(userId+ "에 대한 정보를 User 테이블에서 삭제하지 못 하였습니다.");
+		}
+	}
+	
+	
 	public void deleteReserve(int reserveNo) {
 		parkReserveDAO.deleteReserve(reserveNo);
 	}

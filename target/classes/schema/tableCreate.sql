@@ -1,4 +1,3 @@
-
 create sequence park_seq 
 start with 1
 increment BY 1 
@@ -7,6 +6,7 @@ nocache
 nocycle;
 
 select * from AUTHORITY_TB;
+select * from user_info_tb;
 
 create sequence img_seq 
 start with 1 
@@ -28,6 +28,11 @@ increment BY 1
 maxvalue 10000 
 nocache 
 nocycle;
+
+delete from authority_tb where user_id = 'jaemoon';
+delete from sms_tb where user_id='jaemoon';
+delete from user_info_tb where user_id='jaemoon'; 
+
 
 create sequence notice_seq 
 start with 1 
@@ -189,6 +194,12 @@ create table notice_TB(
       notice_Content varchar2(2000) NOT NULL,
       notice_Hit     number NOT NULL,
       notice_Image     varchar2(100)
+);
+
+create table SMS_TB (
+        user_id varchar2(100) PRIMARY KEY CONSTRAINT user_id REFERENCES USER_INFO_TB(user_id),
+        hp varchar2(20) not null,
+        key varchar2(100) not null
 );
 
 
