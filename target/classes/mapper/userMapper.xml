@@ -127,7 +127,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<delete	id="deleteSMS" parameterType="string">
 		DELETE FROM SMS_TB
-		 WHERE password = #{_parameter}
+		 WHERE HP=#{_parameter}
 	</delete>
 	
 	<delete id="deleteUser" parameterType="string">

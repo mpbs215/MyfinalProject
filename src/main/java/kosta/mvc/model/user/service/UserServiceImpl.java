@@ -76,24 +76,21 @@ public class UserServiceImpl {
 		userDAO.signUp(userDTO);
 		
 		
-		// 권한등록
-		/*
-		 * AuthorityVO authority=new AuthorityVO(vo.getId(),"ROLE_MEMBER");
-		 * memberDAO.registerRole(authority);
-		 */
-		
 		authDTO.setUserId(userDTO.getUserId());
 		authDTO.setRole("ROLE_USER");
 		authDTO.setKey("0");
 		authDTO.setHp(userDTO.getHp());
 		
+		System.out.println("Auth테이블의 아이디는 : " + authDTO.getUserId());
+		
 		if (userDTO.getSeller() == 0 ) {
 			int result = authoritiesDAO.insertAuthority(authDTO);
+			System.out.println("권한 등록하려는데 : " +result);
+			
 			if (result ==0) {
 				throw new RuntimeException("권한 등록에 실패 하였습니다. / 회원가입을 진행해 주세요");
 			}
 		}  
-		
 	}
 
 	public List<ReviewDTO> userClickReviewStar(int parkNo, int rating) {
@@ -270,6 +267,7 @@ public class UserServiceImpl {
 		 	
 		 	authoritiesDAO.updateKey(authDTO);
 			int result = userDAO.SMSAuth(sms);
+			
 			System.out.println("result 값 : " +result);
 			
 			if (result == 0) {
@@ -291,34 +289,42 @@ public class UserServiceImpl {
 	/**
 	 * 	회원 탈퇴하기 (Auth 테이블)
 	 * */
-	public void deleteAuth(String userId) {
-		int result = authoritiesDAO.deleteAuth(userId);
+	public int deleteAuth(String password, String hp) {
+		int result = authoritiesDAO.deleteAuth(password, hp);
 		
+		int count=0;
+		
+		System.out.println("Auth (service 에서 result ) " +result);
 		if (result == 0 ) {
-			throw new RuntimeException(userId+ "에 대한 정보를 Auth테이블에서 삭제하지 못 하였습니다.");
+			throw new RuntimeException(hp+ "와 일치하는 회원정보를 찾지 못 하였습니다.(Auth)" );
+		} else {
+			System.out.println(hp +"와 일치하는 회원 입니다.");
 		}
+		return result;
 	}
 	
 	/**
 	 *  회원 탈퇴하기 (SMS 테이블)
 	 * */
-	public void deleteSMS(String userId) {
-		int result = userDAO.deleteSMS(userId);
+	public int deleteSMS(String password, String hp) {
+		int result = userDAO.deleteSMS(password, hp);
 		
 		if (result == 0 ) { 
-			throw new RuntimeException(userId+ "에 대한 정보를 SMS 테이블에서 삭제하지 못 하였습니다.");
+			throw new RuntimeException(hp+ "와 일치하는 회원정보를 찾지 못 하였습니다.(SMS)");
 		}
+		return result;
 	}
 	
 	/**
 	 * 회원 탈퇴하기 (UserInfo 테이블)
 	 * */
-	public void deleteUserInfo(String userId) {
-		int result = userDAO.deleteUserInfo(userId);
+	public int deleteUserInfo(String password, String hp) {
+		int result = userDAO.deleteUserInfo(password, hp);
 		
 		if (result == 0 ) { 
-			throw new RuntimeException(userId+ "에 대한 정보를 User 테이블에서 삭제하지 못 하였습니다.");
+			throw new RuntimeException(password+ "가 일치 하지 않습니다.");
 		}
+		return result;
 	}
 	
 	

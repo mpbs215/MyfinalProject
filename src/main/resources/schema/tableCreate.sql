@@ -205,8 +205,16 @@ create table SMS_TB (
 	     key varchar2(100) not null
  );
 
+select * from user_info_tb;
+select * from authority_tb;
+select * from sms_tb;
 
+select hp from authority_tb;
 
+delete from authority_tb
+ where hp='01048524897';
+ 
+ 
 insert into user_info_tb values('seller','2656','±èµ·È²','daum','010','¼­¿ï',sysdate,0);
 insert into user_info_tb values('customer','2656','±èµ·Èñ','naver','010','¼­¿ï',sysdate,0);
 insert into park_tb values(park_seq.nextval,'seller','µ·È²ÁÖÂ÷Àå','ÀºÆò±¸ ºÒ±¤µ¿',5000,'µµ³­µµ³­±èµµ³­ÁÖÂ÷ÀÚÀå',2000,10,10);
