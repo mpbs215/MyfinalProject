@@ -20,6 +20,5 @@ padding:0 10px 0 10px; border-radius:7px; font-size:12px; font-weight:normal; li
 	<p>${mvo.userName}님 환영합니다.</p>
 </sec:authorize>
 	</div>
-	
 </body>
 </html>

@@ -2,11 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Insert title here</title>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -18,6 +15,7 @@
 <script>
 	$(function(){
 		var markers = [];
+		var infowindows = [];
 		var container = document.getElementById('map');
 		var options = {
 			center: new daum.maps.LatLng(33.450701, 126.570667),
@@ -134,6 +132,7 @@
 						  parkList[4] = item.price;
 						  parkList[5] = item.carTypeList;
 						  parkList[6] = item.parkImg.imgPath
+						  parkList[7] = item.parkNo
 						  markerRenew(parkList)
 					})
 					removeMarker()
@@ -145,10 +144,6 @@
 			}) 
 		}
 		function markerRenew(parkList){
-/* 			$.each(parkList[5],function(index,item){
-				var a = item2.carType
-				var b = item2.maxCar
-			}) */
 			console.log('마커리뉴호출')
 			console.log(parkList)
 			// 주소로 좌표를 검색합니다
@@ -165,13 +160,13 @@
 			        markers.push(marker);
 			     // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
 			     	var iwdata=""
-			     		iwdata+="<div style='width: 600px;height: 230px; display: inline-block; border: 1px solid black'>"
+			     		iwdata+="<div style='width: 600px;height: 230px; display: inline-block; border: 1px solid black;background: white;'>"
 			     		iwdata+="<div style='width:40%; height: 100%; display: inline-block;'>"
 			     		iwdata+="<img src='"+parkList[6]+"' width='100%' height='100%'>"
 			     		iwdata+="</div>"
 			     		iwdata+="<div style='width:60%; height: 100%; display: inline-block; float: right'>"
 			     		iwdata+="<ul class='list-group list-group-flush border'>"
-			     		iwdata+="<li class='bg-primary text-white font-weight-bold text-center' style='font-size: 20px; padding: 7px'>"+parkList[0]+"</li>"
+			     		iwdata+="<a href='${pageContext.request.contextPath}/user/userReserveForm?parkNo="+parkList[7]+"'>"+"<li class='bg-primary text-white font-weight-bold text-center' style='font-size: 20px; padding: 7px'>"+parkList[0]+"</li></a>"
 			     		iwdata+="<li class='list-group-item'>"+parkList[1]+"</li>"
 			     		iwdata+="<li class='list-group-item'>"
 			     		iwdata+=parkList[2]+"<br />~ "+parkList[3]
@@ -192,30 +187,35 @@
 			            content : iwContent,
 			            removable : iwRemoveable
 			        });
+			        infowindows.push(infowindow);
 			        // 마커에 클릭이벤트를 등록합니다
 			        daum.maps.event.addListener(marker, 'click', function() {
 			              // 마커 위에 인포윈도우를 표시합니다
-			              if(open==1){
-			              	infowindow.open(map, marker);
-			              }
+			            exitInfoWindow();
+			            infowindow.open(map, marker);
 			        });      
 			    } 
 			});
 		}
 		function removeMarker() {
 			 for ( var i = 0; i < markers.length; i++ ) {
-			 infowindow.close();
 			 markers[i].setMap(null);
+			 infowindows[i].close();
 			 } 
 			 markers = [];
+			 infowindows = [];
+		}
+		function exitInfoWindow(){
+			for ( var i = 0; i < markers.length; i++ ) {
+				infowindows[i].close();
+			}
 		}
 		parkChange();
 	})
 </script>
-</head>
-<body>	
-	<div class="container">
+	<div class="container" style="background-color: rgba( 0, 0, 0, .7 ); border: 1px solid gray">
 		<form name="searchData">
+			<br />
 			<div class="row">
 				<div class="col-sm-2">
 					<select id="sido" class="custom-select">
@@ -226,35 +226,40 @@
 					</select>
 				</div>
 				<div class="col-sm-2">
-					<select id="gugun" class="custom-select" ></select>
+					<select id="gugun" class="custom-select" >
+						<option value="" disabled selected hidden>구/군</option>
+					</select>
 				</div>
 				<div class="col-sm-2">
-					<select id="dong" class="custom-select"></select>
+					<select id="dong" class="custom-select">
+						<option value="" disabled selected hidden>동</option>
+					</select>
 				</div>
 				<div class="col-sm-2">
-					<select id="ri" class="custom-select"></select>
+					<select id="ri" class="custom-select">
+						<option value="" disabled selected hidden>리</option>
+					</select>
 				</div>
 				<div class="col-sm-2">
-					<input type="text" name="reserveDate" readonly="readonly" class="form-control"/>
+					<input type="text" name="reserveDate" readonly="readonly" class="form-control" placeholder="예약시간"/>
 				</div>
 			
 				<div class="col-sm-2">
 					<select name="carType" class="custom-select">
-						<option value=""></option>
+						<option value="" disabled selected hidden>차종</option>
 						<option value="대형">대형</option>
 						<option value="중형">중형</option>
 						<option value="소형">소형</option>
 					</select>
 				</div>
-				<br />
 				<div class="col-sm-12">
-					<div id="map" style="width:100%;height: 400px;"></div>
+					<div id="map" style="width:100%;height: 400px; margin-top: 25px"></div>
 				</div>
 				<div class="col-sm-6">
 					<input type="hidden" name="parkAddr"/>
 				</div>
 				<div class="col-sm-2">
-					<select id="keyWord" class="custom-select">
+					<select id="keyWord" class="custom-select" style="float: right">
 						<option value="destination">목적지</option>
 						<option value="parkName">주차장이름</option>
 						<option value="price">가격(이하)</option>
@@ -262,13 +267,14 @@
 					</select>
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="" id="dataType" class="form-control" style="width:65%; display: inline-block;"/>
-					<button type="button" class="btn btn-primary" id="search">검색</button>
+					<input type="text" name="" id="dataType" class="form-control" style="width:75%; display: inline-block;"/>
+					<button type="button" class="btn btn-primary" id="search" style="float: right;width:25%;">검색</button>
 				</div>
-			  </div>
+			</div>
 			</form>
+			<br />
 			
-			<div style='width: 600px;height: 230px; display: inline-block; border: 1px solid black'>
+			<div style='width: 600px;height: 230px; display: inline-block; border: 1px solid black;background: white;'>
 				<div style='width:40%; height: 100%; display: inline-block;'>
 					<img src='http://www.pusan1st.com/data/franchise2/246/thumb-7KO87LCo1_385x230.png' width='100%' height='100%'>
 				</div>
@@ -276,7 +282,7 @@
 					<ul class='list-group list-group-flush border'>
 					  <li class='bg-primary text-white font-weight-bold text-center' style="font-size: 20px; padding: 7px">서울 주차장</li>
 					  <li class='list-group-item' >서울 은평구 불광동 8-63번지 201호</li>
-					  <li class='list-group-item' >
+					  <li class='list-group-item'>
 					  2018-06-20 18:00:00 <br />
 					  ~ 2018-06-20 19:00:00
 					  </li>
@@ -285,5 +291,3 @@
 				</div>
 			</div>
 		</div>
-</body>
-</html>

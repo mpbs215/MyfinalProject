@@ -12,7 +12,7 @@
    <sec:http use-expressions="true" auto-config="true" >
       <sec:intercept-url pattern="/admin/**"  access="hasRole('ROLE_ADMIN')" />
       <sec:intercept-url pattern="/user/**"  access="isAuthenticated()" />
-      <sec:intercept-url pattern="/seller/**"  access="hasRole('ROLE_SELLER')" />
+      <sec:intercept-url pattern="/seller/**"  access="hasAnyRole('ROLE_SELLER','ROLE_ADMIN')" />
       <sec:form-login login-page="/sign/loginForm"
          login-processing-url="/login" 
          username-parameter="userId"

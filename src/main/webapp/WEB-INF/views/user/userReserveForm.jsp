@@ -183,6 +183,11 @@ $(function(){
 </script>
 </head>
 <body>
+	<c:if test="${empty parkReserveList}">
+		<script>
+		var reservedataList = null;
+		</script>
+	</c:if>
 	<c:forEach items="${parkReserveList}" var="dto" varStatus="status">
 		
 		<script type="text/javascript">
@@ -210,20 +215,20 @@ $(function(){
 			<div class="col-sm-7">
 				<div id="arrowslider" class="row justify-content-center carousel slide" data-ride="carousel">
 					  <div class="carousel-inner" role="listbox">
-<%-- 					  	<c:forEach items="${parkImageList}" var="dto" varStatus="status" >
-					  	<div class="carousel-item">
+ 					  	<c:forEach items="${parkImageList}" var="dto" varStatus="status" >
+					  	<div class="carousel-item <c:if test="${status.count==1}">active</c:if>" >
 					      <img class="d-block img-fluid" src="${pageContext.request.contextPath}/resources/images/park/${dto.imgPath}" alt="Slide${status.count}" style="width:95%; margin-left: 2.5%">
 					    </div>
-					  	</c:forEach> --%>
+					  	</c:forEach>
 					  	    <div class="carousel-item active">
-      <img class="d-block img-fluid" src="http://www.stc-corp.co.kr/pages/image/led/led11.jpg" alt="Slide1" style="width:95%; margin-left: 2.5%">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block img-fluid" src="https://img.webnots.com/2017/05/BS_Slide2.jpg" alt="Slide2" style="width:95%; margin-left: 2.5%">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block img-fluid" src="https://img.webnots.com/2017/05/BS_Slide3.jpg" alt="Slide3" style="width:95%; margin-left: 2.5%">
-    </div>
+						      <img class="d-block img-fluid" src="http://www.stc-corp.co.kr/pages/image/led/led11.jpg" alt="Slide1" style="width:95%; margin-left: 2.5%">
+						    </div>
+						    <div class="carousel-item">
+						      <img class="d-block img-fluid" src="https://img.webnots.com/2017/05/BS_Slide2.jpg" alt="Slide2" style="width:95%; margin-left: 2.5%">
+						    </div>
+						    <div class="carousel-item">
+						      <img class="d-block img-fluid" src="https://img.webnots.com/2017/05/BS_Slide3.jpg" alt="Slide3" style="width:95%; margin-left: 2.5%">
+						    </div>
 					  </div>
 					  <a class="carousel-control-prev" href="#arrowslider" role="button" data-slide="prev">
 					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -299,7 +304,7 @@ $(function(){
 						<button type="button" class="btn btn-outline-warning star" name="1">★☆☆☆☆</button>
 					</div>
 					<div class="col-sm-1">
-						<button type="button" class="btn btn-outline-warning star">&reg;</button>
+						<button type="button" class="btn btn-outline-warning star" name="0">&reg;</button>
 					</div>
 				</div>
 				<br />
