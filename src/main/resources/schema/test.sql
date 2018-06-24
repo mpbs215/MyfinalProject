@@ -1,6 +1,6 @@
 select * from park_reserve_tb
 select * from user_info_tb
-
+select * from authority_tb
 
 select reserveno,parkname,reservestart,reserveend,r.userid,price*(reserveend-reservestart)*24 price from park p join parkreserve r using(parkno) 
 where p.userid=0 and reserve_end<sysdate

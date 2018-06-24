@@ -8,32 +8,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	작성자 : 지문경	
 -->
 <mapper namespace="sellerMapper">
+	
+	<!-- 등록한 주차장 리스트 resultMap -->
+	<resultMap type="parkDTO" id="sellerParkList">
+		<id column="park_no" property="parkNo"/>
+		<result column="user_id" property="userId"/>
+		<result column="park_name" property="parkName"/>
+		<result column="park_addr" property="parkAddr"/>
+		<result column="park_size" property="parkSize"/>
+		<result column="park_content" property="parkContent"/>
+		<result column="price" property="price"/>
+		<association property="parkImg" javaType="parkImgDTO">
+		  <result column="img_path" property="imgPath"/>
+		</association>
+		<association property="parkRegi" javaType="parkRegiDTO">
+		  <result column="regi_start" property="regiStart"/>
+		  <result column="regi_end" property="regiEnd"/>
+		</association>
+		<collection property="carTypeList" ofType="carTypeDTO">
+		  <id column="car_Type" property="carType"/>
+		  <result column="max_car" property="maxCar"/>
+		</collection>
+	</resultMap>
 
-	<sql id="parkColumnName">
-   		parkNo, userId, parkName, parkAddr, parkAddr, parkSize, parkContent, price, latitude, longitude
-	</sql>
-
+	<!-- 등록한 주차장에 대한 예약 리스트 result Map -->  
 	<resultMap type="parkReserveDTO" id="parkAndReserve">
 		<id column="reserve_no" property="reserveNo"/>
-		<result column="reserve_Start" property="reserveStart"/>
-		<result column="reserve_End" property="reserveEnd"/>
-		<result column="user_Id" property="userId"/>
-		<association property="park">
-		<result column="price" property="price"/>
-		<result column="park_Name" property="parkName"/>
+		<result column="reserve_start" property="reserveStart"/>
+		<result column="reserve_end" property="reserveEnd"/>
+		<association property="userDto" javaType="UserDTO">
+			<id column="user_id" property="userId"/>
+			<result column="user_name" property="userName"/>
+			<result column="hp" property="hp"/>
+		</association>
+		<association property="parkDto" javaType="ParkDTO">
+			<id column="park_no" property="parkNo"/>
+			<result column="park_name" property="parkName"/>
+			<result column="price" property="price"/>
 		</association>
 	</resultMap>
 	
-	<!-- sellerParkRegist서비스 시작 -->
-	<select id="selectPark" resultType="parkDTO" parameterType="string">
-		select * from Park_tb
-		<where>
-			<if test="_parameter!=null">
-				user_Id=#(_parameter)
-			</if>
-		</where>
-	</select>
-	
+		
 	<!-- 주차장 등록	-->	
 	<insert id="insertPark" parameterType="parkDTO">
 		insert into PARK_TB values(#{parkNo},#{userId},#{parkName},#{parkAddr},#{parkSize},#{parkContent},#{price})
@@ -56,25 +71,81 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	
-	<!-- sellerParkRegist 끝 -->
+	<!-- 등록한 주차장 리스트 -->
+	<select id="selectSellerParkList" parameterType="String" resultMap="sellerParkList">
+		select park_no,user_id,park_name,park_addr,park_size,park_content,price,regi_start,regi_end,img_path,car_type,max_car
+		 from park_tb natural join park_regist_tb natural join (select *
+			from (
+			select img_no, park_no, img_path, rank()over(partition by park_no order by img_path desc) rk
+			from park_image_tb) where rk=1) natural join car_type_tb
+		where user_id = #{userId}
+	</select>
 	
+	
+<!--  	<select id="selectPark" parameterType="string" resultType="parkDTO">
+		select p.park_no, p.user_Id, p.park_Name, p.park_Addr, p.price
+		from PARK_TB p
+		where p.user_Id=#{_parameter}
+	</select>
+	<select id="selectRegi" parameterType="map" resultType="parkRegiDTO">
+		select r.regi_Start, r.regi_End
+		from park_Regist_TB r
+		join PARK_TB p
+		on p.park_No=r.park_No
+		where p.user_Id=#{userId}
+		and r.park_no=#{parkNo}
+	</select>
+	<select id="selectCarType" parameterType="map" resultType="carTypeDTO">
+		select t.car_Type, t.max_car
+		from car_Type_TB t
+		join PARK_TB p
+		on p.park_No=t.park_No
+		where p.user_Id=#{userId}
+		and t.park_no=#{parkNo}		
+	</select>	
+	<select id="selectImg" parameterType="map" resultType="parkImgDTO">
+		select i.img_No, i.img_Path
+		FROM park_Image_TB i
+		join PARK_TB p
+		on p.park_No=i.park_No
+		where p.user_Id=#{userId}
+		and i.park_no=#{parkNo}
+	</select> -->
+ 
+ 	
+ 	<!-- 등록한 주차장 삭제 (park_tb cascade 조건 추가 후)-->
+	<delete id="deletePark" parameterType="int"> 
+		delete from park_tb where park_no=#{_parameter}
+	</delete>	
+	
+	<!-- 등록한 주차장에 대한 예약 리스트 -->
+ 	<!-- 과거 -->
 	<select id="selectReserveById" parameterType="string" resultMap="parkAndReserve">
-		select reserve_no,park_name,reserve_start,reserve_end,r.user_id,price*(reserve_end-reserve_start)*24 price from park_tb p join park_reserve_tb r using(park_no) 
-		where p.user_id=#{value} and reserve_end<![CDATA[<]]>sysdate
+		select r.reserve_no, r.reserve_start, r.reserve_end, u.user_id, u.user_name, u.hp, p.park_no, p.park_name, p.price*EXTRACT(hour from r.reserve_end-r.reserve_start) price
+		from park_Reserve_TB r
+		join USER_INFO_TB u
+		on r.user_id=u.user_id
+		join PARK_TB p
+		on r.park_no=p.park_no
+		where u.user_id=#{_parameter}
+		and r.reserve_End<![CDATA[<]]>sysdate
 	</select>
-			
+
+	<!-- 미래 -->
 	<select id="selectReserveLoadById" parameterType="string" resultMap="parkAndReserve">
-		select reserveno,parkname,reservestart,reserveend,r.userid,price*(reserveend-reservestart)*24 price from park p join parkreserve r using(parkno) 
-		where p.userid=#{value} and reserveend<![CDATA[>]]>sysdate
+		select r.reserve_no, r.reserve_start, r.reserve_end, u.user_id, u.user_name, u.hp, p.park_no, p.park_name, p.price*EXTRACT(hour from r.reserve_end-r.reserve_start) price
+		from park_Reserve_TB r
+		join USER_INFO_TB u
+		on r.user_id=u.user_id
+		join PARK_TB p
+		on r.park_no=p.park_no
+		where u.user_id=#{_parameter}
+		and r.reserve_End<![CDATA[>=]]>sysdate
 	</select>
 	
+	<!-- 예약 삭제(취소) -->
 	<delete id="deleteReserve" parameterType="int">
-		delete from parkreserve where reserveNo=#{value}
+		delete from park_Reserve_TB where reserve_No=#{_parameter}ㄴ
 	</delete>
-	
-	<delete id="deletePark" parameterType="int">
-		delete from park where parkNo=#{value}
-	</delete>
-	
-	
+				
 </mapper>

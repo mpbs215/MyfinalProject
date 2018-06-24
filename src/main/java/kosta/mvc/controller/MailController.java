@@ -1,4 +1,4 @@
-package kosta.mvc.controller;
+/*package kosta.mvc.controller;
 
 import java.io.PrintWriter;
 import java.util.Map;
@@ -60,3 +60,4 @@ public class MailController {
         return "sign/loginForm";
       }
 }
+*/

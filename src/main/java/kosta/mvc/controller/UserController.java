@@ -45,7 +45,7 @@ public class UserController {
 	public ModelAndView userReserve() {
 		ModelAndView mv = new ModelAndView();
 		List<String> sidoList=searchService.selectSido();
-		mv.setViewName("/user/userReserve");
+		mv.setViewName("user/userReserve");
 		mv.addObject("sidoList",sidoList);
 		return mv;
 	}

@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-${exception.message}
-</head>
-<body>
-
-</body>
-</html>
+<script type="text/javascript">
+	alert('${exception.message}');
+	history.back();
+</script>

@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -163,9 +163,9 @@ public class CommonController {
 	}
 
 	@RequestMapping("/updateQNA/{QNANo}")
-	public ModelAndView qnaUpdateForm(@PathVariable int QNANo) {
+	public ModelAndView qnaUpdateForm(HttpServletRequest request, HttpServletResponse response,@PathVariable int QNANo) {
 		ModelAndView mv = new ModelAndView();
-		QNADTO qnaDTO = commonService.selectOneQNA(null, null, QNANo);
+		QNADTO qnaDTO = commonService.selectOneQNA(request, response, QNANo);
 		mv.addObject("qnaDTO", qnaDTO);
 		mv.setViewName("common/qnaUpdateForm");
 		return mv;
@@ -177,7 +177,6 @@ public class CommonController {
 		MultipartFile file = qnaDTO.getQNAImageFile();
 		String now = new SimpleDateFormat("yyyyMMddHmsS").format(new Date()); // 현재시간
 		String fileOriginalName = file.getOriginalFilename();
-
 		if (file.getSize() > 0) {
 			if (fileOriginalName.substring(fileOriginalName.length() - 3, fileOriginalName.length()).toLowerCase()
 					.equals("jpg")

@@ -26,10 +26,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select*from review_tb
 			<where>
 				<if test="parkNo!=null">
-					park_No=#{parkNo} and
+					park_No=#{parkNo}
 				</if>
-				<if test="rating!=null">
-					rating=#{rating}
+				<if test="rating!=0">
+					and rating=#{rating}
 				</if>
 			</where>
 	</select>
