@@ -1,3 +1,62 @@
+<<<<<<< HEAD
+=======
+create sequence park_seq 
+start with 1
+increment BY 1 
+maxvalue 10000 
+nocache 
+nocycle;
+
+select * from AUTHORITY_TB;
+select * from user_info_tb;
+
+create sequence img_seq 
+start with 1 
+increment BY 1 
+maxvalue 10000 
+nocache 
+nocycle;
+
+create sequence faq_seq 
+start with 1 
+increment BY 1 
+maxvalue 10000 
+nocache 
+nocycle;
+
+create sequence terms_seq 
+start with 1 
+increment BY 1 
+maxvalue 10000 
+nocache 
+nocycle;
+
+delete from authority_tb where user_id = 'jaemoon';
+delete from sms_tb where user_id='jaemoon';
+delete from user_info_tb where user_id='jaemoon'; 
+
+
+create sequence notice_seq 
+start with 1 
+increment BY 1 
+maxvalue 10000 
+nocache 
+nocycle;
+
+create sequence reserve_seq 
+start with 1 
+increment BY 1 
+maxvalue 10000 
+nocache 
+nocycle;
+
+create sequence qna_seq 
+start with 1 
+increment BY 1 
+maxvalue 10000 
+nocache 
+nocycle;
+>>>>>>> branch 'master' of https://github.com/mpbs215/finalProject
 
 drop table notice_TB;
 drop table terms_TB;
@@ -140,3 +199,5 @@ create table SMS_TB (
 
 
 commit
+
+

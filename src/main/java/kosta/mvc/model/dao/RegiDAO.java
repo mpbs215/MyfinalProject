@@ -16,13 +16,16 @@ public class RegiDAO {
 	public int sellerReserveDelete(int parkNo) {
 		return session.delete("sellerMapper.deleteSellerReserveByparkNo", parkNo);
 	}
-
+	
 	public int insertParkRegi(ParkRegiDTO parkRegiDto) {		
 		return session.insert("sellerMapper.insertParkRegi",parkRegiDto);
+	}
+	
+	public int deleteParkRegi(int parkNo) {
+		return session.delete("sellerMapper.deletePark",parkNo);
 	}
 
 	public ParkRegiDTO selectOneParkRegi(int parkNo) {
 		return session.selectOne("userMapper.selectOneParkRegi",parkNo);
 	}
-	
 }

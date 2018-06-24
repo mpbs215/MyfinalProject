@@ -1,13 +1,16 @@
 package kosta.mvc.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -18,6 +21,7 @@ import kosta.mvc.model.dto.ParkDTO;
 import kosta.mvc.model.dto.ParkImgDTO;
 import kosta.mvc.model.dto.ParkRegiDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
+import kosta.mvc.model.dto.SearchFilterDTO;
 import kosta.mvc.model.dto.UserDTO;
 import kosta.mvc.model.seller.service.SellerServiceImpl;
 
@@ -32,32 +36,36 @@ public class SellerController {
 	private String imgPath;
 
 	/**
-	 * request : 세션 아이디
-	 * 
-	 * @return 자신의 주차장 레코드리스트
+	 * 등록한 주차장 레코드리스트
 	 */
 	@RequestMapping("/sellerParkList")
-	public String sellerParkList() {
+	public String sellerParkList(Model model) {
+		
+		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<ParkDTO> parkList =  service.sellerParkList(userDTO.getUserId());
+		
+		model.addAttribute("sellerParkList", parkList);
+			
 		return "seller/sellerParkList";
 	}
 
-	@ResponseBody
-	@RequestMapping
-	public List<ParkDTO> sellerParkListLoad() {
-		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		List<ParkDTO> list = service.sellerParkList(userDTO.getUserId());
-		return list;
-	}
-
+	/**
+	 * 주차장 하나 삭제
+	 */
 	@ResponseBody
 	@RequestMapping("/sellerParkDelete")
-	public int sellerParkDelete(int parkNo) {
+	public int sellerParkDelete(String pNo) {
+		int parkNo = Integer.parseInt(pNo);
 		return service.sellerParkDelete(parkNo);
 	}
 
+	/**
+	 * 주차장 여러개 삭제
+	 */
 	@ResponseBody
 	@RequestMapping("/sellerParksDelete")
-	public int sellerParksDelete(int[] parkNos) {
+	public int sellerParksDelete(@RequestParam(value="pNos[]") List<String> parkNos) {
+		
 		return service.sellerParksDelete(parkNos);
 	}
 
@@ -70,10 +78,6 @@ public class SellerController {
 
 	/**
 	 * 주차장 등록하기
-	 * 
-	 * @param parkDto
-	 *            주차장정보
-	 * @return
 	 */
 	@RequestMapping("/sellerParkRegist")
 	public ModelAndView sellerParkRegist(HttpSession session, ParkDTO parkDto, CarTypeDTO carTypeDto, ParkImgDTO parkImgDto, ParkRegiDTO parkRegiDto, MultipartHttpServletRequest req) throws Exception{
@@ -102,30 +106,24 @@ public class SellerController {
 	/**
 	 * request : 세션 id
 	 * 
-	 * @return 지난예약상황 리스트
+	 * @return 예약 리스트
 	 */
 	@RequestMapping("/sellerReserveList")
-	public ModelAndView sellerReserveList(String userId) {
+	public ModelAndView sellerReserveList() {
 		ModelAndView mv = new ModelAndView();
 		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		// 지난 예약
 		List<ParkReserveDTO> list = service.sellerReserveList(userDTO.getUserId());
-		mv.addObject("list", list);
+		mv.addObject("reserveList", list);
+		// 현재 예약 상황
+		List<ParkReserveDTO> listLoad = service.sellerReserveListLoad(userDTO.getUserId());
+		mv.addObject("reserveListLoad", listLoad);
 		return mv;
 	}
 
 	/**
-	 * 예약상황 페이지에서 현재 예약상황 테이블 레코드 호출
-	 */
-	@ResponseBody
-	@RequestMapping("/sellerReserveListLoad")
-	public List<ParkReserveDTO> sellerReserveListLoad() {
-		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		List<ParkReserveDTO> list = service.sellerReserveListLoad(userDTO.getUserId());
-		return list;
-	}
-
-	/**
-	 * request: parkNo result: 0-실패, 1-성공 예약상황 페이지에서 취소 버튼클릭시
+	 * 예약상황 페이지에서 취소 버튼클릭시
+	 * request: parkNo result: 0-실패, 1-성공 
 	 */
 	@ResponseBody
 	@RequestMapping("/sellerReserveDelete")

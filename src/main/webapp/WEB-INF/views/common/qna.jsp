@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<sec:authentication var="mvo" property="principal" />
 
 <h1>QNA</h1>
 
@@ -41,9 +42,10 @@
 		</tr>
 	</c:forEach>
 </table>
-<sec:authorize access="hasRole('ROLE_ADMIN')">
-	<h4>
-		<a href="${pageContext.request.contextPath}/common/insertQNAForm"
-			class="btn btn-primary"> QNA 쓰기 </a>
-	</h4>
+<sec:authorize access="isAuthenticated()">  
+
+<h4>
+	<a href="${pageContext.request.contextPath}/common/insertQNAForm"
+		class="btn btn-primary"> QNA 쓰기 </a>
+</h4>
 </sec:authorize>
