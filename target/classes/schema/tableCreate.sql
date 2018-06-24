@@ -1,63 +1,3 @@
-<<<<<<< HEAD
-=======
-create sequence park_seq 
-start with 1
-increment BY 1 
-maxvalue 10000 
-nocache 
-nocycle;
-
-select * from AUTHORITY_TB;
-select * from user_info_tb;
-
-create sequence img_seq 
-start with 1 
-increment BY 1 
-maxvalue 10000 
-nocache 
-nocycle;
-
-create sequence faq_seq 
-start with 1 
-increment BY 1 
-maxvalue 10000 
-nocache 
-nocycle;
-
-create sequence terms_seq 
-start with 1 
-increment BY 1 
-maxvalue 10000 
-nocache 
-nocycle;
-
-delete from authority_tb where user_id = 'jaemoon';
-delete from sms_tb where user_id='jaemoon';
-delete from user_info_tb where user_id='jaemoon'; 
-
-
-create sequence notice_seq 
-start with 1 
-increment BY 1 
-maxvalue 10000 
-nocache 
-nocycle;
-
-create sequence reserve_seq 
-start with 1 
-increment BY 1 
-maxvalue 10000 
-nocache 
-nocycle;
-
-create sequence qna_seq 
-start with 1 
-increment BY 1 
-maxvalue 10000 
-nocache 
-nocycle;
->>>>>>> branch 'master' of https://github.com/mpbs215/finalProject
-
 drop table notice_TB;
 drop table terms_TB;
 drop table faq_TB;
@@ -88,7 +28,7 @@ create table USER_INFO_TB
 create table PARK_TB
 (
       park_No            number          primary key,
-      user_Id            varchar2(100)  NOT NULL constraint park_userId_fk references user_info_tb(user_Id),
+      user_Id            varchar2(100)  NOT NULL constraint park_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
       park_Name         varchar2(100)  NOT NULL,
       park_Addr         varchar2(200)  NOT NULL,
       park_Size         long          NOT NULL,
@@ -99,7 +39,7 @@ create table PARK_TB
 
 create table park_Regist_TB
 (
-      park_No         number     primary key constraint regist_parkno_fk references park_tb(park_No),
+      park_No         number     primary key constraint regist_parkno_fk references park_tb(park_No) ON DELETE CASCADE,
       regi_Start      Timestamp NOT NULL,
       regi_End         Timestamp NOT NULL
 );
@@ -107,8 +47,8 @@ create table park_Regist_TB
 create table park_Reserve_TB
 (
       reserve_No      number          primary key,
-      park_No          number          NOT NULL constraint reserve_parkno_fk    references park_Regist_tb(park_No),
-      user_Id         varchar2(100)   NOT NULL constraint reserve_userId_fk references user_info_tb(user_Id),
+      park_No          number          NOT NULL constraint reserve_parkno_fk    references park_Regist_tb(park_No) ON DELETE CASCADE,
+      user_Id         varchar2(100)   NOT NULL constraint reserve_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
       reserve_Start   Timestamp      NOT NULL,
       reserve_End      Timestamp        NOT NULL,
       car_Type         varchar2(100)   NOT NULL
@@ -116,8 +56,8 @@ create table park_Reserve_TB
 
 create table review_TB
 (
-      user_Id         varchar2(100)   constraint   review_userId_fk references user_info_tb(user_Id),
-      park_No         number          constraint   review_parkno_fk references park_Regist_tb(park_no),
+      user_Id         varchar2(100)   constraint   review_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
+      park_No         number          constraint   review_parkno_fk references park_Regist_tb(park_no) ON DELETE CASCADE,
       rating         number         NOT NULL,         
       review_Content   varchar2(500)   NOT NULL,
       
@@ -127,14 +67,14 @@ create table review_TB
 create table park_Image_TB
 (
       img_No      number         primary key,
-      park_No      number        NOT NULL constraint   img_parkno_fk   references park_Regist_tb(park_No),
+      park_No      number        NOT NULL constraint   img_parkno_fk   references park_Regist_tb(park_No) ON DELETE CASCADE,
       img_Path      varchar2(100) NOT NULL
 );
 
 
 create table car_Type_TB
 (      
-      park_No   number         constraint   carType_parkno_fk   references park_Regist_tb(park_No),
+      park_No   number         constraint   carType_parkno_fk   references park_Regist_tb(park_No) ON DELETE CASCADE,
       car_Type varchar2(100) ,
       max_Car  number not null,
       CONSTRAINT carType_pk PRIMARY KEY (park_No,car_Type)
@@ -142,14 +82,14 @@ create table car_Type_TB
 
 create table seller_TB
 (
-      user_Id      varchar2(100) primary key constraint   seller_userId_fk references user_info_tb(user_Id),
+      user_Id      varchar2(100) primary key constraint   seller_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
       account      varchar2(200) NOT NULL,
       real_name   varchar2(200) NOT NULL
 );
 
 create table authority_TB
 (
-      user_Id   varchar2(100) constraint authority_userId_fk references user_info_tb(user_Id),
+      user_Id   varchar2(100) constraint authority_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
       role   varchar2(100),
       key varchar2(10),
       hp varchar2(20),
@@ -159,7 +99,7 @@ create table authority_TB
 create table qna_TB
 (
       qna_No      number primary key,
-      user_Id      varchar2(100) constraint qna_userId_fk references user_info_tb(user_Id),
+      user_Id      varchar2(100) constraint qna_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
       QNA_Sub  varchar2(200) NOT NULL,
       QNA_Content  varchar2(2000) NOT NULL,
       QNA_DT TIMESTAMP NOT NULL,
@@ -192,7 +132,7 @@ create table notice_TB(
 );
 
 create table SMS_TB (
-        user_id varchar2(100) PRIMARY KEY CONSTRAINT user_id REFERENCES USER_INFO_TB(user_id),
+        user_id varchar2(100) PRIMARY KEY CONSTRAINT user_id REFERENCES USER_INFO_TB(user_id) ON DELETE CASCADE,
         hp varchar2(20) not null,
         key varchar2(100) not null
 );
