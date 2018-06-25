@@ -133,13 +133,9 @@ public class UserDAO {
 	 */
 	public String selectPassword(String userId) {
 		String password = session.selectOne("userMapper.selectPassword", userId);
-<<<<<<< HEAD
 		
 		System.out.println("DAO에서 비밀번호 : " +password);
-		
-=======
 
->>>>>>> branch 'master' of https://github.com/mpbs215/finalProject
 		return password;
 	}
 

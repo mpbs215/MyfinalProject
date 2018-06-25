@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -240,15 +241,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/unSign", method = RequestMethod.GET ) 
-	public String unSign(@RequestParam("password") String password,
-											  @RequestParam("userId") String userId) {
+	public String unSign( HttpSession session,
+						@RequestParam("password") String password,
+						@RequestParam("userId") String userId) {
 		
 		String Depassword = service.selectPassword(userId);
 		
 		if (passwordEncoder.matches(password, Depassword)) {
 			service.deleteUserInfo(password);
 		}
+		session.invalidate();
 		
-		return "main";
+		return "redirect:/user/logout";
 	}
 }
