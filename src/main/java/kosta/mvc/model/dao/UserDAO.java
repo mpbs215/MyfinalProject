@@ -133,6 +133,8 @@ public class UserDAO {
 	public String selectPassword(String userId) {
 		String password = session.selectOne("userMapper.selectPassword", userId);
 		
+		System.out.println("DAO에서 비밀번호 : " +password);
+		
 		return password;
 	}
 	

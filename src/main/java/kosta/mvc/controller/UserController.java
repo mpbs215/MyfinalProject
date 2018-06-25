@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,12 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import kosta.mvc.model.dto.AuthorityDTO;
 import kosta.mvc.model.dto.ParkDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
 import kosta.mvc.model.dto.ReviewDTO;
 import kosta.mvc.model.dto.SearchFilterDTO;
-import kosta.mvc.model.dto.TempKeyDTO;
 import kosta.mvc.model.dto.UserDTO;
 import kosta.mvc.model.user.service.SearchServiceImpl;
 import kosta.mvc.model.user.service.UserServiceImpl;
@@ -166,7 +165,6 @@ public class UserController {
 		// 변경할 비밀번호를 암호화한다
 		String encodePassword = passwordEncoder.encode(userDTO.getPassword());
 		userDTO.setPassword(encodePassword);
-		
 
 		// 수정버튼 클릭 처리
 		service.updateUserInfo(userDTO);
@@ -225,15 +223,20 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/unSign", method = RequestMethod.GET ) 
-	public String unSign(@RequestParam("password") String password,
+	public String unSign(HttpSession session,
+											  @RequestParam("password") String password,
 											  @RequestParam("userId") String userId) {
 		
+		System.out.println("password: " +password);
 		String Depassword = service.selectPassword(userId);
 		
-		if (passwordEncoder.matches(password, Depassword)) {
-			service.deleteUserInfo(password);
-		}
+		System.out.println("Controller에서 비밀번호 : " +Depassword);
 		
-		return "main";
+		if (passwordEncoder.matches(password, Depassword)) {
+			service.deleteUserInfo(Depassword);
+		}
+		session.invalidate();
+		
+		return "redirect:/user/logout";
 	}
 }
