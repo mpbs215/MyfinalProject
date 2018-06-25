@@ -122,6 +122,7 @@
 				data:queryString,
 				dataType: "json",
 				success : function(result){
+					$('#dataDiv').html=" ";
 					alert(result.length)
  					$.each(result, function(index, item){
 						  var parkList = new Array();
@@ -130,7 +131,7 @@
 						  parkList[2] = item.parkRegi.regiStart;
 						  parkList[3] = item.parkRegi.regiEnd;
 						  parkList[4] = item.price;
-						  parkList[5] = item.carTypeList;
+						  parkList[5] = item.carTypeLists;
 						  parkList[6] = item.parkImg.imgPath
 						  parkList[7] = item.parkNo
 						  markerRenew(parkList)
@@ -160,9 +161,9 @@
 			        markers.push(marker);
 			     // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
 			     	var iwdata=""
-			     		iwdata+="<div style='width: 600px;height: 230px; display: inline-block; border: 1px solid black;background: white;'>"
+			     		iwdata+="<div style='width: 600px;height: 230px; display: inline-block; border: 1px solid black;background: white; float: right;'>"
 			     		iwdata+="<div style='width:40%; height: 100%; display: inline-block;'>"
-			     		iwdata+="<img src='"+parkList[6]+"' width='100%' height='100%'>"
+			     		iwdata+="<img src='${pageContext.request.contextPath}/resources/images/park/"+parkList[6]+"' width='100%' height='100%'>"
 			     		iwdata+="</div>"
 			     		iwdata+="<div style='width:60%; height: 100%; display: inline-block; float: right'>"
 			     		iwdata+="<ul class='list-group list-group-flush border'>"
@@ -179,6 +180,7 @@
 			     		iwdata+="</li></ul>"
 			     		iwdata+="</div>"
 			     		iwdata+="</div>"
+			     		$('#dataDiv').append(iwdata);
 			        var iwContent = iwdata
 			        	, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 			            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
@@ -274,7 +276,11 @@
 			</form>
 			<br />
 			
-			<div style='width: 600px;height: 230px; display: inline-block; border: 1px solid black;background: white;'>
+			<div id="dataDiv">
+			
+			
+			</div>
+<!-- 			<div style='width: 600px;height: 230px; display: inline-block; border: 1px solid black;background: white;'>
 				<div style='width:40%; height: 100%; display: inline-block;'>
 					<img src='http://www.pusan1st.com/data/franchise2/246/thumb-7KO87LCo1_385x230.png' width='100%' height='100%'>
 				</div>
@@ -289,5 +295,5 @@
 					  <li class='list-group-item'> 가격: 2000 / 중형1 소형2 대형3</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 		</div>

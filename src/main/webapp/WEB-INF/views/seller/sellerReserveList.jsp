@@ -47,7 +47,6 @@
 </head>
 <body>
 
-	<div class="container">
 	<div class="container-fluid">
 		<div class="row justify-content-center">
 		<div class="col-sm-12">
@@ -176,7 +175,6 @@
 
 		</div>
 	</div>
-</div>
 </div>
 </div>
 

@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  <result column="regi_start" property="regiStart"/>
 		  <result column="regi_end" property="regiEnd"/>
 		</association>
-		<collection property="carTypeList" ofType="carTypeDTO">
+		<collection property="carTypeLists" ofType="carTypeDTO">
 		  <id column="car_Type" property="carType"/>
 		  <result column="max_car" property="maxCar"/>
 		</collection>
@@ -53,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and regi_start<![CDATA[<]]>#{reserveDate} and regi_end <![CDATA[>]]> #{reserveDate} and
 			</if>
 			<if test="parkContent!=null and !parkContent.equals('')">
-			and park_content like '%||#{parkContent}||%'
+			and park_content like '%'||#{parkContent}||'%'
 			</if>
 			<if test="destination!=null and !destination.equals('')">
 			and park_addr like '%'||#{destination}||'%'

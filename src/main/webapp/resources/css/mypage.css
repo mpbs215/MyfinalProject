@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* CSS Document */
 
-.mypage { width:100%; margin-right:300px;}
+.mypage { width:100%;}
 .mypage h2 { color:#fff; margin-bottom:30px; text-align:center; padding-top:40px;}
 .mypage-inner {width:50%; margin:0 auto; background:#000; margin-top:30px; border-radius:20px; padding-bottom:40px;}
 .mypage .mypage-list { width:30%; margin:0 auto; text-align:center; color:#fff; padding-bottom:15px;}

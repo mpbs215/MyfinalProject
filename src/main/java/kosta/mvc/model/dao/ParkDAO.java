@@ -1,6 +1,8 @@
 package kosta.mvc.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,14 @@ public class ParkDAO {
 	
 	public ParkDTO selectOnePark(int parkNo) {
 		return session.selectOne("userMapper.selectOnePark",parkNo);
+	}
+
+	public List<ParkDTO> selectProfit(String startDate, String endDate,String userId) {
+		Map<String, String> map = new HashMap<>();
+		if(startDate!=null) map.put("startDate", startDate);
+		if(endDate!=null) map.put("endDate", endDate);
+		map.put("userId", userId);
+		return session.selectList("sellerMapper.selectProfit",map);
 	}
 	
 	

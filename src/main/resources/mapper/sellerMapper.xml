@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  <result column="regi_start" property="regiStart"/>
 		  <result column="regi_end" property="regiEnd"/>
 		</association>
-		<collection property="carTypeList" ofType="carTypeDTO">
+		<collection property="carTypeLists" ofType="carTypeDTO">
 		  <id column="car_Type" property="carType"/>
 		  <result column="max_car" property="maxCar"/>
 		</collection>
@@ -145,7 +145,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 예약 삭제(취소) -->
 	<delete id="deleteReserve" parameterType="int">
-		delete from park_Reserve_TB where reserve_No=#{_parameter}ㄴ
+		delete from park_Reserve_TB where reserve_No=#{_parameter}
 	</delete>
-				
+	
+	<select id="selectProfit" parameterType="map" resultType="parkDTO">
+		select park_name,sum(EXTRACT(hour from reserve_end-reserve_start)*p.price) as price 
+		from park_tb p join park_reserve_tb r using(park_no)
+		<where>
+			p.user_id=#{userId}
+			<if test="startDate!=null">
+				and reserve_start <![CDATA[>]]> #{startDate}
+			</if>
+			<if test="endDate!=null">
+				and reserve_end <![CDATA[<=]]> #{endDate}
+			</if>
+		</where>
+		group by park_name
+	</select>
 </mapper>

@@ -204,31 +204,22 @@ $(function(){
  		reservedataList.push(reservedata);
  		</script>
 	</c:forEach>
-	<div class="container">
+	<div class="container" style="background-color: rgba( 255, 255, 255, 0.5 );">
 		<div class="row" style="height: 25%"></div>
 		<div class="row">
 			<h3 class="text-center font-weight-bold text-primary" style="text-shadow: 1px 1px 1px #0054FF;">&nbsp&nbsp주차장 예약하기</h3>
 			<p />
 			<hr style="width: 100%; border: 2px solid #0054FF;" />
 		</div>
-		<div class="row" style="background-color: height: 150%;">
+		<div class="row" style="height: 150%;">
 			<div class="col-sm-7">
 				<div id="arrowslider" class="row justify-content-center carousel slide" data-ride="carousel">
 					  <div class="carousel-inner" role="listbox">
  					  	<c:forEach items="${parkImageList}" var="dto" varStatus="status" >
 					  	<div class="carousel-item <c:if test="${status.count==1}">active</c:if>" >
-					      <img class="d-block img-fluid" src="${pageContext.request.contextPath}/resources/images/park/${dto.imgPath}" alt="Slide${status.count}" style="width:95%; margin-left: 2.5%">
+					      <img class="d-block img-fluid" src="${pageContext.request.contextPath}/resources/images/park/${dto.imgPath}" alt="Slide${status.count}" style="width:95%; height:300px; margin-left: 2.5%">
 					    </div>
 					  	</c:forEach>
-					  	    <div class="carousel-item active">
-						      <img class="d-block img-fluid" src="http://www.stc-corp.co.kr/pages/image/led/led11.jpg" alt="Slide1" style="width:95%; margin-left: 2.5%">
-						    </div>
-						    <div class="carousel-item">
-						      <img class="d-block img-fluid" src="https://img.webnots.com/2017/05/BS_Slide2.jpg" alt="Slide2" style="width:95%; margin-left: 2.5%">
-						    </div>
-						    <div class="carousel-item">
-						      <img class="d-block img-fluid" src="https://img.webnots.com/2017/05/BS_Slide3.jpg" alt="Slide3" style="width:95%; margin-left: 2.5%">
-						    </div>
 					  </div>
 					  <a class="carousel-control-prev" href="#arrowslider" role="button" data-slide="prev">
 					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -274,8 +265,7 @@ $(function(){
 				</div>
 				<div class="container">
 					<b>
-					이 주차장은 주차주차주차주차한 공간으로 주차주차주차합니다. 주차주차하세요. OK 주차장 is 완벽 is 굳
-					굳 굳 베리 굳 굳 굳
+					${parkDTO.parkContent}
 					</b>
 					<br />
 				</div>

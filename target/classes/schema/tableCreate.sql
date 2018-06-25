@@ -31,7 +31,7 @@ create table PARK_TB
       user_Id            varchar2(100)  NOT NULL constraint park_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
       park_Name         varchar2(100)  NOT NULL,
       park_Addr         varchar2(200)  NOT NULL,
-      park_Size         long          NOT NULL,
+      park_Size         varchar2(100)   NOT NULL,
       park_Content       varchar2(2000) NOT NULL,
       price            number          NOT NULL
        
