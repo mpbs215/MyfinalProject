@@ -8,6 +8,8 @@
 	prefix="sec"%>
 <sec:authentication var="mvo" property="principal" />
 
+<div class="container" style="background-color: white; padding: 20px;">
+
 <h1>QNA</h1>
 
 <sec:authorize access="isAuthenticated()">
@@ -53,3 +55,4 @@
 </table>
 
 <div id="pageBar">${pageBar}</div>
+</div>

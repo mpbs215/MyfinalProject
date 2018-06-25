@@ -33,7 +33,7 @@ function logout(){
 <header id="header">
    	 <div class="container">
       <div id="logo" class="pull-left">
-        <a href="#intro" class="scrollto">HEADER</a>
+        <a href="#intro" class="scrollto">PPL</a>
       </div>
       <nav id="nav-menu-container">
         <ul class="nav-menu">
@@ -65,6 +65,10 @@ function logout(){
 	          <li><a href="${pageContext.request.contextPath}/seller/sellerParkRegistForm">주차장 등록</a></li>
 	          <li><a href="javascript:logout();">로그아웃</a></li>
 	          <li><a href="${pageContext.request.contextPath}/user/userModifyUserForm">마이페이지</a></li>
+	          <sec:authorize access="hasRole('ROLE_ADMIN')">
+	          <li><a href="${pageContext.request.contextPath}/admin/manageUsers">유저관리</a></li>
+	          <li><a href="${pageContext.request.contextPath}/admin/manageParks">주차장관리</a></li> 
+	          </sec:authorize>
         </ul>
       </nav>
     </div>

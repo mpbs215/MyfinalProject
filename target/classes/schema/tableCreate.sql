@@ -19,7 +19,7 @@ create table USER_INFO_TB
       password   varchar2(100) NOT NULL,
       USER_NAME   varchar2(100) NOT NULL,
       email         varchar2(100) NOT NULL,
-      hp            varchar2(100) NOT NULL unique,
+      hp            varchar2(100) NOT NULL,
       address      varchar2(100) NOT NULL,
       regidate      timestamp NOT NULL,
       seller         char(1)
@@ -137,6 +137,11 @@ create table SMS_TB (
         key varchar2(100) not null
 );
 
+select * from user_info_tb;
+
+select * from authority_TB;
+
+select  * from sms_tb;
 
 commit
 

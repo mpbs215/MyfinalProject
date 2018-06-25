@@ -7,7 +7,6 @@
 	<div class=" footer-inner">
 	<div class="box1">
 		<p>만든이 : 공은비 / 김돈황 / 김민성 / 이재문 / 지문경</p>
-		<p>주소 : 경기도 성남시 분당구 대왕판교로 670 유스페이스2 B동 8층 </p>
 		</div>
 		<div class="box2">
 		    <a href=""><i class="fa fa-facebook"></i></a>

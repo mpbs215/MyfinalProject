@@ -8,8 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Security Main</title>
 <style>
-.main-member {display:inline-block;  position:absolute; top:-110px; background:#333; color:#fff; left:30px; height:25px; 
-padding:0 10px 0 10px; border-radius:7px; font-size:12px; font-weight:normal; line-height:25px;}
+.main-member {display:inline-block; line-height:25px;   position:absolute; top:-110px;  background:rgba(255,255,255,0.2); color:#fff; left:30px; height:25px; 
+padding:0 10px 0 10px; border-radius:7px; font-size:11px; font-weight:normal; line-height:25px;}
 
 </style>
 </head>
@@ -20,5 +20,6 @@ padding:0 10px 0 10px; border-radius:7px; font-size:12px; font-weight:normal; li
 	<p>${mvo.userName}님 환영합니다.</p>
 </sec:authorize>
 	</div>
+	
 </body>
 </html>

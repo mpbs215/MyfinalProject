@@ -5,6 +5,7 @@
 	prefix="sec"%>
 <sec:authentication var="mvo" property="principal" />
 
+<div class="container" style="background-color: white; padding: 20px;">
 <h1>FAQ</h1>
 <br>
 <c:forEach items="${list}" var="faqDTO">
@@ -34,3 +35,4 @@
 			자주 묻는 질문 쓰기 </a>
 	</h4>
 </sec:authorize>
+</div>

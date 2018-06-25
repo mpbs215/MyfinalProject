@@ -29,6 +29,6 @@
 			</ul></li>
 			
 		<li><a href="${pageContext.request.contextPath}/user/userModifyUserForm">회원정보 수정</a></li>
-		<li><a href="${pageContext.request.contextPath}/user/userMypageReserveList">예약한 주차장</a></li>
+		<li style="border:0;"><a href="${pageContext.request.contextPath}/user/userMypageReserveList">예약한 주차장</a></li>
 	</ul>
 </div>
