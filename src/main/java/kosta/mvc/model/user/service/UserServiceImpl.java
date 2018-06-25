@@ -341,4 +341,8 @@ public class UserServiceImpl {
 	public void deleteReserve(int reserveNo) {
 		parkReserveDAO.deleteReserve(reserveNo);
 	}
+
+	public void updateReserve(ParkReserveDTO dto) {
+		parkReserveDAO.updateReserve(dto);
+	}
 }

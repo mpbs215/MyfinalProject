@@ -56,6 +56,10 @@ public class ParkReserveDAO {
 	public int deleteReserve(int reserveNo) {
 		return session.delete("userMapper.deleteReserve",reserveNo);
 	}
+
+	public int updateReserve(ParkReserveDTO dto) {
+		return session.update("userMapper.updateReserve",dto);
+	}
 	
 	
 }

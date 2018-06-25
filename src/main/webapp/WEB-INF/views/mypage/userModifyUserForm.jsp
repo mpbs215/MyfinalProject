@@ -20,7 +20,6 @@
 			var unSign = confirm("정말 탈퇴 하시겠습니까?");
 			
 			if (unSign) {
-				alert(1)
 				location.href="${pageContext.request.contextPath}/user/unSign?password="+$("#pwd").val().trim()+"&userId="+$("#userId").val();
 			} else {
 				alert("취소 하셨습니다.");
