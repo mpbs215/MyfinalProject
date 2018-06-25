@@ -681,109 +681,7 @@ INSERT INTO CAR_TYPE_TB (PARK_NO, CAR_TYPE, MAX_CAR) VALUES (49 ,'家屈',1 );
 INSERT INTO CAR_TYPE_TB (PARK_NO, CAR_TYPE, MAX_CAR) VALUES (50 ,'吝屈',2 );
 --青 82
 INSERT INTO CAR_TYPE_TB (PARK_NO, CAR_TYPE, MAX_CAR) VALUES (51 ,'措屈',7 );
---青 1
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,2 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 2
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,3 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 3
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,4 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 4
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,5 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 5
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,6 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 6
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,7 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 7
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,8 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 8
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,9 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 9
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,10 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 10
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,11 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 11
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,12 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 12
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,13 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 13
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,14 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 14
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,15 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 15
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,16 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 16
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,17 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 17
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,18 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 18
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,19 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 19
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,20 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 20
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,21 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 21
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,22 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 22
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,23 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 23
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,24 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 24
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,25 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 25
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,26 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 26
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,27 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 27
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,28 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 28
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,29 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 29
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,30 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 30
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,31 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 31
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,32 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 32
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,33 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 33
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,34 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 34
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,35 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 35
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,36 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 36
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,37 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 37
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,38 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 38
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,39 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 39
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,40 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 40
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,41 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 41
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,42 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 42
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,43 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 43
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,44 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 44
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,45 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 45
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,46 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 46
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,47 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 47
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,48 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 48
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,49 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 49
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,50 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
---青 50
-INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,51 ,'http://image.chosun.com/sitedata/image/201706/29/2017062901812_0.jpg');
 
-
-<<<<<<< HEAD
 insert into terms_tb values(TERMS_SEQ.NEXTVAL,'力 1 厘 醚蘑 力 1炼(格利)','
 夯 距包篮 P.P.L捞 款康窍绰 昆 荤捞飘 (http://xxx.xxx.xxx)狼 力馆 辑厚胶狼 捞侩炼扒 棺 例瞒俊 包茄 荤亲 棺 扁鸥 鞘夸茄 荤亲阑 痹沥窃阑 格利栏肺 茄促.
 ');
@@ -901,7 +799,6 @@ insert into terms_tb values(TERMS_SEQ.NEXTVAL,'力 21 炼 (盒里狼 秦搬)','
 
 insert into terms_tb values(TERMS_SEQ.NEXTVAL,'<何蘑>','夯 距包篮 2018斥 06岿 31老何磐 利侩茄促.');
 
-=======
 --青 1
 INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,2 ,'01.jpg');
 --青 2
@@ -1000,5 +897,5 @@ INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,48
 INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,49 ,'48.jpg');
 --青 49
 INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,50 ,'49.jpg');
->>>>>>> branch 'master' of https://github.com/mpbs215/finalProject.git
+
 commit
