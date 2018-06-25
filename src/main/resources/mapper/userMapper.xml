@@ -125,10 +125,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from park_Reserve_TB where reserve_no=#{_parameter}
 	</delete>
 	
-	<delete	id="deleteSMS" parameterType="string">
-		DELETE FROM SMS_TB
-		 WHERE HP=#{_parameter}
-	</delete>
+	
+	<select id="selectPassword" parameterType="string" resultType="String">
+		select password
+		 from user_info_tb;
+		 where user_id=#{_parameter}
+	</select>
 	
 	<delete id="deleteUser" parameterType="string">
 		DELETE FROM USER_INFO_TB

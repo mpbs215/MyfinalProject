@@ -8,29 +8,18 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
 <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
 <link rel="stylesheet"
 	href="https://formden.com/static/cdn/bootstrap-iso.css" />
+	
+<!-- SellerPark CSS -->
+<link rel="stylesheet"
+ href="${pageContext.request.contextPath}/resources/css/sellerParkRegistForm.css" />
+
 <!--Font Awesome (added because you use icons in your prepend/append)-->
 <link rel="stylesheet"
 	href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
 <!-- Inline CSS based on choices in "Settings" tab -->
-<style>
-.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p,
-	.bootstrap-iso form {
-	font-family: Arial, Helvetica, sans-serif;
-	color: black
-}
-
-.bootstrap-iso form button, .bootstrap-iso form button:hover {
-	color: white !important;
-}
-
-.asteriskField {
-	color: red;
-}
-</style>
 
 <!-- datetimepicker -->
 <link rel="stylesheet"
@@ -212,7 +201,7 @@ jQuery(document).ready(
 				<div class="col-sm-8">
 					<div class="form-group ">
 						<label class="control-label requiredField" for="parkName">
-							제목 <span class="asteriskField"> * </span>
+							<p>제목</p> <span class="asteriskField"> * </span>
 						</label> <input class="form-control" id="parkName" name="parkName"
 							type="text" />
 					</div>
@@ -221,7 +210,7 @@ jQuery(document).ready(
 						<div class="col-sm-8">
 							<div class="form-group ">
 								<label class="control-label requiredField" for="parkAddr">
-									주차장 주소 <span class="asteriskField"> * </span>
+									<p>주차장 주소</p> <span class="asteriskField"> * </span>
 								</label>
 								<div class="input-group">
 									<div class="input-group-addon">
@@ -235,7 +224,7 @@ jQuery(document).ready(
 						<div class="col-sm-4">
 							<div class="form-group ">
 								<label class="control-label requiredField" for="parkSize">
-									주차장 면적 <span class="asteriskField"> * </span>
+									<p>주차장 면적 </p><span class="asteriskField"> * </span>
 								</label>
 								<div class="input-group">
 									<div class="input-group-addon">
@@ -256,7 +245,7 @@ jQuery(document).ready(
 
 								<div class="form-group ">
 									<label class="control-label requiredField" for="carType">
-										주차 가능 차종 <span class="asteriskField"> * </span>
+										<p>주차 가능 차종</p> <span class="asteriskField"> * </span>
 									</label>
 									<div class="input-group">
 										<div class="input-group-addon">
@@ -271,7 +260,7 @@ jQuery(document).ready(
 														<option value="m">중형</option>
 														<option value="l">대형</option>
 												</select></td>
-												<td style="padding-left: 30px;"><input class="btn" type="button" id="addType" value="추가" style="background-color: white; border-color: black;"/></td>
+												<td><input class="btn" type="button" id="addType" value="추가" /></td>
 											</tr>
 										</table>
 									</div>
@@ -281,7 +270,7 @@ jQuery(document).ready(
 
 						<div class="form-group ">
 							<label class="control-label requiredField" for="parkContent">
-								주차장 소개 <span class="asteriskField"> * </span>
+							<p>주차장 소개</p> <span class="asteriskField"> * </span>
 							</label>
 							<textarea class="form-control" cols="40" id="parkContent"
 								name="parkContent"
@@ -292,7 +281,7 @@ jQuery(document).ready(
 						<!-- 이미지 업로드 -->
 						<div class="form-group ">
 							<label class="control-label requiredField" for="files">
-								주차장 사진 (여러장 선택 가능)<span class="asteriskField"> * </span>
+							<p>	주차장 사진 (여러장 선택 가능)</p><span class="asteriskField"> * </span>
 							</label>
 							<div class="input-group">
 								<div class="input-group-addon">
@@ -315,15 +304,16 @@ jQuery(document).ready(
 						<br />
 						<div class="form-group ">
 
-							<label class="control-label requiredField" for=""> 예약 가능
-								날짜<span class="asteriskField"> * </span>
+							<label class="control-label requiredField" for=""> <p>예약 가능
+								날짜</p><span class="asteriskField"> * </span>
 							</label> <br />
 							<div class="row justify-content-center">
-								<div class="col-sm-5">
+								<div class="col-sm-5"  >
 									<input type="text" class='datetimepicker' name="regiStart"
-										id="regiStart">
+										id="regiStart"">
 								</div>
-								<div class="col-sm-1">~</div>
+								
+								<div class="col-sm-1" >~</div>
 								<div class="col-sm-5">
 									<input type="text" class='datetimepicker2' name="regiEnd"
 										id="regiEnd">
@@ -334,7 +324,7 @@ jQuery(document).ready(
 							<div class="row justify-content-center">
 								<div class="col-sm-11">
 									<label class="control-label requiredField" for="price">
-										시간당 가격(원) <span class="asteriskField"> * </span>
+										<p>시간당 가격(원)</p> <span class="asteriskField"> * </span>
 									</label>
 									<div class="input-group">
 										<div class="input-group-addon">
@@ -363,7 +353,7 @@ jQuery(document).ready(
 						<br />
 						<div class="form-group">
 							<div align="center">
-								<button class="btn" name="submit" type="submit" style="background-color: #04B404; color: white;">주차장 등록하기</button>
+								<button class="btn" name="submit" type="submit" style="background:rgba(255,255,255,0.4); color: #fff;">주차장 등록하기</button>
 							</div>
 						</div>
 					</div>

@@ -122,17 +122,26 @@ public class UserDAO {
 	/**
 	 * 	회원 탈퇴 하기 (SMS 테이블)
 	 * */
-	public int deleteSMS(String password, String hp) {
+	/*public int deleteSMS(String password, String hp) {
 		
 		return session.delete("userMapper.deleteSMS", hp);
+	}*/
+	
+	/**
+	 * 	회원 탈퇴를 위해 암호화된 비밀번호 가저오기
+	 * */
+	public String selectPassword(String userId) {
+		String password = session.selectOne("userMapper.selectPassword", userId);
+		
+		return password;
 	}
 	
 	/**
 	 * 	회원 탈퇴 하기 (USER 테이블)
 	 * */
-	public int deleteUserInfo(String password, String hp) {
+	public int deleteUserInfo(String encodePassword) {
 		
-		return session.delete("userMapper.deleteUser",password);
+		return session.delete("userMapper.deleteUser",encodePassword);
 	}
 	
 }

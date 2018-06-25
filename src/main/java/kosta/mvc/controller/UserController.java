@@ -224,38 +224,15 @@ public class UserController {
 		return searchService.selectRi(dong);
 	}
 	
-	
 	@RequestMapping(value="/unSign", method = RequestMethod.GET ) 
-	public String unSign(@RequestParam("password") String password, 
-											  @RequestParam("hp") String hp) {
+	public String unSign(@RequestParam("password") String password,
+											  @RequestParam("userId") String userId) {
 		
-		System.out.println("password : " +password);
-		System.out.println("hp 번호 : "+hp);
+		String Depassword = service.selectPassword(userId);
 		
-		/*if (service.deleteAuth(password, hp)== 0 && service.deleteSMS(password, hp) == 0) {
-			
-			System.out.println("첫 번째 if문? ");
-			service.deleteUserInfo(password, hp);
-		} else if(service.deleteAuth(password, hp) == 0 && service.deleteSMS(password, hp) != 0){
-			
-			System.out.println("2번째 if문?");
-				service.deleteSMS(password, hp);
-				service.deleteUserInfo(password, hp);
-		} else if (service.deleteSMS(password, hp) == 0 && service.deleteAuth(password, hp) != 0) {
-			
-			System.out.println("3번째 if문?");
-			service.deleteAuth(password, hp);
-			service.deleteUserInfo(password, hp);
-		} else if(service.deleteUserInfo(password, hp) != 0 && service.deleteAuth(password, hp) != 0 && service.deleteSMS(password, hp) !=0){
-			
-				System.out.println("마지막 if문?");
-				service.deleteAuth(password, hp);
-				service.deleteSMS(password, hp);
-				service.deleteUserInfo(password, hp);
-		}*/
-		
-		service.deleteAuth(password, hp);
-		service.deleteUserInfo(password, hp);
+		if (passwordEncoder.matches(password, Depassword)) {
+			service.deleteUserInfo(password);
+		}
 		
 		return "main";
 	}

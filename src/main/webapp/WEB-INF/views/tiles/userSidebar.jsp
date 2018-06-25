@@ -26,8 +26,8 @@
 				<!-- 관리자로 로그인 한 경우 -->
 				<li><a href="#">로그아웃</a></li>
 				<li><a href="#">회원관리</a></li>
-			</ul></li>
-	user사이드바?
+			</ul>
+			</li>
 		<li><a href="${pageContext.request.contextPath}/common/introduce">서비스 소개</a></li>
 		<li><a href="${pageContext.request.contextPath}/common/serviceInfo">서비스 이용안내</a></li>
 		<li><a href="${pageContext.request.contextPath}/common/terms">서비스 이용약관</a>

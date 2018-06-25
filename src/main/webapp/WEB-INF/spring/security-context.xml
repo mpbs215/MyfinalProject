@@ -19,6 +19,14 @@
          default-target-url="/"
          authentication-failure-handler-ref="memberAuthenticationFailureHandler"
          />
+         
+       <sec:form-login login-page="mypage/userModifyUserForm"
+       		login-processing-url="/deleteMember"
+       		username-parameter="userId"
+       		password-parameter="password"
+       		default-target-url="/"
+       		authentication-failure-handler-ref="memberAuthenticationFailureHandler"
+       />
 
  	<sec:logout
 			logout-url="/user/logout"

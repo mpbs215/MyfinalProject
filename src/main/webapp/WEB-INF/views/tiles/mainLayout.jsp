@@ -14,8 +14,7 @@
 		<tr>
 			<header>
 				<th colspan="2" class="layoutHeader"><tiles:insertAttribute
-						name="header" />
-				</th>
+						name="header" /></th>
 			</header>
 		</tr>
 		<!-- 여기 변경 되있던거 같은데!! -->
@@ -23,14 +22,10 @@
 			<th class="layoutContent2"><content>
 				<tiles:insertAttribute name="content" /></content></th>
 		</tr>
-		<tr>
-			<th>
-				<footer class="layoutFooter">
-					<tiles:insertAttribute name="footer" />
-				</footer>
-			</th>
-		</tr>
 	</table>
+	<footer class="layoutFooter">
+		<tiles:insertAttribute name="footer" />
+	</footer>
 </body>
 </html>
 
