@@ -80,6 +80,7 @@ public class SellerServiceImpl {
 			throw new RuntimeException();
 		}
 		
+		System.out.println("차종 대수 전");
 		/** 차종, 대 수 */
 		List<String> carTypeList = carTypeDto.getCarTypeList();
 		List<Integer> maxCarList = carTypeDto.getMaxCarList();
@@ -98,6 +99,7 @@ public class SellerServiceImpl {
 				throw new RuntimeException();
 			}
 		}
+		System.out.println("차종 대수 후 이미지 업로드 전");
 
 			   
 		/** 이미지 업로드 */		 
@@ -129,6 +131,8 @@ public class SellerServiceImpl {
 			}
 						
 			file.transferTo(new File(imgPath+ "/" + fileName));// 이미지 저장
+			System.out.println("이미지 업로드 후");
+
 		}		
 	}
 	
