@@ -31,9 +31,6 @@
 				<li><a href="${pageContext.request.contextPath}/user/userModifyUserForm">마이페이지</a></li>
 				</sec:authorize>
 
-			
-
-
 			</ul></li>
 
 		<li><a href="#">About us</a></li>

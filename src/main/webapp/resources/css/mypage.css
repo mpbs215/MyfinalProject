@@ -1,16 +1,18 @@
 @charset "UTF-8";
 /* CSS Document */
 
-.mypage { width:100%; margin-right:300px;}
+.mypage { width:100%;}
 .mypage h2 { color:#fff; margin-bottom:30px; text-align:center; padding-top:40px;}
-.mypage-inner {width:50%; margin:0 auto; background:#000; margin-top:30px; border-radius:20px; padding-bottom:40px;}
+.mypage-inner {width:50%; margin:0 auto; background:rgba(0,0,0,0.7);  margin-top:30px; border-radius:20px; padding-bottom:80px;}
 .mypage .mypage-list { width:30%; margin:0 auto; text-align:center; color:#fff; padding-bottom:15px;}
 .mypage input {background:none; height:30px; line-height: 30px; color:#fff; }
 
 .mypage-list-btn { text-align:center; height:25px; margin-bottom:10px; }
-.mypage-list-btn #list-btn{ background:#fff; font-size:13px; width:300px; height:30px; line-height:25px;  border:0; margin:5px; text-align:center; margin:0 auto; color:#333; border-radius:10px; transition:0.2s;}
+
+.mypage-list-btn #list-btn{ background:#fff; font-size:13px; width:300px; height:30px; line-height:25px;  border:0;  text-align:center; margin:0 auto 10px; color:#333; border-radius:10px; transition:0.3s;}
 .mypage-list-btn #list-btn:hover {background:#000; border:1px solid #fff; color:#fff;}
 
-.mypage-list-btn #leaveMemberBtn{ background:#fff; font-size:13px; width:300px; height:30px; line-height:25px; border:0; margin:5px; text-align:center; margin:0 auto; color:#333; border-radius:10px; transition:0.2s;}
+.mypage-list-btn #leaveMemberBtn{ background:#fff; font-size:13px; width:300px; height:30px; line-height:25px; border:0; margin:5px; text-align:center; margin:0 auto; color:#333; border-radius:10px; transition:0.3s;}
 
 .mypage-list-btn #leaveMemberBtn:hover {background:#000; border:1px solid #fff; color:#fff;}
+.mypage #userId {background:none; color:#fff;}

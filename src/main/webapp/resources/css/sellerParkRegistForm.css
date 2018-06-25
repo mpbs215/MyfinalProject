@@ -1,0 +1,23 @@
+/*
+.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p,
+	.bootstrap-iso form {
+	font-family: Arial, Helvetica, sans-serif;
+	color: black
+}
+
+.bootstrap-iso form button { color:#fff; }
+.bootstrap-iso form button:hover {
+	color: #333;
+}
+
+.asteriskField {
+	color: #e60000;
+}
+*/
+
+.bootstrap-iso {background:rgba(0,0,0,0.7); border-radius:20px; padding:20px; border:1px solid  #fff;}
+.bootstrap-iso p { color:#fff; font-size:15px; display:inline-block;}
+.asteriskField { color:#fff; }
+ .bootstrap-iso .btn { background:rgba(255,255,255,0.4); border:1px solid #fff; margin-left:5px; color:#fff; font-weight:bold;}
+ .bootstrap-iso .btn:hover { background:#333; border:1px solid #fff; color:#fff; }
+ 

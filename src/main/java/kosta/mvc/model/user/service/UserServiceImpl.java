@@ -289,7 +289,8 @@ public class UserServiceImpl {
 	/**
 	 * 	회원 탈퇴하기 (Auth 테이블)
 	 * */
-	public int deleteAuth(String password, String hp) {
+	
+	/*public int deleteAuth(String password, String hp) {
 		int result = authoritiesDAO.deleteAuth(password, hp);
 		
 		int count=0;
@@ -301,28 +302,38 @@ public class UserServiceImpl {
 			System.out.println(hp +"와 일치하는 회원 입니다.");
 		}
 		return result;
-	}
+	}*/
 	
 	/**
 	 *  회원 탈퇴하기 (SMS 테이블)
 	 * */
-	public int deleteSMS(String password, String hp) {
+	
+/*	public int deleteSMS(String password, String hp) {
 		int result = userDAO.deleteSMS(password, hp);
 		
 		if (result == 0 ) { 
 			throw new RuntimeException(hp+ "와 일치하는 회원정보를 찾지 못 하였습니다.(SMS)");
 		}
 		return result;
+	}*/
+	
+	/**
+	 * 회원 탈퇴시 비밀번호 일치시켜주기 위해서 암호화된 비밀번호 가저오기 
+	 * */
+	public String selectPassword(String userId) {
+			String password = userDAO.selectPassword(userId);
+			
+			return password;
 	}
 	
 	/**
 	 * 회원 탈퇴하기 (UserInfo 테이블)
 	 * */
-	public int deleteUserInfo(String password, String hp) {
-		int result = userDAO.deleteUserInfo(password, hp);
+	public int deleteUserInfo(String encodePassword) {
+		int result = userDAO.deleteUserInfo(encodePassword);
 		
 		if (result == 0 ) { 
-			throw new RuntimeException(password+ "가 일치 하지 않습니다.");
+			throw new RuntimeException(encodePassword+ "가 일치 하지 않습니다.");
 		}
 		return result;
 	}
