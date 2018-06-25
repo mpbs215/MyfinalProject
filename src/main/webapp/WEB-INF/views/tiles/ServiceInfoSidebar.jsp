@@ -28,8 +28,6 @@
 				<li><a href="#">회원관리</a></li>
 			</ul></li>
 
-		<li><a href="${pageContext.request.contextPath}/common/introduce">서비스 소개</a></li>
-		<li><a href="${pageContext.request.contextPath}/common/serviceInfo">서비스 이용안내</a></li>
 		<li><a href="${pageContext.request.contextPath}/common/terms">서비스 이용약관</a>
 		<li><a href="${pageContext.request.contextPath}/common/notice">공지사항</a></li>
 		<li><a href="${pageContext.request.contextPath}/common/faq">FAQ</a></li>

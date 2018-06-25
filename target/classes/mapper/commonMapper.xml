@@ -4,66 +4,67 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="commonMapper">
-	<resultMap type="termsDTO" id="selectTerms">
-		<id column="terms_no" property="termsNo" />
-		<result column="terms_sub" property="termsSubject" />
-		<result column="terms_content" property="termsContent" />
-	</resultMap>
+   <resultMap type="termsDTO" id="selectTerms">
+      <id column="terms_no" property="termsNo" />
+      <result column="terms_sub" property="termsSubject" />
+      <result column="terms_content" property="termsContent" />
+   </resultMap>
 
-	<select id="selectNotice" resultType="noticeDTO"
-		parameterType="int">
-		select * from notice_tb
-		<where>
-			<if test="_parameter!=null">
-				notice_No = #{_parameter}
-			</if>
-		</where>
-	</select>
+   <select id="selectNotice" resultType="noticeDTO"
+      parameterType="int">
+      select * from notice_tb
+      <where>
+         <if test="_parameter!=null">
+            notice_No = #{_parameter}
+         </if>
+      </where>
+   </select>
 
-	<select id="selectTermsAll" resultType="termsDTO">
-		select * from terms_TB
-	</select>
+   <select id="selectTermsAll" resultType="termsDTO">
+      select * from terms_TB
+   </select>
 
-	<select id="selectFAQAll" resultType="fAQDTO">
-		select * from faq_TB
-	</select>
+   <select id="selectFAQAll" resultType="fAQDTO">
+      select * from faq_TB
+   </select>
 
-	<select id="selectQNAAll" resultType="qNADTO">
-		select * from QNA_TB
-	</select>
+   <select id="selectQNAAll" resultType="qNADTO">
+      select * from QNA_TB
+      order by qna_no
+   </select>
 
-	<select id="selectOneQNA" parameterType="int"
-		resultType="qnaDTO">
-		select *
-		from QNA_TB where qna_no=#{QNANo}
-	</select>
+   <select id="selectOneQNA" parameterType="int"
+      resultType="qnaDTO">
+      select *
+      from QNA_TB where qna_no=#{QNANo}
+   </select>
 
-	<insert id="insertQNA" parameterType="qnaDTO">
-		insert into qna_tb
-		values(qna_seq.nextval,#{userId},#{QNASub},#{QNAContent},sysdate,null,null,0,#{QNAPwd},#{QNAImage})
+   <insert id="insertQNA" parameterType="qnaDTO">
+      insert into qna_tb
+      values(qna_seq.nextval,#{userId},#{QNASub},#{QNAContent},sysdate,null,null,0,#{QNAPwd},#{QNAImage})
 
-	</insert>
+   </insert>
 
-	<update id="updateQNA" parameterType="qnaDTO">
-		update qna_tb set qna_sub=#{QNASub},qna_content=#{QNAContent}
-		<if test="QNAImage!=null">
-			,qna_Image=#{QNAImage}
-		</if>
-		where qna_no=#{QNANo}
-	</update>
+   <update id="updateQNA" parameterType="qnaDTO">
+      update qna_tb set qna_sub=#{QNASub},qna_content=#{QNAContent}
+      <if test="QNAImage!=null">
+         ,qna_Image=#{QNAImage}
+      </if>
+      where qna_no=#{QNANo}
+   </update>
 
-	<delete id="deleteQNA" parameterType="int">
-		delete from qna_tb where
-		qna_no=#{QNANo}
-	</delete>
+   <delete id="deleteQNA" parameterType="int">
+      delete from qna_tb where
+      qna_no=#{QNANo}
+   </delete>
 
-	<update id="increaseQNAHit">
-		update qna_tb set qna_hit=#{QNAHit} where
-		qna_no=#{QNANo}
-	</update>
-	
-	<select id="QNACnt" resultType="_int">
-		select count(*) from qna_tb
-	</select>
+   <update id="increaseQNAHit">
+      update qna_tb set qna_hit=#{QNAHit} where
+      qna_no=#{QNANo}
+   </update>
+   
+   <select id="QNACnt" resultType="_int">
+      select count(*) from qna_tb
+   </select>
 
 </mapper>

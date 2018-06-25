@@ -1406,15 +1406,15 @@ insert into terms_tb values(TERMS_SEQ.NEXTVAL,'<부칙>','본 약관은 2018년 06월 31
 =======
 
 --행 1
-INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 위치기반서비스 이용약관 변경 안내new',sysdate,'안녕하세요. PPL 입니다.',0.0,'null');
+INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 위치기반서비스 이용약관 변경 안내new',sysdate,'안녕하세요. PPL 입니다.',0.0,null);
 --행 2
-INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 서비스 운영정책 변경 안내',sysdate,'안녕하세요. PPL입니다.',0.0,'null');
+INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 서비스 운영정책 변경 안내',sysdate,'안녕하세요. PPL입니다.',0.0,null);
 --행 3
-INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'개인정보 처리방침 개정안내',sysdate,'안녕하세요. PPL(이하 ‘회사’)입니다.',0.0,'null');
+INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'개인정보 처리방침 개정안내',sysdate,'안녕하세요. PPL(이하 ‘회사’)입니다.',0.0,null);
 --행 4
-INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 위치기반서비스 이용약관 변경 안내',sysdate,'안녕하세요. PPL 입니다.',0.0,'null');
+INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 위치기반서비스 이용약관 변경 안내',sysdate,'안녕하세요. PPL 입니다.',0.0,null);
 --행 5
-INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 통합 약관 및 서비스 약관 변경 안내',sysdate,'PPL의 위치기반서비스 이용약관 변경에 대한 안내 말씀 드립니다.',0.0,'null');
+INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 통합 약관 및 서비스 약관 변경 안내',sysdate,'PPL의 위치기반서비스 이용약관 변경에 대한 안내 말씀 드립니다.',0.0,null);
 --행 6
 INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 서비스 약관 변경 안내',sysdate,'안녕하세요.?PPL입니다.',0.0,'null');
 

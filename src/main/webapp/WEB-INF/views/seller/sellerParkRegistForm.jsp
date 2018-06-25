@@ -352,14 +352,14 @@ body {
 
 							<div class="row justify-content-center">
 								<div class="col-sm-11">
-									<div style="background-color: #F2F2F2;">
-										<div id="addedPark"
-											style="margin: 20px; padding: 20px; border: 2px; border-color: black;">
-											<div align="center">
-												<div>주차 가능 차종</div>
-												<div>주차 가능 대수</div>
-											</div>
-										</div>
+									<div style="background-color: #F2F2F2; text-align: center">
+										<table id="addedPark"
+											style="border: 2px; border-color: black; text-align: center">
+												<tr>
+													<th>주차 차종</th>
+													<th>주차 대수</th>
+												</tr>
+										</table>
 									</div>
 								</div>
 							</div>

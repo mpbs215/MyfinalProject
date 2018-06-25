@@ -107,10 +107,10 @@ public class UserServiceImpl {
 		return parkReserveDAO.selectparkReserve(parkNo);
 	}
 
-	public List<ParkDTO> userReserve() {
+/*	public List<ParkDTO> userReserve() {
 		System.out.println("서비스 실행됨");
 		return parkDAO.selectParkList(null);
-	}
+	}*/
 
 	public Map<String, Object> userReserveForm(int parkNo) {
 		ParkDTO parkDTO = parkDAO.selectOnePark(parkNo);

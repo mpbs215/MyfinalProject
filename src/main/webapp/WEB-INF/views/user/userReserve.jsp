@@ -229,7 +229,7 @@
 						  parkList[6] = item.parkImg.imgPath
 						  parkList[7] = item.parkNo
 					      var listData=" "
-					      listData+="<div class='row' style='background-color:white; padding:2px; border:1px solid gray'>"
+					      listData+="<div class='row' style='background-color:white; padding:2px; border:1px solid gray; height:200px'>"
 					      listData+="<div class='col-sm-3'>"
 					      listData+="<img class='img-responsive' src='${pageContext.request.contextPath}/resources/images/park/"+parkList[6]+"' style='width: 100%;height: 100%;'>"
 					      listData+="</div>"
@@ -305,6 +305,7 @@
 				</div>
 				<div class="col-sm-6">
 					<input type="hidden" name="parkAddr"/>
+					<input type="reset" class="btn btn-primary"value="초기화" />
 				</div>
 				<div class="col-sm-2">
 					<select id="keyWord" class="custom-select" style="float: right">

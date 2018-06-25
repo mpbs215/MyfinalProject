@@ -30,7 +30,7 @@
 function passwordCheck() {
   var idReg = /^[a-z0-9]+[a-z0-9]{3,29}$/g;
   if( !idReg.test( $("input[name=password]").val() ) ) {
-      alert("아이디는 4~30자 영문자 또는 숫자이어야 합니다.");
+      alert("비밀번호는 4~30자 영문자 또는 숫자이어야 합니다.");
       return;
   }
   else return true;

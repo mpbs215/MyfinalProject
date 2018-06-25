@@ -51,8 +51,8 @@
 	          <li><a href="${pageContext.request.contextPath}/common/introduce">서비스 안내</a></li>
 	          <li><a href="${pageContext.request.contextPath}/user/userReserve">주차장 예약</a></li>
 	          <li><a href="${pageContext.request.contextPath}/seller/sellerParkRegistForm">주차장 등록</a></li>
-	          <li><a href="javascript:logout();">로그아웃</a></li>
-	          <li><a href="${pageContext.request.contextPath}/user/mypage">마이페이지</a></li>
+	          <li><a href="${pageContext.request.contextPath}/user/logout;">로그아웃</a></li>
+	          <li><a href="${pageContext.request.contextPath}/user/userModifyUserForm">마이페이지</a></li>
         </ul>
       </nav>
     </div>
@@ -107,9 +107,11 @@
  
   </header>
   </div>
- </sec:authorize>  
-	<hr color="red">
+ </sec:authorize>
+ <div style="background-color: rgba(0,0,0,.5)">
+	<hr color="red" style="border-top: 2px solid red">
 	<p class="small"></p><div class="member_login">회원이 아니십니까??</div> <a href=" ${pageContext.request.contextPath}/sign/signUpForm" >회원가입</a><p>
 	<div class="member_login">아이디/비밀번호를 잊어버리셨습니까?</div><a href="${pageContext.request.contextPath}/sign/findId " >아이디 / 비밀번호 찾기</a><p class="small">
+ </div>
 </body>
 </html>
