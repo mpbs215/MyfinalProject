@@ -1,11 +1,14 @@
 package kosta.mvc.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -54,6 +57,13 @@ public class UserController {
 	@RequestMapping("/renewParkList")
 	public List<ParkDTO> renewParkList(SearchFilterDTO dto){
 		return searchService.renewParkList(dto);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/renewParkPager")
+	public List<Object> renewParkPager(SearchFilterDTO dto,HttpServletRequest request){
+		System.out.println(dto);
+		return searchService.renewParkPager(dto, request);
 	}
 
 	/*
@@ -117,8 +127,11 @@ public class UserController {
 	public String reservation(ParkReserveDTO dto) {
 		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		dto.setUserId(userDTO.getUserId());
-		System.out.println(dto);
-		service.insertReserve(dto);
+		if(service.reserveCheck(dto).equals("OK")) {
+			service.insertReserve(dto);
+		}else {
+			throw new RuntimeException("예약에 실패하였습니다.");
+		}
 		return "redirect:/user/userMypageReserveList";
 	}
 	
@@ -127,8 +140,8 @@ public class UserController {
 	public String reserveCheck(ParkReserveDTO dto) {
 		System.out.println("컨트롤러 호출됨");
 		System.out.println(dto);
-		//UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		//dto.setUserId(userDTO.getUserId());
+		UserDTO userDTO = (UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		dto.setUserId(userDTO.getUserId());
 		return service.reserveCheck(dto);
 	}
 

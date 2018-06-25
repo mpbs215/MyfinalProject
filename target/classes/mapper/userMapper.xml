@@ -115,7 +115,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectUserReserve" parameterType="string" resultMap="reserveMap">
 		select reserve_No,reserve_Start,user_info_tb.user_id,img_path,park_name,hp,price*EXTRACT(hour from reserve_end-reserve_start) as price
-		from park_Reserve_TB  left outer join (select* from park_image_tb where rownum<![CDATA[<]]>2)  using(park_no) 
+		from park_Reserve_TB  left outer join 
+		(select * from (select img_no, park_no, img_path, rank()over(partition by park_no order by img_path desc) rk
+			from park_image_tb) where rk = 1)  using(park_no) 
 		join park_tb pt using(park_no) 
 		join user_info_tb on pt.user_id =user_info_tb.user_id
 		where park_Reserve_TB.user_id = #{_value}

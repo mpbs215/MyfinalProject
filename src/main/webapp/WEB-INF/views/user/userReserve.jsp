@@ -116,14 +116,12 @@
 		function parkChange(){
 			
 			var queryString = $("form[name=searchData]").serialize();
-			alert(queryString);
  			$.ajax({
 				url:"${pageContext.request.contextPath}/user/renewParkList",
 				data:queryString,
 				dataType: "json",
 				success : function(result){
-					$('#dataDiv').html=" ";
-					alert(result.length)
+					pager();
  					$.each(result, function(index, item){
 						  var parkList = new Array();
 						  parkList[0] = item.parkName;
@@ -180,7 +178,6 @@
 			     		iwdata+="</li></ul>"
 			     		iwdata+="</div>"
 			     		iwdata+="</div>"
-			     		$('#dataDiv').append(iwdata);
 			        var iwContent = iwdata
 			        	, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 			            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
@@ -211,6 +208,55 @@
 			for ( var i = 0; i < markers.length; i++ ) {
 				infowindows[i].close();
 			}
+		}
+		function pager(page){
+			if(page==null){page=1}
+			var queryString = $("form[name=searchData]").serialize();
+ 			$.ajax({
+				url:"${pageContext.request.contextPath}/user/renewParkPager?cPage="+page,
+				data:queryString,
+				dataType: "json",
+				success : function(result){
+					$('#dataDiv').empty();
+ 					$.each(result[0], function(index, item){
+ 						  var parkList = new Array();
+						  parkList[0] = item.parkName;
+						  parkList[1] = item.parkAddr;
+						  parkList[2] = item.parkRegi.regiStart;
+						  parkList[3] = item.parkRegi.regiEnd;
+						  parkList[4] = item.price;
+						  parkList[5] = item.carTypeLists;
+						  parkList[6] = item.parkImg.imgPath
+						  parkList[7] = item.parkNo
+					      var listData=" "
+					      listData+="<div class='row' style='background-color:white; padding:2px; border:1px solid gray'>"
+					      listData+="<div class='col-sm-3'>"
+					      listData+="<img class='img-responsive' src='${pageContext.request.contextPath}/resources/images/park/"+parkList[6]+"' style='width: 100%;height: 100%;'>"
+					      listData+="</div>"
+					      listData+="<div class='col-sm-8'>"
+					      listData+="<h4><strong><a href='${pageContext.request.contextPath}/user/userReserveForm?parkNo="+parkList[7]+"'>"+parkList[0]+"</a></strong></h4>"
+					      listData+="<h4><small>"+parkList[1]+"</small></h4>"
+					      listData+="<h4><small>"+parkList[2]+" ~ "+parkList[3]+"</small>"
+					      listData+="&nbsp;&nbsp;&nbsp;&nbsp;<small style='color: green; font: bold;'>시간당 "+parkList[4]+"원</small></h4><h4><small>"
+					      $.each(parkList[5],function(index,item){
+						    	 listData+= item.carType
+						    	 listData+= item.maxCar
+							  })
+					      
+					      listData+="</small></h4>"
+					      listData+="</div><div class='col-sm-1'></div></div>"
+					      $('#dataDiv').append(listData);
+					})
+					$('#pageBar').html(result[1]);
+ 					$(".page-link").on('click',$('document'),function(){
+ 						pager($(this).attr('id'))
+ 					})
+				},
+				error:function(request,status,error){
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+				
+			})
 		}
 		parkChange();
 	})
@@ -280,20 +326,7 @@
 			
 			
 			</div>
-<!-- 			<div style='width: 600px;height: 230px; display: inline-block; border: 1px solid black;background: white;'>
-				<div style='width:40%; height: 100%; display: inline-block;'>
-					<img src='http://www.pusan1st.com/data/franchise2/246/thumb-7KO87LCo1_385x230.png' width='100%' height='100%'>
-				</div>
-				<div style='width:60%; height: 100%; display: inline-block; float: right'>
-					<ul class='list-group list-group-flush border'>
-					  <li class='bg-primary text-white font-weight-bold text-center' style="font-size: 20px; padding: 7px">서울 주차장</li>
-					  <li class='list-group-item' >서울 은평구 불광동 8-63번지 201호</li>
-					  <li class='list-group-item'>
-					  2018-06-20 18:00:00 <br />
-					  ~ 2018-06-20 19:00:00
-					  </li>
-					  <li class='list-group-item'> 가격: 2000 / 중형1 소형2 대형3</li>
-					</ul>
-				</div>
-			</div> -->
+			<div id="pageBar">
+			
+			</div>
 		</div>

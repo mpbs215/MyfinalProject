@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kosta.mvc.model.dto.ParkDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
+import kosta.mvc.model.dto.QNADTO;
 import kosta.mvc.model.dto.SearchFilterDTO;
 
 @Repository
@@ -70,6 +72,17 @@ public class ParkDAO {
 		if(endDate!=null) map.put("endDate", endDate);
 		map.put("userId", userId);
 		return session.selectList("sellerMapper.selectProfit",map);
+	}
+
+	public int CountParkList(SearchFilterDTO dto) {
+		int count=session.selectList("searchMapper.selectPark",dto).size();
+		return count;
+	}
+
+	public List<ParkDTO> renewParkList(int cPage, int numPerPage, SearchFilterDTO dto) {
+		RowBounds rowBounds = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		List<ParkDTO> list = session.selectList("searchMapper.selectPark", dto, rowBounds);
+		return list;
 	}
 	
 	

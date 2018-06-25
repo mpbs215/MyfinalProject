@@ -155,14 +155,12 @@ $(function(){
 					})//리뷰 갱신 end
 					//차량 및 날짜 갱신시 예약 가능 여부 체크
 					function reserveCheck(){
-						alert("체크 호출")
 						var queryString = $("form[name=reservation]").serialize() ;
 						$.ajax({
 							url: "${pageContext.request.contextPath}/user/reserveCheck",
 							data: queryString,
 							dataType : 'text',
 							success: function(result){
-								alert(result)
 								if(result=="OK"){
 									$("#reserveBtn").attr("disabled",false);
 									$("#reserveBtn").val("예약하기");
@@ -204,7 +202,7 @@ $(function(){
  		reservedataList.push(reservedata);
  		</script>
 	</c:forEach>
-	<div class="container" style="background-color: rgba( 255, 255, 255, 0.5 );">
+	<div class="container rounded" style="background-color: white; padding-top: 10px; padding-bottom: 10px">
 		<div class="row" style="height: 25%"></div>
 		<div class="row">
 			<h3 class="text-center font-weight-bold text-primary" style="text-shadow: 1px 1px 1px #0054FF;">&nbsp&nbsp주차장 예약하기</h3>
@@ -367,9 +365,9 @@ $(function(){
 					<h6 class="font-weight-bold form-control bg-success text-white">예약 날짜 선택하기</h6> 
 					<div class="row"><br /></div>
 					<div class="row justify-content-center">
-						<div class="col-sm-5"><input type="text" name="reserveStart" readonly="readonly"></div>
+						<div class="col-sm-5"><input type="text" name="reserveStart" readonly="readonly" ></div>
 						<div class="col-sm-2">~</div>
-						<div class="col-sm-5"><input type="text" name="reserveEnd" readonly="readonly"></div>
+						<div class="col-sm-5"><input type="text" name="reserveEnd" readonly="readonly" ></div>
 					</div>
 					<div>
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -381,7 +379,7 @@ $(function(){
 						</c:forEach>
 						</select> 
 						<p></p>
-						<input type="submit" class="btn btn-primary" id="reserveBtn" value="예약하기"/>
+						<input type="submit" class="btn btn-primary" id="reserveBtn" value="예약하기" disabled="disabled"/>
 					</div>
 				</div>
 				</form>

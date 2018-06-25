@@ -23,7 +23,7 @@
 	  <div class="card">
 	    <img class="card-img-top border" src="${pageContext.request.contextPath}/resources/images/park/${dto.parkImg.imgPath}" alt="Card image" style="width:100%; height: 30%">
 	    <div class="card-body">
-	      <h4 class="card-title text-center">${dto.parkName}</h4>
+	      <h4 class="card-title text-center"><a href="${pageContext.request.contextPath}/user/userReserveForm?parkNo=${dto.parkNo}">${dto.parkName}</a></h4>
 	      <p class="card-text text-center">
 	      	예약일 : ${dto.parkReserve.reserveStart}<br />
 	      	판매자 : ${dto.userId}<br />

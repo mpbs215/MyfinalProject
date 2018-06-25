@@ -8,7 +8,15 @@ public class SearchFilterDTO {
 	private String destination;
 	private String parkName;
 	private int price;
+	private int cPage;
 	
+	
+	public int getcPage() {
+		return cPage;
+	}
+	public void setcPage(int cPage) {
+		this.cPage = cPage;
+	}
 	public String getParkAddr() {
 		return parkAddr;
 	}

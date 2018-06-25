@@ -413,6 +413,310 @@ INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CON
 --행 52
 INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','건국주차장','서울 종로구 인사동4길 17',2500,'건국주차장','1000.0');
 
+-- 1 에서  50  행에 대한 삽입 실패
+--ORA-01722: invalid number
+--행 1
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','신구초교공영주차장','서울특별시 강남구 압구정로18길 28 신구초등학교','3000','신구초교공영주차장',2200.0);
+--행 2
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','역삼문화공원 공영 주차장 ','서울특별시 강남구 테헤란로7길 32 국기원','2000','역삼문화공원 공영 주차장 ',4600.0);
+--행 3
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','논현초교 주차장','서울특별시 강남구 강남대로120길 33 논현초등학교','3000','논현초교 주차장',7000.0);
+--행 4
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','압구정공영주차장 ','서울특별시 강남구 압구정로 161 강남관광정보센터','3000','압구정공영주차장 ',6000.0);
+--행 5
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','반포대교 노상 공영 주차장 ','서울특별시 서초구 잠원동 122-1','1500','반포대교 노상 공영 주차장 ',8000.0);
+--행 6
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','사당역 공영 주차장','서울특별시 서초구 방배동 506-9','4500','사당역 공영 주차장',4000.0);
+--행 7
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','교대역동측공영주차장','서울특별시 서초구 서초1동 1673-7','2500','교대역동측공영주차장',2000.0);
+--행 8
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','격동민영주차장','서울특별시 서초구 서초대로73길 30 서초성우빌리지','3000','격동민영주차장',1000.0);
+--행 9
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','무궁화공영주차장','서울특별시 서초구 서초대로54길 45 서초구립중앙노인복지관','2000','무궁화공영주차장',1200.0);
+--행 10
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','파스텔시티 주차장','서울특별시 서초구 방배천로 11 SK리더스뷰','3000','파스텔시티 주차장',5000.0);
+--행 11
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','연구비 주차빌딩 주차장','서울특별시 서초구 강남대로83길 55 언구비주차빌딩','2500','연구비 주차빌딩 주차장',6000.0);
+--행 12
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','청계산청룡공영주차장','서울특별시 서초구 신원동 224-3','2500','청계산청룡공영주차장',6500.0);
+--행 13
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','여의도 63빌딩 앞 공영 주차장','서울특별시 영등포구 여의도동 86-5','2500','여의도 63빌딩 앞 공영 주차장',7600.0);
+--행 14
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','영등포동 제3주차장','서울특별시 영등포구 영중로 15 타임스퀘어','2500','영등포동 제3주차장',5400.0);
+--행 15
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','여의도공원앞1노상공영주차장','서울특별시 영등포구 여의도동 2-11','2500','여의도공원앞1노상공영주차장',3300.0);
+--행 16
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','양화당산철교밑노상공영주차장','서울특별시 영등포구 당산2동 95-5','2500','양화당산철교밑노상공영주차장',2200.0);
+--행 17
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','도림초교공영주차장 ','서울특별시 영등포구 가마산로65길 22','2500','도림초교공영주차장 ',1000.0);
+--행 18
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','콘래드 서울 호텔 주차장 ','서울특별시 영등포구 국제금융로 10 서울 국제금융 센터','2500','콘래드 서울 호텔 주차장 ',2300.0);
+--행 19
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','한강진역공영주차장 ','서울특별시 용산구 한남동 728-27','2500','한강진역공영주차장 ',4000.0);
+--행 20
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','아이파크몰주차장','서울특별시 용산구 한강대로23길 55 용산민자역사','2500','아이파크몰주차장',5500.0);
+--행 21
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','종합행정타운 주차장','서울특별시 용산구 녹사평대로 150 용산구종합행정타운','2500','종합행정타운 주차장',6600.0);
+--행 22
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','이태원주차장','서울특별시 용산구 이태원동 127-36','2500','이태원주차장',7000.0);
+--행 23
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','해방촌공영주차장','서울특별시 용산구 소월로20길 56 해방공영주차장','3000','해방촌공영주차장',2300.0);
+--행 24
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','남산도서관주차장','서울특별시 용산구 소월로 109 남산도서관','3000','남산도서관주차장',2300.0);
+--행 25
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','창동역공영주차장 ','서울특별시 도봉구 마들로11길 74 플랫폼 창동 61','3000','창동역공영주차장 ',2300.0);
+--행 26
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','문화주차장','서울특별시 강서구 개화동로 420 토우주유소','3000','문화주차장',2300.0);
+--행 27
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','개화역 환승 공영 주차장','서울특별시 강서구 개화동로8길 17','3000','개화역 환승 공영 주차장',2300.0);
+--행 28
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','중곡초교 공영 주차장','서울특별시 중랑구 면목로23길 20 중곡초등학교','3000','중곡초교 공영 주차장',2300.0);
+--행 29
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','동대문공영주차장','서울특별시 중구 마장로 22 유어스(서울패션센터)','3000','동대문공영주차장',2300.0);
+--행 30
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','탄천공영주차장','서울특별시 송파구 탄천동로 36 ','3000','탄천공영주차장',2300.0);
+--행 31
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','오이도공영주차장','경기도 시흥시 정왕동 2019-7','2500','오이도공영주차장',2000.0);
+--행 32
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','마관광장 공영주차장','경기도 시흥시 군자천로 332','1500','마관광장 공영주차장',2000.0);
+--행 33
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','삼미상가노상공영주차장','경기도 시흥시 삼미시장1길 19 신천실로암교회','3000','삼미상가노상공영주차장',2000.0);
+--행 34
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','정왕역1공영주차장','경기도 시흥시 정왕동 2318-2','1000','정왕역1공영주차장',2000.0);
+--행 35
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','여성회관 앞 공영 주차장','경기도 시흥시 정왕동 1799-4','2000','여성회관 앞 공영 주차장',2000.0);
+--행 36
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','평촌아트홀주차장','경기도 안양시 동안구 호계동','2000','평촌아트홀주차장',2000.0);
+--행 37
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','안양과천교육지원청주차장','경기도 안양시 동안구 관양동','4000','안양과천교육지원청주차장',2000.0);
+--행 38
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','경인교육대학교경기캠퍼스주차장','경기도 안양시 만안구 석수동','3000','경인교육대학교경기캠퍼스주차장',2000.0);
+--행 39
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','보정공영주차장','경기도 용인시 기흥구 보정동 1180','5000','보정공영주차장',2000.0);
+--행 40
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','수지구 공영 주차장','경기도 용인시 수지구 포은대로 435 수지구청','2500','수지구 공영 주차장',2000.0);
+--행 41
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','동백호수공원주차장','경기도 용인시 기흥구 동백5로 12','4000','동백호수공원주차장',2000.0);
+--행 42
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','구성역주차장','경기도 용인시 기흥구 용구대로 2403 구성역 ','3500','구성역주차장',2000.0);
+--행 43
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','Herma주차빌딩 민영 주차장','경기도 용인시 기흥구 보정동 1344','1500','Herma주차빌딩 민영 주차장',2000.0);
+--행 44
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','가평시시설관리공단 공영주차장','경기 가평군 가평읍 석봉로 181','1000','가평시시설관리공단 공영주차장',2000.0);
+--행 45
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','한빛 공영 주차장','경기도 화성시 동탄중심상가2길 21 지하주차장 33호','1000','한빛 공영 주차장',2000.0);
+--행 46
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','진안 공영 주차장','경기도 화성시 병점동로 110-4','2500','진안 공영 주차장',2000.0);
+--행 47
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','SRT동탄역 주차장','경기도 화성시 오산동 967-1278','1500','SRT동탄역 주차장',2000.0);
+--행 48
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','제부도해수욕장임시공영주차장','경기도 화성시 서신면 제부리 190-198','2500','제부도해수욕장임시공영주차장',2000.0);
+--행 49
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','별빛정원 우주','경기도 이천시 마장면 덕이로154번길 287-76 ','3000','별빛정원 우주',2000.0);
+--행 50
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','관고전통시장입구앞노상공영주차장','경기도 이천시 관고동 30','1500','관고전통시장입구앞노상공영주차장',2000.0);
+-- 51 에서  100  행에 대한 삽입 실패
+--ORA-01722: invalid number
+--행 51
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','광교공영주차장','경기도 수원시 장안구 광교산로 160 ','3500','광교공영주차장',2000.0);
+--행 52
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','시청부설주차장','경기도 수원시 팔달구 효원로 241','3500','시청부설주차장',2000.0);
+--행 53
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','AK PLAZA 수원점 주차장','경기도 수원시 팔달구 덕영대로 924 AK플라자','4500','AK PLAZA 수원점 주차장',2000.0);
+--행 54
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','성대환승공영주차장','경기도 수원시 장안구 덕영대로417번길 10','3000','성대환승공영주차장',2000.0);
+--행 55
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','영통우체국노상공영주차장','경기도 수원시 영통구 영통동 1067','4000','영통우체국노상공영주차장',2000.0);
+--행 56
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','원평1공영주차장','경기도 평택시 원평로28번길 7','5000','원평1공영주차장',2000.0);
+--행 57
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','통복시장 공영주차장','경기도 평택시 통복시장로21번길 14','3500','통복시장 공영주차장',2000.0);
+--행 58
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','서인동공영주차장','경기도 안성시 장기로69번길 31','4500','서인동공영주차장',2000.0);
+--행 59
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','공도공영주차장','경기도 안성시 공도읍 송원길 23','3500','공도공영주차장',2000.0);
+--행 60
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','대관령주차창','강원도 평창군 봉평면 경강로 5434','2500','대관령주차창',1500.0);
+--행 61
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','봉평주차장','강원도 평창군 봉평면 애강나무길 145','3000','봉평주차장',1500.0);
+--행 62
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','중앙시장주차장','강원도 속초시 중앙로147번길 16 ','2000','중앙시장주차장',1500.0);
+--행 63
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','설악항 공영 주차장','강원도 속초시 대포동 178-4','2500','설악항 공영 주차장',1500.0);
+--행 64
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','한국국토정보공사 고성군지사 주차장','강원도 고성군 간성읍 수성로 147 한국국토정보공사 고성군지사','3000','한국국토정보공사 고성군지사 주차장',1500.0);
+--행 65
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','통일전망대주차장','강원도 고성군 현내면 명호리','1500','통일전망대주차장',1500.0);
+--행 66
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','소양강스카이워크 공영 주차장','강원도 춘천시 근화동 804','3000','소양강스카이워크 공영 주차장',1500.0);
+--행 67
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','춘천역 주차장','강원도 춘천시 근화동 556-1','2500','춘천역 주차장',1500.0);
+--행 68
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','원주 일산 공영 주차장','강원 원주시 일산동 53-44','3000','워주 일산 공영 주차장',1500.0);
+--행 69
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','서구 공영 주차장','인천광역시 서구 서곶로 307 서구청 ','2500','서구 공영 주차장',1500.0);
+--행 70
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','서구 마전 공영 주차장','인천광역시 서구 마전로115번길 12','3500','서구 마전 공영 주차장',1500.0);
+--행 71
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','부평시장로터리노상공영주차장','인천광역시 부평구 시장로 45','2000','부평시장로터리노상공영주차장',1500.0);
+--행 72
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','인천나비공원 공영 주차장','인천광역시 부평구 평천로54번길 1 ','3500','인천나비공원 공영 주차장',1500.0);
+--행 73
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','범이 민영 주차장','인천광역시 부평구 부평5동 160-78','2500','범이 민영 주차장',1500.0);
+--행 74
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','차이나타운 주차장','인천광역시 중구 차이나타운로44번길 28-12 차이나타운공영주차장','3000','차이나타운 주차장',1500.0);
+--행 75
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','주안6동제4공영주차장','인천광역시 남구 경인로471번길 20 주안6동 제4공영주차장','3000','주안6동제4공영주차장',1500.0);
+--행 76
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','용현동제1노상공영주차장','인천광역시 남구 용현동 91','3000','용현동제1노상공영주차장',1500.0);
+--행 77
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','토지금고시장 공영 주차장','인천광역시 남구 용현동 617-100','3000','토지금고시장 공영 주차장',1500.0);
+--행 78
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','연안부두 해양광장 공영 주차장','인천광역시 중구 연안부두로 36 연안부두해양광장','3000','연안부두 해양광장 공영 주차장',1500.0);
+--행 79
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','문예회관 공영 주차장','인천광역시 남동구 구월동 1408-2','3000','문예회관 공영 주차장',1500.0);
+--행 80
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','로데오 노상 공영 주차장','인천광역시 남동구 구월1동 1409-19','2500','로데오 노상 공영 주차장',1500.0);
+--행 81
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','소래습지생태공원 공영 주차장','인천광역시 남동구 논현동 66-85','2500','소래습지생태공원 공영 주차장',1500.0);
+--행 82
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','만수복개천1 공영 주차장','인천광역시 남동구 구월4동 1324-7','2500','만수복개천1 공영 주차장',1500.0);
+--행 83
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','돌산마루2호공영유료주차장','인천광역시 남동구 간석동','2500','돌산마루2호공영유료주차장',1500.0);
+--행 84
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','현대주차장 ','인천광역시 서구 오류동 410','2500','현대주차장 ',1500.0);
+--행 85
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','석남제1노상공영주차장','인천광역시 서구 길주로 85','2500','석남제1노상공영주차장',1500.0);
+--행 86
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','의성조문국 사적지 주차장','경상북도 의성군 금성면 대리리 378-2','2500','의성조문국 사적지 주차장',3200.0);
+--행 87
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','노동공영주차장','경상북도 경주시 노동동 12','2000','노동공영주차장',3200.0);
+--행 88
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','안동구시장공영주차장','경상북도 안동시 퇴계로 66','3000','안동구시장공영주차장',3200.0);
+--행 89
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','죽도어시장 공영 주차장','경상북도 포항시 북구 칠성천길 141','3000','죽도어시장 공영 주차장',3200.0);
+--행 90
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','가산산성 진남문 공영?주차장','경상북도 칠곡군 동명면 남원리 625-1','3000','가산산성 진남문 공영 주차장',3200.0);
+--행 91
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','신경주역공영주차장','경상북도 경주시 건천읍 화천리','3000','신경주역공영주차장',3200.0);
+--행 92
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','대이동 공영?주차장','경상북도 포항시 남구 대이로127번길 12-10','3000','대이동 공영 주차장',3200.0);
+--행 93
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','불국사 공영 주차장','경상북도 경주시 진현동 104-17','3000','불국사 공영 주차장',3200.0);
+--행 94
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','한마음광장 공영 주차장','경상북도 울진군 후포면 울진대게로 169-58','3000','한마음광장 공영 주차장',3200.0);
+--행 95
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','신경주역 주차장','경상북도 경주시 건천읍 신경주역로 80 신경주KTX역사','3000','신경주역 주차장',3200.0);
+--행 96
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','왜관 남부 공영 주차장','경상북도 칠곡군 왜관읍 중앙로8길 10','3000','왜관 남부 공영 주차장',3200.0);
+--행 97
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','동빈주차장','경상북도 포항시 북구 서동로 101','3000','동빈주차장',3200.0);
+--행 98
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','포항공항 주차장','경상북도 포항시 남구 동해면 도구리 280','3000','포항공항 주차장',3200.0);
+--행 99
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','창원 로데오 주차장','경상남도 창원시 성산구 마디미로21번길 11 주차전용상가 로데오월드','3000','창원 로데오 주차장',3200.0);
+--행 100
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','통제영 공영 주차장','경상남도 통영시 세병로 26','3000','통제영 공영 주차장',3200.0);
+-- 101 에서  149  행에 대한 삽입 실패
+--ORA-01722: invalid number
+--행 101
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','오도재 공영 주차장','경상남도 함양군 휴천면 지리산가는길 635','3000','오도재 공영 주차장',3200.0);
+--행 102
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','마산공설운동장 민영 주차장','경상남도 창원시 마산회원구 양덕동 461','3000','마산공설운동장 민영 주차장',3200.0);
+--행 103
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','하나주차장','경상남도 창원시 성산구 상남동 14-2','4000','하나주차장',3200.0);
+--행 104
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','부산대양산캠퍼스역공영주차장','경상남도 양산시 물금읍 범어리','2500','부산대양산캠퍼스역공영주차장',3200.0);
+--행 105
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','대흥주차장','경상남도 진주시 진양호로556번길 8','2500','대흥주차장',3200.0);
+--행 106
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','원예예술촌주차장','경상남도 남해군 삼동면 봉화리','2500','원예예술촌주차장',3200.0);
+--행 107
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','오송K주차장','충청북도 청주시 흥덕구 오송읍 연제리 837','3000','오송K주차장',2500.0);
+--행 108
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','환승주차장','충청북도 청주시 흥덕구 풍산로 14 종합관광안내소','3000','환승주차장',2500.0);
+--행 109
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','도담삼봉 공영 주차장','충청북도 단양군 매포읍 하괴리 83-3','3000','도담삼봉 공영 주차장',2500.0);
+--행 110
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','단양구경시장 공영 주차장','충청북도 단양군 단양읍 수변로 82 단양 청소년문화의집','3000','단양구경시장 공영 주차장',2500.0);
+--행 111
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','백화산 등산로 공영 주차장','충청북도 청주시 청원구 주성동 124-23','3000','백화산 등산로 공영 주차장',2500.0);
+--행 112
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','서문주차장','충청북도 청주시 상당구 상당로69번길 61-1','3000','서문주차장',2500.0);
+--행 113
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','옥천공영주차타워','충청북도 옥천군 옥천읍 금장로 14','3000','옥천공영주차타워',2500.0);
+--행 114
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','삼충로 노상 주차장','충청북도 청주시 상당구 사직대로361번길 17 한국산업연수원청주능력개발원','2500','삼충로 노상 주차장',2500.0);
+--행 115
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','복대동 대농3지구 주차장','충청북도 청주시 흥덕구 복대동 288-22','2500','복대동 대농3지구 주차장',2500.0);
+--행 116
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','육거리종합시장 제2주차장','충청북도 청주시 상당구 청남로2189번길 26-1','2500','육거리종합시장 제2주차장',2500.0);
+--행 117
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','상당산성 주차장','충청북도 청주시 상당구 용담.명암.산성동 162','2500','상당산성 주차장',2500.0);
+--행 118
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','역전시장지구 공영 주차장','충청북도 제천시 의림대로 46','4500','역전시장지구 공영 주차장',2500.0);
+--행 119
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','영동역유휴부지 공영 주차장','충청북도 영동군 영동읍 계산로 69-1 영동시설사업소','2500','영동역유휴부지 공영 주차장',2500.0);
+--행 120
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','천안역서부광장 공영 주차장','충청남도 천안시 서북구 천안천4길 48 성정 지구대','2500','천안역서부광장 공영 주차장',2500.0);
+--행 121
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','안면읍황도리공영주차장','충청남도 태안군 안면읍 황도로 569-1','2500','안면읍황도리공영주차장',2500.0);
+--행 122
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','농협은행천안시지부 주차장','충청남도 천안시 동남구 만남로 24 농협중앙회 신부동천안시지부회','2500','농협은행천안시지부 주차장',2500.0);
+--행 123
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','왜목관광지공영주차장','충청남도 당진시 석문면 교로리','2500','왜목관광지공영주차장',2500.0);
+--행 124
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','신부동우체국앞 공영 주차장 ','충청남도 천안시 동남구 터미널8길 7 신부16통경로당','2500','신부동우체국앞 공영 주차장 ',2500.0);
+--행 125
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','활성 공영 주차장','충청남도 서산시 동문동 304-2','2500','활성 공영 주차장',2500.0);
+--행 126
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','구드래나루터 공영 주차장','충청남도 부여군 부여읍 구교리 1-1','3000','구드래나루터 공영 주차장',2500.0);
+--행 127
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','온양온천시장공영주차타워','충청남도 아산시 충무로 25','3000','온양온천시장공영주차타워',2500.0);
+--행 128
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','태안읍공영주차장','충청남도 태안군 태안읍 남문리','3000','태안읍공영주차장',2500.0);
+--행 129
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','성환역민영주차장','충청남도 천안시 서북구 성환읍 성환리 449-1022','3000','성환역민영주차장',2500.0);
+--행 130
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','태화강둔치공영주차장 ','울산광역시 남구 신정동 1513','2500','태화강둔치공영주차장 ',1500.0);
+--행 131
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','성남둔치 공영 주차장','울산광역시 중구 성남동 216','2500','성남둔치 공영 주차장',1500.0);
+--행 132
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','옥교 공영 주차장','울산광역시 중구 번영로 319 옥교공영주차장','2500','옥교 공영 주차장',1500.0);
+--행 133
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','성남 공영 주차장 ','울산광역시 중구 학성로 49-1','2500','성남 공영 주차장 ',1500.0);
+--행 134
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','병영막창거리 공영 주차장','울산광역시 중구 곽남17길 7-2 ','2500','병영막창거리 공영 주차장',1500.0);
+--행 135
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','만인산자연휴양림주차장 ','대전광역시 동구 하소동','3000','만인산자연휴양림주차장 ',2000.0);
+--행 136
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','금강11공구주차장','대전광역시 유성구 봉산동','2500','금강11공구주차장',2000.0);
+--행 137
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','대청공원주차장 ','대전광역시 대덕구 미호동','3000','대청공원주차장 ',2000.0);
+--행 138
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','롯데슈퍼신탄진점주차장 ','대전광역시 대덕구 신탄진동','3000','롯데슈퍼신탄진점주차장 ',2000.0);
+--행 139
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','옛터민속박물관주차장','대전광역시 동구 하소동','2500','옛터민속박물관주차장',2000.0);
+--행 140
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','용두산 공영 주차장 ','부산광역시 중구 대청로116번길 3 용두산공영주차장 ','3000','용두산 공영 주차장 ',3000.0);
+--행 141
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','광안리해수욕장 공영 주차장 ','부산광역시 수영구 남천바다로33번길 75 광안 공영주차장','3000','광안리해수욕장 공영 주차장 ',3000.0);
+--행 142
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','해운대 광장 공영 주차장','부산광역시 해운대구 우동 620-25','3000','해운대 광장 공영 주차장',5000.0);
+--행 143
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','우현주차장','부산광역시 강서구 공항로811번길 37-1','2500','우현주차장',3000.0);
+--행 144
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','한옥마을공영주차장 ','전라북도 전주시 완산구 남노송동','2500','한옥마을공영주차장 ',2000.0);
+--행 145
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','선운산공원 공영 주차장','전라북도 고창군 아산면 삼인리 126','2500','선운산공원 공영 주차장',2000.0);
+--행 146
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','국립공원채석강 공영 주차장','전라북도 부안군 변산면 변산해변로 1 변산반도사무소격포분소사무소','2500','국립공원채석강 공영 주차장',2000.0);
+--행 147
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','순천만국가정원 동문주차장 ','전라남도 순천시 국가정원1호길 162-11','2500','순천만국가정원 동문주차장 ',2000.0);
+--행 148
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','곡성섬진강기차마을 1주차장','전라남도 곡성군 오곡면 기차마을로 252-16','2500','곡성섬진강기차마을 1주차장',2000.0);
+--행 149
+INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','오동도공영주차타워','전라남도 여수시 오동도로 116','2500','오동도공영주차타워',2000.0);
 
 --행 1
 INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (2,to_timestamp('06/24/2018', 'mm/dd/yyyy'),to_timestamp('06/29/2018', 'mm/dd/yyyy'));
@@ -515,6 +819,305 @@ INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (50 ,to_timest
 --행 50
 INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (51 ,to_timestamp('08/11/2018', 'mm/dd/yyyy'),to_timestamp('08/16/2018', 'mm/dd/yyyy'));
 
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (51 ,to_timestamp('08/11/2018', 'MM/DD/YYYY'),to_timestamp('08/16/2018', 'MM/DD/YYYY'));
+--행 2
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (52 ,to_timestamp('08/12/2018', 'MM/DD/YYYY'),to_timestamp('08/17/2018', 'MM/DD/YYYY'));
+--행 3
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (53 ,to_timestamp('06/24/2018', 'MM/DD/YYYY'),to_timestamp('06/29/2018', 'MM/DD/YYYY'));
+--행 4
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (54 ,to_timestamp('06/24/2018', 'MM/DD/YYYY'),to_timestamp('06/30/2018', 'MM/DD/YYYY'));
+--행 5
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (55 ,to_timestamp('06/25/2018', 'MM/DD/YYYY'),to_timestamp('06/30/2018', 'MM/DD/YYYY'));
+--행 6
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (56 ,to_timestamp('06/26/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 7
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (57 ,to_timestamp('06/27/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 8
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (58 ,to_timestamp('06/28/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 9
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (59 ,to_timestamp('06/29/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 10
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (60 ,to_timestamp('06/30/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 11
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (61 ,to_timestamp('07/01/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 12
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (62 ,to_timestamp('07/02/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 13
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (63 ,to_timestamp('07/03/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 14
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (64 ,to_timestamp('07/04/2018', 'MM/DD/YYYY'),to_timestamp('07/09/2018', 'MM/DD/YYYY'));
+--행 15
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (65 ,to_timestamp('07/05/2018', 'MM/DD/YYYY'),to_timestamp('07/10/2018', 'MM/DD/YYYY'));
+--행 16
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (66 ,to_timestamp('07/06/2018', 'MM/DD/YYYY'),to_timestamp('07/09/2018', 'MM/DD/YYYY'));
+--행 17
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (67 ,to_timestamp('07/07/2018', 'MM/DD/YYYY'),to_timestamp('07/12/2018', 'MM/DD/YYYY'));
+--행 18
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (68 ,to_timestamp('07/08/2018', 'MM/DD/YYYY'),to_timestamp('07/09/2018', 'MM/DD/YYYY'));
+--행 19
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (69 ,to_timestamp('07/09/2018', 'MM/DD/YYYY'),to_timestamp('07/14/2018', 'MM/DD/YYYY'));
+--행 20
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (70 ,to_timestamp('07/10/2018', 'MM/DD/YYYY'),to_timestamp('07/15/2018', 'MM/DD/YYYY'));
+--행 21
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (71 ,to_timestamp('07/11/2018', 'MM/DD/YYYY'),to_timestamp('07/16/2018', 'MM/DD/YYYY'));
+--행 22
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (72 ,to_timestamp('07/12/2018', 'MM/DD/YYYY'),to_timestamp('07/17/2018', 'MM/DD/YYYY'));
+--행 23
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (73 ,to_timestamp('07/13/2018', 'MM/DD/YYYY'),to_timestamp('07/18/2018', 'MM/DD/YYYY'));
+--행 24
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (74 ,to_timestamp('07/14/2018', 'MM/DD/YYYY'),to_timestamp('07/19/2018', 'MM/DD/YYYY'));
+--행 25
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (75 ,to_timestamp('07/15/2018', 'MM/DD/YYYY'),to_timestamp('07/20/2018', 'MM/DD/YYYY'));
+--행 26
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (76 ,to_timestamp('07/16/2018', 'MM/DD/YYYY'),to_timestamp('07/21/2018', 'MM/DD/YYYY'));
+--행 27
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (77 ,to_timestamp('07/17/2018', 'MM/DD/YYYY'),to_timestamp('07/22/2018', 'MM/DD/YYYY'));
+--행 28
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (78 ,to_timestamp('07/18/2018', 'MM/DD/YYYY'),to_timestamp('07/23/2018', 'MM/DD/YYYY'));
+--행 29
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (79 ,to_timestamp('07/19/2018', 'MM/DD/YYYY'),to_timestamp('07/24/2018', 'MM/DD/YYYY'));
+--행 30
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (80 ,to_timestamp('07/20/2018', 'MM/DD/YYYY'),to_timestamp('07/25/2018', 'MM/DD/YYYY'));
+--행 31
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (81 ,to_timestamp('07/21/2018', 'MM/DD/YYYY'),to_timestamp('07/26/2018', 'MM/DD/YYYY'));
+--행 32
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (82 ,to_timestamp('07/22/2018', 'MM/DD/YYYY'),to_timestamp('07/27/2018', 'MM/DD/YYYY'));
+--행 33
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (83 ,to_timestamp('07/23/2018', 'MM/DD/YYYY'),to_timestamp('07/28/2018', 'MM/DD/YYYY'));
+--행 34
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (84 ,to_timestamp('07/24/2018', 'MM/DD/YYYY'),to_timestamp('07/29/2018', 'MM/DD/YYYY'));
+--행 35
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (85 ,to_timestamp('07/25/2018', 'MM/DD/YYYY'),to_timestamp('07/30/2018', 'MM/DD/YYYY'));
+--행 36
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (86 ,to_timestamp('07/26/2018', 'MM/DD/YYYY'),to_timestamp('07/31/2018', 'MM/DD/YYYY'));
+--행 37
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (87 ,to_timestamp('07/27/2018', 'MM/DD/YYYY'),to_timestamp('08/01/2018', 'MM/DD/YYYY'));
+--행 38
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (88 ,to_timestamp('07/28/2018', 'MM/DD/YYYY'),to_timestamp('08/02/2018', 'MM/DD/YYYY'));
+--행 39
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (89 ,to_timestamp('07/29/2018', 'MM/DD/YYYY'),to_timestamp('08/03/2018', 'MM/DD/YYYY'));
+--행 40
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (90 ,to_timestamp('07/30/2018', 'MM/DD/YYYY'),to_timestamp('08/17/2018', 'MM/DD/YYYY'));
+--행 41
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (91 ,to_timestamp('07/31/2018', 'MM/DD/YYYY'),to_timestamp('08/05/2018', 'MM/DD/YYYY'));
+--행 42
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (92 ,to_timestamp('08/01/2018', 'MM/DD/YYYY'),to_timestamp('08/06/2018', 'MM/DD/YYYY'));
+--행 43
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (93 ,to_timestamp('08/02/2018', 'MM/DD/YYYY'),to_timestamp('08/17/2018', 'MM/DD/YYYY'));
+--행 44
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (94 ,to_timestamp('08/03/2018', 'MM/DD/YYYY'),to_timestamp('08/08/2018', 'MM/DD/YYYY'));
+--행 45
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (95 ,to_timestamp('08/04/2018', 'MM/DD/YYYY'),to_timestamp('08/09/2018', 'MM/DD/YYYY'));
+--행 46
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (96 ,to_timestamp('08/05/2018', 'MM/DD/YYYY'),to_timestamp('08/10/2018', 'MM/DD/YYYY'));
+--행 47
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (97 ,to_timestamp('08/06/2018', 'MM/DD/YYYY'),to_timestamp('08/11/2018', 'MM/DD/YYYY'));
+--행 48
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (98 ,to_timestamp('08/07/2018', 'MM/DD/YYYY'),to_timestamp('08/12/2018', 'MM/DD/YYYY'));
+--행 49
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (99 ,to_timestamp('08/08/2018', 'MM/DD/YYYY'),to_timestamp('08/13/2018', 'MM/DD/YYYY'));
+--행 50
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (100 ,to_timestamp('08/09/2018', 'MM/DD/YYYY'),to_timestamp('08/14/2018', 'MM/DD/YYYY'));
+
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (101 ,to_timestamp('08/10/2018', 'MM/DD/YYYY'),to_timestamp('08/15/2018', 'MM/DD/YYYY'));
+--행 2
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (102 ,to_timestamp('08/11/2018', 'MM/DD/YYYY'),to_timestamp('08/16/2018', 'MM/DD/YYYY'));
+--행 3
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (103 ,to_timestamp('08/12/2018', 'MM/DD/YYYY'),to_timestamp('08/17/2018', 'MM/DD/YYYY'));
+--행 4
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (104 ,to_timestamp('06/24/2018', 'MM/DD/YYYY'),to_timestamp('06/29/2018', 'MM/DD/YYYY'));
+--행 5
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (105 ,to_timestamp('06/24/2018', 'MM/DD/YYYY'),to_timestamp('06/30/2018', 'MM/DD/YYYY'));
+--행 6
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (106 ,to_timestamp('06/25/2018', 'MM/DD/YYYY'),to_timestamp('06/30/2018', 'MM/DD/YYYY'));
+--행 7
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (107 ,to_timestamp('06/26/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 8
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (108 ,to_timestamp('06/27/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 9
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (109 ,to_timestamp('06/28/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 10
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (110 ,to_timestamp('06/29/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 11
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (111 ,to_timestamp('06/30/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 12
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (112 ,to_timestamp('07/01/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 13
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (113 ,to_timestamp('07/02/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 14
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (114 ,to_timestamp('07/03/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 15
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (115 ,to_timestamp('07/04/2018', 'MM/DD/YYYY'),to_timestamp('07/09/2018', 'MM/DD/YYYY'));
+--행 16
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (116 ,to_timestamp('07/05/2018', 'MM/DD/YYYY'),to_timestamp('07/10/2018', 'MM/DD/YYYY'));
+--행 17
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (117 ,to_timestamp('07/06/2018', 'MM/DD/YYYY'),to_timestamp('07/09/2018', 'MM/DD/YYYY'));
+--행 18
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (118 ,to_timestamp('07/07/2018', 'MM/DD/YYYY'),to_timestamp('07/12/2018', 'MM/DD/YYYY'));
+--행 19
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (119 ,to_timestamp('07/08/2018', 'MM/DD/YYYY'),to_timestamp('07/09/2018', 'MM/DD/YYYY'));
+--행 20
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (120 ,to_timestamp('07/09/2018', 'MM/DD/YYYY'),to_timestamp('07/14/2018', 'MM/DD/YYYY'));
+--행 21
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (121 ,to_timestamp('07/10/2018', 'MM/DD/YYYY'),to_timestamp('07/15/2018', 'MM/DD/YYYY'));
+--행 22
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (122 ,to_timestamp('07/11/2018', 'MM/DD/YYYY'),to_timestamp('07/16/2018', 'MM/DD/YYYY'));
+--행 23
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (123 ,to_timestamp('07/12/2018', 'MM/DD/YYYY'),to_timestamp('07/17/2018', 'MM/DD/YYYY'));
+--행 24
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (124 ,to_timestamp('07/13/2018', 'MM/DD/YYYY'),to_timestamp('07/18/2018', 'MM/DD/YYYY'));
+--행 25
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (125 ,to_timestamp('07/14/2018', 'MM/DD/YYYY'),to_timestamp('07/19/2018', 'MM/DD/YYYY'));
+--행 26
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (126 ,to_timestamp('07/15/2018', 'MM/DD/YYYY'),to_timestamp('07/20/2018', 'MM/DD/YYYY'));
+--행 27
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (127 ,to_timestamp('07/16/2018', 'MM/DD/YYYY'),to_timestamp('07/21/2018', 'MM/DD/YYYY'));
+--행 28
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (128 ,to_timestamp('07/17/2018', 'MM/DD/YYYY'),to_timestamp('07/22/2018', 'MM/DD/YYYY'));
+--행 29
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (129 ,to_timestamp('07/18/2018', 'MM/DD/YYYY'),to_timestamp('07/23/2018', 'MM/DD/YYYY'));
+--행 30
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (130 ,to_timestamp('07/19/2018', 'MM/DD/YYYY'),to_timestamp('07/24/2018', 'MM/DD/YYYY'));
+--행 31
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (131 ,to_timestamp('07/20/2018', 'MM/DD/YYYY'),to_timestamp('07/25/2018', 'MM/DD/YYYY'));
+--행 32
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (132 ,to_timestamp('07/21/2018', 'MM/DD/YYYY'),to_timestamp('07/26/2018', 'MM/DD/YYYY'));
+--행 33
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (133 ,to_timestamp('07/22/2018', 'MM/DD/YYYY'),to_timestamp('07/27/2018', 'MM/DD/YYYY'));
+--행 34
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (134 ,to_timestamp('07/23/2018', 'MM/DD/YYYY'),to_timestamp('07/28/2018', 'MM/DD/YYYY'));
+--행 35
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (135 ,to_timestamp('07/24/2018', 'MM/DD/YYYY'),to_timestamp('07/29/2018', 'MM/DD/YYYY'));
+--행 36
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (136 ,to_timestamp('07/25/2018', 'MM/DD/YYYY'),to_timestamp('07/30/2018', 'MM/DD/YYYY'));
+--행 37
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (137 ,to_timestamp('07/26/2018', 'MM/DD/YYYY'),to_timestamp('07/31/2018', 'MM/DD/YYYY'));
+--행 38
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (138 ,to_timestamp('07/27/2018', 'MM/DD/YYYY'),to_timestamp('08/01/2018', 'MM/DD/YYYY'));
+--행 39
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (139 ,to_timestamp('07/28/2018', 'MM/DD/YYYY'),to_timestamp('08/02/2018', 'MM/DD/YYYY'));
+--행 40
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (140 ,to_timestamp('07/29/2018', 'MM/DD/YYYY'),to_timestamp('08/03/2018', 'MM/DD/YYYY'));
+--행 41
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (141 ,to_timestamp('07/30/2018', 'MM/DD/YYYY'),to_timestamp('08/17/2018', 'MM/DD/YYYY'));
+--행 42
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (142 ,to_timestamp('07/31/2018', 'MM/DD/YYYY'),to_timestamp('08/05/2018', 'MM/DD/YYYY'));
+--행 43
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (143 ,to_timestamp('08/01/2018', 'MM/DD/YYYY'),to_timestamp('08/06/2018', 'MM/DD/YYYY'));
+--행 44
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (144 ,to_timestamp('08/02/2018', 'MM/DD/YYYY'),to_timestamp('08/17/2018', 'MM/DD/YYYY'));
+--행 45
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (145 ,to_timestamp('08/03/2018', 'MM/DD/YYYY'),to_timestamp('08/08/2018', 'MM/DD/YYYY'));
+--행 46
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (146 ,to_timestamp('08/04/2018', 'MM/DD/YYYY'),to_timestamp('08/09/2018', 'MM/DD/YYYY'));
+--행 47
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (147 ,to_timestamp('08/05/2018', 'MM/DD/YYYY'),to_timestamp('08/10/2018', 'MM/DD/YYYY'));
+--행 48
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (148 ,to_timestamp('08/06/2018', 'MM/DD/YYYY'),to_timestamp('08/11/2018', 'MM/DD/YYYY'));
+
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (149 ,to_timestamp('08/07/2018', 'MM/DD/YYYY'),to_timestamp('08/12/2018', 'MM/DD/YYYY'));
+--행 51
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (150 ,to_timestamp('08/08/2018', 'MM/DD/YYYY'),to_timestamp('08/13/2018', 'MM/DD/YYYY'));
+--행 52
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (151 ,to_timestamp('08/09/2018', 'MM/DD/YYYY'),to_timestamp('08/14/2018', 'MM/DD/YYYY'));
+--행 53
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (152 ,to_timestamp('08/10/2018', 'MM/DD/YYYY'),to_timestamp('08/15/2018', 'MM/DD/YYYY'));
+--행 54
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (153 ,to_timestamp('08/11/2018', 'MM/DD/YYYY'),to_timestamp('08/16/2018', 'MM/DD/YYYY'));
+--행 55
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (154 ,to_timestamp('08/12/2018', 'MM/DD/YYYY'),to_timestamp('08/17/2018', 'MM/DD/YYYY'));
+--행 56
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (155 ,to_timestamp('06/24/2018', 'MM/DD/YYYY'),to_timestamp('06/29/2018', 'MM/DD/YYYY'));
+--행 57
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (156 ,to_timestamp('06/24/2018', 'MM/DD/YYYY'),to_timestamp('06/30/2018', 'MM/DD/YYYY'));
+--행 58
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (157 ,to_timestamp('06/25/2018', 'MM/DD/YYYY'),to_timestamp('06/30/2018', 'MM/DD/YYYY'));
+--행 59
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (158 ,to_timestamp('06/26/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 60
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (159 ,to_timestamp('06/27/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 61
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (160 ,to_timestamp('06/28/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 62
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (161 ,to_timestamp('06/29/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 63
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (162 ,to_timestamp('06/30/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 64
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (163 ,to_timestamp('07/01/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 65
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (164 ,to_timestamp('07/02/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 66
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (165 ,to_timestamp('07/03/2018', 'MM/DD/YYYY'),to_timestamp('07/07/2018', 'MM/DD/YYYY'));
+--행 67
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (166 ,to_timestamp('07/04/2018', 'MM/DD/YYYY'),to_timestamp('07/09/2018', 'MM/DD/YYYY'));
+--행 68
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (167 ,to_timestamp('07/05/2018', 'MM/DD/YYYY'),to_timestamp('07/10/2018', 'MM/DD/YYYY'));
+--행 69
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (168 ,to_timestamp('07/06/2018', 'MM/DD/YYYY'),to_timestamp('07/09/2018', 'MM/DD/YYYY'));
+--행 70
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (169 ,to_timestamp('07/07/2018', 'MM/DD/YYYY'),to_timestamp('07/12/2018', 'MM/DD/YYYY'));
+--행 71
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (170 ,to_timestamp('07/08/2018', 'MM/DD/YYYY'),to_timestamp('07/09/2018', 'MM/DD/YYYY'));
+--행 72
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (171 ,to_timestamp('07/09/2018', 'MM/DD/YYYY'),to_timestamp('07/14/2018', 'MM/DD/YYYY'));
+--행 73
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (172 ,to_timestamp('07/10/2018', 'MM/DD/YYYY'),to_timestamp('07/15/2018', 'MM/DD/YYYY'));
+--행 74
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (173 ,to_timestamp('07/11/2018', 'MM/DD/YYYY'),to_timestamp('07/16/2018', 'MM/DD/YYYY'));
+--행 75
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (174 ,to_timestamp('07/12/2018', 'MM/DD/YYYY'),to_timestamp('07/17/2018', 'MM/DD/YYYY'));
+--행 76
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (175 ,to_timestamp('07/13/2018', 'MM/DD/YYYY'),to_timestamp('07/18/2018', 'MM/DD/YYYY'));
+--행 77
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (176 ,to_timestamp('07/14/2018', 'MM/DD/YYYY'),to_timestamp('07/19/2018', 'MM/DD/YYYY'));
+--행 78
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (177 ,to_timestamp('07/15/2018', 'MM/DD/YYYY'),to_timestamp('07/20/2018', 'MM/DD/YYYY'));
+--행 79
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (178 ,to_timestamp('07/16/2018', 'MM/DD/YYYY'),to_timestamp('07/21/2018', 'MM/DD/YYYY'));
+--행 80
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (179 ,to_timestamp('07/17/2018', 'MM/DD/YYYY'),to_timestamp('07/22/2018', 'MM/DD/YYYY'));
+--행 81
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (180 ,to_timestamp('07/18/2018', 'MM/DD/YYYY'),to_timestamp('07/23/2018', 'MM/DD/YYYY'));
+--행 82
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (181 ,to_timestamp('07/19/2018', 'MM/DD/YYYY'),to_timestamp('07/24/2018', 'MM/DD/YYYY'));
+--행 83
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (182 ,to_timestamp('07/20/2018', 'MM/DD/YYYY'),to_timestamp('07/25/2018', 'MM/DD/YYYY'));
+--행 84
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (183 ,to_timestamp('07/21/2018', 'MM/DD/YYYY'),to_timestamp('07/26/2018', 'MM/DD/YYYY'));
+--행 85
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (184 ,to_timestamp('07/22/2018', 'MM/DD/YYYY'),to_timestamp('07/27/2018', 'MM/DD/YYYY'));
+--행 86
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (185 ,to_timestamp('07/23/2018', 'MM/DD/YYYY'),to_timestamp('07/28/2018', 'MM/DD/YYYY'));
+--행 87
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (186 ,to_timestamp('07/24/2018', 'MM/DD/YYYY'),to_timestamp('07/29/2018', 'MM/DD/YYYY'));
+--행 88
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (187 ,to_timestamp('07/25/2018', 'MM/DD/YYYY'),to_timestamp('07/30/2018', 'MM/DD/YYYY'));
+--행 89
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (188 ,to_timestamp('07/26/2018', 'MM/DD/YYYY'),to_timestamp('07/31/2018', 'MM/DD/YYYY'));
+--행 90
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (189 ,to_timestamp('07/27/2018', 'MM/DD/YYYY'),to_timestamp('08/01/2018', 'MM/DD/YYYY'));
+--행 91
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (190 ,to_timestamp('07/28/2018', 'MM/DD/YYYY'),to_timestamp('08/02/2018', 'MM/DD/YYYY'));
+--행 92
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (191 ,to_timestamp('07/29/2018', 'MM/DD/YYYY'),to_timestamp('08/03/2018', 'MM/DD/YYYY'));
+--행 93
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (192 ,to_timestamp('07/30/2018', 'MM/DD/YYYY'),to_timestamp('08/17/2018', 'MM/DD/YYYY'));
+--행 94
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (193 ,to_timestamp('07/31/2018', 'MM/DD/YYYY'),to_timestamp('08/05/2018', 'MM/DD/YYYY'));
+--행 95
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (194 ,to_timestamp('08/01/2018', 'MM/DD/YYYY'),to_timestamp('08/06/2018', 'MM/DD/YYYY'));
+--행 96
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (195 ,to_timestamp('08/02/2018', 'MM/DD/YYYY'),to_timestamp('08/17/2018', 'MM/DD/YYYY'));
+--행 97
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (196 ,to_timestamp('08/03/2018', 'MM/DD/YYYY'),to_timestamp('08/08/2018', 'MM/DD/YYYY'));
+
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (197 ,to_timestamp('08/04/2018', 'MM/DD/YYYY'),to_timestamp('08/09/2018', 'MM/DD/YYYY'));
+--행 100
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (198 ,to_timestamp('08/05/2018', 'MM/DD/YYYY'),to_timestamp('08/10/2018', 'MM/DD/YYYY'));
+--행 101
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (199 ,to_timestamp('08/06/2018', 'MM/DD/YYYY'),to_timestamp('08/11/2018', 'MM/DD/YYYY'));
+--행 102
+INSERT INTO PARK_REGIST_TB (PARK_NO, REGI_START, REGI_END) VALUES (200 ,to_timestamp('08/07/2018', 'MM/DD/YYYY'),to_timestamp('08/12/2018', 'MM/DD/YYYY'));
 
 --행 1
 INSERT INTO CAR_TYPE_TB (PARK_NO, CAR_TYPE, MAX_CAR) VALUES (2 ,'소형',5 );
@@ -897,5 +1500,136 @@ INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,48
 INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,49 ,'48.jpg');
 --행 49
 INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,50 ,'49.jpg');
+
+
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,52 ,'51.jpg');
+--행 2
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,53 ,'52.jpg');
+--행 3
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,54 ,'53.jpg');
+--행 4
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,55 ,'54.jpg');
+--행 5
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,56 ,'55.jpg');
+--행 6
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,57 ,'56.jpg');
+--행 7
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,58 ,'57.jpg');
+--행 8
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,59 ,'58.jpg');
+--행 9
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,60 ,'59.jpg');
+--행 10
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,61 ,'60.jpg');
+--행 11
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,62 ,'61.jpg');
+--행 12
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,63 ,'62.jpg');
+--행 13
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,64 ,'63.jpg');
+--행 14
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,65 ,'64.jpg');
+--행 15
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,66 ,'65.jpg');
+--행 16
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,67 ,'66.jpg');
+--행 17
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,68 ,'67.jpg');
+--행 18
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,69 ,'68.jpg');
+--행 19
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,70 ,'69.jpg');
+--행 20
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,71 ,'70.jpg');
+--행 21
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,72 ,'71.jpg');
+--행 22
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,73 ,'72.jpg');
+--행 23
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,74 ,'73.jpg');
+--행 24
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,75 ,'74.jpg');
+--행 25
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,76 ,'75.jpg');
+--행 26
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,77 ,'76.jpg');
+--행 27
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,78 ,'77.jpg');
+--행 28
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,79 ,'78.jpg');
+--행 29
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,80 ,'79.jpg');
+--행 30
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,81 ,'80.jpg');
+--행 31
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,82 ,'81.jpg');
+--행 32
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,83 ,'82.jpg');
+--행 33
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,84 ,'83.jpg');
+--행 34
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,85 ,'84.jpg');
+--행 35
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,86 ,'85.jpg');
+--행 36
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,87 ,'86.jpg');
+--행 37
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,88 ,'87.jpg');
+--행 38
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,89 ,'88.jpg');
+--행 39
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,90 ,'89.jpg');
+--행 40
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,91 ,'90.jpg');
+--행 41
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,92 ,'91.jpg');
+--행 42
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,93 ,'92.jpg');
+--행 43
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,94 ,'93.jpg');
+--행 44
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,95 ,'94.jpg');
+--행 45
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,96 ,'95.jpg');
+--행 46
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,97 ,'96.jpg');
+--행 47
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,98 ,'97.jpg');
+--행 48
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,99 ,'98.jpg');
+--행 49
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,100 ,'99.jpg');
+--행 50
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,101 ,'100.jpg');
+-- 51 에서  59  행에 대한 삽입 실패
+--ORA-01722: invalid number
+--행 51
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,102 ,'101.jpg');
+--행 52
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,103 ,'102.jpg');
+--행 53
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,104 ,'103.jpg');
+--행 54
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,105 ,'104.jpg');
+--행 55
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,106 ,'105.jpg');
+--행 56
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,107 ,'106.jpg');
+--행 57
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,108 ,'107.jpg');
+--행 58
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,109 ,'108.jpg');
+--행 59
+INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,110,'109.jpg');
+
+insert into review_tb values('user3',3,5,'최고의 주차장입니다!')
+insert into review_tb values('user4',3,5,'넓직하네요')
+insert into review_tb values('user5',3,5,'마음에 듭니다.')
+insert into review_tb values('user6',3,5,'이 주차장은 이제 제겁니다.')
+insert into review_tb values('user7',3,4,'가성비 좋은듯')
+insert into review_tb values('user8',3,3,'그냥 딱 싼 가격에 쓸만한듯')
+insert into review_tb values('user9',3,2,'차라리 불법주차를 하지')
+insert into review_tb values('user10',3,1,'우리집 개집이 여기보단 넓겠다 ㅉㅉ')
+insert into review_tb values('user11',3,1,'주인 양심 무?')
 
 commit

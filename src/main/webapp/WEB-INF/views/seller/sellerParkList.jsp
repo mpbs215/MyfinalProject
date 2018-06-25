@@ -164,15 +164,9 @@ $(function(){
 		
 									</div>
 									<div class="col-xs-1">
-										<!-- <div class="col-xs-6">
-											<input type="button" value="수정" id="update">
-										</div>
-										<br />
-										<div class="col-xs-6"> -->
-											<button type="button" class="btn btn-link btn" name="deleteOne" value="${parkDto.parkNo}">
+										<button type="button" class="btn btn-link btn" name="deleteOne" value="${parkDto.parkNo}">
 												<span class="glyphicon glyphicon-trash"> </span>
-											</button>
-										<!-- </div> -->
+										</button>
 									</div>
 								</div>
 								<hr/>
@@ -188,3 +182,4 @@ $(function(){
 
 </body>
 </html>
+
