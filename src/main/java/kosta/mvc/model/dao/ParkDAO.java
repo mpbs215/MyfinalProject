@@ -27,7 +27,7 @@ public class ParkDAO {
 	 * 등록한 주차장 리스트
 	 */	
 	public List<ParkDTO> selectParkList(String userId){
-		return session.selectList("sellerMapper.sellerParkList", userId);
+		return session.selectList("sellerMapper.selectSellerParkList", userId);
 	}
 		
 	/**

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -102,21 +101,87 @@ public class CommonController {
 	 * @return noticeDTO
 	 */
 	@RequestMapping("/noticeDetail/{noticeNo}")
-	public ModelAndView noticeDetail(@PathVariable int noticeNo) {
+	public ModelAndView noticeDetail(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable int noticeNo) {
 		ModelAndView mv = new ModelAndView();
-		NoticeDTO noticeDTO = commonService.selectOneNotice(noticeNo);
+		NoticeDTO noticeDTO = commonService.selectOneNotice(request, response, noticeNo);
 		mv.setViewName("common/noticeDetail");
 		mv.addObject("noticeDTO", noticeDTO);
 		return mv;
 	}
 
 	@RequestMapping("/qna")
-	public ModelAndView qna() {
+	public ModelAndView qna(HttpServletRequest request) {
+		int numPerPage = 5;
+		int cPage;
+		try {
+			cPage = Integer.parseInt(request.getParameter("cPage"));
+		} catch (NumberFormatException e) {
+			cPage = 1;
+		}
 
+		// 2.3 페이징바 만들기
+		int totalQNA = commonService.QNACnt();
+
+		int totalPage = (int) Math.ceil((double) totalQNA / numPerPage);
+		String pageBar = "";
+		int pageBarSize = 5;
+		// 시작페이지 no
+		int pageNo;
+		pageNo = (int) (Math.ceil(((double) cPage / pageBarSize) - 1) * pageBarSize) + 1;
+
+		// 종료페이지 no
+		int pageEnd = pageNo + pageBarSize - 1;
+
+		pageBar += "<ul class='pagination justify-content-center pagination-sm'>";
+
+		// [이전]
+		if (pageNo == 1) {
+			// 이전버튼 필요없음
+			pageBar += "<li class='page-item disabled'>";
+			pageBar += "<a class='page-link' href='#' tabindex='-1'>이전</a>";
+			pageBar += "</li>";
+		} else {
+			pageBar += "<li class='page-item'>";
+			pageBar += "<a class='page-link' href=" + request.getContextPath() + "/common/qna?cPage=" + (pageNo - 1)
+					+ "><span>[이전]</span></a>";
+			pageBar += "</li>";
+		}
+
+		// [pageNo]
+		while (pageNo <= pageEnd && pageNo <= totalPage) {
+			if (pageNo == cPage) {
+				pageBar += "<li class='page-item active'>";
+				pageBar += "<a class='page-link'>" + pageNo + "</a>";
+				pageBar += "</li>";
+			} else {
+				pageBar += "<li class='page-item'>";
+				pageBar += "<a class='page-link' href =" + request.getContextPath() + "/common/qna?cPage=" + pageNo + "> <span>" + pageNo + "</span></a>";
+				pageBar += "</li>";
+			}
+
+			pageNo++;
+		}
+		// [다음]
+
+		if (pageNo > totalPage) {
+			pageBar += "<li class='page-item disabled'>";
+	         pageBar += "<a class='page-link' href='#'>다음</a>";
+	         pageBar += "</li>";
+		} else {
+			pageBar += "<li class='page-item'>";
+			pageBar += "<a class='page-link' href=" + request.getContextPath() + "/common/qna?cPage=" + (pageNo)
+					+ "><span>[다음]</span></a>";
+			pageBar += "</li>";
+		}
+
+		pageBar += "</ul>";
+		
 		ModelAndView mv = new ModelAndView();
-		List<QNADTO> list = commonService.selectQNAList();
+		List<QNADTO> list = commonService.selectQNAList(cPage, numPerPage);
 		mv.setViewName("common/qna");
 		mv.addObject("QNAList", list);
+		mv.addObject("pageBar", pageBar);
 
 		return mv;
 	}
@@ -163,7 +228,8 @@ public class CommonController {
 	}
 
 	@RequestMapping("/updateQNA/{QNANo}")
-	public ModelAndView qnaUpdateForm(HttpServletRequest request, HttpServletResponse response,@PathVariable int QNANo) {
+	public ModelAndView qnaUpdateForm(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable int QNANo) {
 		ModelAndView mv = new ModelAndView();
 		QNADTO qnaDTO = commonService.selectOneQNA(request, response, QNANo);
 		mv.addObject("qnaDTO", qnaDTO);

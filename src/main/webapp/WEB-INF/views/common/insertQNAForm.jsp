@@ -23,7 +23,7 @@ QNA Insert
 <form onsubmit="return checkNumber()"
 	action="${pageContext.request.contextPath}/common/insertQNA?${_csrf.parameterName}=${_csrf.token}"
 	method="post" enctype="multipart/form-data">
-	<table class="boardTable">
+	<table class="table table-bordered" style="width: 90%">
 		<tr>
 			<th>작성자</th>
 			<th>질문제목</th>

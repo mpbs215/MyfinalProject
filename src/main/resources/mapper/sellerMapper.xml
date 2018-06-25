@@ -68,10 +68,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertImg" parameterType="parkImgDTO">
 		insert into park_Image_TB values(img_seq.nextval,#{parkNo},#{imgPath})
 	</insert>
-
+	
 	
 	<!-- 등록한 주차장 리스트 -->
-	<select id="selectPark" parameterType="String" resultMap="sellerParkList">
+	<select id="selectSellerParkList" parameterType="String" resultMap="sellerParkList">
 		select park_no,user_id,park_name,park_addr,park_size,park_content,price,regi_start,regi_end,img_path,car_type,max_car
 		 from park_tb natural join park_regist_tb natural join (select *
 			from (

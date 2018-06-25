@@ -18,10 +18,12 @@ public interface CommonService {
 
 	public List<NoticeDTO> selectNotice();
 
-	public NoticeDTO selectOneNotice(int noticeNo);
+	public NoticeDTO selectOneNotice(HttpServletRequest request, HttpServletResponse response, int noticeNo);
 
-	public List<QNADTO> selectQNAList();
+	public List<QNADTO> selectQNAList(int cPage, int numPerPage);
 
 	public QNADTO selectOneQNA(HttpServletRequest request, HttpServletResponse response, int QNANo);
+
+	public int QNACnt();
 
 }

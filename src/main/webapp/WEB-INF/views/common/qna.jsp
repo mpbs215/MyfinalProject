@@ -10,6 +10,12 @@
 
 <h1>QNA</h1>
 
+<sec:authorize access="isAuthenticated()">
+	<h4 style="text-align: right; padding-right: 150px;">
+		<a href="${pageContext.request.contextPath}/common/insertQNAForm"
+			class="btn btn-primary"> QNA 쓰기 </a>
+	</h4>
+</sec:authorize>
 <table class="table table-bordered" style="width: 90%">
 	<tr>
 		<th>글번호</th>
@@ -45,10 +51,5 @@
 		</tr>
 	</c:forEach>
 </table>
-	
-<sec:authorize access="isAuthenticated()">  
-<h4>
-	<a href="${pageContext.request.contextPath}/common/insertQNAForm"
-		class="btn btn-primary"> QNA 쓰기 </a>
-</h4>
-</sec:authorize>
+
+<div id="pageBar">${pageBar}</div>

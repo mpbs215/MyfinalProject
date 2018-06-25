@@ -47,13 +47,49 @@ public class CommonServiceImpl implements CommonService {
 		return noticeDAO.selectNotice();
 	}
 
-	public NoticeDTO selectOneNotice(int noticeNo) {
-		return noticeDAO.selectOneNotice(noticeNo);
+	@Transactional
+	public NoticeDTO selectOneNotice(HttpServletRequest request, HttpServletResponse response, int noticeNo) {
+		NoticeDTO noticeDTO = noticeDAO.selectOneNotice(request, response, noticeNo);
+		Cookie[] cookies = request.getCookies();
+		String noticeBoardCookieVal = "";
+		boolean hasRead = false;
+
+		if (cookies != null) {
+			for (Cookie c : cookies) {
+				String name = c.getName();
+				String value = c.getValue();
+
+				if ("noticeBoardCookie".equals(name)) {
+					noticeBoardCookieVal = value;
+					if (noticeBoardCookieVal.contains("|" + noticeDTO.getNoticeNo() + "|")) {
+						hasRead = true;
+						break;
+					}
+				}
+
+			}
+		}
+
+		// 게시글 읽음 여부 따지기
+		if (!hasRead) {
+			// 조회수 증가
+			noticeDTO.setNoticeHit(noticeDTO.getNoticeHit() + 1);
+			noticeDAO.increaseNoticeHit(noticeDTO);
+
+			// 쿠키생성
+			Cookie noticeBoardCookie = new Cookie("noticeBoardCookie",
+					noticeBoardCookieVal + "|" + noticeDTO.getNoticeNo() + "|");
+			// boardCookie.setPath("/mvc/board"); 안적으면 저절로 현재 경로로 잡힘.
+			// boardCookie.setMaxAge(60*60*24); //작성 안하면, 브라우져에 영구저장.
+			response.addCookie(noticeBoardCookie);
+		}
+
+		return noticeDTO;
 	}
 
 	@Override
-	public List<QNADTO> selectQNAList() {
-		return qnaDAO.selectQNAList();
+	public List<QNADTO> selectQNAList(int cPage, int numPerPage) {
+		return qnaDAO.selectQNAList(cPage, numPerPage);
 	}
 
 	@Transactional
@@ -62,7 +98,7 @@ public class CommonServiceImpl implements CommonService {
 		QNADTO qnaDTO = qnaDAO.selectOneQNA(request, response, QNANo);
 
 		Cookie[] cookies = request.getCookies();
-		String boardCookieVal = "";
+		String QNABoardCookieVal = "";
 		boolean hasRead = false;
 
 		if (cookies != null) {
@@ -70,9 +106,9 @@ public class CommonServiceImpl implements CommonService {
 				String name = c.getName();
 				String value = c.getValue();
 
-				if ("boardCookie".equals(name)) {
-					boardCookieVal = value;
-					if (boardCookieVal.contains("|" + qnaDTO.getQNANo() + "|")) {
+				if ("QNABoardCookie".equals(name)) {
+					QNABoardCookieVal = value;
+					if (QNABoardCookieVal.contains("|" + qnaDTO.getQNANo() + "|")) {
 						hasRead = true;
 						break;
 					}
@@ -88,14 +124,19 @@ public class CommonServiceImpl implements CommonService {
 			qnaDAO.increaserQNA(qnaDTO);
 
 			// 쿠키생성
-			Cookie boardCookie = new Cookie("boardCookie", boardCookieVal + "|" + qnaDTO.getQNANo() + "|");
+			Cookie QNABoardCookie = new Cookie("QNABoardCookie", QNABoardCookieVal + "|" + qnaDTO.getQNANo() + "|");
 			// boardCookie.setPath("/mvc/board"); 안적으면 저절로 현재 경로로 잡힘.
 			// boardCookie.setMaxAge(60*60*24); //작성 안하면, 브라우져에 영구저장.
-			response.addCookie(boardCookie);
+			response.addCookie(QNABoardCookie);
 		}
 
 		return qnaDTO;
 	}
 
+	@Override
+	public int QNACnt() {
+
+		return qnaDAO.QNACnt();
+	}
 
 }
