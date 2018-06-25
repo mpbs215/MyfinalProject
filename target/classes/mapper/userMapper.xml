@@ -101,6 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="user_id" property="userId"/>
 		<result column="park_name" property="parkName"/>
 		<result column="price" property="price"/>
+		<result column="park_no" property="parkNo"/>
 		<association property="user" javaType="userDTO">
 			<result column="hp" property="hp"/>
 		</association>
@@ -114,7 +115,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<select id="selectUserReserve" parameterType="string" resultMap="reserveMap">
-		select reserve_No,reserve_Start,user_info_tb.user_id,img_path,park_name,hp,price*EXTRACT(hour from reserve_end-reserve_start) as price
+		select park_no,reserve_No,reserve_Start,user_info_tb.user_id,img_path,park_name,hp,price*EXTRACT(hour from reserve_end-reserve_start) as price
 		from park_Reserve_TB  left outer join 
 		(select * from (select img_no, park_no, img_path, rank()over(partition by park_no order by img_path desc) rk
 			from park_image_tb) where rk = 1)  using(park_no) 
@@ -138,5 +139,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM USER_INFO_TB
 		 WHERE password = #{_parameter}
 	</delete>
+	
+	<update id="updateReserve" parameterType="parkReserveDTO">
+		update park_Reserve_tb set reserve_start=#{reserveStart},reserve_end=#{reserveEnd},car_type=#{carType} where reserve_no=#{reserveNo}
+	</update>
 	
 </mapper>

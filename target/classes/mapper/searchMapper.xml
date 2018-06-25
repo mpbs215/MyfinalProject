@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and car_type = #{carType}
 			</if>
 			<if test="reserveDate!=null and !reserveDate.equals('')">
-			and regi_start<![CDATA[<]]>#{reserveDate} and regi_end <![CDATA[>]]> #{reserveDate} and
+			and #{reserveDate} between regi_start and regi_end
 			</if>
 			<if test="parkContent!=null and !parkContent.equals('')">
 			and park_content like '%'||#{parkContent}||'%'

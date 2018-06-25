@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
+
 import kosta.mvc.model.dto.AuthorityDTO;
 import kosta.mvc.model.dto.ParkDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
@@ -249,9 +251,38 @@ public class UserController {
 		
 		if (passwordEncoder.matches(password, Depassword)) {
 			service.deleteUserInfo(password);
+			session.invalidate();
+			return "redirect:/user/logout";
+		} else {
+			throw new RuntimeException("현재 비밀번호가 정확하지 않습니다.");
 		}
-		session.invalidate();
+	}
+	
+	@RequestMapping("/updateReservation")
+	public String updateReservation(ParkReserveDTO dto) {
+		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		dto.setUserId(userDTO.getUserId());
+		if(service.reserveCheck(dto).equals("OK")) {
+			service.updateReserve(dto);
+		}else {
+			throw new RuntimeException("예약변경에 실패하였습니다.");
+		}
 		
-		return "redirect:/user/logout";
+		return "redirect:/user/userMypageReserveList";
+	}
+	
+	@RequestMapping("/updateReserveForm")
+	public ModelAndView updateReserveForm(int parkNo,int reserveNo) {
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> dataMap = service.userReserveForm(parkNo);
+		mv.addObject("parkDTO",dataMap.get("parkDTO"));
+		mv.addObject("parkRegiDTO",dataMap.get("parkRegiDTO"));
+		mv.addObject("parkReserveList",dataMap.get("parkReserveList"));
+		mv.addObject("reviewList",dataMap.get("reviewList"));
+		mv.addObject("parkImageList", dataMap.get("parkImageList"));
+		mv.addObject("carTypeList",dataMap.get("carTypeList"));
+		mv.addObject("reserveNo",reserveNo);
+		mv.setViewName("/mypage/updateReserveForm");
+		return mv;
 	}
 }
