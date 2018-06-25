@@ -28,7 +28,7 @@ $(function(){
 		//console.log($(this).val());
 		 	
 		$.ajax({
-			url:"${pageContext.request.contextPath}/seller/sellerParkDelete",
+			url:"${pageContext.request.contextPath}/seller/sellerParkDelete?${_csrf.parameterName}=${_csrf.token}",
 			dataType:"text",
 			data:"pNo="+$(this).val(),
 			success:function(result){
@@ -64,7 +64,7 @@ $(function(){
 		})
 		
 		$.ajax({
-			url:"${pageContext.request.contextPath}/seller/sellerParksDelete",
+			url:"${pageContext.request.contextPath}/seller/sellerParksDelete?${_csrf.parameterName}=${_csrf.token}",
 			type:"post",
 			data:{"pNos":parkNos},
 			success:function(result){
@@ -96,7 +96,7 @@ $(function(){
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: white;">
 		<div class="row justify-content-center">
 			<div class="col-sm-11">
 
@@ -141,7 +141,7 @@ $(function(){
 									<input type="checkbox" name="selectPark" id="selectPark" value="${parkDto.parkNo}" />
 								</div>
 									<div class="col-xs-2">
-										<img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/park/${parkDto.parkImg.imgPath}">
+										<img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/park/${parkDto.parkImg.imgPath}" style="width: 100%;height: 100%;">
 									</div>
 									<div class="col-xs-8">								
 										<h4><strong>
@@ -156,7 +156,7 @@ $(function(){
 											<small>${parkDto.parkRegi.regiStart} ~ ${parkDto.parkRegi.regiEnd}</small>&nbsp;&nbsp;&nbsp;&nbsp;<small style="color: green; font: bold;">시간당 ${parkDto.price}원</small>
 										</h4>
 																			
-										<c:forEach items="${parkDto.carTypeList}" var="carTypes">
+										<c:forEach items="${parkDto.carTypeLists}" var="carTypes">
 											<h4>
 											<small>${carTypes.carType} - ${carTypes.maxCar}대</small>
 											</h4>

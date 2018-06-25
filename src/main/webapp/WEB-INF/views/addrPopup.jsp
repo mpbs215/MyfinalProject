@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <% 
 	request.setCharacterEncoding("UTF-8");  //한글깨지면 주석제거
-	request.setCharacterEncoding("EUC-KR");  //해당시스템의 인코딩타입이 EUC-KR일경우에
+	//request.setCharacterEncoding("EUC-KR");  //해당시스템의 인코딩타입이 EUC-KR일경우에
 	
 	String inputYn = request.getParameter("inputYn"); 
 	String roadFullAddr = request.getParameter("roadFullAddr"); 
@@ -55,7 +55,7 @@ function init(){
 		document.form.confmKey.value = confmKey;
 		document.form.returnUrl.value = url;
 		document.form.resultType.value = resultType;
-		document.form.action="http://www.juso.go.kr/addrlink/addrCoordUrl.do"; // 인터넷망
+		document.form.action="http://www.juso.go.kr/addrlink/addrCoordUrl.do?${_csrf.parameterName}=${_csrf.token}"; // 인터넷망
 		document.form.submit();
 	}else{
 		opener.jusoCallBack("<%=roadFullAddr%>","<%=roadAddrPart1%>","<%=addrDetail%>", "<%=roadAddrPart2%>","<%=engAddr%>"
@@ -67,12 +67,12 @@ function init(){
 }
 </script>
 <body onload="init();">
-	<form id="form" name="form" method="post">
+	<form id="form" name="form" method="get">
 		<input type="hidden" id="confmKey" name="confmKey" value=""/>
 		<input type="hidden" id="returnUrl" name="returnUrl" value=""/>
 		<input type="hidden" id="resultType" name="resultType" value=""/>
 		<!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 START--> 		
-		<input type="hidden" id="encodingType" name="encodingType" value="EUC-KR"/>		
+		<input type="hidden" id="encodingType" name="encodingType" value="UTF-8"/>		
 		<!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 END-->
 				
 		<input type="hidden" id="security" name="${_csrf.parameterName}" value="${_csrf.token}"/>

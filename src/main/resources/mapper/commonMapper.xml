@@ -61,5 +61,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update qna_tb set qna_hit=#{QNAHit} where
 		qna_no=#{QNANo}
 	</update>
+	
+	<select id="QNACnt" resultType="_int">
+		select count(*) from qna_tb
+	</select>
 
 </mapper>

@@ -15,3 +15,5 @@ select EXTRACT(hour from reserve_end-reserve_start) from park_Reserve_TB;
 create view sellerinfo as select * from user_info_tb join park_tb  using(user_id);
 
 select * from user_info_tb join park_tb  using(user_id);
+
+select*from authority_tb

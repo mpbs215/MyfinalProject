@@ -21,4 +21,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 		notice_no=#{noticeNo}
 	</update>
+	
+	<update id="increaseNoticeHit" parameterType="noticeDTO">
+		update notice_tb set
+		notice_hit = notice_hit + 1
+		where notice_no=#{noticeNo}
+	</update>
 </mapper>

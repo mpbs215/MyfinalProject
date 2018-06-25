@@ -84,18 +84,19 @@
 		<th>조회수</th>
 		<th>${qnaDTO.QNAHit}</th>
 	</tr>
-
-	<c:set var="userId" value="${mvo.userId}"></c:set>
-	<c:set var="qnaId" value="${qnaDTO.userId}"></c:set>
-	<c:if test="${userId eq qnaId}">
-		<tr>
-			<th colspan="2"><a
-				href="${pageContext.request.contextPath}/common/updateQNA/${qnaDTO.QNANo}"
-				class="btn btn-primary">수정</a> <a
-				href="${pageContext.request.contextPath}/common/deleteQNA/${qnaDTO.QNANo}"
-				class="btn btn-danger">삭제</a></th>
-		</tr>
-	</c:if>
+	<sec:authorize access="isAuthenticated()">
+		<c:set var="userId" value="${mvo.userId}"></c:set>
+		<c:set var="qnaId" value="${qnaDTO.userId}"></c:set>
+		<c:if test="${userId eq qnaId}">
+			<tr>
+				<th colspan="2"><a
+					href="${pageContext.request.contextPath}/common/updateQNA/${qnaDTO.QNANo}"
+					class="btn btn-primary">수정</a> <a
+					href="${pageContext.request.contextPath}/common/deleteQNA/${qnaDTO.QNANo}"
+					class="btn btn-danger">삭제</a></th>
+			</tr>
+		</c:if>
+	</sec:authorize>
 </table>
 <c:set var="Review" value="${qnaDTO.QNAReview}"></c:set>
 

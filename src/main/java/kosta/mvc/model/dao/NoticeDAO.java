@@ -2,6 +2,9 @@ package kosta.mvc.model.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,7 +20,7 @@ public class NoticeDAO {
 		return session.selectList("commonMapper.selectNotice");
 	}
 
-	public NoticeDTO selectOneNotice(int noticeNo) {
+	public NoticeDTO selectOneNotice(HttpServletRequest request, HttpServletResponse response, int noticeNo) {
 		return session.selectOne("commonMapper.selectNotice", noticeNo);
 	}
 
@@ -40,4 +43,7 @@ public class NoticeDAO {
 		return session.update("noticeMapper.updateNotice", noticeDTO);
 	}
 
+	public void increaseNoticeHit(NoticeDTO noticeDTO) {
+		session.update("noticeMapper.increaseNoticeHit", noticeDTO);
+	}
 }

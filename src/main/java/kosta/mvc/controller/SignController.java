@@ -129,16 +129,10 @@ public class SignController {
 	 * 	로그인 체크 하기
 	 * */
 	@RequestMapping("/loginCheck")
-	public ModelAndView loginCheck(UserDTO userDTO, HttpSession session) throws Exception {
+	public ModelAndView loginCheck(UserDTO userDTO){
 		
 		ModelAndView mv = new ModelAndView();
-		UserDTO dto = userService.loginCheck(userDTO, session);
-		System.out.println("session값 = " +session);
-		
-		if (session != null) {
-			session.setAttribute("userName", userDTO.getUserName());
-			session.setAttribute("userId", userDTO.getUserId());
-		}
+		UserDTO dto = userService.loginCheck(userDTO);
 
 		mv.addObject("resultDTO", dto);
 		mv.setViewName("redirect:/");

@@ -58,12 +58,6 @@ public class UserServiceImpl {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@Autowired
-	private TempKeyDTO sms;
-	
-	@Autowired
-	private AuthorityDTO authDTO;
-	
 	/**
 	 *	회원가입하기
 	 * */
@@ -75,7 +69,7 @@ public class UserServiceImpl {
 		userDTO.setPassword(encodedPassword);
 		userDAO.signUp(userDTO);
 		
-		
+		AuthorityDTO authDTO = new AuthorityDTO();
 		authDTO.setUserId(userDTO.getUserId());
 		authDTO.setRole("ROLE_USER");
 		authDTO.setKey("0");
@@ -159,9 +153,10 @@ public class UserServiceImpl {
 	}
 
 	public void insertReview(ReviewDTO dto) {
-		int result = reviewDAO.insertReview(dto);
-		if (result == 0) {
-			throw new RuntimeException("리뷰 등록에 실패하였습니다.");
+		try {
+			int result = reviewDAO.insertReview(dto);
+		} catch (Exception e) {
+			throw new RuntimeException("리뷰는 한사람당 하나만 등록가능합니다.");
 		}
 	}
 
@@ -207,7 +202,7 @@ public class UserServiceImpl {
 	/**
 	 * 	로그인체크하기
 	 * */
-	public UserDTO loginCheck(UserDTO userDTO, HttpSession session) {
+	public UserDTO loginCheck(UserDTO userDTO) {
 
 		return userDAO.loginCheck(userDTO);
 	}
@@ -252,6 +247,8 @@ public class UserServiceImpl {
 	 * 	SMS이용하여 본인인증하기
 	 * */
 	public void insertAuthCode(String userId, String hp, String key) {
+			AuthorityDTO authDTO = new AuthorityDTO();
+			TempKeyDTO sms = new TempKeyDTO();
 			authDTO.setKey(key);
 			System.out.println("key : " +key);
 			

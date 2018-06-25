@@ -60,26 +60,26 @@ public class SellerServiceImpl {
 	 * 주차장 등록
 	 */
 	public void sellerParkRegist(ParkDTO parkDto, CarTypeDTO carTypeDto, ParkImgDTO parkImgDto, ParkRegiDTO parkRegiDto, String imgPath, List<MultipartFile> mf) throws Exception{		
-		
+		System.out.println("서비스진입");
 		// 시퀀스인 parkNo를 네개 테이블에 같은 값으로 넣기 위해. 
 		int parkNo = parkDAO.selectParkNo();
 		parkDto.setParkNo(parkNo);
 		carTypeDto.setParkNo(parkNo);
 		parkRegiDto.setParkNo(parkNo);
 		parkImgDto.setParkNo(parkNo);
-		
 		int resultPark = parkDAO.insertPark(parkDto);
 		System.out.println("resultPark"+resultPark);
 		if(resultPark == 0) {
-			throw new RuntimeException();
+			throw new RuntimeException("주차장 등록 실패");
 		}		
 		
 		int resultParkRegi = regiDAO.insertParkRegi(parkRegiDto);
 		System.out.println("resultParkRegi"+resultParkRegi);
 		if(resultParkRegi == 0) {
-			throw new RuntimeException();
+			throw new RuntimeException("주차장예약시간 등록 실패");
 		}
 		
+		System.out.println("차종 대수 전");
 		/** 차종, 대 수 */
 		List<String> carTypeList = carTypeDto.getCarTypeList();
 		List<Integer> maxCarList = carTypeDto.getMaxCarList();
@@ -98,6 +98,7 @@ public class SellerServiceImpl {
 				throw new RuntimeException();
 			}
 		}
+		System.out.println("차종 대수 후 이미지 업로드 전");
 
 			   
 		/** 이미지 업로드 */		 
@@ -129,6 +130,8 @@ public class SellerServiceImpl {
 			}
 						
 			file.transferTo(new File(imgPath+ "/" + fileName));// 이미지 저장
+			System.out.println("이미지 업로드 후");
+
 		}		
 	}
 		
@@ -201,6 +204,16 @@ public class SellerServiceImpl {
 		if(re==0) {
 			throw new RuntimeException();
 		}
+	}
+
+	public List<ParkDTO> callStats(String startDate, String endDate,String userId) {
+		List<ParkDTO> list = null;
+		try {
+			list = parkDAO.selectProfit(startDate, endDate,userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	} 
 	
 	

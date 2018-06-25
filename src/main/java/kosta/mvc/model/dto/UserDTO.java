@@ -1,6 +1,8 @@
 package kosta.mvc.model.dto;
 
-public class UserDTO {
+import java.io.Serializable;
+
+public class UserDTO implements Serializable{
 	
 		private String userId;
 		private String password;

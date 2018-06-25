@@ -15,8 +15,14 @@ public class ParkDTO {
 	private UserDTO user;
 	private ParkRegiDTO parkRegi;
 	private ParkReserveDTO parkReserve;
-	private List<CarTypeDTO> carTypeList;
+	private List<CarTypeDTO> carTypeLists;
 	
+	public String getParkSize() {
+		return parkSize;
+	}
+	public void setParkSize(String parkSize) {
+		this.parkSize = parkSize;
+	}
 	public int getParkNo() {
 		return parkNo;
 	}
@@ -40,12 +46,6 @@ public class ParkDTO {
 	}
 	public void setParkAddr(String parkAddr) {
 		this.parkAddr = parkAddr;
-	}
-	public String getParkSize() {
-		return parkSize;
-	}
-	public void setParkSize(String parkSize) {
-		this.parkSize = parkSize;
 	}
 	public String getParkContent() {
 		return parkContent;
@@ -83,15 +83,15 @@ public class ParkDTO {
 	public void setParkReserve(ParkReserveDTO parkReserve) {
 		this.parkReserve = parkReserve;
 	}
-	public List<CarTypeDTO> getCarTypeList() {
-		return carTypeList;
+	public List<CarTypeDTO> getCarTypeLists() {
+		return carTypeLists;
 	}
-	public void setCarTypeList(List<CarTypeDTO> carTypeList) {
-		this.carTypeList = carTypeList;
+	public void setCarTypeLists(List<CarTypeDTO> carTypeLists) {
+		this.carTypeLists = carTypeLists;
 	}
 	public ParkDTO(int parkNo, String parkName, String userId, String parkAddr, String parkSize, String parkContent,
 			int price, ParkImgDTO parkImg, UserDTO user, ParkRegiDTO parkRegi, ParkReserveDTO parkReserve,
-			List<CarTypeDTO> carTypeList) {
+			List<CarTypeDTO> carTypeLists) {
 		super();
 		this.parkNo = parkNo;
 		this.parkName = parkName;
@@ -104,7 +104,7 @@ public class ParkDTO {
 		this.user = user;
 		this.parkRegi = parkRegi;
 		this.parkReserve = parkReserve;
-		this.carTypeList = carTypeList;
+		this.carTypeLists = carTypeLists;
 	}
 	public ParkDTO() {
 		super();
@@ -114,7 +114,7 @@ public class ParkDTO {
 		return "ParkDTO [parkNo=" + parkNo + ", parkName=" + parkName + ", userId=" + userId + ", parkAddr=" + parkAddr
 				+ ", parkSize=" + parkSize + ", parkContent=" + parkContent + ", price=" + price + ", parkImg="
 				+ parkImg + ", user=" + user + ", parkRegi=" + parkRegi + ", parkReserve=" + parkReserve
-				+ ", carTypeList=" + carTypeList + "]";
+				+ ", carTypeList=" + carTypeLists + "]";
 	}
 	
 	

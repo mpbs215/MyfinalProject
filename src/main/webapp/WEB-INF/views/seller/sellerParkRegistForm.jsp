@@ -88,7 +88,7 @@ body {
 	        return false;
 	    }
  		if ( f.regiEnd.value <= f.regiStart.value) {
-	        alert( "옳바른 예약 범위로 선택해주세요" );
+	        alert( "올바른 예약 범위로 선택해주세요" );
 	        f.regiEnd.value="";
 	        this.focus();
 	        return false;
@@ -106,7 +106,7 @@ body {
 	// 주소 검색 팝업창 띄우기
 	function goPopup(){
 		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrCoordUrl.do)를 호출하게 됩니다.
-    	var pop = window.open("${pageContext.request.contextPath}/seller/addrPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+    	var pop = window.open("${pageContext.request.contextPath}/addrPopup?${_csrf.parameterName}=${_csrf.token}","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	}
 	
 	// 주소 입력
@@ -195,8 +195,9 @@ jQuery(document).ready(
 		<div class="container-fluid">
 
 			<form name="parkRegistForm" method="post"
-				action="${pageContext.request.contextPath}/seller/sellerParkRegist?${_csrf.parameterName}=${_csrf.token}"
+				action="${pageContext.request.contextPath}/seller/sellerParkRegist"
 				onSubmit='return checkValid()' enctype="multipart/form-data">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="col-sm-8">
 					<div class="form-group ">
 						<label class="control-label requiredField" for="parkName">
@@ -338,12 +339,12 @@ jQuery(document).ready(
 							<div class="row justify-content-center">
 								<div class="col-sm-11">
 									<div style="background-color: #F2F2F2;">
-										<table id="addedPark" style="margin: 20px; padding: 20px; border: 2px; border-color: black;">
-											<tr align="center">
-												<td>주차 가능 차종</td>
-												<td>주차 가능 대수</td> 
-											</tr>
-										</table>
+										<div id="addedPark" style="margin: 20px; padding: 20px; border: 2px; border-color: black;">
+											<div align="center">
+												<div>주차 가능 차종</div>
+												<div>주차 가능 대수</div> 
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

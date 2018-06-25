@@ -31,5 +31,6 @@
 		<li><a href="${pageContext.request.contextPath}/seller/sellerParkRegistForm">등록하기</a></li>
 		<li><a href="${pageContext.request.contextPath}/seller/sellerParkList">내 주차장</a></li>
 		<li><a href="${pageContext.request.contextPath}/seller/sellerReserveList">예약상황</a>
+		<li><a href="${pageContext.request.contextPath}/seller/sellerStats">수익통계</a>
 	</ul>
 </div>

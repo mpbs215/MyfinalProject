@@ -18,8 +18,9 @@ public class QNADAO {
 	@Autowired
 	private SqlSession session;
 
-	public List<QNADTO> selectQNAList() {
-		List<QNADTO> list = session.selectList("commonMapper.selectQNAAll");
+	public List<QNADTO> selectQNAList(int cPage, int numPerPage) {
+		RowBounds rowBounds = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		List<QNADTO> list = session.selectList("commonMapper.selectQNAAll", null, rowBounds);
 		return list;
 	}
 
@@ -45,6 +46,10 @@ public class QNADAO {
 
 	public void increaserQNA(QNADTO qnaDTO) {
 		session.update("commonMapper.increaseQNAHit", qnaDTO);
+	}
+
+	public int QNACnt() {
+		return session.selectOne("commonMapper.QNACnt");
 	}
 	
 
