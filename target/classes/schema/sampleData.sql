@@ -1401,7 +1401,46 @@ insert into terms_tb values(TERMS_SEQ.NEXTVAL,'제 21 조 (분쟁의 해결)','
 ');
 
 insert into terms_tb values(TERMS_SEQ.NEXTVAL,'<부칙>','본 약관은 2018년 06월 31일부터 적용한다.');
+<<<<<<< HEAD
 
+=======
+
+--행 1
+INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 위치기반서비스 이용약관 변경 안내new',sysdate,'안녕하세요. PPL 입니다.',0.0,'null');
+--행 2
+INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 서비스 운영정책 변경 안내',sysdate,'안녕하세요. PPL입니다.',0.0,'null');
+--행 3
+INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'개인정보 처리방침 개정안내',sysdate,'안녕하세요. PPL(이하 ‘회사’)입니다.',0.0,'null');
+--행 4
+INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 위치기반서비스 이용약관 변경 안내',sysdate,'안녕하세요. PPL 입니다.',0.0,'null');
+--행 5
+INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 통합 약관 및 서비스 약관 변경 안내',sysdate,'PPL의 위치기반서비스 이용약관 변경에 대한 안내 말씀 드립니다.',0.0,'null');
+--행 6
+INSERT INTO NOTICE_TB (NOTICE_NO, NOTICE_SUB, NOTICE_DT, NOTICE_CONTENT, NOTICE_HIT, NOTICE_IMAGE) VALUES (notice_seq.nextval,'PPL 서비스 약관 변경 안내',sysdate,'안녕하세요.?PPL입니다.',0.0,'null');
+
+insert into faq_tb values(faq_seq.nextval, '주차장 등록은 어떻게 하나요?', '휴대폰번호인증을 받으신 후 이용할 수 있습니다.');
+insert into faq_tb values(faq_seq.nextval, '예약취소는 어떻게 하나요?', '마이페이지 - 예약한 주차장에서 예약취소 할 수 있습니다.');
+insert into faq_tb values(faq_seq.nextval, '아이디/비밀번호 찾기 했을 때 이메일이 오지 않아요.', '회원가입 시 이메일이 입력을 잘못 하신 경우입니다. 관리자에게 문의하세요.');
+
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배1','도배도배1',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배2','도배도배2',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배3','도배도배3',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배4','도배도배4',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배5','도배도배5',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배6','도배도배6',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배7','도배도배7',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배8','도배도배8',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배9','도배도배9',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배10','도배도배10',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배11','도배도배11',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배12','도배도배12',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배13','도배도배13',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배14','도배도배14',sysdate,null,sysdate,0.0,1234.0,'');
+INSERT INTO QNA_TB (QNA_NO, USER_ID, QNA_SUB, QNA_CONTENT, QNA_DT, QNA_REVIEW, QNA_REVIEW_DT, QNA_HIT, QNA_PWD, QNA_IMAGE) VALUES (qna_seq.nextval,'qwer','도배도배15','도배도배15',sysdate,null,sysdate,0.0,1234.0,'');
+
+
+=======
+>>>>>>> branch 'master' of https://github.com/mpbs215/finalProject
 --행 1
 INSERT INTO PARK_IMAGE_TB (IMG_NO, PARK_NO, IMG_PATH) VALUES (img_seq.nextval,2 ,'01.jpg');
 --행 2

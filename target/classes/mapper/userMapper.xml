@@ -128,9 +128,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	
-	<select id="selectPassword" parameterType="string" resultType="String">
+	<select id="selectPassword" parameterType="string" resultType="string">
 		select password
-		 from user_info_tb;
+		 from user_info_tb
 		 where user_id=#{_parameter}
 	</select>
 	

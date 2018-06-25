@@ -2,14 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/security/tags"  prefix="sec"%>    
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.css">
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style_signUpForm.css">
-<title>Log In</title>
+
 
 <style>
 	div{color:white; text-align:center; }
@@ -56,8 +53,6 @@
 	<p class="small"></p><div class="member_login">회원이 아니십니까??</div> <a href=" ${pageContext.request.contextPath}/sign/signUpForm" >회원가입<p>
 	<div class="member_login">아이디/비밀번호를 잊어버리셨습니까?</div><a href="${pageContext.request.contextPath}/sign/findId " >아이디 / 비밀번호 찾기</a><p class="small">
 	</div>
-</body>
-</html>
 
 
 

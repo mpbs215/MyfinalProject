@@ -320,6 +320,8 @@ public class UserServiceImpl {
 	public String selectPassword(String userId) {
 			String password = userDAO.selectPassword(userId);
 			
+			System.out.println("Service에서 비밀번호 : " +password);
+			
 			return password;
 	}
 	

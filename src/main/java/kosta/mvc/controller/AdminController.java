@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,8 +24,10 @@ import kosta.mvc.model.admin.service.QnaService;
 import kosta.mvc.model.admin.service.TermsService;
 import kosta.mvc.model.dto.FAQDTO;
 import kosta.mvc.model.dto.NoticeDTO;
+import kosta.mvc.model.dto.ParkDTO;
 import kosta.mvc.model.dto.TermsDTO;
 import kosta.mvc.model.dto.UserDTO;
+import kosta.mvc.model.seller.service.SellerServiceImpl;
 
 @RequestMapping("/admin")
 @Controller
@@ -51,21 +52,22 @@ public class AdminController {
 	@Autowired
 	private TermsService termsService;
 
-	@RequestMapping("/manageUser")
-	public void manageUser() {
-	}
+	@Autowired
+	private SellerServiceImpl sellerService;
 
 	/**
 	 * Ajax로 유저리스트 호출
 	 * 
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping("/manageUsers")
-	public String manageUserList(Model model) {
+	public ModelAndView manageUserList() {
+		ModelAndView mv = new ModelAndView();
 		List<UserDTO> list = manageUserService.manageUserList();
-		model.addAttribute("list", list);
-		return "manageUserMapper.regiUserList";
+
+		mv.addObject("list", list);
+		mv.setViewName("admin/manageUser");
+		return mv;
 	}
 
 	/**
@@ -73,10 +75,13 @@ public class AdminController {
 	 * 
 	 * @return 삭제결과
 	 */
-	@ResponseBody
-	@RequestMapping("/manageUserDelete")
-	public int manageUserDelete(int userNo) {
-		return 00;
+
+	@RequestMapping("/manageUserDelete/{userId}")
+	public ModelAndView manageUserDelete(@PathVariable String userId) {
+		ModelAndView mv = new ModelAndView();
+		int result = manageUserService.deleteUser(userId);
+		mv.setViewName("redirect:/admin/manageUsers");
+		return mv;
 	}
 
 	/**
@@ -231,7 +236,7 @@ public class AdminController {
 		qnaReviewService.updateQNAReview(QNANo, QNAReview);
 		return QNAReview;
 	}
-	
+
 	@RequestMapping("/updateNotice/{noticeNo}")
 	public ModelAndView updateNotice(@PathVariable int noticeNo) {
 		ModelAndView mv = new ModelAndView();
@@ -264,6 +269,23 @@ public class AdminController {
 
 		int result = noticeService.noticeUpdate(noticeDTO);
 		mv.setViewName("redirect:/common/notice");
+		return mv;
+	}
+
+	@RequestMapping("/manageParks")
+	public ModelAndView managePark() {
+		ModelAndView mv = new ModelAndView();
+		List<ParkDTO> list = manageUserService.manageParkList();
+		mv.addObject("list", list);
+		mv.setViewName("admin/manageParkList");
+		return mv;
+	}
+
+	@RequestMapping("/manageParkDelete/{parkNo}")
+	public ModelAndView deletePark(@PathVariable int parkNo) {
+		ModelAndView mv = new ModelAndView();
+		sellerService.sellerParkDelete(parkNo);
+		mv.setViewName("redirect:/admin/manageParks");
 		return mv;
 	}
 }

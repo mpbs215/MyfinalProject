@@ -79,6 +79,7 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		for (AuthorityDTO authority : list) {
 			authList.add(new SimpleGrantedAuthority(authority.getRole()));
 		}
+		
 		// UsernamePasswordAuthenticationToken(Object principal, Object credentials,
 		// authorities)
 		// UsernamePasswordAuthenticationToken는 Authentication의 자식객체

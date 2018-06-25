@@ -6,7 +6,6 @@
       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-
    <!-- Spring Security 인증처리로직를 정의한 클래스 -->
    <sec:http use-expressions="true" auto-config="true" >
       <sec:intercept-url pattern="/admin/**"  access="hasRole('ROLE_ADMIN')" />
@@ -20,14 +19,6 @@
          authentication-failure-handler-ref="memberAuthenticationFailureHandler"
          />
          
-       <sec:form-login login-page="mypage/userModifyUserForm"
-       		login-processing-url="/deleteMember"
-       		username-parameter="userId"
-       		password-parameter="password"
-       		default-target-url="/"
-       		authentication-failure-handler-ref="memberAuthenticationFailureHandler"
-       />
-
  	<sec:logout
 			logout-url="/user/logout"
 			invalidate-session="true"
@@ -37,7 +28,6 @@
 		
 		<!-- 권한이 없는 사용자의 접근을 막고 처리해주는 페이지로 이동시켜준다 -->
 	<sec:access-denied-handler ref="accessDecsionHandler"/>	
-	
 	
       <!-- 중복 로그인 방지 설정 error-if-maximum-exceeded="true" 이후에 로그인 시도하는 사용자의 접속을 
          막는다 -->

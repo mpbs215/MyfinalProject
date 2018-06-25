@@ -95,5 +95,10 @@ public class ParkDAO {
 	public List<ParkDTO> renewParkList(SearchFilterDTO dto) {
 		return session.selectList("searchMapper.selectPark", dto);
 	}*/
+	
+	public List<ParkDTO> selectParkList(){
+		
+		return session.selectList("sellerMapper.selectParkList");
+	}
 
 }
