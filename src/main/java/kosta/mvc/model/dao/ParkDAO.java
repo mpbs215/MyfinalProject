@@ -30,8 +30,12 @@ public class ParkDAO {
 	/**
 	 * 등록한 주차장 리스트
 	 */	
-	public List<ParkDTO> selectParkList(String userId){
+/*	public List<ParkDTO> selectParkList(String userId){
 		return session.selectList("sellerMapper.selectSellerParkList", userId);
+	}*/
+	public List<ParkDTO> selectParkList(String userId, int cPage, int numPerPage){
+		RowBounds rowBounds = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		return session.selectList("sellerMapper.selectSellerParkList", userId, rowBounds);
 	}
 		
 	/**
@@ -44,15 +48,17 @@ public class ParkDAO {
 	/**
 	 * 등록한 주차장에 대한 예약 리스트 - 과거
 	 */
-	public List<ParkReserveDTO> sellerReserveList(String userId){
-		return session.selectList("sellerMapper.selectReserveById", userId);
+	public List<ParkReserveDTO> sellerReserveList(String userId, int cPage, int numPerPage){
+		RowBounds rowBounds = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		return session.selectList("sellerMapper.selectReserveById", userId, rowBounds);
 	}
 	
 	/**
 	 * 등록한 주차장에 대한 예약 리스트 - 미래
 	 */	
-	public List<ParkReserveDTO> sellerReserveListLoad(String userId){
-		return session.selectList("sellerMapper.selectReserveLoadById", userId);
+	public List<ParkReserveDTO> sellerReserveListLoad(String userId, int cPage, int numPerPage){
+		RowBounds rowBounds = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		return session.selectList("sellerMapper.selectReserveLoadById", userId, rowBounds);
 	}
 
 	/**

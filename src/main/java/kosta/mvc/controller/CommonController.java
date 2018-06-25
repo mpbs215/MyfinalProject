@@ -112,8 +112,8 @@ public class CommonController {
 
 	@RequestMapping("/qna")
 	public ModelAndView qna(HttpServletRequest request) {
-		int numPerPage = 5;
-		int cPage;
+		int numPerPage = 5; // 한 페이지당 글 개수
+		int cPage; // 클릭된 페이지 번호
 		try {
 			cPage = Integer.parseInt(request.getParameter("cPage"));
 		} catch (NumberFormatException e) {
@@ -121,16 +121,17 @@ public class CommonController {
 		}
 
 		// 2.3 페이징바 만들기
-		int totalQNA = commonService.QNACnt();
+		int totalQNA = commonService.QNACnt(); // 총 게시물 개수
 
-		int totalPage = (int) Math.ceil((double) totalQNA / numPerPage);
+		int totalPage = (int) Math.ceil((double) totalQNA / numPerPage); // 게시물 개수 기반 페이지 수 구하기
 		String pageBar = "";
-		int pageBarSize = 5;
-		// 시작페이지 no
+		int pageBarSize = 5; // 한번에 보이는 페이지 개수
+		
+		// 시작페이지 no - 다음버튼 눌렀을 때 나오는 맨 앞 페이지 숫자
 		int pageNo;
 		pageNo = (int) (Math.ceil(((double) cPage / pageBarSize) - 1) * pageBarSize) + 1;
 
-		// 종료페이지 no
+		// 종료페이지 no - 다음버튼 앞 페이지 숫자
 		int pageEnd = pageNo + pageBarSize - 1;
 
 		pageBar += "<ul class='pagination justify-content-center pagination-sm'>";
@@ -148,7 +149,7 @@ public class CommonController {
 			pageBar += "</li>";
 		}
 
-		// [pageNo]
+		// [pageNo] - 페이지 다섯개에 대한 링크(페이지 이동)
 		while (pageNo <= pageEnd && pageNo <= totalPage) {
 			if (pageNo == cPage) {
 				pageBar += "<li class='page-item active'>";
