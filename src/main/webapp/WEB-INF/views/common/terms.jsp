@@ -5,7 +5,7 @@
 	prefix="sec"%>
 <sec:authentication var="mvo" property="principal" />
 
-
+<div class="container" style="background-color: white; padding: 20px;">
 <h1>이용약관</h1>
 
 <br>
@@ -41,3 +41,4 @@
 		</a>
 	</h4>
 </sec:authorize>
+</div>

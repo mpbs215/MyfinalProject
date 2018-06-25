@@ -1,10 +1,16 @@
 package kosta.mvc.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+<<<<<<< HEAD
 import javax.servlet.http.HttpSession;
+=======
+import javax.servlet.http.HttpServletResponse;
+>>>>>>> branch 'master' of https://github.com/mpbs215/finalProject
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +22,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
+=======
+import com.sun.mail.iap.Response;
+
+import kosta.mvc.model.dto.AuthorityDTO;
+>>>>>>> branch 'master' of https://github.com/mpbs215/finalProject
 import kosta.mvc.model.dto.ParkDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
 import kosta.mvc.model.dto.ReviewDTO;
@@ -30,28 +42,28 @@ public class UserController {
 
 	@Autowired
 	private UserServiceImpl service;
-	
+
 	@Autowired
 	private SearchServiceImpl searchService;
-	
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+
 	/**
 	 * 주차장 예약 초기페이지
 	 */
 	@RequestMapping("/userReserve")
 	public ModelAndView userReserve() {
 		ModelAndView mv = new ModelAndView();
-		List<String> sidoList=searchService.selectSido();
+		List<String> sidoList = searchService.selectSido();
 		mv.setViewName("user/userReserve");
-		mv.addObject("sidoList",sidoList);
+		mv.addObject("sidoList", sidoList);
 		return mv;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/renewParkList")
-	public List<ParkDTO> renewParkList(SearchFilterDTO dto){
+	public List<ParkDTO> renewParkList(SearchFilterDTO dto) {
 		return searchService.renewParkList(dto);
 	}
 
@@ -80,22 +92,22 @@ public class UserController {
 	public ModelAndView userReserveForm(int parkNo) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> dataMap = service.userReserveForm(parkNo);
-		mv.addObject("parkDTO",dataMap.get("parkDTO"));
-		mv.addObject("parkRegiDTO",dataMap.get("parkRegiDTO"));
-		mv.addObject("parkReserveList",dataMap.get("parkReserveList"));
-		mv.addObject("reviewList",dataMap.get("reviewList"));
+		mv.addObject("parkDTO", dataMap.get("parkDTO"));
+		mv.addObject("parkRegiDTO", dataMap.get("parkRegiDTO"));
+		mv.addObject("parkReserveList", dataMap.get("parkReserveList"));
+		mv.addObject("reviewList", dataMap.get("reviewList"));
 		mv.addObject("parkImageList", dataMap.get("parkImageList"));
-		mv.addObject("carTypeList",dataMap.get("carTypeList"));
+		mv.addObject("carTypeList", dataMap.get("carTypeList"));
 		mv.setViewName("user/userReserveForm");
 		return mv;
 	}
-	
+
 	@RequestMapping("/insertReview")
 	public String insertReview(ReviewDTO dto) {
 		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		dto.setUserId(userDTO.getUserId());
 		service.insertReview(dto);
-		return "redirect:/user/userReserveForm?parkNo="+dto.getParkNo();
+		return "redirect:/user/userReserveForm?parkNo=" + dto.getParkNo();
 	}
 
 	/*
@@ -104,13 +116,12 @@ public class UserController {
 	@RequestMapping("/userClickReviewStar")
 	@ResponseBody
 	public List<ReviewDTO> userClickReviewStar(int parkNo, int rating) {
-		List<ReviewDTO> list=service.userClickReviewStar(parkNo, rating);
-		for(ReviewDTO dto:list) {
+		List<ReviewDTO> list = service.userClickReviewStar(parkNo, rating);
+		for (ReviewDTO dto : list) {
 			System.out.println(dto.getUserId());
 		}
 		return list;
 	}
-	
 
 	@RequestMapping("/reservation")
 	public String reservation(ParkReserveDTO dto) {
@@ -120,17 +131,17 @@ public class UserController {
 		service.insertReserve(dto);
 		return "redirect:/user/userMypageReserveList";
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/reserveCheck",produces="text/plain;charset=UTF-8")
+	@RequestMapping(value = "/reserveCheck", produces = "text/plain;charset=UTF-8")
 	public String reserveCheck(ParkReserveDTO dto) {
 		System.out.println("컨트롤러 호출됨");
 		System.out.println(dto);
-		//UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		//dto.setUserId(userDTO.getUserId());
+		// UserDTO userDTO = (UserDTO)
+		// SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		// dto.setUserId(userDTO.getUserId());
 		return service.reserveCheck(dto);
 	}
-
 
 	/**
 	 * 마이페이지 회원정보 수정 폼으로 이동했을때 시행 request:userId
@@ -145,7 +156,7 @@ public class UserController {
 	 */
 	@RequestMapping("/userModifyUserForm")
 	public ModelAndView userModifyUserForm(HttpServletRequest request) {
-		UserDTO userDTO=(UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDTO dto = service.selectUserInfo(userDTO.getUserId());
 		return new ModelAndView("mypage/userModifyUserForm", "dto", dto);
 	}
@@ -157,9 +168,9 @@ public class UserController {
 	 * @return userModifyUserForm호출
 	 */
 	@RequestMapping("/userModifyUser")
-	public ModelAndView userModifyUser(UserDTO userDTO) {
+	public ModelAndView userModifyUser(HttpServletResponse response, UserDTO userDTO) {
 		// 회원정보 수정위해 Spring Security 세션 회원정보를 반환받는다
-		UserDTO uDTO = (UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDTO uDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		userDTO.setUserId(uDTO.getUserId());
 
 		// 변경할 비밀번호를 암호화한다
@@ -171,56 +182,57 @@ public class UserController {
 
 		return new ModelAndView("redirect:/user/userModifyUserForm");
 	}
-	
+
 	/**
 	 * 마이페이지 예약목록
 	 */
 	@RequestMapping("/userMypageReserveList")
-	public ModelAndView regiParkLoad(){
+	public ModelAndView regiParkLoad() {
 		ModelAndView mv = new ModelAndView();
-		UserDTO userDTO = (UserDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		List<ParkDTO> list = service.userMypageReserveList(userDTO.getUserId());
 		mv.setViewName("mypage/userMypageReserveList");
-		mv.addObject("list",list);
+		mv.addObject("list", list);
 		return mv;
 	}
-	
+
 	@RequestMapping("/deleteReserve")
 	public String deleteReserve(int reserveNo) {
 		service.deleteReserve(reserveNo);
 		return "redirect:/user/userMypageReserveList";
 	}
-	
+
 	@RequestMapping("/logout")
 	public String logout() {
 		return "redirect:/";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/selectSido")
-	public List<String> selectSido(){
+	public List<String> selectSido() {
 		return searchService.selectSido();
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/selectGugun")
-	public List<String> selectGugun(String sido){
+	public List<String> selectGugun(String sido) {
 		System.out.println(sido);
 		return searchService.selectGugun(sido);
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/selectDong")
-	public List<String> selectDong(String gugun){
+	public List<String> selectDong(String gugun) {
 		System.out.println(gugun);
 		return searchService.selectDong(gugun);
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/selectRi")
-	public List<String> selectRi(String dong){
+	public List<String> selectRi(String dong) {
 		return searchService.selectRi(dong);
 	}
+<<<<<<< HEAD
 	
 	@RequestMapping(value="/unSign", method = RequestMethod.GET ) 
 	public String unSign(HttpSession session,
@@ -228,7 +240,14 @@ public class UserController {
 											  @RequestParam("userId") String userId) {
 		
 		System.out.println("password: " +password);
+=======
+
+	@RequestMapping(value = "/unSign", method = RequestMethod.GET)
+	public String unSign(@RequestParam("password") String password, @RequestParam("userId") String userId) {
+
+>>>>>>> branch 'master' of https://github.com/mpbs215/finalProject
 		String Depassword = service.selectPassword(userId);
+<<<<<<< HEAD
 		
 		System.out.println("Controller에서 비밀번호 : " +Depassword);
 		
@@ -238,5 +257,13 @@ public class UserController {
 		session.invalidate();
 		
 		return "redirect:/user/logout";
+=======
+
+		if (passwordEncoder.matches(password, Depassword)) {
+			service.deleteUserInfo(password);
+		}
+
+		return "main";
+>>>>>>> branch 'master' of https://github.com/mpbs215/finalProject
 	}
 }

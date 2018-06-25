@@ -11,10 +11,10 @@
 <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
 <link rel="stylesheet"
 	href="https://formden.com/static/cdn/bootstrap-iso.css" />
-	
+
 <!-- SellerPark CSS -->
 <link rel="stylesheet"
- href="${pageContext.request.contextPath}/resources/css/sellerParkRegistForm.css" />
+	href="${pageContext.request.contextPath}/resources/css/sellerParkRegistForm.css" />
 
 <!--Font Awesome (added because you use icons in your prepend/append)-->
 <link rel="stylesheet"
@@ -33,7 +33,7 @@
 	src="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
 <style type="text/css">
 body {
-
+	
 }
 
 #img_box {
@@ -47,142 +47,151 @@ body {
 
 
 <script type="text/javascript">
-
 	// 유효성 체크
 	function checkValid() {
-	    var f = window.document.parkRegistForm;
-			
-		if ( f.parkName.value == "") {
-		    alert( "제목을 입력해 주세요." );
-		    this.focus();
-			return false;
-	    }
-		if ( f.parkAddr.value == "" ) {
-			alert( "주차장 주소를 입력해 주세요." );
+		var f = window.document.parkRegistForm;
+
+		if (f.parkName.value == "") {
+			alert("제목을 입력해 주세요.");
 			this.focus();
 			return false;
 		}
-		if ( f.parkSize.value == "" ) {
-			alert( "주차장 면적을 입력해 주세요." );
+		if (f.parkAddr.value == "") {
+			alert("주차장 주소를 입력해 주세요.");
 			this.focus();
 			return false;
 		}
-		if ( f.parkContent.value == "" ) {
-	        alert( "주차장 소개를 입력해 주세요" );
-	        this.focus();
-	        return false;
-	    }
- 		if ( f.files.value == "" ) {
-	        alert( "주차장 사진을 업로드해 주세요" );
-	        this.focus();
-	        return false;
-	    } 
-		if ( f.regiStart.value == "") {
-	        alert( "예약 가능 시작 날짜와 시간 범위를 선택해 주세요" );
-	        this.focus();
-	        return false;
-	    }
-		if ( f.regiEnd.value == "" ) {
-	        alert( "예약 가능 종료 날짜와 시간 범위를 선택해 주세요" );
-	        this.focus();
-	        return false;
-	    }
- 		if ( f.regiEnd.value <= f.regiStart.value) {
-	        alert( "올바른 예약 범위로 선택해주세요" );
-	        f.regiEnd.value="";
-	        this.focus();
-	        return false;
-	    } 
-		if ( f.price.value == "" ) {
-	        alert( "시간당 가격을 입력해 주세요" );
-	        this.focus();
-	        return false;
-	    }
-		
-	    return true;
+		if (f.parkSize.value == "") {
+			alert("주차장 면적을 입력해 주세요.");
+			this.focus();
+			return false;
+		}
+		if (f.parkContent.value == "") {
+			alert("주차장 소개를 입력해 주세요");
+			this.focus();
+			return false;
+		}
+		if (f.files.value == "") {
+			alert("주차장 사진을 업로드해 주세요");
+			this.focus();
+			return false;
+		}
+		if (f.regiStart.value == "") {
+			alert("예약 가능 시작 날짜와 시간 범위를 선택해 주세요");
+			this.focus();
+			return false;
+		}
+		if (f.regiEnd.value == "") {
+			alert("예약 가능 종료 날짜와 시간 범위를 선택해 주세요");
+			this.focus();
+			return false;
+		}
+		if (f.regiEnd.value <= f.regiStart.value) {
+			alert("올바른 예약 범위로 선택해주세요");
+			f.regiEnd.value = "";
+			this.focus();
+			return false;
+		}
+		if (f.price.value == "") {
+			alert("시간당 가격을 입력해 주세요");
+			this.focus();
+			return false;
+		}
+
+		return true;
 	}
-	
-	
+
 	// 주소 검색 팝업창 띄우기
-	function goPopup(){
+	function goPopup() {
 		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrCoordUrl.do)를 호출하게 됩니다.
-    	var pop = window.open("${pageContext.request.contextPath}/addrPopup?${_csrf.parameterName}=${_csrf.token}","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+		var pop = window
+				.open(
+						"${pageContext.request.contextPath}/addrPopup?${_csrf.parameterName}=${_csrf.token}",
+						"pop",
+						"width=570,height=420, scrollbars=yes, resizable=yes");
 	}
-	
+
 	// 주소 입력
-	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn
-							, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno
-							, emdNo, entX, entY, parameterName, token){
+	function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
+			roadAddrPart2, engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,
+			detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn,
+			buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo, entX, entY,
+			parameterName, token) {
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 		document.parkRegistForm.parkAddr.value = roadFullAddr;
 	}
-	
-	
+
 	// 이미지 업로드 미리보기
-	function fileInfo(f){
+	function fileInfo(f) {
 		var file = f.files; // files 를 사용하면 파일의 정보를 알 수 있음
 
 		// 파일의 갯수만큼 반복
-		for(var i=0; i<file.length; i++){
+		for (var i = 0; i < file.length; i++) {
 
 			var reader = new FileReader(); // FileReader 객체 사용
-			reader.onload = function(rst){
-				$('#img_box').append('<img src="' + rst.target.result + '" style="max-width: 300px; max-height: 300px; border: none;"/>'); // append 메소드를 사용해서 이미지 추가
+			reader.onload = function(rst) {
+				$('#img_box')
+						.append(
+								'<img src="' + rst.target.result + '" style="max-width: 300px; max-height: 300px; border: none;"/>'); // append 메소드를 사용해서 이미지 추가
 				// 이미지는 base64 문자열로 추가
 				// 이 방법을 응용하면 선택한 이미지를 미리보기 할 수 있음
 			}
 			reader.readAsDataURL(file[i]); // 파일을 읽는다
 		}
 	}
-	
-	
+
 	// ,찍기
 	function inputNumberFormat(obj) {
-    	obj.value = comma(uncomma(obj.value));
+		obj.value = comma(uncomma(obj.value));
 	}
-	
 
-jQuery(document).ready(
-	function() {
-		
-		// 유효성검사
-		if($("#maxCarList").val()==""){
-			alert("주차 가능 대수를 입력해주세요");
-	        this.focus();
-	        return false;
-	    }
-		if($("#maxCarList").val() < 1){
-	        alert( "한 대 이상을 입력해야합니다" );
-	        this.val(1);
-	        this.focus();
-	        return false;
-	    }
-		
-		// 날짜 선택	
-		$('.datetimepicker').appendDtpicker(
-			{locale : 'ko',
-				autodateOnStart : false,
-				todayButton: true,
-				futureOnly: true
-				//minDate: '${parkRegiDTO.regiStart}',
-				//maxDate: '${parkRegiDTO.regiEnd}'
-			}
-		);
-		$('.datetimepicker2').appendDtpicker(
-				{locale : 'ko',
-				 autodateOnStart : false,
-				 todayButton: true,
-				 futureOnly: true,
-				}
-		);
-		
-		// 추가 버튼 클릭시
-		$("#addType").click(function(){			
-			$("#addedPark").append('<tr><td><input class="form-control" type="text" readonly name="carTypeList" id="carTypeList" value="' + $("#carTypeSelect option:selected").text() + '"/></td><td><div class="input-group"><input class="form-control" type="text" name="maxCarList" id="maxCarList"/><span class="input-group-addon">대</span></div></td></tr>');			
-		});
-					
-	});
-	
+	jQuery(document)
+			.ready(
+					function() {
+
+						// 유효성검사
+						if ($("#maxCarList").val() == "") {
+							alert("주차 가능 대수를 입력해주세요");
+							this.focus();
+							return false;
+						}
+						if ($("#maxCarList").val() < 1) {
+							alert("한 대 이상을 입력해야합니다");
+							this.val(1);
+							this.focus();
+							return false;
+						}
+
+						// 날짜 선택	
+						$('.datetimepicker').appendDtpicker({
+							locale : 'ko',
+							autodateOnStart : false,
+							todayButton : true,
+							futureOnly : true
+						//minDate: '${parkRegiDTO.regiStart}',
+						//maxDate: '${parkRegiDTO.regiEnd}'
+						});
+						$('.datetimepicker2').appendDtpicker({
+							locale : 'ko',
+							autodateOnStart : false,
+							todayButton : true,
+							futureOnly : true,
+						});
+
+						// 추가 버튼 클릭시
+						$("#addType")
+								.click(
+										function() {
+											$("#addedPark")
+													.append(
+															'<tr><td><input class="form-control" type="text" readonly name="carTypeList" id="carTypeList" value="'
+																	+ $(
+																			"#carTypeSelect option:selected")
+																			.text()
+																	+ '"/></td><td><div class="input-group"><input class="form-control" type="text" name="maxCarList" id="maxCarList"/><span class="input-group-addon">대</span></div></td></tr>');
+										});
+
+					});
 </script>
 
 </head>
@@ -197,7 +206,8 @@ jQuery(document).ready(
 			<form name="parkRegistForm" method="post"
 				action="${pageContext.request.contextPath}/seller/sellerParkRegist"
 				onSubmit='return checkValid()' enctype="multipart/form-data">
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}">
 				<div class="col-sm-8">
 					<div class="form-group ">
 						<label class="control-label requiredField" for="parkName">
@@ -224,7 +234,8 @@ jQuery(document).ready(
 						<div class="col-sm-4">
 							<div class="form-group ">
 								<label class="control-label requiredField" for="parkSize">
-									<p>주차장 면적 </p><span class="asteriskField"> * </span>
+									<p>주차장 면적</p>
+									<span class="asteriskField"> * </span>
 								</label>
 								<div class="input-group">
 									<div class="input-group-addon">
@@ -260,7 +271,8 @@ jQuery(document).ready(
 														<option value="m">중형</option>
 														<option value="l">대형</option>
 												</select></td>
-												<td><input class="btn" type="button" id="addType" value="추가" /></td>
+												<td><input class="btn" type="button" id="addType"
+													value="추가" /></td>
 											</tr>
 										</table>
 									</div>
@@ -270,7 +282,7 @@ jQuery(document).ready(
 
 						<div class="form-group ">
 							<label class="control-label requiredField" for="parkContent">
-							<p>주차장 소개</p> <span class="asteriskField"> * </span>
+								<p>주차장 소개</p> <span class="asteriskField"> * </span>
 							</label>
 							<textarea class="form-control" cols="40" id="parkContent"
 								name="parkContent"
@@ -281,7 +293,8 @@ jQuery(document).ready(
 						<!-- 이미지 업로드 -->
 						<div class="form-group ">
 							<label class="control-label requiredField" for="files">
-							<p>	주차장 사진 (여러장 선택 가능)</p><span class="asteriskField"> * </span>
+								<p>주차장 사진 (여러장 선택 가능)</p>
+								<span class="asteriskField"> * </span>
 							</label>
 							<div class="input-group">
 								<div class="input-group-addon">
@@ -304,19 +317,19 @@ jQuery(document).ready(
 						<br />
 						<div class="form-group ">
 
-							<label class="control-label requiredField" for=""> <p>예약 가능
-								날짜</p><span class="asteriskField"> * </span>
+							<label class="control-label requiredField" for="">
+								<p>예약 가능 날짜</p>
+								<span class="asteriskField"></span>
 							</label> <br />
 							<div class="row justify-content-center">
-								<div class="col-sm-5"  >
+								<div class="col-sm-5">
 									<input type="text" class='datetimepicker' name="regiStart"
-										id="regiStart"">
+										id="regiStart" style="width: 110%;">
 								</div>
-								
-								<div class="col-sm-1" >~</div>
+								<div class="col-sm-1" style="color: white;">~</div>
 								<div class="col-sm-5">
 									<input type="text" class='datetimepicker2' name="regiEnd"
-										id="regiEnd">
+										id="regiEnd" style="width: 110%;">
 								</div>
 							</div>
 							<br />
@@ -330,7 +343,8 @@ jQuery(document).ready(
 										<div class="input-group-addon">
 											<i class="fa fa-money"> </i>
 										</div>
-										<input class="form-control" id="price" name="price" type="text" onkeyup="inputNumberFormat(this)"/>
+										<input class="form-control" id="price" name="price"
+											type="text" onkeyup="inputNumberFormat(this)" />
 									</div>
 								</div>
 							</div>
@@ -339,10 +353,11 @@ jQuery(document).ready(
 							<div class="row justify-content-center">
 								<div class="col-sm-11">
 									<div style="background-color: #F2F2F2;">
-										<div id="addedPark" style="margin: 20px; padding: 20px; border: 2px; border-color: black;">
+										<div id="addedPark"
+											style="margin: 20px; padding: 20px; border: 2px; border-color: black;">
 											<div align="center">
 												<div>주차 가능 차종</div>
-												<div>주차 가능 대수</div> 
+												<div>주차 가능 대수</div>
 											</div>
 										</div>
 									</div>
@@ -353,7 +368,9 @@ jQuery(document).ready(
 						<br />
 						<div class="form-group">
 							<div align="center">
-								<button class="btn" name="submit" type="submit" style="background:rgba(255,255,255,0.4); color: #fff;">주차장 등록하기</button>
+								<button class="btn" name="submit" type="submit"
+									style="background: rgba(255, 255, 255, 0.4); color: #fff;">주차장
+									등록하기</button>
 							</div>
 						</div>
 					</div>

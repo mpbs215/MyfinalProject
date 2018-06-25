@@ -162,4 +162,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 		group by park_name
 	</select>
+	
+	<select id="selectParkList" resultType="parkDTO">
+		select * from park_tb
+	</select>
 </mapper>

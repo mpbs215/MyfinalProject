@@ -87,5 +87,18 @@
 		<put-attribute name="content"
 			value="/WEB-INF/views/mypage/{1}.jsp" />
 	</definition>
+	
+	<definition name="manageUserLayout"
+		template="/WEB-INF/views/tiles/mainLayout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/tiles/header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/tiles/footer.jsp" />
+	</definition>
+
+	<definition extends="manageUserLayout" name="admin/*">
+		<put-attribute name="content"
+			value="/WEB-INF/views/admin/{1}.jsp" />
+	</definition>
 
 </tiles-definitions>

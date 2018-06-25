@@ -27,12 +27,21 @@
 			}
 		})
 	})
+	
+function passwordCheck() {
+  var idReg = /^[a-z0-9]+[a-z0-9]{3,29}$/g;
+  if( !idReg.test( $("input[name=password]").val() ) ) {
+      alert("아이디는 4~30자 영문자 또는 숫자이어야 합니다.");
+      return;
+  }
+  else return true;
+}
 
 </script>
 <div class="mypage">
 	<div class="mypage-inner">
 	<h2>회원정보수정</h2>
-	<form action="${pageContext.request.contextPath}/user/userModifyUser">
+	<form onsubmit="return passwordCheck()" action="${pageContext.request.contextPath}/user/userModifyUser">
 		<div class="mypage-list">
 			<label for="userId">아이디</label> 
 			<input type="text" class="form-control" name="userId" readonly="readonly"  id="userId" value="${dto.userId}">
