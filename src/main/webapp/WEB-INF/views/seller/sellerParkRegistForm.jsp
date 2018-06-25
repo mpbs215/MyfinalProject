@@ -88,14 +88,20 @@ body {
 	        this.focus();
 	        return false;
 	    } 
-		if ( f.regiStart.value == "" ||  f.regiEnd.value == "" ) {
-	        alert( "예약 가능 날짜와 시간 범위를 선택해 주세요" );
+		if ( f.regiStart.value == "") {
+	        alert( "예약 가능 시작 날짜와 시간 범위를 선택해 주세요" );
 	        this.focus();
 	        return false;
 	    }
- 		if ( f.regiEnd.value == "" ) {
-	        alert( "예약 가능 날짜 선택해 주세요" );
-	        f.this.focus();
+		if ( f.regiEnd.value == "" ) {
+	        alert( "예약 가능 종료 날짜와 시간 범위를 선택해 주세요" );
+	        this.focus();
+	        return false;
+	    }
+ 		if ( f.regiEnd.value <= f.regiStart.value) {
+	        alert( "올바른 예약 범위로 선택해주세요" );
+	        f.regiEnd.value="";
+	        this.focus();
 	        return false;
 	    } 
 		if ( f.price.value == "" ) {
@@ -111,13 +117,13 @@ body {
 	// 주소 검색 팝업창 띄우기
 	function goPopup(){
 		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrCoordUrl.do)를 호출하게 됩니다.
-    	var pop = window.open("${pageContext.request.contextPath}/seller/addrPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+    	var pop = window.open("${pageContext.request.contextPath}/addrPopup?${_csrf.parameterName}=${_csrf.token}","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	}
 	
 	// 주소 입력
 	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn
 							, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno
-							, emdNo, entX, entY){
+							, emdNo, entX, entY, parameterName, token){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 		document.parkRegistForm.parkAddr.value = roadFullAddr;
 	}
@@ -138,6 +144,12 @@ body {
 			}
 			reader.readAsDataURL(file[i]); // 파일을 읽는다
 		}
+	}
+	
+	
+	// ,찍기
+	function inputNumberFormat(obj) {
+    	obj.value = comma(uncomma(obj.value));
 	}
 	
 
@@ -176,10 +188,8 @@ jQuery(document).ready(
 		);
 		
 		// 추가 버튼 클릭시
-		$("#addType").click(function(){
-			//$("#addedPark").append('<tr><td><input class="form-control" type="text" readonly="readonly" name="carType" value="' + $("#carTypeSelect option:selected").text() + '"/></td><td><input class="form-control" type="text" readonly="readonly" value="1" name="maxCar" id="maxCar"/></td><td><div><img src="http://placehold.it/10x10" alt="" width="10" height="10" class="bt_up" /></div><div><img src="http://placehold.it/10x10" alt="" width="10" height="10" class="bt_down" /></div></td></tr>');
-			$("#addedPark").append('<tr><td><input class="form-control" type="text" readonly name="carTypeList" id="carTypeList" value="' + $("#carTypeSelect option:selected").text() + '"/></td><td><div class="input-group"><input class="form-control" type="text" name="maxCarList" id="maxCarList"/><span class="input-group-addon"></span></div></td></tr>');
-
+		$("#addType").click(function(){			
+			$("#addedPark").append('<tr><td><input class="form-control" type="text" readonly name="carTypeList" id="carTypeList" value="' + $("#carTypeSelect option:selected").text() + '"/></td><td><div class="input-group"><input class="form-control" type="text" name="maxCarList" id="maxCarList"/><span class="input-group-addon">대</span></div></td></tr>');			
 		});
 					
 	});
@@ -196,8 +206,9 @@ jQuery(document).ready(
 		<div class="container-fluid">
 
 			<form name="parkRegistForm" method="post"
-				action="${pageContext.request.contextPath}/seller/sellerParkRegist?${_csrf.parameterName}=${_csrf.token}"
+				action="${pageContext.request.contextPath}/seller/sellerParkRegist"
 				onSubmit='return checkValid()' enctype="multipart/form-data">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="col-sm-8">
 					<div class="form-group ">
 						<label class="control-label requiredField" for="parkName">
@@ -329,8 +340,7 @@ jQuery(document).ready(
 										<div class="input-group-addon">
 											<i class="fa fa-money"> </i>
 										</div>
-										<input class="form-control" id="price" name="price"
-											type="text" />
+										<input class="form-control" id="price" name="price" type="text" onkeyup="inputNumberFormat(this)"/>
 									</div>
 								</div>
 							</div>
@@ -339,12 +349,12 @@ jQuery(document).ready(
 							<div class="row justify-content-center">
 								<div class="col-sm-11">
 									<div style="background-color: #F2F2F2;">
-										<table id="addedPark" style="margin: 20px;">
-											<tr>
-												<td>주차 가능 차종</td>
-												<td>주차 가능 대수</td>
-											</tr>
-										</table>
+										<div id="addedPark" style="margin: 20px; padding: 20px; border: 2px; border-color: black;">
+											<div align="center">
+												<div>주차 가능 차종</div>
+												<div>주차 가능 대수</div> 
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

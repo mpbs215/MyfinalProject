@@ -10,13 +10,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kosta.mvc.model.dto.AuthorityDTO;
 import kosta.mvc.model.dto.ParkDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
 import kosta.mvc.model.dto.ReviewDTO;
 import kosta.mvc.model.dto.SearchFilterDTO;
+import kosta.mvc.model.dto.TempKeyDTO;
 import kosta.mvc.model.dto.UserDTO;
 import kosta.mvc.model.user.service.SearchServiceImpl;
 import kosta.mvc.model.user.service.UserServiceImpl;
@@ -33,6 +37,7 @@ public class UserController {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
 	/**
 	 * 주차장 예약 초기페이지
 	 */
@@ -40,7 +45,7 @@ public class UserController {
 	public ModelAndView userReserve() {
 		ModelAndView mv = new ModelAndView();
 		List<String> sidoList=searchService.selectSido();
-		mv.setViewName("/user/userReserve");
+		mv.setViewName("user/userReserve");
 		mv.addObject("sidoList",sidoList);
 		return mv;
 	}
@@ -217,5 +222,41 @@ public class UserController {
 	@RequestMapping("/selectRi")
 	public List<String> selectRi(String dong){
 		return searchService.selectRi(dong);
+	}
+	
+	
+	@RequestMapping(value="/unSign", method = RequestMethod.GET ) 
+	public String unSign(@RequestParam("password") String password, 
+											  @RequestParam("hp") String hp) {
+		
+		System.out.println("password : " +password);
+		System.out.println("hp 번호 : "+hp);
+		
+		/*if (service.deleteAuth(password, hp)== 0 && service.deleteSMS(password, hp) == 0) {
+			
+			System.out.println("첫 번째 if문? ");
+			service.deleteUserInfo(password, hp);
+		} else if(service.deleteAuth(password, hp) == 0 && service.deleteSMS(password, hp) != 0){
+			
+			System.out.println("2번째 if문?");
+				service.deleteSMS(password, hp);
+				service.deleteUserInfo(password, hp);
+		} else if (service.deleteSMS(password, hp) == 0 && service.deleteAuth(password, hp) != 0) {
+			
+			System.out.println("3번째 if문?");
+			service.deleteAuth(password, hp);
+			service.deleteUserInfo(password, hp);
+		} else if(service.deleteUserInfo(password, hp) != 0 && service.deleteAuth(password, hp) != 0 && service.deleteSMS(password, hp) !=0){
+			
+				System.out.println("마지막 if문?");
+				service.deleteAuth(password, hp);
+				service.deleteSMS(password, hp);
+				service.deleteUserInfo(password, hp);
+		}*/
+		
+		service.deleteAuth(password, hp);
+		service.deleteUserInfo(password, hp);
+		
+		return "main";
 	}
 }

@@ -16,13 +16,19 @@
 
 <script type="text/javascript">
 
+// ,찍기
+function comma(str) {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+
 $(function(){	
 	// 삭제 버튼(하나 삭제)
 	$('button[name="deleteOne"]').click(function(){		
 		//console.log($(this).val());
 		 	
 		$.ajax({
-			url:"${pageContext.request.contextPath}/seller/sellerParkDelete",
+			url:"${pageContext.request.contextPath}/seller/sellerParkDelete?${_csrf.parameterName}=${_csrf.token}",
 			dataType:"text",
 			data:"pNo="+$(this).val(),
 			success:function(result){
@@ -49,16 +55,39 @@ $(function(){
 	// 삭제 (체크된 주차장 모두 삭제)
 	$("#delete").click(function(){
 		
-		var parkIdArr = [];	
+		var parkNos = [];	
 		// 체크된 주차장들의 parkNo 추출해 배열에 넣고 보내기
 		$("input[name=selectPark]:checked").each(function(){
 			alert($(this).val());
 			var parkNo = $(this).val();
-			parkIdArr.push(parkNo);
+			parkNos.push(parkNo);
 		})
+		
+		$.ajax({
+			url:"${pageContext.request.contextPath}/seller/sellerParksDelete?${_csrf.parameterName}=${_csrf.token}",
+			type:"post",
+			data:{"pNos":parkNos},
+			success:function(result){
+				if(result > 0){					
+					alert("삭제되었습니다.");
+					window.location.reload();
+				}else{
+					alert("삭제 실패");
+				}
+			},
+			error:function(error){
+				console.log("에러발생" + error);
+			}			
+		})   
+		
+		
+		
 	})
 	
 	// 주차장 등록 페이지 연결
+	$("#addPark").click(function(){
+		location.href="${pageContext.request.contextPath}/seller/sellerParkRegistForm";
+	})
 	
 	// 수정 페이지 연결
 
@@ -67,10 +96,7 @@ $(function(){
 </head>
 <body>
 
-주차장 리스트 - 수정 필요.
-
-
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: white;">
 		<div class="row justify-content-center">
 			<div class="col-sm-11">
 
@@ -88,7 +114,7 @@ $(function(){
 						</div>
 						<div class="col-xs-7"></div>
 						<div class="col-xs-2">
-							<button type="button" class="btn btn-success btn-block">주차장 등록</button>
+							<button type="button" class="btn btn-success btn-block" id="addPark">주차장 등록</button>
 						</div>
 					</div>
 				</div>
@@ -115,22 +141,22 @@ $(function(){
 									<input type="checkbox" name="selectPark" id="selectPark" value="${parkDto.parkNo}" />
 								</div>
 									<div class="col-xs-2">
-										<img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/park/${parkDto.parkImg.imgPath}">
+										<img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/park/${parkDto.parkImg.imgPath}" style="width: 100%;height: 100%;">
 									</div>
 									<div class="col-xs-8">								
-										<h4 class="product-name" id="park">
-											<strong>${parkDto.parkName}</strong>
-										</h4>
+										<h4><strong>
+										<a href="${pageContext.request.contextPath}/user/userReserveForm?parkNo=${parkDto.parkNo}">${parkDto.parkName}
+										</a></strong></h4>
 										<h4>
 											<small>${parkDto.parkAddr}</small>
 										</h4>
 										
 										<!-- 확인 필요 -->
 										<h4>
-											<small>${parkDto.parkRegi.regiStart} ~ ${parkDto.parkRegi.regiEnd}</small><small style="color: green; font: bold;">시간당 ${parkDto.price}원</small>
+											<small>${parkDto.parkRegi.regiStart} ~ ${parkDto.parkRegi.regiEnd}</small>&nbsp;&nbsp;&nbsp;&nbsp;<small style="color: green; font: bold;">시간당 ${parkDto.price}원</small>
 										</h4>
 																			
-										<c:forEach items="${parkDto.carTypeList}" var="carTypes">
+										<c:forEach items="${parkDto.carTypeLists}" var="carTypes">
 											<h4>
 											<small>${carTypes.carType} - ${carTypes.maxCar}대</small>
 											</h4>
@@ -138,15 +164,15 @@ $(function(){
 		
 									</div>
 									<div class="col-xs-1">
-										<div class="col-xs-6">
+										<!-- <div class="col-xs-6">
 											<input type="button" value="수정" id="update">
 										</div>
 										<br />
-										<div class="col-xs-6">
+										<div class="col-xs-6"> -->
 											<button type="button" class="btn btn-link btn" name="deleteOne" value="${parkDto.parkNo}">
 												<span class="glyphicon glyphicon-trash"> </span>
 											</button>
-										</div>
+										<!-- </div> -->
 									</div>
 								</div>
 								<hr/>

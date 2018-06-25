@@ -1,8 +1,5 @@
 package kosta.mvc.model.dto;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class AuthorityDTO {
 
 	private String userId;

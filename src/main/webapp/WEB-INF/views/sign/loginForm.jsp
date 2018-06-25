@@ -16,7 +16,7 @@
 	.member_login{color:yellow;}
 	a{color:white;}
 	.login-bg { background:rgba(0,0,0,0.5); text-align:center; width:800px; display:inline-block; margin-left:280px; margin-bottom:180px; margin-top:80px;}
-	/* .login-form {text-align:center; display:inline-block;  } */
+	 .login-form {text-align:center; display:inline-block; margin-right:100px; } 
 	.error-message {text-align:center; font-weight:bold; font-size:50px;}
 	.login-btn {text-align:center; display:inline-block; margin-left:90px;}
 	h2 {text-size:300px;}

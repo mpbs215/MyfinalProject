@@ -44,8 +44,12 @@ public class AuthoritiesDAO{
 	/**
 	 * 	사용자의 아이디에 따른 정보 삭제 (Auth 테이블 삭제)
 	 * */
-	public int deleteAuth(String userId) {
+	public int deleteAuth(String password, String hp) {
+		int result =sqlSession.delete("authoritiesMapper.deleteAuth",hp);
 		
-		return sqlSession.delete("authoritiesMapper.deleteAuth",userId);
+		System.out.println("hp(authDAO) :" +hp);
+		System.out.println("authoDao에서 result값 : " +result);
+		
+		return result;
 	}
 }

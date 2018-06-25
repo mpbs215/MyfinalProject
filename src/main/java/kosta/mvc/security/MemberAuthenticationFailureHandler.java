@@ -23,6 +23,6 @@ public class MemberAuthenticationFailureHandler implements AuthenticationFailure
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException auth)
 			throws IOException, ServletException {
 		request.setAttribute("errorMessage", auth.getMessage());
-		request.getRequestDispatcher("/WEB-INF/views/sign/sellerAuth.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/sign/loginForm.jsp").forward(request, response);
 	}
 }

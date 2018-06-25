@@ -122,17 +122,17 @@ public class UserDAO {
 	/**
 	 * 	È¸¿ø Å»Åð ÇÏ±â (SMS Å×ÀÌºí)
 	 * */
-	public int deleteSMS(String userId) {
+	public int deleteSMS(String password, String hp) {
 		
-		return session.delete("userMapper.deleteSMS", userId);
+		return session.delete("userMapper.deleteSMS", hp);
 	}
 	
 	/**
 	 * 	È¸¿ø Å»Åð ÇÏ±â (USER Å×ÀÌºí)
 	 * */
-	public int deleteUserInfo(String userId) {
+	public int deleteUserInfo(String password, String hp) {
 		
-		return session.delete("userMapper.deleteUser",userId);
+		return session.delete("userMapper.deleteUser",password);
 	}
 	
 }
