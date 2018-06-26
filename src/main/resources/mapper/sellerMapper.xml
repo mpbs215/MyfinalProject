@@ -79,6 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select img_no, park_no, img_path, rank()over(partition by park_no order by img_path desc) rk
 			from park_image_tb) where rk=1) natural join car_type_tb
 		where user_id = #{userId}
+		order by park_no desc
 	</select>
 	
 	

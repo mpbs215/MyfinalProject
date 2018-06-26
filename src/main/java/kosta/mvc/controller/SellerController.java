@@ -44,15 +44,23 @@ public class SellerController {
 	 * 등록한 주차장 레코드리스트
 	 */
 	@RequestMapping("/sellerParkList")
-	//public String sellerParkList(Model model) {
-	public ModelAndView sellerParkList(HttpServletRequest request) {	
+	public String sellerParkList(Model model) {
+		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<ParkDTO> parkList = service.sellerParkList(userDTO.getUserId());
+		
+		model.addAttribute("sellerParkList", parkList);
+			
+		return "seller/sellerParkList";
+		
+	/* 페이지네이션 주석 처리
+	 * public ModelAndView sellerParkList(HttpServletRequest request) {	
 		
 		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String userId = userDTO.getUserId();
 		
-		/*
+		
 		 * 페이지네이션
-		 */
+		 
 		int numPerPage = 10; // 한 페이지당 글 개수
 		int cPage; // 클릭된 페이지 번호
 		try {
@@ -125,7 +133,7 @@ public class SellerController {
 		mv.addObject("sellerParkList", list);
 		mv.addObject("pageBar", pageBar);
 
-		return mv;
+		return mv;*/
 	}
 
 	/**
@@ -183,168 +191,7 @@ public class SellerController {
 	 * @return 예약 리스트
 	 */
 	@RequestMapping("/sellerReserveList")
-	public ModelAndView sellerReserveList(HttpServletRequest request) {
-		
-		ModelAndView mv = new ModelAndView();
-		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String userId = userDTO.getUserId();
-		
-		/*
-		 * 다가오는 예약 리스트 페이지네이션
-		 */
-		int numPerPage = 10; // 한 페이지당 글 개수
-		int cPage; // 클릭된 페이지 번호
-		try {
-			cPage = Integer.parseInt(request.getParameter("cPage"));
-		} catch (NumberFormatException e) {
-			cPage = 1;
-		}
-
-		// 2.3 페이징바 만들기
-		int totalQNA = service.sellerReserveListLoadCnt(userId, cPage, numPerPage); // 총 게시물 개수
-
-		int totalPage = (int) Math.ceil((double) totalQNA / numPerPage); // 게시물 개수 기반 페이지 수 구하기
-		String pageBar = "";
-		int pageBarSize = 5; // 한번에 보이는 페이지 개수
-		
-		// 시작페이지 no - 다음버튼 눌렀을 때 나오는 맨 앞 페이지 숫자
-		int pageNo;
-		pageNo = (int) (Math.ceil(((double) cPage / pageBarSize) - 1) * pageBarSize) + 1;
-
-		// 종료페이지 no - 다음버튼 앞 페이지 숫자
-		int pageEnd = pageNo + pageBarSize - 1;
-
-		pageBar += "<ul class='pagination justify-content-center pagination-sm'>";
-
-		// [이전]
-		if (pageNo == 1) {
-			// 이전버튼 필요없음
-			pageBar += "<li class='page-item disabled'>";
-			pageBar += "<a class='page-link' href='#' tabindex='-1'>이전</a>";
-			pageBar += "</li>";
-		} else {
-			pageBar += "<li class='page-item'>";
-			pageBar += "<a class='page-link' href=" + request.getContextPath() + "/seller/sellerReserveList?cPage=" + (pageNo - 1)
-					+ "><span>[이전]</span></a>";
-			pageBar += "</li>";
-		}
-
-		// [pageNo] - 페이지 다섯개에 대한 링크(페이지 이동)
-		while (pageNo <= pageEnd && pageNo <= totalPage) {
-			if (pageNo == cPage) {
-				pageBar += "<li class='page-item active'>";
-				pageBar += "<a class='page-link'>" + pageNo + "</a>";
-				pageBar += "</li>";
-			} else {
-				pageBar += "<li class='page-item'>";
-				pageBar += "<a class='page-link' href =" + request.getContextPath() + "/seller/sellerReserveList?cPage=" + pageNo + "> <span>" + pageNo + "</span></a>";
-				pageBar += "</li>";
-			}
-
-			pageNo++;
-		}
-		// [다음]
-
-		if (pageNo > totalPage) {
-			pageBar += "<li class='page-item disabled'>";
-	         pageBar += "<a class='page-link' href='#'>다음</a>";
-	         pageBar += "</li>";
-		} else {
-			pageBar += "<li class='page-item'>";
-			pageBar += "<a class='page-link' href=" + request.getContextPath() + "/seller/sellerReserveList?cPage=" + (pageNo)
-					+ "><span>[다음]</span></a>";
-			pageBar += "</li>";
-		}
-
-		pageBar += "</ul>";
-				
-		List<ParkReserveDTO> listLoad = service.sellerReserveListLoad(userId, cPage, numPerPage);			
-		mv.addObject("reserveListLoad", listLoad);
-		mv.addObject("pageBar", pageBar);
-
-		
-		
-		/*
-		 * 과거 예약 리스트 페이지네이션
-		 */
-		int numPerPage2 = 10; // 한 페이지당 글 개수
-		int cPage2; // 클릭된 페이지 번호
-		try {
-			cPage2 = Integer.parseInt(request.getParameter("cPage2"));
-		} catch (NumberFormatException e) {
-			cPage2 = 1;
-		}
-
-		// 2.3 페이징바 만들기
-		int totalQNA2 = service.sellerReserveListLoadCnt(userId, cPage2, numPerPage2); // 총 게시물 개수
-
-		int totalPage2 = (int) Math.ceil((double) totalQNA2 / numPerPage2); // 게시물 개수 기반 페이지 수 구하기
-		String pageBar2 = "";
-		int pageBarSize2 = 5; // 한번에 보이는 페이지 개수
-		
-		// 시작페이지 no - 다음버튼 눌렀을 때 나오는 맨 앞 페이지 숫자
-		int pageNo2;
-		pageNo2 = (int) (Math.ceil(((double) cPage2 / pageBarSize2) - 1) * pageBarSize2) + 1;
-
-		// 종료페이지 no - 다음버튼 앞 페이지 숫자
-		int pageEnd2 = pageNo2 + pageBarSize2 - 1;
-
-		pageBar2 += "<ul class='pagination justify-content-center pagination-sm'>";
-
-		// [이전]
-		if (pageNo2 == 1) {
-			// 이전버튼 필요없음
-			pageBar2 += "<li class='page-item disabled'>";
-			pageBar2 += "<a class='page-link' href='#' tabindex='-1'>이전</a>";
-			pageBar2 += "</li>";
-		} else {
-			pageBar2 += "<li class='page-item'>";
-			pageBar2 += "<a class='page-link' href=" + request.getContextPath() + "/seller/sellerReserveList?cPage2=" + (pageNo2 - 1)
-					+ "><span>[이전]</span></a>";
-			pageBar2 += "</li>";
-		}
-
-		// [pageNo] - 페이지 다섯개에 대한 링크(페이지 이동)
-		while (pageNo2 <= pageEnd2 && pageNo2 <= totalPage2) {
-			if (pageNo2 == cPage2) {
-				pageBar2 += "<li class='page-item active'>";
-				pageBar2 += "<a class='page-link'>" + pageNo2 + "</a>";
-				pageBar2 += "</li>";
-			} else {
-				pageBar2 += "<li class='page-item'>";
-				pageBar2 += "<a class='page-link' href =" + request.getContextPath() + "/seller/sellerReserveList?cPage2=" + pageNo2 + "> <span>" + pageNo2 + "</span></a>";
-				pageBar2 += "</li>";
-			}
-
-			pageNo2++;
-		}
-		// [다음]
-
-		if (pageNo2 > totalPage2) {
-			pageBar2 += "<li class='page-item disabled'>";
-	         pageBar2 += "<a class='page-link' href='#'>다음</a>";
-	         pageBar2 += "</li>";
-		} else {
-			pageBar2 += "<li class='page-item'>";
-			pageBar2 += "<a class='page-link' href=" + request.getContextPath() + "/seller/sellerReserveList?cPage2=" + (pageNo2)
-					+ "><span>[다음]</span></a>";
-			pageBar2 += "</li>";
-		}
-
-		pageBar2 += "</ul>";
-				
-		List<ParkReserveDTO> list = service.sellerReserveList(userId, cPage2, numPerPage2);			
-		mv.addObject("reserveList", list);
-		mv.addObject("pageBar2", pageBar2);
-		
-
-		mv.setViewName("seller/sellerReserveList");
-		return mv;
-		
-		
-		
-		
-		/*
+	public ModelAndView sellerReserveList() {
 		ModelAndView mv = new ModelAndView();
 		UserDTO userDTO = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		// 지난 예약
@@ -353,9 +200,9 @@ public class SellerController {
 		// 현재 예약 상황
 		List<ParkReserveDTO> listLoad = service.sellerReserveListLoad(userDTO.getUserId());
 		mv.addObject("reserveListLoad", listLoad);
-		return mv;*/
+		return mv;
 	}
-
+	
 	/**
 	 * 예약상황 페이지에서 취소 버튼클릭시
 	 * request: parkNo result: 0-실패, 1-성공 

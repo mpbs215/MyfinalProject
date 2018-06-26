@@ -37,25 +37,6 @@ public class SellerServiceImpl {
 	@Autowired
 	private ParkReserveDAO parkReserveDAO;
 
-/*	public List<ParkReserveDTO> sellerReserveList(String userId) {
-		return parkReserveDAO.sellerReserveList(userId);
-	}
-
-	public void sellerReserveDelete(int parkNo) {
-		int re = parkReserveDAO.sellerReserveDelete(parkNo);
-		if(re==0) {
-			throw new RuntimeException();
-		}
-	}
-
-	public List<ParkReserveDTO> sellerReserveListLoad(String userId) {
-		return parkReserveDAO.sellerReserveListLoad(userId);
-	}
-
-	public List<ParkDTO> sellerParkList(String id) {
-		return parkDAO.selectParkList(id);
-	}*/
-
 	/**
 	 * 주차장 등록
 	 */
@@ -138,18 +119,21 @@ public class SellerServiceImpl {
 	/**
 	 * 등록한 주차장 리스트
 	 */	
-	public List<ParkDTO> sellerParkList(String userId, int cPage, int numPerPage) {
-
-		return parkDAO.selectParkList(userId, cPage, numPerPage);
+	public List<ParkDTO> sellerParkList(String userId) {
+		return parkDAO.selectParkList(userId);
 	}
+/*	페이지네이션 주석 처리
+ * 	public List<ParkDTO> sellerParkList(String userId, int cPage, int numPerPage) {
+		return parkDAO.selectParkList(userId, cPage, numPerPage);
+	}*/
 	
 	/**
 	 * 페이지네이션 위한 주차장 수 카운트
 	 */
-	public int parkCnt(String userId, int cPage, int numPerPage) {
+/*	public int parkCnt(String userId, int cPage, int numPerPage) {
 		List<ParkDTO> parkList = parkDAO.selectParkList(userId, cPage, numPerPage);	
 		return parkList.size();
-	}
+	}*/
 	
 	/**
 	 * 주차장 하나 삭제
@@ -190,33 +174,40 @@ public class SellerServiceImpl {
 	/**
 	 * 등록한 주차장에 대한 예약 리스트 - 과거
 	 */
-	public List<ParkReserveDTO> sellerReserveList(String userId, int cPage, int numPerPage){		
-		return parkDAO.sellerReserveList(userId, cPage, numPerPage);
+	public List<ParkReserveDTO> sellerReserveList(String userId){		
+		return parkDAO.sellerReserveList(userId);
 	}
+/*	public List<ParkReserveDTO> sellerReserveList(String userId, int cPage, int numPerPage){		
+		return parkDAO.sellerReserveList(userId, cPage, numPerPage);
+	}*/
 		
 	/**
 	 * 등록한 주차장에 대한 예약 리스트 - 미래
 	 */
-	public List<ParkReserveDTO> sellerReserveListLoad(String userId, int cPage, int numPerPage){
-		return parkDAO.sellerReserveListLoad(userId, cPage, numPerPage);
+	public List<ParkReserveDTO> sellerReserveListLoad(String userId){
+		return parkDAO.sellerReserveListLoad(userId);
 	}
-	
-	/**
+/*	public List<ParkReserveDTO> sellerReserveListLoad(String userId, int cPage, int numPerPage){
+		return parkDAO.sellerReserveListLoad(userId, cPage, numPerPage);
+	}*/
+
+/*	
+	*//**
 	 * 페이지네이션 위한 예약 수 카운트 - 과거
-	 */
+	 *//*
 	public int sellerReserveListCnt(String userId, int cPage, int numPerPage) {
 		List<ParkReserveDTO> sellerReserveList = parkDAO.sellerReserveList(userId, cPage, numPerPage);	
 		return sellerReserveList.size();
 	}
 	
-	/**
+	*//**
 	 * 페이지네이션 위한 예약 수 카운트 - 미래
-	 */
+	 *//*
 	public int sellerReserveListLoadCnt(String userId, int cPage, int numPerPage) {
 		List<ParkReserveDTO> sellerReserveListLoad = parkDAO.sellerReserveListLoad(userId, cPage, numPerPage);	
 		return sellerReserveListLoad.size();
 	}
-
+*/
 	
 	
 	/**

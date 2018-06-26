@@ -66,13 +66,12 @@
 							// 체크된 주차장들의 parkNo 추출해 배열에 넣고 보내기
 							$("input[name=selectPark]:checked").each(
 									function() {
-										alert($(this).val());
+										//alert($(this).val());
 										var parkNo = $(this).val();
 										parkNos.push(parkNo);
 									})
 
-							$
-									.ajax({
+							$.ajax({
 										url : "${pageContext.request.contextPath}/seller/sellerParksDelete?${_csrf.parameterName}=${_csrf.token}",
 										type : "post",
 										data : {
@@ -107,7 +106,7 @@
 </head>
 <body>
 
-	<div class="container-fluid" style="background-color: white;">
+	<div class="container-fluid" style="background-color: white; padding: 20px;" align="center">
 		<div class="row justify-content-center">
 			<div class="col-sm-11">
 
@@ -197,10 +196,11 @@
 				</div>
 			</div>
 		</div>
-		<div id="pageBar">${pageBar}</div>
+<%-- 		<div class="row justify-content-center">
+			<div id="pageBar">${pageBar}</div>
+		</div>	 --%>
 	</div>
 
 
 </body>
 </html>
-
