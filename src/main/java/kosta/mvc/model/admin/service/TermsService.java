@@ -10,7 +10,7 @@ import kosta.mvc.model.dto.TermsDTO;
 public class TermsService {
 
 	@Autowired
-	TermsDAO termsDAO;
+	private TermsDAO termsDAO;
 
 	public TermsDTO updateFormTerms(int termsNo) {
 		TermsDTO termsDTO = termsDAO.updateFormTerms(termsNo);

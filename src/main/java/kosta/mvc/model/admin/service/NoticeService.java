@@ -10,7 +10,7 @@ import kosta.mvc.model.dto.NoticeDTO;
 public class NoticeService {
 
 	@Autowired
-	NoticeDAO noticeDAO;
+	private NoticeDAO noticeDAO;
 
 	public int insertNotice(NoticeDTO noticeDTO) {
 		int result = noticeDAO.insertNotice(noticeDTO);

@@ -11,7 +11,7 @@ import kosta.mvc.model.dto.QNADTO;
 public class QnaService {
 
 	@Autowired
-	QNADAO qnaDAO;
+	private QNADAO qnaDAO;
 
 	public int insertQNA(QNADTO qnaDTO) {
 		int result = qnaDAO.insertQNA(qnaDTO);

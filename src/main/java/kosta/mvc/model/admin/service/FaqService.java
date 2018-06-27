@@ -10,7 +10,7 @@ import kosta.mvc.model.dto.FAQDTO;
 public class FaqService {
 
 	@Autowired
-	FAQDAO faqDAO;
+	private FAQDAO faqDAO;
 
 	public int insertFAQ(FAQDTO faqDTO) {
 		int result = faqDAO.insertFAQ(faqDTO);

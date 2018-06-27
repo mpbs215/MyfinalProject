@@ -1,11 +1,7 @@
 package kosta.mvc.controller;
 
-import java.security.Principal;
 import java.util.List;
-import java.util.Map;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +21,6 @@ import kosta.mvc.model.dto.ParkDTO;
 import kosta.mvc.model.dto.ParkImgDTO;
 import kosta.mvc.model.dto.ParkRegiDTO;
 import kosta.mvc.model.dto.ParkReserveDTO;
-import kosta.mvc.model.dto.QNADTO;
-import kosta.mvc.model.dto.SearchFilterDTO;
 import kosta.mvc.model.dto.UserDTO;
 import kosta.mvc.model.seller.service.SellerServiceImpl;
 

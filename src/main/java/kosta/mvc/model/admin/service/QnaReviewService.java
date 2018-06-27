@@ -9,7 +9,7 @@ import kosta.mvc.model.dao.ReviewDAO;
 public class QnaReviewService {
 
 	@Autowired
-	ReviewDAO reviewDAO;
+	private ReviewDAO reviewDAO;
 
 	public void updateQNAReview(int QNANo, String QNAReview) {
 		reviewDAO.updateReview(QNANo, QNAReview);
