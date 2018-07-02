@@ -413,8 +413,6 @@ INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CON
 --행 52
 INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','건국주차장','서울 종로구 인사동4길 17',2500,'건국주차장','1000.0');
 
--- 1 에서  50  행에 대한 삽입 실패
---ORA-01722: invalid number
 --행 1
 INSERT INTO PARK_TB (PARK_NO, USER_ID, PARK_NAME, PARK_ADDR, PARK_SIZE, PARK_CONTENT, PRICE) VALUES (park_seq.nextval,'seller','신구초교공영주차장','서울특별시 강남구 압구정로18길 28 신구초등학교','3000','신구초교공영주차장',2200.0);
 --행 2
