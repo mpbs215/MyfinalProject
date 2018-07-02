@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 회원가입 하기 -->
 	<insert id="insertMember" parameterType="userDTO">
 		INSERT INTO USER_INFO_TB(<include refid="signUpColumn" />)
-		VALUES(#{userId}, #{password}, #{userName}, #{email}, #{hp}, #{address},sysdate, #{seller})
+		VALUES(#{userId}, #{password}, #{userName}, #{email}, #{hp}, #{address},sysdate(), #{seller})
 	</insert>
 	
 <!-- 아이디 중복체크 -->

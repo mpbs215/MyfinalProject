@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="faqMapper">
 	<insert id="insertFAQ" parameterType="fAQDTO">
-		insert into faq_tb
-		values(terms_seq.nextval,#{FAQSub},#{FAQContent})
+		insert into faq_tb(faq_sub,faq_content)
+		values(#{FAQSub},#{FAQContent})
 	</insert>
 
 	<select id="updateFormFAQ" parameterType="int"

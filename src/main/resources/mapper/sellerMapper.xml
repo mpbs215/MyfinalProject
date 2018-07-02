@@ -51,11 +51,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	<!-- 주차장 등록	-->	
 	<insert id="insertPark" parameterType="parkDTO">
-		insert into PARK_TB values(#{parkNo},#{userId},#{parkName},#{parkAddr},#{parkSize},#{parkContent},#{price})
+		insert into PARK_TB(user_id,park_name,park_addr,park_size,park_content,price) values(#{userId},#{parkName},#{parkAddr},#{parkSize},#{parkContent},#{price})
 	</insert>
 	
 	<select id="selectParkNo" resultType="int">
-		select park_seq.nextval from dual
+		select max(park_no)+1 from park_tb
 	</select>
 	
 	<insert id="insertParkRegi" parameterType="parkRegiDTO">
@@ -67,17 +67,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<insert id="insertImg" parameterType="parkImgDTO">
-		insert into park_Image_TB values(img_seq.nextval,#{parkNo},#{imgPath})
+		insert into park_Image_TB(park_no,img_path) values(#{parkNo},#{imgPath})
 	</insert>
 	
 	
 	<!-- 등록한 주차장 리스트 -->
 	<select id="selectSellerParkList" parameterType="String" resultMap="sellerParkList">
-		select park_no,user_id,park_name,park_addr,park_size,park_content,price,regi_start,regi_end,img_path,car_type,max_car
-		 from park_tb natural join park_regist_tb natural join (select *
-			from (
-			select img_no, park_no, img_path, rank()over(partition by park_no order by img_path desc) rk
-			from park_image_tb) where rk=1) natural join car_type_tb
+		SELECT park_no,user_id,park_name,park_addr,park_size,park_content,price,regi_start,regi_end,i.img_path,car_type,max_car
+		 FROM park_tb NATURAL JOIN park_regist_tb NATURAL JOIN (SELECT *
+			FROM (
+			SELECT img_no, park_no, img_path, RANK()OVER(PARTITION BY park_no ORDER BY img_path DESC) rk
+			FROM park_image_tb) pp WHERE rk = 1) i NATURAL JOIN car_type_tb
 		where user_id = #{userId}
 		order by park_no desc
 	</select>

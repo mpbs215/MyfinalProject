@@ -6,6 +6,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="qnaReviewMapper">
 	<update id="updateQnaReview" parameterType="map">
 		update qna_tb set
-		qna_Review=#{QNAReview}, QNA_Review_DT=sysdate where qna_no=#{QNANo}
+		qna_Review=#{QNAReview}, QNA_Review_DT=sysdate() where qna_no=#{QNANo}
 	</update>
 </mapper>

@@ -69,7 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertReserve" parameterType="parkReserveDTO">
-		insert into park_reserve_tb values(reserve_seq.nextval,#{parkNo},#{userId},#{reserveStart},#{reserveEnd},#{carType})
+		insert into park_reserve_tb(park_no,user_id,reserve_start,reserve_end,car_Type) values(#{parkNo},#{userId},#{reserveStart},#{reserveEnd},#{carType})
 	</insert>
 	
 	<select id="confirmReserve" parameterType="string" resultType="int">
@@ -88,13 +88,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertAuth" parameterType="string">
-			insert into AUTHORITY_TB(key)
+			insert into AUTHORITY_TB(keydata)
 			values(#{_parameter})
 	</insert>
 	
 	<insert id="SMS" parameterType="tempKeyDTO" >
 			insert into SMS_TB
-			values(#{userId}, #{hp}, #{key})
+			values(#{userId}, #{hp}, #{keydata})
 	</insert>
 	
  	<resultMap type="parkDTO" id="reserveMap">
@@ -115,12 +115,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<select id="selectUserReserve" parameterType="string" resultMap="reserveMap">
-		select park_no,reserve_No,reserve_Start,user_info_tb.user_id,img_path,park_name,hp,price*EXTRACT(hour from reserve_end-reserve_start) as price
-		from park_Reserve_TB  left outer join 
-		(select * from (select img_no, park_no, img_path, rank()over(partition by park_no order by img_path desc) rk
-			from park_image_tb) where rk = 1)  using(park_no) 
-		join park_tb pt using(park_no) 
-		join user_info_tb on pt.user_id =user_info_tb.user_id
+		SELECT park_no,reserve_No,reserve_Start,user_info_tb.user_id,i.img_path,park_name,hp,price*EXTRACT(HOUR FROM reserve_end-reserve_start) AS price
+		FROM park_Reserve_TB  LEFT OUTER JOIN 
+		(SELECT * FROM (SELECT img_no, park_no, img_path, RANK()OVER(PARTITION BY park_no ORDER BY img_path DESC) rk
+			FROM park_image_tb) pp WHERE rk = 1) i  USING(park_no) 
+		JOIN park_tb pt USING(park_no) 
+		JOIN user_info_tb ON pt.user_id =user_info_tb.user_id
 		where park_Reserve_TB.user_id = #{_value}
 	</select>
 	

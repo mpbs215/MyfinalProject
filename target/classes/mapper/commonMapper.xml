@@ -40,8 +40,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
 
    <insert id="insertQNA" parameterType="qnaDTO">
-      insert into qna_tb
-      values(qna_seq.nextval,#{userId},#{QNASub},#{QNAContent},sysdate,null,null,0,#{QNAPwd},#{QNAImage})
+      insert into qna_tb(user_id,qna_sub,qna_content,qna_dt,qna_review,qna_review_dt,qna_hit,qna_pwd,qna_image)
+      values(#{userId},#{QNASub},#{QNAContent},sysdate(),null,null,0,#{QNAPwd},#{QNAImage})
 
    </insert>
 

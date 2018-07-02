@@ -72,7 +72,7 @@ public class UserServiceImpl {
 		AuthorityDTO authDTO = new AuthorityDTO();
 		authDTO.setUserId(userDTO.getUserId());
 		authDTO.setRole("ROLE_USER");
-		authDTO.setKey("0");
+		authDTO.setKeydata("0");
 		authDTO.setHp(userDTO.getHp());
 		
 		System.out.println("Auth테이블의 아이디는 : " + authDTO.getUserId());
@@ -249,14 +249,14 @@ public class UserServiceImpl {
 	public void insertAuthCode(String userId, String hp, String key) {
 			AuthorityDTO authDTO = new AuthorityDTO();
 			TempKeyDTO sms = new TempKeyDTO();
-			authDTO.setKey(key);
+			authDTO.setKeydata(key);
 			System.out.println("key : " +key);
 			
 			authDTO.setRole("ROLE_SELLER");
 			authDTO.setUserId(userId);
 			authDTO.setHp(hp);
 			
-			System.out.println("authDTO : " + authDTO.getKey());
+			System.out.println("authDTO : " + authDTO.getKeydata());
 			
 		 	sms.setUserId(userId);
 			sms.setHp(hp);

@@ -17,8 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<insert id="insertTerms" parameterType="termsDTO">
-		insert into terms_tb
-		values(terms_seq.nextval,#{termsSub},#{termsContent})
+		insert into terms_tb(terms_sub,terms_content)
+		values(#{termsSub},#{termsContent})
 	</insert>
 
 	<delete id="deleteTerms" parameterType="int">

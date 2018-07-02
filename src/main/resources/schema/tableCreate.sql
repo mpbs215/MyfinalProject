@@ -13,135 +13,127 @@ drop table Park_TB;
 drop table sms_tb;
 drop table User_Info_TB;
 
-create table USER_INFO_TB
-(
-      USER_ID         varchar2(100)   primary key,
-      password   varchar2(100) NOT NULL,
-      USER_NAME   varchar2(100) NOT NULL,
-      email         varchar2(100) NOT NULL,
-      hp            varchar2(100) NOT NULL,
-      address      varchar2(100) NOT NULL,
-      regidate      timestamp NOT NULL,
-      seller         char(1)
-);
 
 create table PARK_TB
 (
-      park_No            number          primary key,
-      user_Id            varchar2(100)  NOT NULL constraint park_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
-      park_Name         varchar2(100)  NOT NULL,
-      park_Addr         varchar2(200)  NOT NULL,
-      park_Size         varchar2(100)   NOT NULL,
-      park_Content       varchar2(2000) NOT NULL,
-      price            number          NOT NULL
+      park_No            int          primary key auto_increment,
+      user_Id            varchar(100)  NOT NULL ,
+      park_Name         varchar(100)  NOT NULL,
+      park_Addr         varchar(200)  NOT NULL,
+      park_Size         varchar(100)   NOT NULL,
+      park_Content       varchar(2000) NOT NULL,
+      price            int          NOT NULL,
+      foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
        
 );
 
 create table park_Regist_TB
 (
-      park_No         number     primary key constraint regist_parkno_fk references park_tb(park_No) ON DELETE CASCADE,
+      park_No         int     primary key,
       regi_Start      Timestamp NOT NULL,
-      regi_End         Timestamp NOT NULL
+      regi_End         Timestamp NOT NULL,
+      foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE
 );
 
 create table park_Reserve_TB
 (
-      reserve_No      number          primary key,
-      park_No          number          NOT NULL constraint reserve_parkno_fk    references park_Regist_tb(park_No) ON DELETE CASCADE,
-      user_Id         varchar2(100)   NOT NULL constraint reserve_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
+      reserve_No      int          primary key auto_increment,
+      park_No          int          NOT NULL,
+      user_Id         varchar(100)   NOT NULL,
       reserve_Start   Timestamp      NOT NULL,
       reserve_End      Timestamp        NOT NULL,
-      car_Type         varchar2(100)   NOT NULL
+      car_Type         varchar(100)   NOT NULL,
+	foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE,
+	foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
 
 create table review_TB
 (
-      user_Id         varchar2(100)   constraint   review_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
-      park_No         number          constraint   review_parkno_fk references park_Regist_tb(park_no) ON DELETE CASCADE,
-      rating         number         NOT NULL,         
-      review_Content   varchar2(500)   NOT NULL,
+      user_Id         varchar(100),
+      park_No         int         ,
+      rating         int         NOT NULL,         
+      review_Content   varchar(500)   NOT NULL,
       
-      CONSTRAINT review_pk PRIMARY KEY (user_Id, park_No)
+      CONSTRAINT review_pk PRIMARY KEY (user_Id, park_No),
+	foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE,
+	foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
 
 create table park_Image_TB
 (
-      img_No      number         primary key,
-      park_No      number        NOT NULL constraint   img_parkno_fk   references park_Regist_tb(park_No) ON DELETE CASCADE,
-      img_Path      varchar2(100) NOT NULL
+      img_No      int         primary key auto_increment,
+      park_No      int        NOT NULL,
+      img_Path      varchar(100) NOT NULL,
+     foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE
 );
 
 
 create table car_Type_TB
 (      
-      park_No   number         constraint   carType_parkno_fk   references park_Regist_tb(park_No) ON DELETE CASCADE,
-      car_Type varchar2(100) ,
-      max_Car  number not null,
-      CONSTRAINT carType_pk PRIMARY KEY (park_No,car_Type)
+      park_No   int ,
+      car_Type varchar(100) ,
+      max_Car  int not null,
+      CONSTRAINT carType_pk PRIMARY KEY (park_No,car_Type),
+      foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE
 );
 
 create table seller_TB
 (
-      user_Id      varchar2(100) primary key constraint   seller_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
-      account      varchar2(200) NOT NULL,
-      real_name   varchar2(200) NOT NULL
+      user_Id      varchar(100) primary key,
+      account      varchar(200) NOT NULL,
+      real_name   varchar(200) NOT NULL,
+      foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
 
 create table authority_TB
 (
-      user_Id   varchar2(100) constraint authority_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
-      role   varchar2(100),
-      key varchar2(10),
-      hp varchar2(20),
-      CONSTRAINT authority_pk PRIMARY KEY (user_Id)
+      user_Id   varchar(100),
+      role   varchar(100),
+      keydata varchar(10),
+      hp varchar(20),
+      CONSTRAINT authority_pk PRIMARY KEY(user_Id),
+      foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
 
 create table qna_TB
 (
-      qna_No      number primary key,
-      user_Id      varchar2(100) constraint qna_userId_fk references user_info_tb(user_Id) ON DELETE CASCADE,
-      QNA_Sub  varchar2(200) NOT NULL,
-      QNA_Content  varchar2(2000) NOT NULL,
+      qna_No      int primary key auto_increment,
+      user_Id      varchar(100),
+      QNA_Sub  varchar(200) NOT NULL,
+      QNA_Content  varchar(2000) NOT NULL,
       QNA_DT TIMESTAMP NOT NULL,
-      QNA_Review   varchar2(2000),
+      QNA_Review   varchar(2000),
       QNA_Review_DT timestamp,
-      QNA_HIT      number NOT NULL,
-      QNA_PWD      number,
-      QNA_IMAGE varchar2(100)
+      QNA_HIT      int NOT NULL,
+      QNA_PWD      int,
+      QNA_IMAGE varchar(100),
+      foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
 
 create table faq_TB(
-      faq_No   number   primary key,
-      faq_Sub varchar2(200) not null,
-      faq_Content varchar2(2000) not null
+      faq_No   int   primary key auto_increment,
+      faq_Sub varchar(200) not null,
+      faq_Content varchar(2000) not null
 );
 
 create table terms_TB(
-      terms_no   number primary key,
-      terms_Sub varchar2(200) not null,
-      terms_Content varchar2(2000) not null
+      terms_no   int primary key auto_increment,
+      terms_Sub varchar(200) not null,
+      terms_Content varchar(2000) not null
 );
 
 create table notice_TB(
-      notice_No   number primary key,
-      notice_sub varchar2(200) NOT NULL,
+      notice_No   int primary key auto_increment,
+      notice_sub varchar(200) NOT NULL,
       notice_DT timestamp NOT NULL,
-      notice_Content varchar2(2000) NOT NULL,
-      notice_Hit     number NOT NULL,
-      notice_Image     varchar2(100)
+      notice_Content varchar(2000) NOT NULL,
+      notice_Hit     int NOT NULL,
+      notice_Image     varchar(100)
 );
 
 create table SMS_TB (
-        user_id varchar2(100) PRIMARY KEY CONSTRAINT user_id REFERENCES USER_INFO_TB(user_id) ON DELETE CASCADE,
-        hp varchar2(20) not null,
-        key varchar2(100) not null
+        user_id varchar(100) PRIMARY KEY,
+        hp varchar(20) not null,
+        keydata varchar(100) not null,
+	foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
-
-select * from user_info_tb;
-
-select * from authority_TB;
-
-select  * from sms_tb;
-
-commit
-

@@ -34,12 +34,11 @@
 <!-- oracle 연결!!!!! -->
 <!-- dbcp기술 설정하기 -->
 <beans:bean	id="dataSource" 
-   class="org.apache.commons.dbcp.BasicDataSource"
+   class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 				p:driverClassName="${driverName}"
 				p:url="${url}"
 				p:username="${userName}"
-				 p:password="${userPass}"  
-				 p:maxActive="10"/>
+				 p:password="${userPass}"  />
 				
  <!--JDBC로 사용하기 위해서는 여기까지 적용해주면 되고 MYbatis를 사용하기 위해서는 밑에 부분 좀더 필요 -->	
  	
@@ -49,11 +48,6 @@
  <!-- SqlSessionFactoryBean이 Factory를 구해오는 역할을 한다. -->
  <!-- p:dataSource, p:config~ = Bean객체가 생성되면서 주입되는 2개의 setter메소드 -->
  
- <!-- <beans:bean id="sqlSessionFactory"
-       class="org.mybatis.spring.SqlSessionFactoryBean"
-		p:dataSource-ref="dataSource" 
-		p:configLocation="classpath:kdb/spring/conf/SqlMapConfig.xml" /> --> 
-
 <!-- Spring에서  org.mybatis.spring.SqlSessionFactoryBean" 클래스가 생성이되면 내부적으로 SqlSEssionFactory 객체
 		  를 생성하는 것과 같다
 -->
