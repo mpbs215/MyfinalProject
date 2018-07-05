@@ -14,6 +14,18 @@ drop table sms_tb;
 drop table User_Info_TB;
 
 
+create table USER_INFO_TB
+(
+      user_id         varchar(100)   primary key,
+      password   varchar(100) NOT NULL,
+      user_name   varchar(100) NOT NULL,
+      email         varchar(100) NOT NULL,
+      hp            varchar(100) NOT NULL,
+      address      varchar(100) NOT NULL,
+      regidate      timestamp NOT NULL,
+      seller         char(1)
+);
+
 create table PARK_TB
 (
       park_No            int          primary key auto_increment,
@@ -23,7 +35,7 @@ create table PARK_TB
       park_Size         varchar(100)   NOT NULL,
       park_Content       varchar(2000) NOT NULL,
       price            int          NOT NULL,
-      foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
+      constraint park_userId_fk foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
        
 );
 
@@ -32,7 +44,7 @@ create table park_Regist_TB
       park_No         int     primary key,
       regi_Start      Timestamp NOT NULL,
       regi_End         Timestamp NOT NULL,
-      foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE
+      constraint parkRegist_parkNo_fk foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE
 );
 
 create table park_Reserve_TB
@@ -43,8 +55,8 @@ create table park_Reserve_TB
       reserve_Start   Timestamp      NOT NULL,
       reserve_End      Timestamp        NOT NULL,
       car_Type         varchar(100)   NOT NULL,
-	foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE,
-	foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
+      constraint parkReserve_parkNo_fk foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE,
+      constraint parkReserve_userId_fk foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
 
 create table review_TB
@@ -55,8 +67,8 @@ create table review_TB
       review_Content   varchar(500)   NOT NULL,
       
       CONSTRAINT review_pk PRIMARY KEY (user_Id, park_No),
-	foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE,
-	foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
+      CONSTRAINT review_parkNo_fk foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE,
+      CONSTRAINT review_userId_fk foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
 
 create table park_Image_TB
@@ -64,7 +76,7 @@ create table park_Image_TB
       img_No      int         primary key auto_increment,
       park_No      int        NOT NULL,
       img_Path      varchar(100) NOT NULL,
-     foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE
+      CONSTRAINT parkImage_parkNo_fk foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE
 );
 
 
@@ -74,7 +86,7 @@ create table car_Type_TB
       car_Type varchar(100) ,
       max_Car  int not null,
       CONSTRAINT carType_pk PRIMARY KEY (park_No,car_Type),
-      foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE
+       CONSTRAINT carType_parkNo_fk foreign key(park_No) references park_tb(park_No) ON DELETE CASCADE
 );
 
 create table seller_TB
@@ -82,7 +94,7 @@ create table seller_TB
       user_Id      varchar(100) primary key,
       account      varchar(200) NOT NULL,
       real_name   varchar(200) NOT NULL,
-      foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
+      CONSTRAINT seller_userId_fk foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
 
 create table authority_TB
@@ -92,7 +104,7 @@ create table authority_TB
       keydata varchar(10),
       hp varchar(20),
       CONSTRAINT authority_pk PRIMARY KEY(user_Id),
-      foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
+      CONSTRAINT authority_userId_fk foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
 
 create table qna_TB
@@ -107,7 +119,7 @@ create table qna_TB
       QNA_HIT      int NOT NULL,
       QNA_PWD      int,
       QNA_IMAGE varchar(100),
-      foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
+      CONSTRAINT qna_userId_fk foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
 
 create table faq_TB(
@@ -135,5 +147,5 @@ create table SMS_TB (
         user_id varchar(100) PRIMARY KEY,
         hp varchar(20) not null,
         keydata varchar(100) not null,
-	foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
+        CONSTRAINT SMS_userId_fk foreign key(user_Id) references user_info_tb(user_Id) ON DELETE CASCADE
 );
